@@ -1,0 +1,4 @@
+
+Šsquid:S1319	"sThe return type of this method should be an interface such as "List" rather than the implementation "AbstractList".(ÄÁÛð
+‰squid:S1319"sThe type of the "items" object should be an interface such as "List" rather than the implementation "AbstractList".(‡¾ƒ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“

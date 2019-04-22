@@ -1,0 +1,12 @@
+
+†squid:S1319&"pThe type of the "cards" object should be an interface such as "List" rather than the implementation "ArrayList".(—ü½
+—squid:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(—ü½
+‡squid:S1319#"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õ“Í¶
+Œsquid:S1319 "pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ò­öþøÿÿÿÿ
+?squid:S1068
+"(Remove this unused "buff" private field.(»í™æ
+—squid:S1186)"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª·¤Y
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
+˜squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û†ÑÛ
+†squid:S1319)"pThe type of the "cells" object should be an interface such as "List" rather than the implementation "ArrayList".(ª·¤Y
+Asquid:S1068	"*Remove this unused "effect" private field.(££Œê
