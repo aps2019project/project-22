@@ -2,51 +2,45 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Hand extends Card {
-    private ArrayList<Card> cards;
-    private int turn;
+public class Hand {
+    private ArrayList<Card> cardsInThisHand = new ArrayList<>();
+    private static final int HAND__CAPACITY = 5;
+    private Card nextCardInHand;
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public ArrayList<Card> getCardsInThisHand() {
+        return cardsInThisHand;
     }
 
-    public void chooseCards() {
-
+    public void setCardsInThisHand(ArrayList<Card> cardsInThisHand) {
+        this.cardsInThisHand = cardsInThisHand;
     }
 
-    public int getTurn() {
-        return turn;
+    public Card getNextCardInHand() {
+        return nextCardInHand;
     }
 
-    public void setTurn(int turn) {
-
+    public void setNextCardInHand(Card nextCardInHand) {
+        this.nextCardInHand = nextCardInHand;
     }
 
-    public void chooseCards(ArrayList<Card> cards) {
-        // Deck.getCards
-
+    public void removeACard(int cardID) {
+        Card card = Card.searchCardByID(cardID);
+        this.getCardsInThisHand().remove(card);
     }
 
-    public boolean checkIfTheCardsAreInDeck(ArrayList<Card> cards) {
-        //    Deck.getCards
-        return true; // naqeees
+    public void addACard(int cardID) {
+        Card card = Card.searchCardByID(cardID);
+        this.getCardsInThisHand().remove(card);
     }
 
-    public void deleteFromDeck(Deck deck) {
-
+    public boolean checkIfIsFull() {
+        if (this.getCardsInThisHand().size() == HAND__CAPACITY)
+            return true;
+        return false;
     }
 
-    public boolean checkIfHandHasFreeSpace() {
-        boolean check = true;
-        return check;
-    }
-
-    public void addToHand(ArrayList<Card> cardsOfDeck) {
-
-    }
-
-    public void deleteFromHand(Card card) {
-
+    public void deleteFromDeck(Deck deck, Card card) {
+        deck.getCardsOfDeck().remove(card);
     }
 
 }
