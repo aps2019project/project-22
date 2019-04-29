@@ -21,10 +21,44 @@ public class Buff extends Effect {
     }
 
     public void applyBuff() {
-        if (type.equals("Holy Buff")) {
-
+        switch (type) {
+            case "Holy buff":
+                holyBuff();
+                break;
+            case "Power buff":
+                powerBuff();
+                break;
+            case "Posion buff":
+                posionBuff();
+                break;
+            case "Weakness buff":
+                weaknessBuff();
+                break;
+            case "Stun buff":
+                stunBuff();
+                break;
+            case "Disarm buff":
+                disarmBuff();
+                break;
         }
-        //else if ()
 
+    }
+
+    private void posionBuff() {
+    }
+
+    private void stunBuff() {
+    }
+
+    private void weaknessBuff() {
+    }
+
+    private void disarmBuff() {
+    }
+
+    private void powerBuff() {
+    }
+
+    private void holyBuff() {
     }
 }
