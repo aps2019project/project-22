@@ -6,39 +6,49 @@ public class Deck {
     private String id;
     private Hero hero;
     private Item item;
-    private Arraylist<Card> cards;
+    private ArrayList<Card> cards;
 
-    public void setHero(Hero hero){
+    public void setHero(Hero hero) {
 
     }
-    public Hero getHero(){
+
+    public Hero getHero() {
         return hero;
 
     }
 
-    public void setId(String id){
+    public void setId(String id) {
 
     }
+
     public String getId() {
         return id;
     }
-    public void setItem(Item item){
+
+    public void setItem(Item item) {
 
     }
-    public Item getItem(){
+
+    public Item getItem() {
         return item;
     }
-    public Arraylist<Card> getCards() {
+
+    public ArrayList<Card> getCards() {
         return cards;
     }
+
     public void chooseCards() {
 
     }
-    public void deleteCard(Card card){
+
+    public void deleteCard(Card card) {
 
     }
-    public Card seeTheNextCardAddedToHand(){
+   /*
+   public Card seeTheNextCardAddedToHand(){
+
         return card;
     }
+    */
 
 }

@@ -3,8 +3,17 @@ package Model;
 public class Item {
     private String description;
     private int price;
+    private int itemId;
     private Effect effect;
     private String typeOfItem;
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
 
     public void applyType() {
 

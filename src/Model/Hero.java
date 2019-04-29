@@ -1,6 +1,6 @@
 package Model;
 
-public class Hero extends Card{
+public class Hero extends Card {
     private int healthPoint;
     private int attackPower;
     private int priceOfHero;
@@ -75,7 +75,7 @@ public class Hero extends Card{
         this.priceOfHero = priceOfHero;
     }
 
-    public void applyType(){
+    public void applyType() {
 
     }
 }

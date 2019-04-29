@@ -4,8 +4,8 @@ public class Buff extends Effect {
     private boolean limitedTime;
     private String type;
 
-    public void setLimitedTime(boolean position){
-        limitedTime=position;
+    public void setLimitedTime(boolean position) {
+        limitedTime = position;
     }
 
     public boolean isLimitedTime() {
@@ -13,13 +13,18 @@ public class Buff extends Effect {
     }
 
     public void setType(String type) {
-
+        this.type = type;
     }
 
     public String getType() {
         return type;
     }
-    public void applyBuff(){
+
+    public void applyBuff() {
+        if (type.equals("Holy Buff")) {
+
+        }
+        //else if ()
 
     }
 }

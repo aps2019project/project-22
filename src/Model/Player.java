@@ -1,68 +1,98 @@
 package Model;
 
 
+import java.util.ArrayList;
+
 public class Player extends Account {
 
-    private static Arraylist<Player> players;
+    private static ArrayList<Player> players;
     private String name;
-    private Arraylist<Hand> hands;
-    private Arraylist<Deck> decks;
+    private ArrayList<Hand> hands;
+    private ArrayList<Deck> decks;
     private int winScore;
     private int loseScore;
     private int drawScore;
+    private ArrayList<Card> graveyard = new ArrayList<>();
     private int money;
     private int mana;
 
-    public static void addPlayer(Player player){
+
+    public ArrayList<Card> getGraveyard() {
+        return graveyard;
+    }
+
+    public void setGraveyard(ArrayList<Card> graveyard) {
+        this.graveyard = graveyard;
+    }
+
+    public static void addPlayer(Player player) {
+        players().add(player);
 
     }
-    public static Arraylist<Player> players(){
+
+    public static ArrayList<Player> players() {
         return players;
     }
 
     public void giveMoney() {
 
     }
-    public void getMoney() {
+
+    public long getMoney() {
+        return money;
 
     }
 
-    public void addHand(Hand hand){
+    public void addHand(Hand hand) {
+        this.getHands().add(hand);
 
     }
-    public void addDeck(Deck deck){
+
+    public void addDeck(Deck deck) {
+        this.getDecks().add(deck);
 
     }
-    public void setName (String name){
+
+    public void setName(String name) {
+        this.name = name;
 
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public Arraylist<Hand> getHands() {
+    public ArrayList<Hand> getHands() {
         return hands;
     }
-    public Arraylist<Deck> getDecks() {
+
+    public ArrayList<Deck> getDecks() {
         return decks;
     }
-    public void setWinScore() {
+
+    public void setWinScore(int winScore1) {
+        this.winScore = winScore1;
 
     }
-    public void setLoseScore() {
 
+    public void setLoseScore(int loseScore1) {
+        this.loseScore = loseScore1;
     }
-    public void setDrawScore() {
 
+    public void setDrawScore(int drawScore1) {
+        this.drawScore = drawScore1;
     }
-    public void setMana(){
 
+    public void setMana(int mana1) {
+        this.mana = mana1;
     }
+
     public void changeMana() {
 
     }
-     public int getMana() {
+
+    public int getMana() {
         return mana;
-     }
+    }
 
 }

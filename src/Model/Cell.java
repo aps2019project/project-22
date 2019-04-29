@@ -3,21 +3,34 @@ package Model;
 import java.util.ArrayList;
 
 public class Cell {
-    private static ArrayList<Cell> cells;
+    private static int[] rowsOfCells = new int[5];
+    private static int[] columnsOfCells = new int[9];
+    private ArrayList<Spell> spells;
+    private ArrayList<Integer> effectTime;
     private int x;
     private int y;
     private Card card;
-    private ArrayList<Spell> spells;
-    private ArrayList<Integer> effectTime;
 
-    public static ArrayList<Cell> getCells() {
-        return cells;
+    public static int[] getRowsOfCells() {
+        return rowsOfCells;
     }
 
-    public static void addCells(Cell cell) {
-        cells.add(cell);
+    public static void setRowsOfCells(int[] rowsOfCells) {
+        Cell.rowsOfCells = rowsOfCells;
     }
 
+    public static int[] getColumnsOfCells() {
+        return columnsOfCells;
+    }
+
+    public static void setColumnsOfCells(int[] columnsOfCells) {
+        Cell.columnsOfCells = columnsOfCells;
+    }
+
+
+    public void setSpells(ArrayList<Spell> spells) {
+        this.spells = spells;
+    }
 
     public ArrayList<Integer> getEffectTime() {
         return effectTime;
@@ -50,17 +63,21 @@ public class Cell {
     public void setCard(Card card) {
         this.card = card;
     }
-    public void power(){
+
+    public void power() {
 
     }
 
     public ArrayList<Spell> getSpells() {
         return spells;
     }
-    public void addSpell(Spell spell){
+
+    public void addSpell(Spell spell) {
         spells.add(spell);
     }
-    public void deleteSpell(){
+
+    public void deleteSpell() {
+
 
     }
 }

@@ -8,6 +8,20 @@ public class Collection {
     private ArrayList<Item> items;
     private ArrayList<Card> cards;
 
+    public int getNumberOfItems() {
+        return numberOfItems;
+    }
+
+    public void setNumberOfItems(int numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
+
+    public void increaseNumberOfItems() {
+        numberOfItems++;
+    }
+
+    private int numberOfItems;
+
     public void setName(String name) {
         this.name = name;
     }

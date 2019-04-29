@@ -10,7 +10,8 @@ public class Effect {
     public String getName() {
         return name;
     }
-    public void applyEffect(){
+
+    public void applyEffect() {
 
     }
 }

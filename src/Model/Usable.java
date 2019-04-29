@@ -3,8 +3,9 @@ package Model;
 import java.util.AbstractList;
 
 public class Usable extends Item {
-private Card card;
-private AbstractList<Item> items;
+
+    private Card card;
+    private AbstractList<Item> items;
 
     public AbstractList<Item> getItems() {
         return items;
@@ -21,4 +22,5 @@ private AbstractList<Item> items;
     public void setCard(Card card) {
         this.card = card;
     }
+
 }
