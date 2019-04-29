@@ -10,6 +10,7 @@ public class Card {
     private int column;
 
 
+
     public void move(int x, int y, int maxDistance) {
         int distance;
         distance = Math.abs(x - row) + Math.abs(y - column);
@@ -17,7 +18,8 @@ public class Card {
             setRow(x);
             setColumn(y);
             //tu view bge mishe o shodo ina.
-        } else {
+        }
+        else{
             // tu view bege nmishe
         }
     }
@@ -73,6 +75,14 @@ public class Card {
     public int getPrice() {
         return price;
     }
+    public static Card searchCardByID(int ID){
+        for(Card card : Card.cards) {
+            if (card.getCardId() == ID)
+                return card;
+        }
+        return null;
+    }
+
 
 
 }
