@@ -4,84 +4,99 @@ import java.util.ArrayList;
 
 public class Spell extends Card {
 
-    private int manaPoint;
-    private String description;
-    private Effect effect;
-    private int disarm;
-    private boolean destroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy;
+    private String name;
+    private String cost;
+    private int ID;
+    private int mana;
+    private String targetPointName;
+    private String desc;
+    public static ArrayList<Spell> spells = new ArrayList<>();
 
-    public boolean isDestroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy() {
-        return destroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy;
+    public static void addSpell(Spell spell) {
+        Spell.getSpells().add(spell);
     }
 
-    public void setDestroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy(boolean destroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy) {
-        this.destroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy = destroyNegativeBuffsOfItSelfAndPosetiveBuffsOfEnemy;
+    public static ArrayList<Spell> getSpells() {
+        return spells;
+    }
+
+    public static void setSpells(ArrayList<Spell> spells) {
+        Spell.spells = spells;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 
 
-    public int getDisarm() {
-        return disarm;
+    public int getID() {
+        return ID;
     }
 
-    public void setDisarm(int disarm) {
-        this.disarm = disarm;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
 
-    public Buff getBuff() {
-        return buff;
+    public String getTargetPointName() {
+        return targetPointName;
     }
 
-    public void setBuff(Buff buff) {
-        this.buff = buff;
+    public void setTargetPointName(String targetPointName) {
+        this.targetPointName = targetPointName;
     }
 
-    private Buff buff;
-
-    public Effect getEffect() {
-        return effect;
+    public String getDesc() {
+        return this.desc;
     }
 
-    public void setEffect(Effect effect) {
-        this.effect = effect;
+    public void setDesc(String effectName) {
+        this.desc = effectName;
     }
 
-    private ArrayList<Card> targetCommunityOfCards;
-    private ArrayList<Cell> targetCommunityOfCells;
-
-    public void setManaPoint(int manaPoint) {
-        this.manaPoint = manaPoint;
+    public  Spell(String name, int price, int mana, String targetPointName, String desc) {
+        this.setName(name);
+        this.setPrice(price);
+        this.setMana(mana);
+        this.setTargetPointName(targetPointName);
+        this.setDesc(desc);
     }
 
-    public int getManaPoint() {
-        return manaPoint;
+    public static boolean checkIfACardIsASpell(String cardName) {
+        for (Spell spell : Spell.getSpells()) {
+            if (spell.getName().compareTo(cardName) == 0)
+                return true;
+        }
+        return false;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+
+    public static Card getSpellByName(String spellName) {
+        for (Spell spell : Spell.getSpells()) {
+            if (spell.getName().compareTo(spellName) == 0)
+                return spell;
+        }
+        return null;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void applyEffect() {
-
-    }
-
-    public ArrayList<Card> getTargetCommunityOfCards() {
-        return targetCommunityOfCards;
-    }
-
-    public ArrayList<Cell> getTargetCommunityOfCells() {
-        return targetCommunityOfCells;
-    }
-
-    public void setTargetCommunityOfCards(ArrayList<Card> cards) {
-
-    }
-
-    public void setTargetCommunityOfCells(ArrayList<Cell> cells) {
-
-    }
 }
