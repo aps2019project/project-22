@@ -10,4 +10,8 @@ private boolean isUsed;
     public void use(){
 
     }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
+    }
 }

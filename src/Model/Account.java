@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Account {
@@ -11,7 +12,7 @@ public class Account {
     private int ID;
     private boolean logIn;
     private static final long firstMoney = 15000;
-    private long money ;
+    private long money;
     private int wins;
     private int looses;
     private Player player = new Player();
@@ -19,33 +20,31 @@ public class Account {
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private String userName;
-    private Deck mainDeck ;
+    private Deck mainDeck;
     private int story;
     private static int count = 0;
 
-    public static void addNewAccount( String userName , String password) {
+    public static void addNewAccount(String userName, String password) {
         if (!booleanSearchByUserName(userName)) {
-            Account account = new Account(userName , password);
+            Account account = new Account(userName, password);
             account.setPassword(password);
             account.setUserName(userName);
             accounts.add(account);
             return;
 
-        }
-        else if(booleanSearchByUserName(userName)){
+        } else if (booleanSearchByUserName(userName)) {
             System.out.println("Enter another username");
             return;
-        }
-        else if(booleanSearchByPassword(password)){
+        } else if (booleanSearchByPassword(password)) {
             System.out.println("Enter another password");
         }
     }
 
 
-    public Account(String userName , String password){
+    public Account(String userName, String password) {
         this.setWins(0);
         this.setStory(0);
-        this.setMoney( Account.firstMoney);
+        this.setMoney(Account.firstMoney);
         this.matchHistory = new ArrayList<MatchHistory>();
         this.collection = new Collection();
         this.setUserName(userName);
@@ -53,37 +52,43 @@ public class Account {
         this.setID(Account.count++);
 
     }
-    public static boolean  booleanSearchByUserName(String userName){
-        for(Account account: Account.getAccounts()) {
+    public Account(){
+
+    }
+
+    public static boolean booleanSearchByUserName(String userName) {
+        for (Account account : Account.getAccounts()) {
             if (account.getUserName().compareTo(userName) == 0)
                 return true;
         }
         return false;
     }
-    public static boolean  booleanSearchByPassword(String password){
-        for(Account account: Account.getAccounts()) {
+
+    public static boolean booleanSearchByPassword(String password) {
+        for (Account account : Account.getAccounts()) {
             if (account.getPassword().compareTo(password) == 0)
                 return true;
         }
         return false;
     }
 
-    public static boolean  booleanSearchByID(int ID){
-        for(Account account: Account.getAccounts()) {
-            if (account.getID()== ID)
+    public static boolean booleanSearchByID(int ID) {
+        for (Account account : Account.getAccounts()) {
+            if (account.getID() == ID)
                 return true;
         }
         return false;
     }
-    public static boolean  booleanSearchByAccount(Account account1){
-        for(Account account: Account.getAccounts()) {
+
+    public static boolean booleanSearchByAccount(Account account1) {
+        for (Account account : Account.getAccounts()) {
             if (account == account1)
                 return true;
         }
         return false;
     }
 
-    public static Account  SearchByUserName(String userName) {
+    public static Account SearchByUserName(String userName) {
         for (Account account : Account.getAccounts()) {
             if (account.getUserName().compareTo(userName) == 0)
                 return account;
@@ -91,9 +96,9 @@ public class Account {
         return null;
     }
 
-    public static Account  SearchById(int ID) {
+    public static Account SearchById(int ID) {
         for (Account account : Account.getAccounts()) {
-            if (account.getID()==ID)
+            if (account.getID() == ID)
                 return account;
         }
         return null;
@@ -133,8 +138,8 @@ public class Account {
         return userName;
     }
 
-    public void setUserName(String userName){
-        this.userName = userName ;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -169,6 +174,7 @@ public class Account {
     public void setID(int ID) {
         this.ID = ID;
     }
+
     public Collection getCollection() {
         return collection;
     }
@@ -184,7 +190,6 @@ public class Account {
     public void setMatchHistory(ArrayList<MatchHistory> matchHistory) {
         this.matchHistory = matchHistory;
     }
-
 
 
     public int getStory() {
@@ -214,6 +219,7 @@ public class Account {
     public boolean getLogIn() {
         return logIn;
     }
+
     public void setLogIn(boolean logIn) {
         this.logIn = logIn;
     }
@@ -232,8 +238,9 @@ public class Account {
         this.setMainDeck(decks.get(index));
 
     }
+
     public void changeMainDeck(Deck deck) {
-       this.mainDeck = deck;
+        this.mainDeck = deck;
     }
 
     public Deck getMainDeck() {
@@ -249,7 +256,7 @@ public class Account {
     }
 
     public static void checkLogin(String userName, String password) {
-        Account account =new Account(userName , password);
+        Account account = new Account(userName, password);
         if (!account.getPassword().equals(password)) {
             System.out.println("Invalid password or username");
             return;
@@ -276,22 +283,20 @@ public class Account {
     }
 
 
-    private static void sortAccounts(){
-        for(int i = 0; i < Account.getAccounts().size(); i ++)
-            for(int j = i + 1; j < Account.getAccounts().size(); j ++) {
+    private static void sortAccounts() {
+        for (int i = 0; i < Account.getAccounts().size(); i++)
+            for (int j = i + 1; j < Account.getAccounts().size(); j++) {
                 if (accounts.get(i).getWins() > accounts.get(j).getWins()) {
                     Account.swap(i, j);
                 }
-                if(accounts.get(i).getWins() == accounts.get(j).getWins())
-                    if(accounts.get(i).getLooses() < accounts.get(j).getLooses())
-                       Account.swap(i, j);
+                if (accounts.get(i).getWins() == accounts.get(j).getWins())
+                    if (accounts.get(i).getLooses() < accounts.get(j).getLooses())
+                        Account.swap(i, j);
             }
     }
 
-    private static void swap(int i, int j){
-        Account tmp =Account.getAccounts().get(i);
-        Account.getAccounts().set(i, Account.getAccounts().get(j));
-        Account.getAccounts().set(i, tmp);
+    private static void swap(int i, int j) {
+        Collections.swap(Account.getAccounts(), i, j);
     }
 
 

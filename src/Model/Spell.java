@@ -10,7 +10,7 @@ public class Spell extends Card {
     private int mana;
     private String targetPointName;
     private String desc;
-    public static ArrayList<Spell> spells = new ArrayList<>();
+    private static ArrayList<Spell> spells = new ArrayList<>();
 
     public static void addSpell(Spell spell) {
         Spell.getSpells().add(spell);

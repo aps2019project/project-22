@@ -15,19 +15,28 @@ public class Minion extends Card {
     private static ArrayList<Minion> minions = new ArrayList<>();
     private int ID;
     public Minion(int ID,int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, int nationality) {
-        this.nationality = nationality;
-        this.ID = ID;
-        this.cost = cost;
-        this.healthPoint = healthPoint;
-        this.manaPoint = mana;
-        this.attackPower = attackPower;
-        this.typeOfAttack = typeOfAttack;
-        this.rangeOfAttack = rangeOfAttack;
-        this.activationTime = activationTime;
+        this.setNationality(nationality);
+        this.setID(ID);
+        this.setCost(cost);
+        this.setHealthPoint(healthPoint);
+        this.setManaPoint(mana);
+        this.setAttackPower(attackPower);
+        this.setTypeOfAttack(typeOfAttack);
+        this.setRangeOfAttack(rangeOfAttack);
+        this.setActivationTime(activationTime);
     }
     public static void addMinion(Minion minion){
-        minions.add(minion);
+        getMinions().add(minion);
     }
+
+    public static ArrayList<Minion> getMinions() {
+        return minions;
+    }
+
+    public static void setMinions(ArrayList<Minion> minions) {
+        Minion.minions = minions;
+    }
+
     public int getID() {
         return ID;
     }
@@ -98,5 +107,13 @@ public class Minion extends Card {
 
     public void setActivationTime(String activationTime) {
         this.activationTime = activationTime;
+    }
+
+    public int getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(int nationality) {
+        this.nationality = nationality;
     }
 }

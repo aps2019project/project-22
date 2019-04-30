@@ -7,6 +7,10 @@ public class Hand {
     private static final int HAND__CAPACITY = 5;
     private Card nextCardInHand;
 
+    public static int getHand_capacity() {
+        return HAND__CAPACITY;
+    }
+
     public ArrayList<Card> getCardsInThisHand() {
         return cardsInThisHand;
     }
@@ -34,7 +38,7 @@ public class Hand {
     }
 
     public boolean checkIfIsFull() {
-        if (this.getCardsInThisHand().size() == HAND__CAPACITY)
+        if (this.getCardsInThisHand().size() == getHand_capacity())
             return true;
         return false;
     }

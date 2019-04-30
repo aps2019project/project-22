@@ -8,16 +8,8 @@ public class Collection {
     private ArrayList<Item> items;
     private ArrayList<Card> cards;
 
-    public int getNumberOfItems() {
-        return numberOfItems;
-    }
-
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
-
     public void increaseNumberOfItems() {
-        numberOfItems++;
+        setNumberOfItems(getNumberOfItems() + 1);
     }
 
     private int numberOfItems;
@@ -31,7 +23,7 @@ public class Collection {
     }
 
     public void addItem(Item item) {
-        items.add(item);
+        getItems().add(item);
     }
 
     public ArrayList<Item> getItems() {
@@ -95,4 +87,19 @@ public class Collection {
 
     }
 
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
+    public int getNumberOfItems() {
+        return numberOfItems;
+    }
+
+    public void setNumberOfItems(int numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
 }

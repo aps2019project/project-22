@@ -28,7 +28,7 @@ public class Deck {
     }
 
     public void increaseSize() {
-        this.size++;
+        this.setSize(this.getSize() + 1);
     }
 
 
@@ -96,7 +96,7 @@ public class Deck {
     public static void removeDeck(String deckName) {
         for (Deck deck : Deck.getDecks()) {
             if (deck.getName().equals(deckName)) {
-                decks.remove(deck);
+                getDecks().remove(deck);
                 break;
             }
         }
@@ -121,11 +121,11 @@ public class Deck {
     }
 
     public void deleteItem(Item item) {
-        this.item = null;
+        this.setItem(null);
     }
 
     public void deleteHero() {
-        this.hero = null;
+        this.setHero(null);
     }
 
     public void seeTheNextCardAddedToHand() {
@@ -137,7 +137,7 @@ public class Deck {
     }
 
     public Card nextCard() {
-        return this.getCardsOfDeck().get(size);
+        return this.getCardsOfDeck().get(getSize());
 
     }
 
