@@ -74,7 +74,8 @@ public class Spell extends Card {
         this.desc = effectName;
     }
 
-    public  Spell(String name, int price, int mana, String targetPointName, String desc) {
+    public  Spell(int ID,String name, int price, int mana, String targetPointName, String desc) {
+        this.setID(ID);
         this.setName(name);
         this.setPrice(price);
         this.setMana(mana);
