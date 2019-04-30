@@ -1,13 +1,48 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Minion extends Card {
     private int healthPoint;
     private int attackPower;
     private int manaPoint;
     private int rangeOfAttack;
-    private Spell specialPower;
-    private String typeOfMinion;
+    private int cost;
+    private int nationality;
+    private String specialPower;
+    private String typeOfAttack;
     private String activationTime;
+    private static ArrayList<Minion> minions = new ArrayList<>();
+    private int ID;
+    public Minion(int ID,int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, int nationality) {
+        this.nationality = nationality;
+        this.ID = ID;
+        this.cost = cost;
+        this.healthPoint = healthPoint;
+        this.manaPoint = mana;
+        this.attackPower = attackPower;
+        this.typeOfAttack = typeOfAttack;
+        this.rangeOfAttack = rangeOfAttack;
+        this.activationTime = activationTime;
+    }
+    public static void addMinion(Minion minion){
+        minions.add(minion);
+    }
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 
     public void setHealthPoint(int healthPoint) {
         this.healthPoint = healthPoint;
@@ -33,20 +68,20 @@ public class Minion extends Card {
         this.manaPoint = manaPoint;
     }
 
-    public Spell getSpecialPower() {
+    public String getSpecialPower() {
         return specialPower;
     }
 
-    public void setSpecialPower(Spell specialPower) {
+    public void setSpecialPower(String specialPower) {
         this.specialPower = specialPower;
     }
 
-    public String getTypeOfMinion() {
-        return typeOfMinion;
+    public String getTypeOfAttack() {
+        return typeOfAttack;
     }
 
-    public void setTypeOfMinion(String typeOfMinion) {
-        this.typeOfMinion = typeOfMinion;
+    public void setTypeOfAttack(String typeOfAttack) {
+        this.typeOfAttack = typeOfAttack;
     }
 
     public int getRangeOfAttack() {
