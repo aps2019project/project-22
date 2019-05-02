@@ -3,39 +3,75 @@ package Model;
 import java.util.ArrayList;
 
 public class Cell {
-    private static ArrayList<Cell> cells;
-    private int x;
-    private int y;
-    private Card card;
-    private Minion minion;
-    private  Hero hero;
+
+    private static int[] rowsOfCells=new int[5];
+    private static int[] columnsOfCells=new int[9];
     private ArrayList<Spell> spells;
     private ArrayList<Integer> effectTime;
+    private int x;
+    private int y;
+    private Flag flag;
+    private Card cardInside;
 
-    public Minion getMinion() {
-        return minion;
+    public Card getInsideCard() {
+        return cardInside;
     }
 
-    public void setMinion(Minion minion) {
-        this.minion = minion;
+    public void setInsideCard(Card insideCard) {
+        this.cardInside = insideCard;
+    }
+    public Flag getFlag() {
+        return flag;
     }
 
-    public Hero getHero() {
-        return hero;
+    public void setFlag(Flag flag) {
+        this.flag = flag;
+    }
+    public boolean isEmpty() {
+        return this.getInsideCard() == null;
     }
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
+    public boolean put(Card card) {
+        if(this.isEmpty() || card == null)
+            return false;
+        this.setInsideCard(card);
+        if(this.getFlag() != null) {
+            this.getFlag().useBy(card);
+
+        }
+        return true;
+    }
+    public Card pick() {
+        Card card = this.getInsideCard();
+        this.setInsideCard(null);
+        return card;
     }
 
-    public static ArrayList<Cell> getCells() {
-        return cells;
+
+    public static void setRowsOfCells(int[] rowsOfCells) {
+        Cell.rowsOfCells = rowsOfCells;
     }
 
-    public static void addCells(Cell cell) {
-        cells.add(cell);
+    public static int[] getRowsOfCells() {
+        return rowsOfCells;
     }
 
+    public static void setColumnsOfCells(int[] columnsOfCells) {
+        Cell.columnsOfCells = columnsOfCells;
+    }
+
+    public static int[] getColumnsOfCells() {
+        return columnsOfCells;
+    }
+
+
+
+    public void setSpells(ArrayList<Spell> spells) {
+        this.spells = spells;
+    }
+    public ArrayList<Spell> getSpells() {
+        return spells;
+    }
 
     public ArrayList<Integer> getEffectTime() {
         return effectTime;
@@ -61,24 +97,14 @@ public class Cell {
         this.y = y;
     }
 
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
     public void power(){
 
-    }
-
-    public ArrayList<Spell> getSpells() {
-        return spells;
     }
     public void addSpell(Spell spell){
         spells.add(spell);
     }
     public void deleteSpell(){
+
 
     }
 }

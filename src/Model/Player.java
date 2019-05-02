@@ -3,96 +3,106 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Player extends Account {
-
-    private static ArrayList<Player> players;
-    private String name;
-    private ArrayList<Hand> hands;
-    private ArrayList<Deck> decks;
-    private int winScore;
-    private int loseScore;
-    private int drawScore;
-    private ArrayList<Card> graveyard = new ArrayList<>();
-    private int money;
+public class Player {
+    private Account account;
+    private static ArrayList<Player> players = new ArrayList<>();
+    private Deck mainDeck;
+    private Hand hand;
+    private GraveYard graveYard = new GraveYard();
     private int mana;
+    private ArrayList<Card> usedCards = new ArrayList<>();
+    private ArrayList<Item> collectibleItems = new ArrayList<>();
+    private int turnNumber;
 
-
-    public ArrayList<Card> getGraveyard() {
-        return graveyard;
+    public void Player(Account account )
+    {
+        this.account = account;
+        this.mainDeck = account.getMainDeck();
+    }
+    public Card findInGraveYard(int cardID)
+    {
+        for (Card card : graveYard.getCards())
+        {
+            if (card.getCardId() == cardID)
+            {
+                return card;
+            }
+        }
+        return null;
     }
 
-    public void setGraveyard(ArrayList<Card> graveyard) {
-        this.graveyard = graveyard;
+    public Account getAccount(){
+        return account;
+    }
+    public void setAccount(Account account){
+        this.account = account;
     }
 
-    public static void addPlayer(Player player) {
-        players().add(player);
+    public GraveYard getGraveyard() {
+        return this.graveYard;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
+    }
+
+    public ArrayList<Card> getUsedCards() {
+        return usedCards;
+    }
+
+    public void setUsedCards(ArrayList<Card> usedCards) {
+        this.usedCards = usedCards;
+    }
+
+    public ArrayList<Item> getCollectibleItems() {
+        return collectibleItems;
+    }
+
+    public void setCollectibleItems(ArrayList<Item> collectibleItems) {
+        this.collectibleItems = collectibleItems;
+    }
+
+    public void setGraveyard(GraveYard graveyard) {
+        this.graveYard = graveyard;
+    }
+
+    public static void addPlayer(Player player){
+        Player.getPlayers().add(player);
 
     }
 
-    public static ArrayList<Player> players() {
+    public static void deletePlayer(Player player){
+        Player.getPlayers().remove(player);
+    }
+
+    public static ArrayList<Player> getPlayers() {
         return players;
     }
 
-    public void giveMoney() {
-
-    }
-
-    public long getMoney() {
-        return money;
-
-    }
-
-    public void addHand(Hand hand) {
-        this.getHands().add(hand);
-
-    }
-
-    public void addDeck(Deck deck) {
-        this.getDecks().add(deck);
-
-    }
-
-    public void setName(String name) {
-        this.name = name;
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Hand> getHands() {
-        return hands;
-    }
-
-    public ArrayList<Deck> getDecks() {
-        return decks;
-    }
-
-    public void setWinScore(int winScore1) {
-        this.winScore = winScore1;
-
-    }
-
-    public void setLoseScore(int loseScore1) {
-        this.loseScore = loseScore1;
-    }
-
-    public void setDrawScore(int drawScore1) {
-        this.drawScore = drawScore1;
-    }
-
-    public void setMana(int mana1) {
+    public void setMana(int mana1){
         this.mana = mana1;
     }
-
-    public void changeMana() {
-
-    }
-
-    public int getMana() {
+     public int getMana() {
         return mana;
+     }
+
+
+    public int getTurnNumber() {
+        return turnNumber;
     }
 
+    public void setTurnNumber(int turnNumber) {
+        this.turnNumber = turnNumber;
+    }
+
+    public void increaseTurnNumber() {
+        turnNumber++;
+    }
+    public void addToGraveYard(Card card) {
+        this.getGraveyard().getCards().add(card);
+    }
 }
