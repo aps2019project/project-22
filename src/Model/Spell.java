@@ -63,7 +63,7 @@ public class Spell extends Card {
     }
 
     public  Spell(int ID,String name, int price, int mana, String targetPointName, String desc) {
-        this.type= "Spell";
+        setType("Spell");
         this.setId(ID);
         this.setName(name);
         this.setPrice(price);

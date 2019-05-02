@@ -9,4 +9,8 @@ public class GraveYard
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+    public void addCards(Card card) {
+        this.cards.add(card);
+    }
 }

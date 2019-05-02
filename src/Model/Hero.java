@@ -16,15 +16,15 @@ public class Hero extends Card {
     public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
         setType("Hero");
-        setId(id);
-        setName(name);
-        setPrice(price);
-        setHealthPoint(healthPoint);
-        setAttackPower(attackPower);
-        setTypeOfAttack(typeOfAttack);
-        setRangeOfAttack(rangeOfAttack);
-        setManaPoint(manaPoint);
-        setCooldown(cooldown);
+        this.setId(id);
+        this.setName(name);
+        this.setPrice(price);
+        this.setHealthPoint(healthPoint);
+        this.setAttackPower(attackPower);
+        this.setTypeOfAttack(typeOfAttack);
+        this.setRangeOfAttack(rangeOfAttack);
+        this.setManaPoint(manaPoint);
+        this.setCooldown(cooldown);
     }
 
     public static void addHero(Hero hero) {
