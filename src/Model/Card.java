@@ -11,6 +11,14 @@ public class Card {
     private int column;
     protected String name;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setId(int id){
         this.id =id;
     }
@@ -68,8 +76,8 @@ public class Card {
         return cards;
     }
 
-    public void setType() {
-        //enum
+    public void setType(String type) {
+       this.type = type;
     }
 
     public void setPrice(int price) {
@@ -92,8 +100,5 @@ public class Card {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 }
 

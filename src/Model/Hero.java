@@ -13,19 +13,18 @@ public class Hero extends Card {
     private String typeOfAttack;
     private Spell specialPower;
 
-    public Hero(int id, String name, int price,int healthPoint, int attackPower, String typeOfAttack,
+    public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
-        this.type = "Hero";
-        this.id = id;
-        this.name = name;
-        this.price=price;
-        this.healthPoint = healthPoint;
-        this.attackPower = attackPower;
-        this.typeOfAttack = typeOfAttack;
-        this.rangeOfAttack = rangeOfAttack;
-        this.manaPoint = manaPoint;
-        this.cooldown = cooldown;
-
+        setType("Hero");
+        setId(id);
+        setName(name);
+        setPrice(price);
+        setHealthPoint(healthPoint);
+        setAttackPower(attackPower);
+        setTypeOfAttack(typeOfAttack);
+        setRangeOfAttack(rangeOfAttack);
+        setManaPoint(manaPoint);
+        setCooldown(cooldown);
     }
 
     public static void addHero(Hero hero) {

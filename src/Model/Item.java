@@ -1,18 +1,38 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Item {
+    public static ArrayList<Item> items = new ArrayList<>();
     private String description;
+    private String name;
     private int price;
-    private int itemId;
+    private int id;
     private Effect effect;
     private String typeOfItem;
+    private String typeOfCollectableItem;
+    private Card cardOfUsableItem;
+    private ArrayList<Item> itemsOfUsableItem = new ArrayList<>();
 
-    public int getItemId() {
-        return itemId;
+
+    public Item(int id, String name, int price) {
+        setId(id);
+        setName(name);
+        setPrice(price);
+        if (price == -1) {
+            setTypeOfItem("Collectable");
+        } else {
+            setTypeOfItem("Usable");
+
+        }
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public static void addItem(Item item) {
+        items.add(item);
+    }
+
+    public static ArrayList<Item> getItems() {
+        return items;
     }
 
     public void applyType() {
@@ -63,5 +83,45 @@ public class Item {
 
     public void setEffect(Effect effect) {
         this.effect = effect;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTypeOfCollectableItem() {
+        return typeOfCollectableItem;
+    }
+
+    public void setTypeOfCollectableItem(String typeOfCollectableItem) {
+        this.typeOfCollectableItem = typeOfCollectableItem;
+    }
+
+    public Card getCardOfUsableItem() {
+        return cardOfUsableItem;
+    }
+
+    public void setCardOfUsableItem(Card cardOfUsableItem) {
+        this.cardOfUsableItem = cardOfUsableItem;
+    }
+
+    public ArrayList<Item> getItemsOfUsableItem() {
+        return itemsOfUsableItem;
+    }
+
+    public void setItemsOfUsableItem(ArrayList<Item> itemsOfUsableItem) {
+        this.itemsOfUsableItem = itemsOfUsableItem;
     }
 }
