@@ -64,6 +64,7 @@ public class MakeSpell {
 
         spells[19] = new Spell(60, "Shock", 1200, 1, "ENEMY_ONE_CARD",
                 "2_TURN_STUN ");
+
         for (int i = 0; i < 20; i++) {
             Spell.addSpell(spells[i]);
         }

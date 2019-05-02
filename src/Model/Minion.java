@@ -9,17 +9,17 @@ public class Minion extends Card {
     private int attackPower;
     private int manaPoint;
     private int rangeOfAttack;
-    private int cost;
     private int nationality;
     private String specialPower;
     private String typeOfAttack;
     private String activationTime;
 
-    public Minion(int ID, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime) {
+    public Minion(int ID, String name,int price, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime) {
         setType("Minion");
         this.setNationality(nationality);
         this.setId(ID);
-        this.setCost(cost);
+        this.setName(name);
+        this.setPrice(price);
         this.setHealthPoint(healthPoint);
         this.setManaPoint(mana);
         this.setAttackPower(attackPower);
@@ -38,14 +38,6 @@ public class Minion extends Card {
 
     public static void setMinions(ArrayList<Minion> minions) {
         Minion.minions = minions;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
     }
 
     public void setHealthPoint(int healthPoint) {

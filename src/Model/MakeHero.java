@@ -1,11 +1,11 @@
 package Model;
 
-import java.util.ArrayList;
-
 public class MakeHero {
 
     public void make() {
+
         Hero[] heroes = new Hero[10];
+
         heroes[0] = new Hero(61, "dive sefid", 8000, 50, 4, "melee", -1, 1, 2);
         heroes[1] = new Hero(62, "simorq", 9000, 50, 4, "melee", -1, 5, 8);
         heroes[2] = new Hero(63, "ejdehaye 7sar", 8000, 50, 4, "melee", -1, 0, 1);
@@ -16,6 +16,7 @@ public class MakeHero {
         heroes[7] = new Hero(68, "afsane", 11000, 40, 3, "ranged", 3, 1, 2);
         heroes[8] = new Hero(69, "esfandiar", 12000, 35, 3, "hybrid", 3, -1, -1);
         heroes[9] = new Hero(70, "rostam", 8000, 55, 7, "hybrid", 4, -1, -1);
+
         for (int i = 0; i < 10; i++) {
             Hero.addHero(heroes[i]);
         }
