@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Account {
 
+    private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account accountActivated;
     private Collection collection = new Collection();
     private String password;
@@ -16,7 +17,6 @@ public class Account {
     private int wins;
     private int looses;
     private Player player = new Player();
-    private static ArrayList<Account> accounts = new ArrayList<>();
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private String userName;

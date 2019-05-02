@@ -15,7 +15,7 @@ public class Hero extends Card {
 
     public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
-        setType("Hero");
+        setType(0);
         this.setId(id);
         this.setName(name);
         this.setPrice(price);

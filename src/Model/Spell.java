@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Spell extends Card {
 
-    private String cost;
-    private int mana;
-    private String targetPointName;
-    private String desc;
     private static ArrayList<Spell> spells = new ArrayList<>();
+    private int mana;
+    private String cost;
+    private String targetPointName;
+    private String description;
 
     public static void addSpell(Spell spell) {
         Spell.getSpells().add(spell);
@@ -54,22 +54,14 @@ public class Spell extends Card {
         this.targetPointName = targetPointName;
     }
 
-    public String getDesc() {
-        return this.desc;
-    }
-
-    public void setDesc(String effectName) {
-        this.desc = effectName;
-    }
-
-    public  Spell(int ID,String name, int price, int mana, String targetPointName, String desc) {
-        setType("Spell");
+    public  Spell(int ID,String name, int price, int mana, String targetPointName, String description) {
+        setType(1);
         this.setId(ID);
         this.setName(name);
         this.setPrice(price);
         this.setMana(mana);
         this.setTargetPointName(targetPointName);
-        this.setDesc(desc);
+        this.setDescription(description);
     }
 
     public static boolean checkIfACardIsASpell(String cardName) {
@@ -89,4 +81,11 @@ public class Spell extends Card {
         return null;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -13,9 +13,5 @@ E
 src/Model/Effect.java,d/a/da6ea30fa725bf10d286809237c2e5ac729c9e91
 C
 src/Model/Cell.java,c/b/cb426e44abb597fc70745efa7d910dcf0e8f531e
-J
-src/Model/Collectable.java,0/8/0868f7de7ee8068790dee2eb89142f7c2fd79063
 D
 src/Model/Spell.java,e/b/ebe4395789c73883a05a2779038b61ddba70c505
-E
-src/Model/Usable.java,8/c/8c2b918f0e5212127d93196cbf8e0b1e119ca036

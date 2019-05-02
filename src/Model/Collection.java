@@ -1,12 +1,27 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Collection {
 
     private String name;
-    private ArrayList<Item> items;
-    private ArrayList<Card> cards;
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Hero> heroes = new ArrayList<>();
+    private ArrayList<Spell> spells = new ArrayList<>();
+    private ArrayList<Minion> minions = new ArrayList<>();
+
+    public void addHeroToCollection(Hero hero) {
+        heroes.add(hero);
+    }
+
+    public void addSpellToCollection(Spell spell) {
+        spells.add(spell);
+    }
+
+    public void addMinionToCollection(Minion minion) {
+        minions.add(minion);
+    }
 
     public void increaseNumberOfItems() {
         setNumberOfItems(getNumberOfItems() + 1);
@@ -23,7 +38,9 @@ public class Collection {
     }
 
     public void addItem(Item item) {
-        getItems().add(item);
+
+        if (items.size() < 3)
+            getItems().add(item);
     }
 
     public ArrayList<Item> getItems() {
@@ -31,11 +48,6 @@ public class Collection {
     }
 
     public void setCards() {
-
-    }
-
-    public ArrayList<Card> getCards() {
-        return cards;
 
     }
 
@@ -91,9 +103,6 @@ public class Collection {
         this.items = items;
     }
 
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
-    }
 
     public int getNumberOfItems() {
         return numberOfItems;
@@ -101,5 +110,17 @@ public class Collection {
 
     public void setNumberOfItems(int numberOfItems) {
         this.numberOfItems = numberOfItems;
+    }
+
+    public ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public ArrayList<Spell> getSpells() {
+        return spells;
+    }
+
+    public ArrayList<Minion> getMinions() {
+        return minions;
     }
 }

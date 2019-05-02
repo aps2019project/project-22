@@ -5,11 +5,20 @@ import java.util.ArrayList;
 public class Card {
     private static ArrayList<Card> cards;
     protected int id;
-    protected String type;
     protected int price;
+    protected int type; // 0 hero | 1 spell | 2 minion
+    protected String name;
     private int row;
     private int column;
-    protected String name;
+    private int numberOfPlayer;
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -76,9 +85,6 @@ public class Card {
         return cards;
     }
 
-    public void setType(String type) {
-       this.type = type;
-    }
 
     public void setPrice(int price) {
         this.price = price;
@@ -96,9 +102,13 @@ public class Card {
         return null;
     }
 
-    public String getType() {
-        return type;
+
+    public int getNumberOfPlayer() {
+        return numberOfPlayer;
     }
 
+    public void setNumberOfPlayer(int numberOfPlayer) {
+        this.numberOfPlayer = numberOfPlayer;
+    }
 }
 

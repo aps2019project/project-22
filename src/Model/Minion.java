@@ -15,7 +15,7 @@ public class Minion extends Card {
     private String activationTime;
 
     public Minion(int ID, String name,int price, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime) {
-        setType("Minion");
+        setType(2);
         this.setNationality(nationality);
         this.setId(ID);
         this.setName(name);

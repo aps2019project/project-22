@@ -1,6 +1,7 @@
 package Model;
 
 public class Buff extends Effect {
+
     private boolean limitedTime;
     private String type;
 
