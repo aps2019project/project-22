@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 public class Card {
     private static ArrayList<Card> cards;
-    private String type;
-    private int price;
+    protected int id;
+    protected String type;
+    protected int price;
     private int row;
     private int column;
+    protected String name;
 
+    public void setId(int id){
+        this.id =id;
+    }
 
+    public int getId() {
+        return id;
+    }
 
     public void move(int x, int y, int maxDistance) {
         int distance;
@@ -64,10 +72,6 @@ public class Card {
         //enum
     }
 
-    public String getType() {
-        return type;
-    }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -75,6 +79,7 @@ public class Card {
     public int getPrice() {
         return price;
     }
+
     public static Card searchCardByID(int ID){
         for(Card card : Card.cards) {
             if (card.getCardId() == ID)
@@ -83,7 +88,12 @@ public class Card {
         return null;
     }
 
+    public String getType() {
+        return type;
+    }
 
-
+    public void setType(String type) {
+        this.type = type;
+    }
 }
 

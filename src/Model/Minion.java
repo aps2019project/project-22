@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 
 public class Minion extends Card {
+
+    private static ArrayList<Minion> minions = new ArrayList<>();
     private int healthPoint;
     private int attackPower;
     private int manaPoint;
@@ -12,11 +14,11 @@ public class Minion extends Card {
     private String specialPower;
     private String typeOfAttack;
     private String activationTime;
-    private static ArrayList<Minion> minions = new ArrayList<>();
-    private int ID;
-    public Minion(int ID,int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, int nationality) {
+
+    public Minion(int ID, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, int nationality) {
+        this.type = "Minion";
         this.setNationality(nationality);
-        this.setID(ID);
+        this.setId(ID);
         this.setCost(cost);
         this.setHealthPoint(healthPoint);
         this.setManaPoint(mana);
@@ -25,7 +27,8 @@ public class Minion extends Card {
         this.setRangeOfAttack(rangeOfAttack);
         this.setActivationTime(activationTime);
     }
-    public static void addMinion(Minion minion){
+
+    public static void addMinion(Minion minion) {
         getMinions().add(minion);
     }
 
@@ -35,14 +38,6 @@ public class Minion extends Card {
 
     public static void setMinions(ArrayList<Minion> minions) {
         Minion.minions = minions;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public int getCost() {

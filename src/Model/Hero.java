@@ -1,14 +1,40 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Hero extends Card {
+    public static ArrayList<Hero> heroes = new ArrayList<>();
     private int healthPoint;
     private int attackPower;
-    private int priceOfHero;
     private int rangeOfAttack;
-    private int mp;
+    private int manaPoint;
     private int cooldown;
     private String typeOfHero;
+    private String typeOfAttack;
     private Spell specialPower;
+
+    public Hero(int id, String name, int price,int healthPoint, int attackPower, String typeOfAttack,
+                int rangeOfAttack, int manaPoint, int cooldown) {
+        this.type = "Hero";
+        this.id = id;
+        this.name = name;
+        this.price=price;
+        this.healthPoint = healthPoint;
+        this.attackPower = attackPower;
+        this.typeOfAttack = typeOfAttack;
+        this.rangeOfAttack = rangeOfAttack;
+        this.manaPoint = manaPoint;
+        this.cooldown = cooldown;
+
+    }
+
+    public static void addHero(Hero hero) {
+        heroes.add(hero);
+    }
+
+    public static ArrayList<Hero> getHeros() {
+        return heroes;
+    }
 
     public int getHealthPoint() {
         return healthPoint;
@@ -51,13 +77,6 @@ public class Hero extends Card {
         this.rangeOfAttack = rangeOfAttack;
     }
 
-    public int getMp() {
-        return mp;
-    }
-
-    public void setMp(int mp) {
-        this.mp = mp;
-    }
 
     public int getCooldown() {
         return cooldown;
@@ -67,15 +86,23 @@ public class Hero extends Card {
         this.cooldown = cooldown;
     }
 
-    public int getPriceOfHero() {
-        return priceOfHero;
-    }
-
-    public void setPriceOfHero(int priceOfHero) {
-        this.priceOfHero = priceOfHero;
-    }
-
     public void applyType() {
 
+    }
+
+    public String getTypeOfAttack() {
+        return typeOfAttack;
+    }
+
+    public void setTypeOfAttack(String typeOfAttack) {
+        this.typeOfAttack = typeOfAttack;
+    }
+
+    public int getManaPoint() {
+        return manaPoint;
+    }
+
+    public void setManaPoint(int manaPoint) {
+        this.manaPoint = manaPoint;
     }
 }

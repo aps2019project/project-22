@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 public class Spell extends Card {
 
-    private String name;
     private String cost;
-    private int ID;
     private int mana;
     private String targetPointName;
     private String desc;
@@ -48,16 +46,6 @@ public class Spell extends Card {
         this.cost = cost;
     }
 
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-
     public String getTargetPointName() {
         return targetPointName;
     }
@@ -75,7 +63,8 @@ public class Spell extends Card {
     }
 
     public  Spell(int ID,String name, int price, int mana, String targetPointName, String desc) {
-        this.setID(ID);
+        this.type= "Spell";
+        this.setId(ID);
         this.setName(name);
         this.setPrice(price);
         this.setMana(mana);

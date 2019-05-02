@@ -2,8 +2,8 @@ package Model;
 
 public class makeminions {
     public void make() {
-        Minion minion = new Minion(1, 300, 2, 6, 4, "ranged", 7, "not" );
-        Minion.addMinion(minion);
+        Minion minion1 = new Minion(1, 300, 2, 6, 4, "ranged", 7, "not" );
+        Minion.addMinion(minion1);
         Minion minion2 = new Minion(2, 400, 2, 6, 4, "melee", -1, "On Attack");
         Minion.addMinion(minion2);
         Minion minion3 = new Minion(3, 500, 1, 5, 3, "hibrid", 3, "not");
