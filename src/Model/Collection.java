@@ -11,6 +11,31 @@ public class Collection {
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();
 
+    public int search(String name) {
+        int number = 0;
+        for (Hero hero : heroes) {
+            number++;
+            if (hero.getName().equals(name))
+                return number;
+        }
+        for (Item item : items) {
+            number++;
+            if (item.getName().equals(name))
+                return number;
+        }
+        for (Spell spell : spells) {
+            number++;
+            if (spell.getName().equals(name))
+                return number;
+        }
+        for (Minion minion : minions) {
+            number++;
+            if (minion.getName().equals(name))
+                return number;
+        }
+        return -1;
+    }
+
     public void addHeroToCollection(Hero hero) {
         heroes.add(hero);
     }
@@ -71,15 +96,15 @@ public class Collection {
 //
 //    }
 
-    private void save() {
+    public void save() {
 
     }
 
-    private void createDeck(String name) {
+    public void createDeck(String name) {
 
     }
 
-    private void deleteDeck(String name) {
+    public void deleteDeck(String name) {
 
     }
 
@@ -91,9 +116,9 @@ public class Collection {
 
     }
 
-    private void checkValidateDeck(String name) {
-
-    }
+//    private void checkValidateDeck(String name) {
+//
+//    }
 
     private void help() {
 
