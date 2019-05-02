@@ -6,7 +6,7 @@ import java.util.Collections;
 public class Collection {
 
     private String name;
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>(3);
     private ArrayList<Hero> heroes = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();

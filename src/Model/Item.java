@@ -15,15 +15,15 @@ public class Item {
     private ArrayList<Item> itemsOfUsableItem = new ArrayList<>();
 
 
-    public Item(int id, String name, int price) {
-        setId(id);
-        setName(name);
-        setPrice(price);
+    public Item(int id, String name, int price,String description) {
+        this.setId(id);
+        this.setName(name);
+        this.setPrice(price);
+        this.setDescription(description);
         if (price == -1) {
-            setTypeOfItem("Collectable");
+            this.setTypeOfItem("Collectable");
         } else {
-            setTypeOfItem("Usable");
-
+            this.setTypeOfItem("Usable");
         }
     }
 

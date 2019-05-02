@@ -14,14 +14,18 @@ public class Player {
     private ArrayList<Item> collectibleItems = new ArrayList<>();
     private int turnNumber;
 
+    public static void setPlayers(ArrayList<Player> players) {
+        Player.players = players;
+    }
+
     public void Player(Account account )
     {
-        this.account = account;
-        this.mainDeck = account.getMainDeck();
+        this.setAccount(account);
+        this.setMainDeck(account.getMainDeck());
     }
     public Card findInGraveYard(int cardID)
     {
-        for (Card card : graveYard.getCards())
+        for (Card card : getGraveYard().getCards())
         {
             if (card.getCardId() == cardID)
             {
@@ -39,7 +43,7 @@ public class Player {
     }
 
     public GraveYard getGraveyard() {
-        return this.graveYard;
+        return this.getGraveYard();
     }
 
     public Hand getHand() {
@@ -67,7 +71,7 @@ public class Player {
     }
 
     public void setGraveyard(GraveYard graveyard) {
-        this.graveYard = graveyard;
+        this.setGraveYard(graveyard);
     }
 
     public static void addPlayer(Player player){
@@ -100,9 +104,25 @@ public class Player {
     }
 
     public void increaseTurnNumber() {
-        turnNumber++;
+        setTurnNumber(getTurnNumber() + 1);
     }
     public void addToGraveYard(Card card) {
         this.getGraveyard().getCards().add(card);
+    }
+
+    public Deck getMainDeck() {
+        return mainDeck;
+    }
+
+    public void setMainDeck(Deck mainDeck) {
+        this.mainDeck = mainDeck;
+    }
+
+    public GraveYard getGraveYard() {
+        return graveYard;
+    }
+
+    public void setGraveYard(GraveYard graveYard) {
+        this.graveYard = graveYard;
     }
 }

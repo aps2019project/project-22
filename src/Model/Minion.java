@@ -14,7 +14,8 @@ public class Minion extends Card {
     private String typeOfAttack;
     private String activationTime;
 
-    public Minion(int ID, String name,int price, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime) {
+    public Minion(int ID, String name,int price, int mana, int healthPoint, int attackPower, String typeOfAttack,
+                  int rangeOfAttack, String activationTime,String specialPower) {
         setType(2);
         this.setNationality(nationality);
         this.setId(ID);
@@ -26,6 +27,7 @@ public class Minion extends Card {
         this.setTypeOfAttack(typeOfAttack);
         this.setRangeOfAttack(rangeOfAttack);
         this.setActivationTime(activationTime);
+        this.setSpecialPower(specialPower);
     }
 
     public static void addMinion(Minion minion) {
