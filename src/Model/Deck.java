@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Deck {
 
+    private static ArrayList<Deck> decks = new ArrayList<>();
     private String name;
     private Hero hero;
     private Item item;
     private int size = 0;
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);
-    private static ArrayList<Deck> decks = new ArrayList<>();
 
     public static ArrayList<Deck> getDecks() {
         return decks;

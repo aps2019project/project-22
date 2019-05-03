@@ -46,7 +46,6 @@ public class Buff  {
         this.timeOfBuff = buffTImeType;
     }
 
-
     public void decrementTurns (){
         this.setTurns(this.turns--);
     }

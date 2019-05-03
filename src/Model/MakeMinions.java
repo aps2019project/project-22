@@ -33,7 +33,7 @@ public class MakeMinions {
                 "ranged", 7, "not");
         minions[14] = new Minion(15, "oqab", 200, 2, 0, 2,
                 "ranged", 3, "passive");
-        minions[15] = new Minion(16, "dive gorazsavar", 300, 6, 16,
+        minions[15] = new Minion(16, "Dive Gorazsavar", 300, 6, 16,
                 8, "melee", -1, "not");
         minions[16] = new Minion(17, "qule tak cheshm", 500, 7, 12, 11, "hybrid", 3, "On Death");
         minions[17] = new Minion(18, "mare sammi", 300, 4, 5, 6, "ranged", 4, "On Attack");

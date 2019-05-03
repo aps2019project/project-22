@@ -3,8 +3,8 @@ package Model;
 import java.util.ArrayList;
 
 public class Hand {
-    private ArrayList<Card> cardsInThisHand = new ArrayList<>();
     private static final int HAND__CAPACITY = 5;
+    private ArrayList<Card> cardsInThisHand = new ArrayList<>();
     private Card nextCardInHand;
 
     public static int getHand_capacity() {
@@ -34,7 +34,10 @@ public class Hand {
 
     public void addACard(int cardID) {
         Card card = Card.searchCardByID(cardID);
-        this.getCardsInThisHand().remove(card);
+        if (!checkIfIsFull()) {
+            this.getCardsInThisHand().add(card);
+        deleteFromDeck(,card);
+        }
     }
 
     public boolean checkIfIsFull() {

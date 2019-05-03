@@ -8,14 +8,37 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        menu(scanner);
+        mainMenu(scanner);
     }
 
-    public static void menu(Scanner scanner) {
+    public static void mainMenu(Scanner scanner) {
         String input = scanner.nextLine().trim();
-        if (input.equals("enter collection"))
-            collectionMenu(scanner, account);
+        System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Help");
+        switch (input) {
+            case "Enter collection":
+                collectionMenu(scanner, account);
+                break;
+            case "Enter shop":
+                shopMenu(scanner, account);
+                break;
+            case "Enter battle":
+                battleMenu(scanner, account);
+                break;
+            case "Exit":
+                return;
+            case "Help":
+                mainMenu(scanner);
+                break;
+        }
+    }
 
+    private static void helpInMainMenu() {
+    }
+
+    private static void battleMenu(Scanner scanner, Account account) {
+    }
+
+    private static void shopMenu(Scanner scanner,Account account) {
     }
 
     private static void collectionMenu(Scanner scanner, Account account) {
