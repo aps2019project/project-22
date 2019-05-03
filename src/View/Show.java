@@ -3,7 +3,55 @@ package View;
 import Model.Account;
 import Model.Collection;
 
+import java.util.Scanner;
+
 public class Show {
+
+
+    private static void collectionMenu(Scanner scanner, Account account) {
+        String input = scanner.nextLine().trim();
+        String[] partsOfInput = input.split("\\s+");
+        if ("exit".equals(input)) {
+            return;
+        } else if ("show".equals(input)) {
+            Show.showCollection(account);
+        } else if (partsOfInput[0].equals("search")) {
+            if (account.getCollection().search(partsOfInput[1]) != -1)
+                System.out.println(account.getCollection().search(partsOfInput[1]));
+        } else if("save".equals(input)){
+            account.getCollection().save();
+        } else if("help".equals(input)){
+            Show.helpInCollection();
+        }
+    }
+    public static void showMainMenu(Scanner scanner) {
+        String input = scanner.nextLine().trim();
+        Account account=new Account();
+        System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Help");
+        switch (input) {
+            case "Enter collection":
+                collectionMenu(scanner, account);
+                break;
+            case "Enter shop":
+                shopMenu(scanner, account);
+                break;
+            case "Enter battle":
+                battleMenu(scanner, account);
+                break;
+            case "Exit":
+                return;
+            case "Help":
+                showMainMenu(scanner);
+                break;
+        }
+    }
+
+    private static void battleMenu(Scanner scanner, Account account) {
+    }
+
+
+    private static void shopMenu(Scanner scanner, Account account) {
+    }
 
     public static void showCollection(Account account) {
         Collection collection = account.getCollection();
