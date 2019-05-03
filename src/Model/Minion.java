@@ -3,46 +3,190 @@ package Model;
 import java.util.ArrayList;
 
 public class Minion extends Card {
-
-    private static ArrayList<Minion> minions = new ArrayList<>();
+    private int counterMinion10 = 0;
+    private boolean minion25Effect = false;
+    private boolean minion26Effect = false;
+    private int x;
+    private int y;
+    private Minion attackOnMinion;
+    private Hero attackOnHero;
+    private boolean stun = false;
     private int healthPoint;
+    private boolean disarm = false;
     private int attackPower;
     private int manaPoint;
     private int rangeOfAttack;
-    private int nationality;
+    private int cost;
     private String specialPower;
     private String typeOfAttack;
     private String activationTime;
-
-    public Minion(int ID, String name,int price, int mana, int healthPoint, int attackPower, String typeOfAttack,
-                  int rangeOfAttack, String activationTime,String specialPower) {
-        setType(2);
-        this.setNationality(nationality);
-        this.setId(ID);
-        this.setName(name);
-        this.setPrice(price);
-        this.setHealthPoint(healthPoint);
-        this.setManaPoint(mana);
-        this.setAttackPower(attackPower);
-        this.setTypeOfAttack(typeOfAttack);
-        this.setRangeOfAttack(rangeOfAttack);
-        this.setActivationTime(activationTime);
-        this.setSpecialPower(specialPower);
+    private static ArrayList<Minion> minions = new ArrayList<>();
+    private ArrayList<Spell> spells = new ArrayList<>();
+    private int ID;
+    public void setStunTrue(){
+        this.stun = true;
+    }
+    public void setStunFalse(){
+        this.stun = false;
+    }
+    public boolean isMinion25Effect() {
+        return minion25Effect;
     }
 
-    public static void addMinion(Minion minion) {
-        getMinions().add(minion);
+    public Minion(int ID, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime) {
+        this.ID = ID;
+        this.cost = cost;
+        this.healthPoint = healthPoint;
+        this.manaPoint = mana;
+        this.attackPower = attackPower;
+        this.typeOfAttack = typeOfAttack;
+        this.rangeOfAttack = rangeOfAttack;
+        this.activationTime = activationTime;
     }
 
-    public static ArrayList<Minion> getMinions() {
-        return minions;
+    public int getX() {
+        return x;
+    }
+    public void setMinion25EffectTrue(){
+        this.minion25Effect = true;
+    }
+    public void setMinion26EffectTrue(){
+        this.minion26Effect = true;
+    }
+    public void setMinio25Or26PwersOr36(int i){
+        for (int k = 0; k < Cell.getCells().size(); k++) {
+            if (Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                    Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y ||
+                    Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y + 1 ||
+                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y ||
+                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                    Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                    Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y - 1 ) {
+
+                if (i == 25 && Cell.getCells().get(k).getMinion() != null) {
+                    Cell.getCells().get(k).getMinion().setMinion25EffectTrue();
+                    this.minion25Effect = true;
+                }else if (i == 26 && Cell.getCells().get(k).getMinion() != null) {
+                    Cell.getCells().get(k).getMinion().setMinion26EffectTrue();
+                    this.minion26Effect = true;
+                    Cell.getCells().get(k).getMinion().setAttackPower(Cell.getCells().get(k).getMinion().getAttackPower()+2);
+                }else if (i == 36 && Cell.getCells().get(k).getMinion() != null)
+                    Cell.getCells().get(k).getMinion().setStunTrue();
+            }
+        }
+        if (i == 26){
+            this.attackPower = this.attackPower+2;
+        }
+    }
+    public void minion27Power(Minion minion){
+        minion.setAttackPower(minion.getAttackPower()+1);
+    }
+    public void minion31Power(Minion minion){
+        minion.setHealthPoint(minion.getHealthPoint()-16);
     }
 
-    public static void setMinions(ArrayList<Minion> minions) {
-        Minion.minions = minions;
+    public void setMinion25PowerFalse(){
+        this.minion25Effect = false;
+    }
+    public void setMinion26PowerFalse(){
+        this.minion26Effect = false;
+    }
+
+    public void useMinion25Power(Minion minion){
+        minion.setHealthPoint(minion.getHealthPoint()-1);
+        minion.setAttackPower(getAttackPower()+2);
+    }
+    public void voidFinishMinion25(Minion minion){
+        minion.setMinion25PowerFalse();
+        minion.setHealthPoint(minion.getHealthPoint()+1);
+        minion.setAttackPower(getAttackPower()-2);
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void minion17Power(){
+        if (this.healthPoint == 0) {
+            for (int k = 0; k < Cell.getCells().size(); k++) {
+                if (Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                        Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y ||
+                        Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y + 1 ||
+                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y ||
+                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                        Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                        Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y - 1) {
+                    if (Cell.getCells().get(k).getMinion() != null) {
+                        Cell.getCells().get(k).getMinion().setHealthPoint(Cell.getCells().get(k).getMinion().getHealthPoint() - 2);
+                    }
+                }
+            }
+        }
+    }
+    public void setCounterMinion10Or18(int i){
+        counterMinion10++;
+        if (attackOnHero!= null){
+            attackOnHero.setHealthPoint(attackOnHero.getHealthPoint()-1);
+        }else if (attackOnMinion!= null){
+            attackOnMinion.setHealthPoint(attackOnMinion.getHealthPoint()-1);
+        }
+        if (counterMinion10 == i){
+            counterMinion10 = 0;
+        }
+    }
+    public void powerMinion20(){
+        healthPoint++;
+    }
+    public void minion15Power(){
+        healthPoint+=10;
+    }
+
+
+    public void setBooleanDisarmTrue(){
+        disarm = true;
+    }
+    public void setBooleanDisarmFalse(){
+        disarm = false;
+    }
+
+    public static void addMinion(Minion minion){
+        minions.add(minion);
+    }
+    public int getID() {
+        return ID;
+    }
+    public void minionPower21(Minion minion){
+        if (minion.getX() >= this.x-2 && minion.getX() <= this.x+2 && minion.getY() == this.y ||
+        minion.getY() >= this.y-2 && minion.getY() <= this.y && minion.getX() == this.x ||
+        minion.getX() == this.x+1 && minion.getY() ==this.y+1 || minion.getX() == this.x-1 &&
+        minion.getY() == this.y+1 || minion.getX() == this.x-1 && minion.getY() == this.y-1 ||
+        minion.getX() == this.x+1 && minion.getY() == this.y-1){
+            minion.setHealthPoint(minion.getHealthPoint()-1);
+        }
+    }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public void setHealthPoint(int healthPoint) {
+
         this.healthPoint = healthPoint;
     }
 
@@ -96,13 +240,5 @@ public class Minion extends Card {
 
     public void setActivationTime(String activationTime) {
         this.activationTime = activationTime;
-    }
-
-    public int getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(int nationality) {
-        this.nationality = nationality;
     }
 }
