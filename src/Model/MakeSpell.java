@@ -67,6 +67,7 @@ public class MakeSpell {
 
         for (int i = 0; i < 20; i++) {
             Spell.addSpell(spells[i]);
+            Card.addCard(spells[i]);
         }
     }
 

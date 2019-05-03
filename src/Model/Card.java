@@ -77,11 +77,11 @@ public class Card {
 
     private int cardId;
 
-    public void addCard(Card card) {
+    public static void addCard(Card card) {
         cards.add(card);
     }
 
-    public ArrayList<Card> getCards() {
+    public static ArrayList<Card> getCards() {
         return cards;
     }
 
