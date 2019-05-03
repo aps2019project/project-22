@@ -12,6 +12,30 @@ public class Cell {
     private int y;
     private Flag flag;
     private Card cardInside;
+    private static ArrayList<Cell> cells;
+    private Minion minion;
+    private  Hero hero;
+
+    public Minion getMinion() {
+        return minion;
+    }
+    public static ArrayList<Cell> getCells() {
+        return cells;
+    }
+    public static void addCells(Cell cell) {
+        cells.add(cell);
+    }
+    public void setMinion(Minion minion) {
+        this.minion = minion;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
 
     public Card getInsideCard() {
         return cardInside;
