@@ -1,65 +1,54 @@
 package Model;
 
-public class Buff extends Effect {
+public class Buff  {
 
-    private boolean limitedTime;
-    private String type;
+    protected int number;
+    protected int turns;
+    protected TypeOfBuff typeOfBuff;
+    protected TimeOfBuff timeOfBuff;
 
-    public void setLimitedTime(boolean position) {
-        limitedTime = position;
+    public int getNumber() {
+        return number;
     }
 
-    public boolean isLimitedTime() {
-        return limitedTime;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public int getTurns() {
+        return turns;
     }
 
-    public String getType() {
-        return type;
+    public void setTurns(int turns) {
+        this.turns = turns;
     }
 
-    public void applyBuff() {
-        switch (type) {
-            case "Holy buff":
-                holyBuff();
-                break;
-            case "Power buff":
-                powerBuff();
-                break;
-            case "Posion buff":
-                posionBuff();
-                break;
-            case "Weakness buff":
-                weaknessBuff();
-                break;
-            case "Stun buff":
-                stunBuff();
-                break;
-            case "Disarm buff":
-                disarmBuff();
-                break;
-        }
-
+    public TypeOfBuff getTypeOfBuff() {
+        return typeOfBuff;
     }
 
-    private void posionBuff() {
+    public void setTypeOfBuff(TypeOfBuff typeOfBuff) {
+        this.typeOfBuff = typeOfBuff;
     }
 
-    private void stunBuff() {
+    public TimeOfBuff getTimeOfBuff() {
+        return timeOfBuff;
     }
 
-    private void weaknessBuff() {
+    public void setTimeOfBuff(TimeOfBuff timeOfBuff) {
+        this.timeOfBuff = timeOfBuff;
     }
 
-    private void disarmBuff() {
+    public Buff(int number, int turns, TypeOfBuff buffType, TimeOfBuff buffTImeType){
+        this.number = number;
+        this.turns = turns;
+        this.typeOfBuff = buffType;
+        this.timeOfBuff = buffTImeType;
     }
 
-    private void powerBuff() {
+
+    public void decrementTurns (){
+        this.setTurns(this.turns--);
     }
 
-    private void holyBuff() {
-    }
 }
