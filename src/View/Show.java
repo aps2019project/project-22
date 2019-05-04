@@ -93,8 +93,7 @@ public class Show {
                 "[ card id|card id|hero id| lfrom deck[deck name]\n-validate deck[ deck name]\n-selsect deck" +
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
-    Scanner scanner = new Scanner(System.in);
-    public void showBattleMenu(Battle battle){
+    public void showBattleMenu(Scanner scanner,Battle battle){
         System.out.println("1.single player");
         System.out.println("2.multi player");
         int singleOrMulti = scanner.nextInt();
