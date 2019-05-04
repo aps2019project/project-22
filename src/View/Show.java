@@ -1,13 +1,10 @@
 package View;
 
-import Model.Account;
-import Model.Collection;
+import Model.*;
 
 import java.util.Scanner;
 
 public class Show {
-
-
     private static void collectionMenu(Scanner scanner, Account account) {
         String input = scanner.nextLine().trim();
         String[] partsOfInput = input.split("\\s+");
@@ -95,5 +92,31 @@ public class Show {
                 "[deck name]\n-add[card id | card id |hero id| to deck [deck name]\n-remove" +
                 "[ card id|card id|hero id| lfrom deck[deck name]\n-validate deck[ deck name]\n-selsect deck" +
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
+    }
+    Scanner scanner = new Scanner(System.in);
+    public void showBattleMenu(Battle battle){
+        System.out.println("1.single player");
+        System.out.println("2.multi player");
+        int singleOrMulti = scanner.nextInt();
+        if (singleOrMulti == 1){
+            battle.setBooleanSinglePlayerTrue();
+            System.out.println("1.Story");
+            System.out.println("2.Custom game");
+            int storyOrCustom = scanner.nextInt();
+            if (storyOrCustom == 1){
+                battle = new Story();
+                System.out.println("1.level1\n2.level2\n3.level3");
+                int level = scanner.nextInt();
+                if (level == 1){
+                    ((Story) battle).setLevel(1);
+                }else if (level == 2){
+                    ((Story) battle).setLevel(2);
+                }else if (level == 3){
+                    ((Story) battle).setLevel(3);
+                }
+            }
+        }else if (singleOrMulti == 2){
+            battle = new CustomGame();
+        }
     }
 }
