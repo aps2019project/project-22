@@ -3,29 +3,26 @@ package Model;
 import java.util.ArrayList;
 
 public class Minion extends Card {
-    private int counterMinion10 = 0;
     private String description;
     private boolean minion25Effect = false;
     private boolean minion26Effect = false;
-    private int x;
-    private int y;
+//    private int x;
+//    private int y;
     private int sumOfPossetiveHealt = 0;
     private int sumOfPossetiveAttack = 0;
-    private Minion attackOnMinion;
-    private Hero attackOnHero;
-    private boolean stun = false;
-    private int healthPoint;
+   // private boolean stun = false;
+   // private int healthPoint;
     private boolean disarm = false;
-    private int attackPower;
-    private int manaPoint;
-    private int rangeOfAttack;
-    private int cost;
+   // private int manaPoint;
+   // private int cost;
     private String specialPower;
-    private String typeOfAttack;
-    private String activationTime;
+   // private String typeOfAttack;
+   // private String activationTime;
     private static ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private int ID;
+
+
     public void setStunTrue(){
         this.stun = true;
     }
@@ -155,17 +152,7 @@ public class Minion extends Card {
             }
         }
     }
-    public void setCounterMinion10Or18(int i){
-        counterMinion10++;
-        if (attackOnHero!= null){
-            attackOnHero.setHealthPoint(attackOnHero.getHealthPoint()-1);
-        }else if (attackOnMinion!= null){
-            attackOnMinion.setHealthPoint(attackOnMinion.getHealthPoint()-1);
-        }
-        if (counterMinion10 == i){
-            counterMinion10 = 0;
-        }
-    }
+
     public void powerMinion20(){
         healthPoint++;
     }
@@ -173,7 +160,6 @@ public class Minion extends Card {
         healthPoint+=10;
         this.sumOfPossetiveHealt+=10;
     }
-
 
     public void setBooleanDisarmTrue(){
         disarm = true;
@@ -266,11 +252,5 @@ public class Minion extends Card {
         this.rangeOfAttack = rangeOfAttack;
     }
 
-    public String getActivationTime() {
-        return activationTime;
-    }
 
-    public void setActivationTime(String activationTime) {
-        this.activationTime = activationTime;
-    }
 }
