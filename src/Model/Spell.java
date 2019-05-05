@@ -56,6 +56,7 @@ public class Spell extends Card {
 
     public Spell(int ID, String name, int price, int mana, String targetPointName, String description) {
         setType(1);
+        this.setPermissionToAttackOrMove(true);
         this.setId(ID);
         this.setName(name);
         this.setPrice(price);

@@ -8,7 +8,6 @@ public class Item {
     private String name;
     private int price;
     private int id;
-    private Effect effect;
     private String typeOfItem;
     private String typeOfCollectableItem;
     private Card cardOfUsableItem;
@@ -75,14 +74,6 @@ public class Item {
 
     public void setTypeOfItem(String typeOfItem) {
         this.typeOfItem = typeOfItem;
-    }
-
-    public Effect getEffect() {
-        return effect;
-    }
-
-    public void setEffect(Effect effect) {
-        this.effect = effect;
     }
 
     public String getName() {

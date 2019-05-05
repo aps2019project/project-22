@@ -9,6 +9,8 @@ public class Deck {
     private Hero hero;
     private Item item;
     private int size = 0;
+    private ArrayList<Minion> minions = new ArrayList<>();
+    private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);
 
     public static ArrayList<Deck> getDecks() {
@@ -157,4 +159,19 @@ public class Deck {
         return null;
     }
 
+    public ArrayList<Minion> getMinions() {
+        return minions;
+    }
+
+    public void setMinions(ArrayList<Minion> minions) {
+        this.minions = minions;
+    }
+
+    public ArrayList<Spell> getSpells() {
+        return spells;
+    }
+
+    public void setSpells(ArrayList<Spell> spells) {
+        this.spells = spells;
+    }
 }
