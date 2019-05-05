@@ -6,9 +6,9 @@ public class Deck {
 
     private static ArrayList<Deck> decks = new ArrayList<>();
     private String name;
+    private int size = 0;
     private Hero hero;
     private Item item;
-    private int size = 0;
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);

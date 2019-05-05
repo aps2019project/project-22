@@ -7,7 +7,11 @@ public class Hand {
     private static final int HAND__CAPACITY = 5;
     private ArrayList<Card> cardsInThisHand = new ArrayList<>();
     private Deck deck;
+    private GraveYard graveYard;
 
+     public Hand(GraveYard graveYard){
+        this.setGraveYard(graveYard);
+    }
     public static int getHand_capacity() {
         return HAND__CAPACITY;
     }
@@ -16,7 +20,7 @@ public class Hand {
         return cardsInThisHand;
     }
 
-    public void setCardsInThisHand() {
+    public void setCardsInThisHandInFirst() {
         ArrayList<Card> cardsOfDeck = new ArrayList<>();
         for (int i = 0; i < deck.getCardsOfDeck().size(); i++) {
             cardsOfDeck.add(cardsOfDeck.get(i));
@@ -39,15 +43,10 @@ public class Hand {
 
     public Card getNextCardInHand() {
         Card nextCardInHand = cardsInThisHand.get(0);
+        graveYard.addCards(cardsInThisHand.get(0));
         cardsInThisHand.remove(0);
         return nextCardInHand;
     }
-
-//    public void removeACard(int cardID) {
-//        Card card = Card.searchCardByID(cardID);
-//        this.getCardsInThisHand().remove(card);
-
-//    }
 
     public void addACard(int cardID) {
      if(!handIfIsFull() && deck.getCardsOfDeck().size()>0){
@@ -64,8 +63,7 @@ public class Hand {
         return false;
     }
 
-//    public void deleteFromDeck(Deck deck, Card card) {
-//        deck.getCardsOfDeck().remove(card);
-
-//    }
+    public void setGraveYard(GraveYard graveYard) {
+        this.graveYard = graveYard;
+    }
 }

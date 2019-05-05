@@ -62,12 +62,6 @@ public class Item {
         this.price = price;
     }
 
-
-    public void readFromFile() {
-
-    }
-
-
     public String getTypeOfItem() {
         return typeOfItem;
     }
