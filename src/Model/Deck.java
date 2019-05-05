@@ -13,6 +13,9 @@ public class Deck {
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);
 
+    public Deck(String name){
+        this.setName(name);
+    }
     public static ArrayList<Deck> getDecks() {
         return decks;
     }
@@ -87,19 +90,18 @@ public class Deck {
     public static void createDeck(String deckName) {
         Deck deck = searchDeckByName(deckName);
         if (deck != null) {
-            System.out.println("please change deck's name");
+            System.out.println("it is available now !\nplease change deck's name");
             return;
         }
-        deck = new Deck();
-        deck.setName(deckName);
+        deck = new Deck(deckName);
         Deck.getDecks().add(deck);
     }
 
-    public static void removeDeck(String deckName) {
-        for (Deck deck : Deck.getDecks()) {
-            if (deck.getName().equals(deckName)) {
-                getDecks().remove(deck);
-                break;
+    public static void deleteDeck(String deckName) {
+        for (int i=0;i<decks.size();i++){
+            if(decks.get(i).getName().equals(deckName)){
+                decks.remove(i);
+                return;
             }
         }
     }

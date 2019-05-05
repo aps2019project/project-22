@@ -15,7 +15,13 @@ public class Show {
         } else if (partsOfInput[0].equals("search")) {
             if (account.getCollection().search(partsOfInput[1]) != -1)
                 System.out.println(account.getCollection().search(partsOfInput[1]));
-        } else if ("save".equals(input)) {
+            else
+                System.out.println("not found...:[");
+        } else if(partsOfInput.length==3 &&partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")){
+          Deck.createDeck(partsOfInput[2]);
+        } else if(partsOfInput.length==3 &&partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")){
+            Deck.deleteDeck(partsOfInput[2]);
+        }  else if ("save".equals(input)) {
             account.getCollection().save();
         } else if ("help".equals(input)) {
             Show.helpInCollection();
