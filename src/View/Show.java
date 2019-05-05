@@ -22,10 +22,10 @@ public class Show {
         }
     }
 
-    public static void showMainMenu(Scanner scanner) {
+    public static void showMainMenuOfAccount(Scanner scanner, Account account) {
         String input = scanner.nextLine().trim();
-        Account account = new Account();
-        System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Help");
+        System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
+        System.out.println("please enter a number: ");
         switch (input) {
             case "Enter collection":
                 collectionMenu(scanner, account);
@@ -34,12 +34,17 @@ public class Show {
                 shopMenu(scanner, account);
                 break;
             case "Enter battle":
-               showBattleMenu (scanner,);
+                showBattleMenu(scanner, );
                 break;
+            case "Save":
+                //save
+                break;
+            case "Logout":
+                return;
             case "Exit":
                 return;
             case "Help":
-                showMainMenu(scanner);
+                showMainMenuOfAccount(scanner, account);
                 break;
         }
     }
@@ -100,7 +105,7 @@ public class Show {
 
     private static void showAllUserNames() {
         for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1)+".  " + Account.getAccounts().get(i).getUserName());
+            System.out.println((i + 1) + ".  " + Account.getAccounts().get(i).getUserName());
         }
     }
 
@@ -177,5 +182,60 @@ public class Show {
             showAllUserNames();
             battle = new CustomGame();
         }
+    }
+
+    public static void showMainMenu(Scanner scanner) {
+        System.out.println("1. create account [user name]\n2. login [username]\n3. show leaderboard\n4. help");
+        System.out.println("\t*** please enter a number : ***");
+        String input = scanner.nextLine().trim();
+        String str[];
+        if (input.equals("exit") || input.equals("Exit")) {
+            return;
+        } else if (input.equals("1")) {
+            input = scanner.nextLine().trim();
+            str = input.split("\\s+");
+            if (str.length == 3 && str[0].equals("create") && str[1].equals("account")) {
+                Account.createAccount(str[2], scanner);
+            }
+        } else if (input.equals("2")) {
+            input = scanner.nextLine().trim();
+            str = input.split("\\s+");
+            if (str.length == 2 && str[0].equals("login")) {
+                System.out.println("please enter your password.:)");
+                String password = scanner.nextLine();
+                if (Account.checkLogin(str[1], password)) {
+                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated());
+                }
+            }
+        } else if (input.equals("3")) {
+            Show.showLeaderboard();
+        }
+        showMainMenu(scanner);
+        return;
+    }
+
+    private static void showLeaderboard() {
+        Account.sortAll();
+        for (int i = 0; i < Account.getAccounts().size(); i++) {
+            System.out.println((i + 1)" - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
+                    + Account.getAccounts().get(i).getWins());
+        }
+    }
+
+    public static void accountIsAvailableNow() {
+        System.out.println("Account Is Available Now!");
+    }
+
+    public static String getPassword(Scanner scanner) {
+        System.out.println("please enter password");
+        return scanner.nextLine();
+    }
+
+    public static void invalidUserName() {
+        System.out.println("invalid username!!");
+    }
+
+    public static void incorrectPassword() {
+        System.out.println("The password is incorrect");
     }
 }

@@ -1,8 +1,11 @@
 package Model;
 
+import View.Show;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Account {
 
@@ -24,20 +27,8 @@ public class Account {
     private int story;
     private static int count = 0;
 
-    public static void addNewAccount(String userName, String password) {
-        if (!booleanSearchByUserName(userName)) {
-            Account account = new Account(userName, password);
-            account.setPassword(password);
-            account.setUserName(userName);
-            accounts.add(account);
-            return;
-
-        } else if (booleanSearchByUserName(userName)) {
-            System.out.println("Enter another username");
-            return;
-        } else if (booleanSearchByPassword(password)) {
-            System.out.println("Enter another password");
-        }
+    public static void addNewAccount(Account account) {
+        accounts.add(account);
     }
 
 
@@ -50,10 +41,6 @@ public class Account {
         this.setUserName(userName);
         this.setPassword(password);
         this.setID(Account.count++);
-
-    }
-
-    public Account() {
 
     }
 
@@ -111,6 +98,27 @@ public class Account {
                 return accounts.get(i);
         }
         return null;
+    }
+
+    public static void createAccount(String username, Scanner scanner) {
+        Account account = searchByUserName(username);
+        if (account != null) {
+            Show.accountIsAvailableNow();
+        } else {
+            String password = Show.getPassword(scanner);
+            Account newAccount = new Account(username, password);
+            Account.addNewAccount(newAccount);
+        }
+    }
+
+    public static void sortAll() {
+        for (int i = 0; i < accounts.size() - 1; i++) {
+
+            for (int j = 0; j < accounts.size() - 1 - i; j++) {
+                if (accounts.get(j + 1).getWins() > accounts.get(j).getWins())
+                   Collections.swap(accounts,j,j+1);
+            }
+        }
     }
 
     public boolean checkIfPasswordIsCorrect(String password) {
@@ -264,13 +272,17 @@ public class Account {
         accounts.remove(account);
     }
 
-    public static void checkLogin(String userName, String password) {
-        Account account = new Account(userName, password);
-        if (!account.getPassword().equals(password)) {
-            System.out.println("Invalid password or username");
-            return;
+    public static boolean checkLogin(String userName, String password) {
+        if (searchByUserName(userName) == null) {
+            Show.invalidUserName();
+            return false;
         }
-        Account.accountActivated = account;
+        if (!searchByUserName(userName).getPassword().equals(password)) {
+            Show.incorrectPassword();
+            return false;
+        }
+        Account.accountActivated = searchByUserName(userName);
+        return true;
     }
 
 
