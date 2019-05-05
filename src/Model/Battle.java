@@ -372,7 +372,7 @@ public class Battle {
                             System.out.println("You don't have enough mana");
                         }else {
                             //rajeb spellas
-                            
+
                         }
                     }
                 }

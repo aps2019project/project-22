@@ -11,7 +11,7 @@ public class Card {
     private int minion5Counter = 0;
     private int counterMinion18 = 0;
     protected int price;
-    private String activationTime;
+    protected String activationTime;
     protected int type; // 0 hero | 1 spell | 2 minion
     protected String name;
     private int row;
@@ -28,23 +28,23 @@ public class Card {
     private boolean haveBeenUsed = false;
     private int counterMinion10 = 0;
 
-    public void setCounterMinion10(Card card) {
-        counterMinion10++;
-        if (i <= 4 && i != 0)
-            card.setHealthPoint(card.getHealthPoint() - 1);
-        if (counterMinion10 == 4) {
-            counterMinion10 = 0;
-        }
-    }
-
-    public void setCounterMinion18(Card card) {
-        counterMinion18++;
-        if (i <= 3 && i != 0)
-            card.setHealthPoint(card.getHealthPoint() - 1);
-        if (counterMinion18 == 3) {
-            counterMinion18 = 0;
-        }
-    }
+//    public void setCounterMinion10(Card card) {
+//        counterMinion10++;
+//        if (i <= 4 && i != 0)
+//            card.setHealthPoint(card.getHealthPoint() - 1);
+//        if (counterMinion10 == 4) {
+//            counterMinion10 = 0;
+//        }
+//    }
+//
+//    public void setCounterMinion18(Card card) {
+//        counterMinion18++;
+//        if (i <= 3 && i != 0)
+//            card.setHealthPoint(card.getHealthPoint() - 1);
+//        if (counterMinion18 == 3) {
+//            counterMinion18 = 0;
+//        }
+//    }
 
     public void setDisarmFor1TurnTrue() {
         disarmFor1Turn = true;
@@ -251,7 +251,7 @@ public class Card {
 
     private int cardId;
 
-    public void addCard(Card card) {
+    public static void addCard(Card card) {
         cards.add(card);
     }
 

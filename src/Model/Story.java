@@ -8,7 +8,7 @@ public class Story extends Battle {
     }
 
     public void setPlayer2Deck(Player player2, Deck deck){
-        player2.setDeck(deck);
+        player2.setMainDeck(deck);
     }
     public void playLevel1(){
 

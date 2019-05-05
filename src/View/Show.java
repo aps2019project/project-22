@@ -34,7 +34,7 @@ public class Show {
                 shopMenu(scanner, account);
                 break;
             case "Enter battle":
-                battleMenu(scanner, account);
+               showBattleMenu (scanner,);
                 break;
             case "Exit":
                 return;
@@ -44,63 +44,63 @@ public class Show {
         }
     }
 
-    private static void battleMenu(Scanner scanner, Account account) {
-        System.out.println("1.Single player\n2.Multi player");
-        String input = scanner.nextLine().trim();
-        if (input.equals("Single player") || input.equals("single player")) {
-            singlePlayerMenu(scanner, account);
-        } else if (input.equals("Multi player") || input.equals("multi player")) {
-            multiPlayerMenu(scanner, account);
-        } else if (input.equals("exit") || input.equals("Exit")) {
-            return;
-        } else {
-            battleMenu(scanner, account);
-        }
-    }
+//    private static void battleMenu(Scanner scanner, Account account) {
+//        System.out.println("1.Single player\n2.Multi player");
+//        String input = scanner.nextLine().trim();
+//        if (input.equals("Single player") || input.equals("single player")) {
+//            singlePlayerMenu(scanner, account);
+//        } else if (input.equals("Multi player") || input.equals("multi player")) {
+//            multiPlayerMenu(scanner, account);
+//        } else if (input.equals("exit") || input.equals("Exit")) {
+//            return;
+//        } else {
+//            battleMenu(scanner, account);
+//        }
+//    }
+//
+//    private static void singlePlayerMenu(Scanner scanner, Account account) {
+//        System.out.println("1. Story\n2.Custom game");
+//        String input = scanner.nextLine().trim();
+//        if (input.equals("Story") || input.equals("story")) {
+//            story(scanner, account);
+//        } else if (input.equals("Custom game") || input.equals("custom game")) {
+//            customGame(scanner, account);
+//        } else if (input.equals("exit") || input.equals("Exit")) {
+//            return;
+//        } else {
+//            singlePlayerMenu(scanner, account);
+//        }
+//    }
 
-    private static void singlePlayerMenu(Scanner scanner, Account account) {
-        System.out.println("1. Story\n2.Custom game");
-        String input = scanner.nextLine().trim();
-        if (input.equals("Story") || input.equals("story")) {
-            story(scanner, account);
-        } else if (input.equals("Custom game") || input.equals("custom game")) {
-            customGame(scanner, account);
-        } else if (input.equals("exit") || input.equals("Exit")) {
-            return;
-        } else {
-            singlePlayerMenu(scanner, account);
-        }
-    }
-
-    private static void customGame(Scanner scanner, Account account) {
-    }
-
-    private static void story(Scanner scanner, Account account) {
-    }
-
-
-    private static void multiPlayerMenu(Scanner scanner, Account account) {
-        showAllUserNames();
-        while (true) {
-            System.out.println("please enter username");
-            String input = scanner.nextLine().trim();
-            String[] partsOfInput = input.split("\\s+");
-            if (partsOfInput.length > 2 && partsOfInput[0].equals("Select") && partsOfInput[1].equals("user")) {
-                Account enemy = Account.searchByUserName(partsOfInput[2]);
-                if (enemy != null) {
-                    // multi player game
-                    return;
-                }
-            }
-            if(input.equals("exit"||input.equals("Exit"))){
-                return;
-            }
-        }
-    }
+//    private static void customGame(Scanner scanner, Account account) {
+//    }
+//
+//    private static void story(Scanner scanner, Account account) {
+//    }
+//
+//
+//    private static void multiPlayerMenu(Scanner scanner, Account account) {
+//        showAllUserNames();
+//        while (true) {
+//            System.out.println("please enter username");
+//            String input = scanner.nextLine().trim();
+//            String[] partsOfInput = input.split("\\s+");
+//            if (partsOfInput.length > 2 && partsOfInput[0].equals("Select") && partsOfInput[1].equals("user")) {
+//                Account enemy = Account.searchByUserName(partsOfInput[2]);
+//                if (enemy != null) {
+//                    // multi player game
+//                    return;
+//                }
+//            }
+//            if(input.equals("exit")||input.equals("Exit")){
+//                return;
+//            }
+//        }
+//    }
 
     private static void showAllUserNames() {
         for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1)".  " + Account.getAccounts().get(i).getUserName());
+            System.out.println((i + 1)+".  " + Account.getAccounts().get(i).getUserName());
         }
     }
 
@@ -152,7 +152,7 @@ public class Show {
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
 
-    public void showBattleMenu(Scanner scanner, Battle battle) {
+    public static void showBattleMenu(Scanner scanner, Battle battle) {
         System.out.println("1.single player");
         System.out.println("2.multi player");
         int singleOrMulti = scanner.nextInt();
@@ -174,6 +174,7 @@ public class Show {
                 }
             }
         } else if (singleOrMulti == 2) {
+            showAllUserNames();
             battle = new CustomGame();
         }
     }
