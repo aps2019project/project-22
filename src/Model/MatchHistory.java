@@ -3,7 +3,7 @@ package Model;
 public class MatchHistory {
     private int time;
     private int numberOfWins;
-    private String name;
+    private String nameOfEnemy;
     private boolean isWin;
 
     public void setTime(int number) {
@@ -14,9 +14,6 @@ public class MatchHistory {
         this.numberOfWins = number;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getTime() {
         return time;
@@ -26,9 +23,6 @@ public class MatchHistory {
         return numberOfWins;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public boolean isWin() {
         return isWin;
@@ -36,5 +30,13 @@ public class MatchHistory {
 
     public void setWin(boolean win) {
         isWin = win;
+    }
+
+    public String getNameOfEnemy() {
+        return nameOfEnemy;
+    }
+
+    public void setNameOfEnemy(String nameOfEnemy) {
+        this.nameOfEnemy = nameOfEnemy;
     }
 }

@@ -4,15 +4,19 @@ package Model;
 import java.util.ArrayList;
 
 public class Player {
-    private Account account;
     private static ArrayList<Player> players = new ArrayList<>();
+    private Account account;
     private Deck mainDeck;
     private Hand hand;
     private GraveYard graveYard = new GraveYard();
-    private int mana;
-    private ArrayList<Card> usedCards = new ArrayList<>();
+    private int manaPoint;
+    private Hero hero;
+    private ArrayList<Minion> minionCards = new ArrayList<>();
+    private ArrayList<Spell> spellCards = new ArrayList<>();
     private ArrayList<Item> collectibleItems = new ArrayList<>();
     private int turnNumber;
+    private int numberOfFlags;
+    private int timeOfKeepingFlag;
 
     public static void setPlayers(ArrayList<Player> players) {
         Player.players = players;
@@ -54,14 +58,6 @@ public class Player {
         this.hand = hand;
     }
 
-    public ArrayList<Card> getUsedCards() {
-        return usedCards;
-    }
-
-    public void setUsedCards(ArrayList<Card> usedCards) {
-        this.usedCards = usedCards;
-    }
-
     public ArrayList<Item> getCollectibleItems() {
         return collectibleItems;
     }
@@ -86,14 +82,6 @@ public class Player {
     public static ArrayList<Player> getPlayers() {
         return players;
     }
-
-    public void setMana(int mana1){
-        this.mana = mana1;
-    }
-     public int getMana() {
-        return mana;
-     }
-
 
     public int getTurnNumber() {
         return turnNumber;
@@ -124,5 +112,53 @@ public class Player {
 
     public void setGraveYard(GraveYard graveYard) {
         this.graveYard = graveYard;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public ArrayList<Minion> getMinionCards() {
+        return minionCards;
+    }
+
+    public void setMinionCards(ArrayList<Minion> minionCards) {
+        this.minionCards = minionCards;
+    }
+
+    public ArrayList<Spell> getSpellCards() {
+        return spellCards;
+    }
+
+    public void setSpellCards(ArrayList<Spell> spellCards) {
+        this.spellCards = spellCards;
+    }
+
+    public int getManaPoint() {
+        return manaPoint;
+    }
+
+    public void setManaPoint(int manaPoint) {
+        this.manaPoint = manaPoint;
+    }
+
+    public int getNumberOfFlags() {
+        return numberOfFlags;
+    }
+
+    public void setNumberOfFlags(int numberOfFlags) {
+        this.numberOfFlags = numberOfFlags;
+    }
+
+    public int getTimeOfKeepingFlag() {
+        return timeOfKeepingFlag;
+    }
+
+    public void setTimeOfKeepingFlag(int timeOfKeepingFlag) {
+        this.timeOfKeepingFlag = timeOfKeepingFlag;
     }
 }

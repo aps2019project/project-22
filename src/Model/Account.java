@@ -12,10 +12,10 @@ public class Account {
     private String password;
     private int ID;
     private boolean logIn;
-    private static final long firstMoney = 15000;
-    private long money;
+    private static final int firstMoney = 15000;
+    private int money;
     private int wins;
-    private int looses;
+    private int loses;
     private Player player = new Player();
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
@@ -150,20 +150,20 @@ public class Account {
         this.password = password;
     }
 
-    public int getLooses() {
-        return looses;
+    public int getLoses() {
+        return loses;
     }
 
-    public void setLooses(int looses) {
-        this.looses = looses;
+    public void setLoses(int loses) {
+        this.loses = loses;
     }
 
 
-    public long getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(long money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 
@@ -290,7 +290,7 @@ public class Account {
                     Account.swap(i, j);
                 }
                 if (accounts.get(i).getWins() == accounts.get(j).getWins())
-                    if (accounts.get(i).getLooses() < accounts.get(j).getLooses())
+                    if (accounts.get(i).getLoses() < accounts.get(j).getLoses())
                         Account.swap(i, j);
             }
     }

@@ -27,39 +27,46 @@ public class Card {
     protected String typeOfAttack;
     private boolean haveBeenUsed = false;
     private int counterMinion10 = 0;
-    public void setCounterMinion10(Card card){
+
+    public void setCounterMinion10(Card card) {
         counterMinion10++;
-        if (i <=4 && i != 0)
-         card.setHealthPoint(card.getHealthPoint()-1);
-        if (counterMinion10 == 4){
+        if (i <= 4 && i != 0)
+            card.setHealthPoint(card.getHealthPoint() - 1);
+        if (counterMinion10 == 4) {
             counterMinion10 = 0;
         }
     }
 
-    public void setCounterMinion18(Card card){
+    public void setCounterMinion18(Card card) {
         counterMinion18++;
-        if (i <=3 && i != 0)
-            card.setHealthPoint(card.getHealthPoint()-1);
-        if (counterMinion18 == 3){
+        if (i <= 3 && i != 0)
+            card.setHealthPoint(card.getHealthPoint() - 1);
+        if (counterMinion18 == 3) {
             counterMinion18 = 0;
         }
     }
-    public void setDisarmFor1TurnTrue(){
+
+    public void setDisarmFor1TurnTrue() {
         disarmFor1Turn = true;
     }
-    public void setDisarmFor1TurnFalse(){
+
+    public void setDisarmFor1TurnFalse() {
         disarmFor1Turn = false;
     }
-    public boolean getDisarmFor1Turn(){
+
+    public boolean getDisarmFor1Turn() {
         return disarmFor1Turn;
     }
-    public void setHaveBeenUsedTrue(){
+
+    public void setHaveBeenUsedTrue() {
         haveBeenUsed = true;
     }
+
     public String getActivationTime() {
         return activationTime;
     }
-    public void addMinion5Counter(){
+
+    public void addMinion5Counter() {
         this.minion5Counter++;
     }
 
@@ -71,30 +78,38 @@ public class Card {
         this.activationTime = activationTime;
     }
 
-    public void setHaveBeenUsedFalse(){
+    public void setHaveBeenUsedFalse() {
         haveBeenUsed = false;
     }
-    public boolean getHaveBeenUsed(){
+
+    public boolean getHaveBeenUsed() {
         return haveBeenUsed;
     }
-    public void setStunTrue(){
+
+    public void setStunTrue() {
         stun = true;
     }
-    public void setStunFalse(){
+
+    public void setStunFalse() {
         stun = false;
     }
-    public boolean getStun(){
+
+    public boolean getStun() {
         return stun;
     }
-    public boolean getStunByMinion5(){
+
+    public boolean getStunByMinion5() {
         return stunByMinion5;
     }
-    public void setStunByMinion5True(){
+
+    public void setStunByMinion5True() {
         stunByMinion5 = true;
     }
-    public void setStunByMinion5False(){
+
+    public void setStunByMinion5False() {
         stunByMinion5 = false;
     }
+
     public int getX() {
         return x;
     }
@@ -127,8 +142,8 @@ public class Card {
         return name;
     }
 
-    public void setId(int id){
-        this.id =id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -142,8 +157,7 @@ public class Card {
             setRow(x);
             setColumn(y);
             //tu view bge mishe o shodo ina.
-        }
-        else{
+        } else {
             // tu view bege nmishe
         }
     }
@@ -200,10 +214,23 @@ public class Card {
 
         this.healthPoint = healthPoint;
     }
+
     public void setRow(int row) {
         this.row = row;
     }
 
+    public void increaseHp(int number) {
+        this.healthPoint+=number;
+    }
+    public void decreaseHp(int number) {
+        this.healthPoint-=number;
+    }
+    public void increaseAp(int number) {
+        this.attackPower+=number;
+    }
+    public void decreaseAp(int number) {
+        this.healthPoint-=number;
+    }
 
     public int getColumn() {
         return column;
@@ -241,8 +268,8 @@ public class Card {
         return price;
     }
 
-    public static Card searchCardByID(int ID){
-        for(Card card : Card.cards) {
+    public static Card searchCardByID(int ID) {
+        for (Card card : Card.cards) {
             if (card.getCardId() == ID)
                 return card;
         }

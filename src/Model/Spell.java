@@ -9,6 +9,10 @@ public class Spell extends Card {
     private String cost;
     private String targetPointName;
     private String description;
+    private Buff buff;
+    private boolean permissionToAttackOrMove;
+    private boolean permissionToCounterAttack;
+
 
     public static void addSpell(Spell spell) {
         Spell.getSpells().add(spell);
@@ -38,10 +42,6 @@ public class Spell extends Card {
         this.mana = mana;
     }
 
-    public String getCost() {
-        return cost;
-    }
-
     public void setCost(String cost) {
         this.cost = cost;
     }
@@ -54,7 +54,7 @@ public class Spell extends Card {
         this.targetPointName = targetPointName;
     }
 
-    public  Spell(int ID,String name, int price, int mana, String targetPointName, String description) {
+    public Spell(int ID, String name, int price, int mana, String targetPointName, String description) {
         setType(1);
         this.setId(ID);
         this.setName(name);
@@ -87,5 +87,29 @@ public class Spell extends Card {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Buff getBuff() {
+        return buff;
+    }
+
+    public void setBuff(Buff buff) {
+        this.buff = buff;
+    }
+
+    public boolean isPermissionToAttackOrMove() {
+        return permissionToAttackOrMove;
+    }
+
+    public void setPermissionToAttackOrMove(boolean permissionToAttackOrMove) {
+        this.permissionToAttackOrMove = permissionToAttackOrMove;
+    }
+
+    public boolean isPermissionToCounterAttack() {
+        return permissionToCounterAttack;
+    }
+
+    public void setPermissionToCounterAttack(boolean permissionToCounterAttack) {
+        this.permissionToCounterAttack = permissionToCounterAttack;
     }
 }
