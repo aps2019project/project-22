@@ -52,7 +52,8 @@ public class Account {
         this.setID(Account.count++);
 
     }
-    public Account(){
+
+    public Account() {
 
     }
 
@@ -100,6 +101,14 @@ public class Account {
         for (Account account : Account.getAccounts()) {
             if (account.getID() == ID)
                 return account;
+        }
+        return null;
+    }
+
+    public static Account searchByUserName(String username) {
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getUserName().equals(username))
+                return accounts.get(i);
         }
         return null;
     }

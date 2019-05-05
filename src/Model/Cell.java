@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Cell {
 
-    private static int[] rowsOfCells=new int[5];
-    private static int[] columnsOfCells=new int[9];
+    private static Card[] rowsOfCells=new Card[5];
+    private static Card[] columnsOfCells=new Card[9];
     private ArrayList<Spell> spells;
     private ArrayList<Integer> effectTime;
     private int x;
@@ -15,6 +15,11 @@ public class Cell {
     private static ArrayList<Cell> cells;
     private Minion minion;
     private  Hero hero;
+
+    public static void insertCard(Card card, int x, int y) {
+    rowsOfCells[x]=card;
+    columnsOfCells[y]=card;
+    }
 
     public Minion getMinion() {
         return minion;
@@ -72,19 +77,19 @@ public class Cell {
     }
 
 
-    public static void setRowsOfCells(int[] rowsOfCells) {
+    public static void setRowsOfCells(Card[] rowsOfCells) {
         Cell.rowsOfCells = rowsOfCells;
     }
 
-    public static int[] getRowsOfCells() {
+    public static Card[] getRowsOfCells() {
         return rowsOfCells;
     }
 
-    public static void setColumnsOfCells(int[] columnsOfCells) {
+    public static void setColumnsOfCells(Card[] columnsOfCells) {
         Cell.columnsOfCells = columnsOfCells;
     }
 
-    public static int[] getColumnsOfCells() {
+    public static Card[] getColumnsOfCells() {
         return columnsOfCells;
     }
 

@@ -9,9 +9,10 @@ public class Hand {
     private Deck deck;
     private GraveYard graveYard;
 
-     public Hand(GraveYard graveYard){
+    public Hand(GraveYard graveYard) {
         this.setGraveYard(graveYard);
     }
+
     public static int getHand_capacity() {
         return HAND__CAPACITY;
     }
@@ -41,20 +42,23 @@ public class Hand {
         this.deck = deck;
     }
 
-    public Card getNextCardInHand() {
+    public Card getNextCardInHand(int mana) {
         Card nextCardInHand = cardsInThisHand.get(0);
-        graveYard.addCards(cardsInThisHand.get(0));
-        cardsInThisHand.remove(0);
-        return nextCardInHand;
+        if (mana > nextCardInHand.getManaPoint()) {
+            graveYard.addCards(cardsInThisHand.get(0));
+            cardsInThisHand.remove(0);
+            return nextCardInHand;
+        }
+        return null;
     }
 
     public void addACard(int cardID) {
-     if(!handIfIsFull() && deck.getCardsOfDeck().size()>0){
-         Random random =new Random(deck.getCardsOfDeck().size());
-         int rand = random.nextInt();
-         cardsInThisHand.add(deck.getCardsOfDeck().get(rand));
-         deck.getCardsOfDeck().remove(rand);
-     }
+        if (!handIfIsFull() && deck.getCardsOfDeck().size() > 0) {
+            Random random = new Random(deck.getCardsOfDeck().size());
+            int rand = random.nextInt();
+            cardsInThisHand.add(deck.getCardsOfDeck().get(rand));
+            deck.getCardsOfDeck().remove(rand);
+        }
     }
 
     public boolean handIfIsFull() {

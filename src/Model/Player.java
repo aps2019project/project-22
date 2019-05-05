@@ -17,32 +17,31 @@ public class Player {
     private int turnNumber;
     private int numberOfFlags;
     private int timeOfKeepingFlag;
+    private int manaInTurn;
 
     public static void setPlayers(ArrayList<Player> players) {
         Player.players = players;
     }
 
-    public void Player(Account account )
-    {
+    public void Player(Account account) {
         this.setAccount(account);
         this.setMainDeck(account.getMainDeck());
     }
-    public Card findInGraveYard(int cardID)
-    {
-        for (Card card : getGraveYard().getCards())
-        {
-            if (card.getCardId() == cardID)
-            {
+
+    public Card findInGraveYard(int cardID) {
+        for (Card card : getGraveYard().getCards()) {
+            if (card.getCardId() == cardID) {
                 return card;
             }
         }
         return null;
     }
 
-    public Account getAccount(){
+    public Account getAccount() {
         return account;
     }
-    public void setAccount(Account account){
+
+    public void setAccount(Account account) {
         this.account = account;
     }
 
@@ -70,12 +69,12 @@ public class Player {
         this.setGraveYard(graveyard);
     }
 
-    public static void addPlayer(Player player){
+    public static void addPlayer(Player player) {
         Player.getPlayers().add(player);
 
     }
 
-    public static void deletePlayer(Player player){
+    public static void deletePlayer(Player player) {
         Player.getPlayers().remove(player);
     }
 
@@ -94,6 +93,7 @@ public class Player {
     public void increaseTurnNumber() {
         setTurnNumber(getTurnNumber() + 1);
     }
+
     public void addToGraveYard(Card card) {
         this.getGraveyard().getCards().add(card);
     }
@@ -160,5 +160,40 @@ public class Player {
 
     public void setTimeOfKeepingFlag(int timeOfKeepingFlag) {
         this.timeOfKeepingFlag = timeOfKeepingFlag;
+    }
+    public void insertCard(int x,int y){
+        Card card=hand.getNextCardInHand(manaInTurn);
+        if(card==null){
+            return;
+        }
+        card.setX(x);
+        card.setY(y);
+        Cell.insertCard(card,x,y);
+    }
+
+    public int getManaInTurn() {
+        return manaInTurn;
+    }
+
+    public void setManaInTurn() {
+        int manaInTurn=2;
+        if (turnNumber == 1) {
+            manaInTurn = 2;
+        } else if (turnNumber == 2 || turnNumber == 3) {
+            manaInTurn = 3;
+        } else if (turnNumber == 4 || turnNumber == 5) {
+            manaInTurn = 4;
+        } else if (turnNumber == 6 || turnNumber == 7) {
+            manaInTurn = 5;
+        } else if (turnNumber == 8 || turnNumber == 9) {
+            manaInTurn = 6;
+        } else if (turnNumber == 10 || turnNumber == 11) {
+            manaInTurn = 7;
+        } else if (turnNumber == 12 || turnNumber == 13) {
+            manaInTurn = 8;
+        } else {
+            manaInTurn = 9;
+        }
+        this.manaInTurn = manaInTurn;
     }
 }
