@@ -9,8 +9,6 @@ C
 src/Model/Hero.java,0/e/0efe0f490c7746d9f974970f63ccfea852268f50
 I
 src/Model/Collection.java,c/f/cf14cef84bf2366de161b068145b059c0605713d
-E
-src/Model/Effect.java,d/a/da6ea30fa725bf10d286809237c2e5ac729c9e91
 C
 src/Model/Cell.java,c/b/cb426e44abb597fc70745efa7d910dcf0e8f531e
 D

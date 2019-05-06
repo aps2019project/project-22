@@ -49,8 +49,9 @@ public class Minion extends Card {
         this.sumOfPossetiveAttack = sumOfPossetiveAttack;
     }
 
-    public Minion(int ID, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
+    public Minion(int ID,String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
         this.ID = ID;
+        this.setName(name);
         this.cost = cost;
         this.healthPoint = healthPoint;
         this.manaPoint = mana;

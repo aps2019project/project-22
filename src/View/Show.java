@@ -223,7 +223,7 @@ public class Show {
     private static void showLeaderboard() {
         Account.sortAll();
         for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1)" - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
+            System.out.println((i + 1)+" - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
                     + Account.getAccounts().get(i).getWins());
         }
     }

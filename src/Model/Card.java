@@ -297,7 +297,7 @@ public class Card {
 
     private int cardId;
 
-    public void addCard(Card card) {
+    public static void addCard(Card card) {
         cards.add(card);
     }
 
