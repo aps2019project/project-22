@@ -72,8 +72,7 @@ public class Deck {
     }
 
     public void Deck(String name, Hero hero, Item item, ArrayList<Card> cardsOfDeck) {
-        Deck deck = new Deck();
-        deck.setName(name);
+        Deck deck = new Deck(name);
         deck.setHero(hero);
         deck.setItem(item);
         deck.setCardsOfDeck(cardsOfDeck);
@@ -175,5 +174,55 @@ public class Deck {
 
     public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
+    }
+
+    public void addCard(int id,Account account) {
+        if(hero!=null){
+            System.out.println("deck has hero now.");
+            return;
+        }
+        if(cardsOfDeck.size()==20){
+            System.out.println("deck is full!");
+            return;
+        }
+        for (int i=0;i<cardsOfDeck.size();i++){
+            if(cardsOfDeck.get(i).getId()==id){
+                System.out.println("this card is in deck now");
+                return;
+            }
+        }
+        int i=0;
+        for(;i<account.getCollection().getItems().size();i++){
+            if(account.getCollection().getItems().get(i).getId()==id){
+                break;
+            }
+        }
+        if(i==account.getCollection().getItems().size()){
+            System.out.println("this item hasn't in collection");
+       return;
+        }
+         i=0;
+        for(;i<account.getCollection().getSpells().size();i++){
+            if(account.getCollection().getSpells().get(i).getId()==id){
+                break;
+            }
+        }
+        if(i==account.getCollection().getSpells().size()){
+            System.out.println("this spell hasn't in collection");
+        return;
+        }
+        i=0;
+        for(;i<account.getCollection().getMinions().size();i++){
+            if(account.getCollection().getMinions().get(i).getId()==id){
+                break;
+            }
+        }
+        if(i==account.getCollection().getMinions().size()){
+            System.out.println("this minion hasn't in collection");
+        return;
+        }
+        Card card = new Card();
+        card.setId(id);
+        cardsOfDeck.add(card);
     }
 }

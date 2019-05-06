@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da6ea30fa725bf10d286809237c2e5ac729c9e91" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MakeMinions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MakeMinions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Minion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,19 +30,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/MakeSpell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+            <state relative-caret-position="396">
+              <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -59,35 +48,50 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Buff.java">
+        <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+            <state relative-caret-position="324">
+              <caret line="29" column="55" lean-forward="true" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8884">
+              <caret line="116" column="38" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
               <folding>
-                <element signature="e#1325#1326#0" expanded="true" />
-                <element signature="e#1369#1370#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Deck.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="189" column="47" selection-start-line="189" selection-start-column="47" selection-end-line="189" selection-end-column="47" />
+              <folding>
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#467#468#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/Show.java">
+        <entry file="file://$PROJECT_DIR$/src/Model/Hand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="192" column="23" selection-start-line="192" selection-start-column="23" selection-end-line="192" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Deck.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+            <state relative-caret-position="225">
+              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding>
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#342#343#0" expanded="true" />
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#2049#2050#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -211,7 +215,7 @@
         <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -222,8 +226,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4485">
+            <state relative-caret-position="143">
               <caret line="299" column="18" selection-start-line="299" selection-start-column="18" selection-end-line="299" selection-end-column="18" />
+              <folding>
+                <element signature="e#7003#7004#0" expanded="true" />
+                <element signature="e#7034#7035#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -289,14 +297,14 @@
         <option value="$PROJECT_DIR$/src/Model/Player.java" />
         <option value="$PROJECT_DIR$/src/Model/Story.java" />
         <option value="$PROJECT_DIR$/src/Model/Battle.java" />
-        <option value="$PROJECT_DIR$/src/Model/Card.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
         <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Model/Collection.java" />
-        <option value="$PROJECT_DIR$/src/View/Show.java" />
-        <option value="$PROJECT_DIR$/src/Model/Deck.java" />
         <option value="$PROJECT_DIR$/src/Model/Minion.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
+        <option value="$PROJECT_DIR$/src/Model/Card.java" />
+        <option value="$PROJECT_DIR$/src/View/Show.java" />
+        <option value="$PROJECT_DIR$/src/Model/Deck.java" />
       </list>
     </option>
   </component>
@@ -421,7 +429,7 @@
       <workItem from="1556890119816" duration="6030000" />
       <workItem from="1556963639324" duration="766000" />
       <workItem from="1557082195468" duration="14008000" />
-      <workItem from="1557166739042" duration="895000" />
+      <workItem from="1557166739042" duration="3128000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -448,7 +456,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55659000" />
+    <option name="totallyTimeSpent" value="57892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="719" height="736" extended-state="0" />
@@ -473,9 +481,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33278418" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.21581548" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.21335505" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32784185" />
+      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.33113673" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -529,7 +537,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="type of buffs" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Effect.java" />
     <entry file="file://$PROJECT_DIR$/src/Hand.java" />
     <entry file="file://$PROJECT_DIR$/src/Hero.java" />
     <entry file="file://$PROJECT_DIR$/src/Item.java" />
@@ -722,18 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Hand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#2049#2050#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -773,32 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="198" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="288" column="87" selection-start-line="288" selection-start-column="87" selection-end-line="288" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#540#541#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,20 +899,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4485">
-          <caret line="299" column="18" selection-start-line="299" selection-start-column="18" selection-end-line="299" selection-end-column="18" />
+        <state relative-caret-position="148">
+          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Deck.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+        <state relative-caret-position="143">
+          <caret line="299" column="18" selection-start-line="299" selection-start-column="18" selection-end-line="299" selection-end-column="18" />
           <folding>
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
+            <element signature="e#7034#7035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/String.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Hand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8884">
+          <caret line="116" column="38" selection-start-line="116" selection-start-column="38" selection-end-line="116" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -951,7 +954,7 @@
     <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -960,22 +963,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="192" column="23" selection-start-line="192" selection-start-column="23" selection-end-line="192" selection-end-column="23" />
+        <state relative-caret-position="324">
+          <caret line="29" column="55" lean-forward="true" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Minion.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="324">
+          <caret line="189" column="47" selection-start-line="189" selection-start-column="47" selection-end-line="189" selection-end-column="47" />
+          <folding>
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

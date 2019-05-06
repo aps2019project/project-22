@@ -17,14 +17,17 @@ public class Show {
                 System.out.println(account.getCollection().search(partsOfInput[1]));
             else
                 System.out.println("not found...:[");
-        } else if(partsOfInput.length==3 &&partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")){
-          Deck.createDeck(partsOfInput[2]);
-        } else if(partsOfInput.length==3 &&partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")){
+        } else if (partsOfInput.length == 3 && partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")) {
+            Deck.createDeck(partsOfInput[2]);
+        } else if (partsOfInput.length == 3 && partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")) {
             Deck.deleteDeck(partsOfInput[2]);
-        }  else if ("save".equals(input)) {
+        } else if ("save".equals(input)) {
             account.getCollection().save();
         } else if ("help".equals(input)) {
             Show.helpInCollection();
+        } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
+                && partsOfInput[3].equals("deck")){
+            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]));
         }
     }
 
@@ -223,7 +226,7 @@ public class Show {
     private static void showLeaderboard() {
         Account.sortAll();
         for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1)+" - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
+            System.out.println((i + 1) + " - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
                     + Account.getAccounts().get(i).getWins());
         }
     }
