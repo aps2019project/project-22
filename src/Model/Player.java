@@ -9,20 +9,64 @@ public class Player {
     private Deck mainDeck;
     private Hand hand;
     private GraveYard graveYard = new GraveYard();
-    private int manaPoint;
+    private int mana;
+    private boolean item8 = false;
     private Hero hero;
     private ArrayList<Minion> minionCards = new ArrayList<>();
     private ArrayList<Spell> spellCards = new ArrayList<>();
     private ArrayList<Item> collectibleItems = new ArrayList<>();
     private int turnNumber;
+    private ArrayList<Card> cardsInTheFiled = new ArrayList<>();
     private int numberOfFlags;
     private int timeOfKeepingFlag;
+    private int howLongFlagsHasBeenKept = 0;
+    private int howManyFlag = 0;
     private int manaInTurn;
+    private boolean flag = false;
 
+    public boolean getItem8(){
+        return item8;
+    }
+    public int getHowLongFlagsHasBeenKept() {
+        return howLongFlagsHasBeenKept;
+    }
+
+    public void setHowLongFlagsHasBeenKept(int howLongFlagsHasBeenKept) {
+        this.howLongFlagsHasBeenKept = howLongFlagsHasBeenKept;
+    }
+
+    public int getHowManyFlag() {
+        return howManyFlag;
+    }
+
+    public void setHowManyFlag(int howManyFlag) {
+        this.howManyFlag = howManyFlag;
+    }
+
+    public void setFlagTrue(){
+        flag = true;
+    }
+    public void setFlagFalse(){
+        flag = false;
+    }
+    public boolean getFlag(){
+        return flag;
+    }
+    public void setItem8True(){
+        item8 = true;
+    }
+    public void setItem8False(){
+        item8 = false;
+    }
     public static void setPlayers(ArrayList<Player> players) {
         Player.players = players;
     }
-
+    public void addCardsInTheFile (Card cardsInTheFiled) {
+        this.cardsInTheFiled.add(cardsInTheFiled);
+    }
+    public ArrayList<Card> getCardsInTheFiled() {
+        return getCardsInTheFiled();
+    }
     public void Player(Account account) {
         this.setAccount(account);
         this.setMainDeck(account.getMainDeck());
@@ -138,12 +182,12 @@ public class Player {
         this.spellCards = spellCards;
     }
 
-    public int getManaPoint() {
-        return manaPoint;
+    public int getMana() {
+        return mana;
     }
 
-    public void setManaPoint(int manaPoint) {
-        this.manaPoint = manaPoint;
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public int getNumberOfFlags() {

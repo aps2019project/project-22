@@ -10,17 +10,22 @@ public class Cell {
     private ArrayList<Integer> effectTime;
     private int x;
     private int y;
-    private Flag flag;
+    private boolean flag;
     private Card cardInside;
     private static ArrayList<Cell> cells;
     private Minion minion;
     private  Hero hero;
 
     public static void insertCard(Card card, int x, int y) {
-    rowsOfCells[x]=card;
-    columnsOfCells[y]=card;
+        rowsOfCells[x]=card;
+        columnsOfCells[y]=card;
     }
-
+    public void setFlagTrue(){
+        flag = true;
+    }
+    public void setFlagFalse(){
+        flag = false;
+    }
     public Minion getMinion() {
         return minion;
     }
@@ -49,10 +54,12 @@ public class Cell {
     public void setInsideCard(Card insideCard) {
         this.cardInside = insideCard;
     }
-    public Flag getFlag() {
+    public boolean getFlag() {
         return flag;
     }
-
+    public void addCard(Card card){
+        cardInside = card;
+    }
     public void setFlag(Flag flag) {
         this.flag = flag;
     }
@@ -64,10 +71,7 @@ public class Cell {
         if(this.isEmpty() || card == null)
             return false;
         this.setInsideCard(card);
-        if(this.getFlag() != null) {
-            this.getFlag().useBy(card);
 
-        }
         return true;
     }
     public Card pick() {

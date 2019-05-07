@@ -7,8 +7,10 @@ public class Card {
     protected int id;
     protected boolean stun;
     private boolean disarmFor1Turn;
+    private int attackPointByItem = 0;
     private int minion5Counter = 0;
     private int counterMinion18 = 0;
+    private int howLongItem9 = 0;
     private int howManyHolyBuff = 0;
     private int hero65Power = 0;
     private int howLongHaveBeenStun = 0;
@@ -29,10 +31,61 @@ public class Card {
     protected int attackPower;
     protected int rangeOfAttack;
     protected int manaPoint;
+    private boolean item12 = false;
     protected int cost;
     protected String typeOfAttack;
     private boolean haveBeenUsed = false;
     private int counterMinion10 = 0;
+    private boolean item15 = false;
+    private boolean flag = false;
+    public void setItem12True(){
+        item12 = true;
+    }
+    public void setItem12False(){
+        item12 = false;
+    }
+    public boolean getItem12(){
+        return item12;
+    }
+    public void setFlagTrue(){
+        flag = true;
+    }
+    public void setFlagFalse(){
+        flag = false;
+    }
+    public boolean getFlag(){
+        return flag;
+    }
+    public void setItem15True(){
+        item15 = true;
+    }
+    public void setItem15False(){
+        item15 = false;
+    }
+    public boolean getItem15(){
+        return item15;
+    }
+
+    public int getAttackPointByItem() {
+        return attackPointByItem;
+    }
+
+    public void setAttackPointByItem(int attackPointByItem) {
+        this.attackPointByItem = attackPointByItem;
+    }
+
+    public int getHowLongItem9() {
+        return howLongItem9;
+    }
+    public int checkItem9(){
+        if (howLongItem9 == 2){
+            howLongItem9 = 0;
+        }
+    }
+    public void setHowLongItem9(int howLongItem9) {
+        this.howLongItem9 = howLongItem9;
+    }
+
     public void setHaveBeenMovedTrue(){
         haveBeenMoved = true;
     }
@@ -107,7 +160,15 @@ public class Card {
     public void setTempHealtPoint(int tempHealtPoint) {
         this.tempHealtPoint = tempHealtPoint;
     }
-
+    public int getCounterMinion18(){
+        return counterMinion18;
+    }
+    public int getHero65Power(){
+        return hero65Power;
+    }
+    public int getCounterMinion10(){
+        return counterMinion10;
+    }
     public void setCounterMinion18(Card card){
         counterMinion18++;
         if (counterMinion18 <4 && counterMinion18 != 0)
@@ -297,7 +358,7 @@ public class Card {
 
     private int cardId;
 
-    public static void addCard(Card card) {
+    public void addCard(Card card) {
         cards.add(card);
     }
 
