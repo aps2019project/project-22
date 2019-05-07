@@ -166,7 +166,7 @@ public class Show {
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
 
-    public static void showBattleMenu(Scanner scanner, Battle battle) {
+    public static void showBattleMenu(Battle battle, Scanner scanner) {
         System.out.println("1.single player");
         System.out.println("2.multi player");
         int singleOrMulti = scanner.nextInt();
@@ -190,6 +190,11 @@ public class Show {
         } else if (singleOrMulti == 2) {
             showAllUserNames();
             battle = new CustomGame();
+            Deck.showDecks();
+            System.out.println("1.mode1\n2.mode2\n3.mode3");
+            ((CustomGame) battle).setMode(scanner.nextInt());
+            String input = scanner.nextLine();
+            ((CustomGame) battle).setCoustomGame(input);
         }
     }
 
