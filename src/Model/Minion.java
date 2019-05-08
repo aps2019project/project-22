@@ -7,10 +7,16 @@ public class Minion extends Card {
     private boolean minion25Effect = false;
     private boolean minion26Effect = false;
 //    private int x;
-//    private int y;
+    private boolean minion21Effect = false;
+    private boolean item10 = false;
+    private boolean item7 = false;
+    //    private int y;
+    private int minion22Effect = 0;
+    private int minion23Effect = 0;
+    private int minion24Effect = 0;
     private int sumOfPossetiveHealt = 0;
     private int sumOfPossetiveAttack = 0;
-   // private boolean stun = false;
+   //boolean stun = false;
    // private int healthPoint;
     private boolean disarm = false;
    // private int manaPoint;
@@ -21,7 +27,28 @@ public class Minion extends Card {
     private static ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private int ID;
+    public void setMinion21EffectTrue(){
+        minion21Effect = true;
+    }
+    public void setItem7True(){
+        item7 = true;
+    }
+    public void setItem7False(){
+        item7 = false;
+    }
+    public void setItem10True(){
+        item10 = true;
+    }
+    public void setItem10False(){
+        item10 = false;
+    }
 
+    public boolean isMinion21Effect() {
+        return minion21Effect;
+    }
+    public void setMinion21EffectFalse(){
+        minion21Effect = false;
+    }
 
     public void setStunTrue(){
         this.stun = true;
@@ -49,9 +76,8 @@ public class Minion extends Card {
         this.sumOfPossetiveAttack = sumOfPossetiveAttack;
     }
 
-    public Minion(int ID,String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
+    public Minion(int ID, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
         this.ID = ID;
-        this.setName(name);
         this.cost = cost;
         this.healthPoint = healthPoint;
         this.manaPoint = mana;
@@ -154,20 +180,11 @@ public class Minion extends Card {
         }
     }
 
-    public void powerMinion20(){
-        healthPoint++;
-    }
     public void minion15Power(){
         healthPoint+=10;
         this.sumOfPossetiveHealt+=10;
     }
 
-    public void setBooleanDisarmTrue(){
-        disarm = true;
-    }
-    public void setBooleanDisarmFalse(){
-        disarm = false;
-    }
 
     public static void addMinion(Minion minion){
         minions.add(minion);
@@ -181,14 +198,26 @@ public class Minion extends Card {
         minion.getX() == this.x+1 && minion.getY() ==this.y+1 || minion.getX() == this.x-1 &&
         minion.getY() == this.y+1 || minion.getX() == this.x-1 && minion.getY() == this.y-1 ||
         minion.getX() == this.x+1 && minion.getY() == this.y-1){
-            minion.setHealthPoint(minion.getHealthPoint()-1);
-        }
+            minion.setMinion21EffectTrue();
+        }else
+            minion.setMinion21EffectFalse();
     }
     public void setID(int ID) {
         this.ID = ID;
     }
+    public void minion22Power(Minion minion){
+        minion22Effect++;
+        if (minion22Effect == 1 || minion22Effect >3){
+            minion.setHealthPoint(minion.getHealthPoint()-2);
+        }else if (minion22Effect == 2){
+            minion.setHealthPoint(minion.getHealthPoint()-6);
+        }else
+            minion.setHealthPoint(minion.getHealthPoint()-4);
+    }
 
-
+    public boolean getItem10(){
+        return item10;
+    }
     public int getCost() {
         return cost;
     }
@@ -198,7 +227,9 @@ public class Minion extends Card {
     }
 
     public void setHealthPoint(int healthPoint) {
-
+        if (minion21Effect){
+            this.healthPoint = healthPoint-1;
+        }else
         this.healthPoint = healthPoint;
     }
 

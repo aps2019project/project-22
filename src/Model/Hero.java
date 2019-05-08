@@ -1,38 +1,41 @@
 package Model;
 
-import java.util.ArrayList;
-
-public class Hero extends Card {
-    public static ArrayList<Hero> heroes = new ArrayList<>();
-    private int healthPoint;
-    private int attackPower;
-    private int rangeOfAttack;
-    private int manaPoint;
+public class Hero extends Card{
+   // private int healthPoint;
+   // private int attackPower;
+    private int price;
+   // private int rangeOfAttack;
+    private int mp;
+    private int howLongHasBeenCool = 0;
     private int cooldown;
+    private boolean item17 = false;
     private String typeOfHero;
-    private String typeOfAttack;
     private Spell specialPower;
-
-    public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
-                int rangeOfAttack, int manaPoint, int cooldown) {
-        setType(0);
-        this.setId(id);
-        this.setName(name);
-        this.setPrice(price);
-        this.setHealthPoint(healthPoint);
-        this.setAttackPower(attackPower);
-        this.setTypeOfAttack(typeOfAttack);
-        this.setRangeOfAttack(rangeOfAttack);
-        this.setManaPoint(manaPoint);
-        this.setCooldown(cooldown);
+    private boolean hero65Activated = false;
+    public void setItem17True(){
+        item17 = true;
+    }
+    public void setItem17False(){
+        item17 = false;
+    }
+    public boolean getItem17(){
+        return item17;
+    }
+    public void setHero65ActivatedTrue(){
+        hero65Activated = true;
+    }
+    public void setHero65ActivatedFalse(){
+        hero65Activated = false;
+    }
+    public boolean gethero65Activated(){
+        return hero65Activated;
+    }
+    public int getHowLongHasBeenCool() {
+        return howLongHasBeenCool;
     }
 
-    public static void addHero(Hero hero) {
-        heroes.add(hero);
-    }
-
-    public static ArrayList<Hero> getHeros() {
-        return heroes;
+    public void setHowLongHasBeenCool(int howLongHasBeenCool) {
+        this.howLongHasBeenCool = howLongHasBeenCool;
     }
 
     public int getHealthPoint() {
@@ -76,6 +79,13 @@ public class Hero extends Card {
         this.rangeOfAttack = rangeOfAttack;
     }
 
+    public int getMp() {
+        return mp;
+    }
+
+    public void setMp(int mp) {
+        this.mp = mp;
+    }
 
     public int getCooldown() {
         return cooldown;
@@ -85,23 +95,15 @@ public class Hero extends Card {
         this.cooldown = cooldown;
     }
 
-    public void applyType() {
-
+    public int getPrice() {
+        return price;
     }
 
-    public String getTypeOfAttack() {
-        return typeOfAttack;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public void setTypeOfAttack(String typeOfAttack) {
-        this.typeOfAttack = typeOfAttack;
-    }
+    public void applyType(){
 
-    public int getManaPoint() {
-        return manaPoint;
-    }
-
-    public void setManaPoint(int manaPoint) {
-        this.manaPoint = manaPoint;
     }
 }
