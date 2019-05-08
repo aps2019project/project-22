@@ -79,7 +79,14 @@ public class Cell {
         this.setInsideCard(null);
         return card;
     }
-
+    public static Cell getCellByxy(int x, int y) {
+        for (Cell cell : cells) {
+            if (cell.getX() == x && cell.getY() == y) {
+                return cell;
+            }
+        }
+        return null;
+    }
 
     public static void setRowsOfCells(Card[] rowsOfCells) {
         Cell.rowsOfCells = rowsOfCells;

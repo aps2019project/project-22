@@ -1,15 +1,14 @@
 package Model;
 
 import java.awt.*;
-import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class Hero extends Card{
     private static ArrayList<Hero> heroes=new ArrayList<>();
-    // private int healthPoint;
-   // private int attackPower;
+     private int healthPoint;
+    private int attackPower;
     private int price;
-   // private int rangeOfAttack;
+    private int rangeOfAttack;
     private int mp;
     private int howLongHasBeenCool = 0;
     private int cooldown;

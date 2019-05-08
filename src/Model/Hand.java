@@ -70,14 +70,4 @@ public class Hand {
     public void setGraveYard(GraveYard graveYard) {
         this.graveYard = graveYard;
     }
-    //    public void deleteFromDeck(Deck deck, Card card) {
-//        deck.getCardsOfDeck().remove(card);
-
-//    }
-
-    //    public void removeACard(int cardID) {
-//        Card card = Card.searchCardByID(cardID);
-//        this.getCardsInThisHand().remove(card);
-
-//    }
 }
