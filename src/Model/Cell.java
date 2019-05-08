@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Cell {
 
-    private static Card[] rowsOfCells=new Card[5];
-    private static Card[] columnsOfCells=new Card[9];
+    private static Card[] rowsOfCells = new Card[5];
+    private static Card[] columnsOfCells = new Card[9];
     private ArrayList<Spell> spells;
     private ArrayList<Integer> effectTime;
     private int x;
@@ -14,27 +14,33 @@ public class Cell {
     private Card cardInside;
     private static ArrayList<Cell> cells;
     private Minion minion;
-    private  Hero hero;
+    private Hero hero;
 
     public static void insertCard(Card card, int x, int y) {
-        rowsOfCells[x]=card;
-        columnsOfCells[y]=card;
+        rowsOfCells[x] = card;
+        columnsOfCells[y] = card;
     }
-    public void setFlagTrue(){
+
+    public void setFlagTrue() {
         flag = true;
     }
-    public void setFlagFalse(){
+
+    public void setFlagFalse() {
         flag = false;
     }
+
     public Minion getMinion() {
         return minion;
     }
+
     public static ArrayList<Cell> getCells() {
         return cells;
     }
+
     public static void addCells(Cell cell) {
         cells.add(cell);
     }
+
     public void setMinion(Minion minion) {
         this.minion = minion;
     }
@@ -54,26 +60,31 @@ public class Cell {
     public void setInsideCard(Card insideCard) {
         this.cardInside = insideCard;
     }
+
     public boolean getFlag() {
         return flag;
     }
-    public void addCard(Card card){
+
+    public void addCard(Card card) {
         cardInside = card;
     }
-    public void setFlag(boolean flag) {
+
+    public void setFlag(Flag flag) {
         this.flag = flag;
     }
+
     public boolean isEmpty() {
         return this.getInsideCard() == null;
     }
 
     public boolean put(Card card) {
-        if(this.isEmpty() || card == null)
+        if (this.isEmpty() || card == null)
             return false;
         this.setInsideCard(card);
 
         return true;
     }
+
     public Card pick() {
         Card card = this.getInsideCard();
         this.setInsideCard(null);
@@ -98,10 +109,10 @@ public class Cell {
     }
 
 
-
     public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
     }
+
     public ArrayList<Spell> getSpells() {
         return spells;
     }
@@ -130,14 +141,20 @@ public class Cell {
         this.y = y;
     }
 
-    public void power(){
+    public void power() {
 
     }
-    public void addSpell(Spell spell){
+
+    public void addSpell(Spell spell) {
         spells.add(spell);
     }
-    public void deleteSpell(){
 
-
+    public static Cell getCellByxy(int x, int y) {
+        for (Cell cell : cells) {
+            if (cell.getX() == x && cell.getY() == y) {
+                return cell;
+            }
+        }
+        return null;
     }
 }

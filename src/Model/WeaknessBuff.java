@@ -22,9 +22,9 @@ public class WeaknessBuff extends Buff{
         Random random=new Random(20);
         int rand=random.nextInt();
         if(rand%2==0){
-            spellCard.decreaseAp(rand);
+            spellCard.decreaseAP(rand);
         }else{
-            spellCard.decreaseHp(rand);
+            spellCard.decreaseHP(rand);
         }
     }
 }

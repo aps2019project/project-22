@@ -32,6 +32,7 @@ public class Card {
     protected int rangeOfAttack;
     protected int manaPoint;
     private boolean item12 = false;
+    protected int cost;
     protected String typeOfAttack;
     private boolean haveBeenUsed = false;
     private int counterMinion10 = 0;
@@ -76,7 +77,7 @@ public class Card {
     public int getHowLongItem9() {
         return howLongItem9;
     }
-    public void checkItem9(){
+    public int checkItem9(){
         if (howLongItem9 == 2){
             howLongItem9 = 0;
         }
@@ -313,6 +314,14 @@ public class Card {
         this.manaPoint = manaPoint;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
     public String getTypeOfAttack() {
         return typeOfAttack;
     }
@@ -374,7 +383,6 @@ public class Card {
         return null;
     }
 
-
     public int getNumberOfPlayer() {
         return numberOfPlayer;
     }
@@ -382,5 +390,6 @@ public class Card {
     public void setNumberOfPlayer(int numberOfPlayer) {
         this.numberOfPlayer = numberOfPlayer;
     }
+
 }
 

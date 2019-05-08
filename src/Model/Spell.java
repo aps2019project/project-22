@@ -1,6 +1,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import static Model.TimeOfBuff.PERMANENT;
 
 public class Spell extends Card {
 
@@ -113,20 +116,183 @@ public class Spell extends Card {
     public void setPermissionToCounterAttack(boolean permissionToCounterAttack) {
         this.permissionToCounterAttack = permissionToCounterAttack;
     }
-
-    public void increaseHp(int number) {
-        this.healthPoint+=number;
+    public void increaseAP(int ap){
+        this.attackPower += ap;
+    }
+    public void increaseHP(int hp){
+        this.healthPoint += hp;
+    }
+    public void decreaseAP(int ap){
+        this.attackPower -= ap;
+    }
+    public void decreaseHP(int hp){
+        this.healthPoint -= hp;
     }
 
-    public void decreaseHp(int number) {
-        this.healthPoint-=number;
+    private Integer[][] oneEnemyForce( int x, int y, int id) {
+        Cell cell= Cell.getCellByxy(x,y);
+        if (cell.getInsideCard() != null) {
+            if (cell.getInsideCard().getId() == id) return null;
+            Integer[][] integers = new Integer[1][2];
+            integers[0][0] = x;
+            integers[0][1] = y;
+            return integers;
+        }
+        return null;
     }
 
-    public void increaseAp(int number) {
-        this.attackPower+=number;
+    private Integer[][] oneOwnForce( int x, int y, int id) {
+        Cell cell= Cell.getCellByxy(x,y);
+        if (cell.getInsideCard() != null) {
+            if (cell.getInsideCard().getId() == id) {
+                return null;
+            }
+            Integer[][] integers = new Integer[1][2];
+            integers[0][0] = x;
+            integers[0][1] = y;
+            return integers;
+        }
+        return null;
+    }
+    private Integer[][] ownHero( int id) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                Cell cell = Cell.getCellByxy(i,j);
+                if (cell.getInsideCard() != null && cell.getInsideCard() instanceof Hero) {
+                    if (cell.getInsideCard().getId() != id) continue;
+                    Integer[][] integers = new Integer[1][2];
+                    integers[0][0] = i;
+                    integers[0][1] = j;
+                    return integers;
+                }
+            }
+        }
+        return null;
+    }
+    private Integer[][] enemyHero( int id) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                Cell cell = Cell.getCellByxy(i,j);
+                if (cell.getInsideCard()!= null && cell.getInsideCard() instanceof Hero) {
+                    if (cell.getInsideCard().getId() == id) continue;
+                    Integer[][] integers = new Integer[1][2];
+                    integers[0][0] = i;
+                    integers[0][1] = j;
+                    return integers;
+                }
+            }
+        }
+        return null;
+    }
+    private Integer[][] allEnemyForce(int id) {
+        Integer[][] integers = new Integer[15][2];
+        int index = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                Cell cell =Cell.getCellByxy(i,j);
+                if (cell.getInsideCard().getId() !=id) {
+                    integers[index][0] = i;
+                    integers[index][1] = j;
+                    index++;
+                }
+            }
+        }
+        return integers;
     }
 
-    public void decreaseAp(int number) {
-        this.attackPower-=number;
+    private Integer[][] allOwnForce( int id) {
+        Integer[][] integers = new Integer[15][2];
+        int index = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                Cell cell =Cell.getCellByxy(i,j);
+                if (cell.getInsideCard().getId() == id) {
+                    integers[index][0] = i;
+                    integers[index][1] = j;
+                    index++;
+                }
+            }
+        }
+        return integers;
+    }
+
+
+    private Integer[][] oneOwnOrEnemyForce( int x, int y) {
+        Cell cell = Cell.getCellByxy(x,y);
+        if (cell.getInsideCard() != null) {
+            Integer[][] integers = new Integer[1][2];
+            integers[0][0] = x;
+            integers[0][1] = y;
+            return integers;
+        }
+        return null;
+    }
+
+    private Integer[][] allEnemyInOneColumn( int x, int y, int id) {
+        if (x < 0 || x > 9) return null;
+        Integer[][] integers = new Integer[5][2];
+        int ind = 0;
+        for (int j = 0; j < 5; j++) {
+            Cell cell = Cell.getCellByxy(x,j);
+            if (cell.getInsideCard() == null) continue;
+            if (cell.getInsideCard().getId() ==id) {
+                integers[ind][0] = x;
+                integers[ind][1] = y;
+                ind++;
+            }
+        }
+        return integers;
+    }
+
+    private Integer[][] oneEnemyMinion( int x, int y, int id) {
+        Cell cell = Cell.getCellByxy(x,y);
+        if (cell.getInsideCard() != null) {
+            if (cell.getInsideCard() instanceof Hero) return null;
+            if (cell.getInsideCard().getId() !=id) {
+                Integer[][] integers = new Integer[1][2];
+                integers[0][0] = x;
+                integers[0][1] = y;
+                return integers;
+            }
+        }
+        return null;
+    }
+
+    private Integer[][] oneOwnMinion( int x, int y, int id) {
+        Cell cell = Cell.getCellByxy(x,y);
+        if (cell.getInsideCard() != null) {
+            if (cell.getInsideCard() instanceof Hero) return null;
+            if (cell.getInsideCard().getId()==id) {
+                Integer[][] integers = new Integer[1][2];
+                integers[0][0] = x;
+                integers[0][1] = y;
+                return integers;
+            }
+        }
+        return null;
+    }
+
+    private Integer[][] oneRandomMinionAroundOwnHero(Battle battle, int id) {
+        int[] a = battle.getPosition(battle.getEnemyHero().getId());
+        int[][] b = new int[8][2];
+        int index = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (Math.abs(a[0] - i) > 1) continue;
+                if (Math.abs(a[1] - j) > 1) continue;
+                Cell cell = Cell.getCellByxy(i,j);
+                if (cell.getInsideCard() == null) continue;
+                if (cell.getInsideCard() instanceof Hero) continue;
+                if (cell.getInsideCard().getId() == id) continue;
+                b[index][0] = i;
+                b[index][1] = j;
+                index++;
+            }
+        }
+        int random = new Random().nextInt(index);
+        Integer[][] c = new Integer[1][2];
+        c[0][0] = b[random][0];
+        c[0][1] = b[random][1];
+        return c;
     }
 }

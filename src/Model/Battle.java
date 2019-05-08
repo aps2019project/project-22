@@ -942,6 +942,42 @@ public class Battle {
         }
             }
 
+    public int[] getPosition(int cardId) {
+        int[] result = new int[2];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+Cell cell = Cell.getCellByxy(i,j);
+                if (cell.getInsideCard() != null && cell.getInsideCard().getId() ==cardId) {
+                    result[0] = i;
+                    result[1] = j;
+                    break;
+                }
+            }
         }
+        return result;
+    }
+    private Player getEnemyPlayer() {
+        if(turn == false){
+            return this.player1;
+        }
+        return this.player2;
+    }
+    public Hero getEnemyHero() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                Cell cell = Cell.getCellByxy(i,j);
+                if (cell.getInsideCard().getId() == (getEnemyPlayer().getHero().id)) {
+                    continue;
+                }
+                if (cell.getInsideCard()instanceof Hero) {
+                    return (Hero) cell.getInsideCard();
+                }
+            }
+        }
+        return null;
+    }
+
+
+}
 
 

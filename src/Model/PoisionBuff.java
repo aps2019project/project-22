@@ -7,6 +7,6 @@ public class PoisionBuff extends Buff{
 
     @Override
     public void applyBuff(Spell spellCard) {
-        spellCard.decreaseHp(1);
+        spellCard.decreaseHP(1);
     }
 }

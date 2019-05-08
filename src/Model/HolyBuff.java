@@ -7,6 +7,6 @@ public class HolyBuff extends Buff{
 
     @Override
     public void applyBuff(Spell spellCard) {
-        spellCard.increaseHp(1);
+        spellCard.increaseHP(1);
     }
 }

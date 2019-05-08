@@ -21,9 +21,9 @@ public class PowerBuff extends Buff {
         Random random=new Random(20);
         int rand=random.nextInt();
         if(rand%2==1){
-            spellCard.increaseAp(rand);
+            spellCard.increaseAP(rand);
         }else{
-            spellCard.increaseHp(rand);
+            spellCard.increaseHP(rand);
         }
     }
 }
