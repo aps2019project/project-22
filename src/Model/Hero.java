@@ -1,7 +1,12 @@
 package Model;
 
+import java.awt.*;
+import java.util.AbstractList;
+import java.util.ArrayList;
+
 public class Hero extends Card{
-   // private int healthPoint;
+    private static ArrayList<Hero> heroes=new ArrayList<>();
+    // private int healthPoint;
    // private int attackPower;
     private int price;
    // private int rangeOfAttack;
@@ -25,6 +30,10 @@ public class Hero extends Card{
         this.setRangeOfAttack(rangeOfAttack);
         this.setManaPoint(manaPoint);
         this.setCooldown(cooldown);
+    }
+
+    public static void addHero(Hero hero) {
+        heroes.add(hero);
     }
 
 

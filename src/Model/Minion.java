@@ -88,7 +88,6 @@ public class Minion extends Card {
         this.setId(ID);
         this.setName(name);
         this.setPrice(cost);
-        this.setCost(cost);
         this.setHealthPoint(healthPoint);
         this.setManaPoint(manaPoint);
         this.setAttackPower(attackPower);
@@ -112,14 +111,7 @@ public class Minion extends Card {
 
     public void setMinio25Or26PwersOr36(int i) {
         for (int k = 0; k < Cell.getCells().size(); k++) {
-            if (Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
-                    Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y ||
-                    Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y + 1 ||
-                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
-                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y ||
-                    Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
-                    Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
-                    Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y - 1) {
+            if (checking(k)) {
 
                 if (i == 25 && Cell.getCells().get(k).getMinion() != null) {
                     Cell.getCells().get(k).getMinion().setMinion25EffectTrue();
@@ -136,6 +128,17 @@ public class Minion extends Card {
             this.attackPower = this.attackPower + 2;
             this.sumOfPossetiveAttack += 2;
         }
+    }
+
+    private boolean checking(int k) {
+        return Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y ||
+                Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y + 1 ||
+                Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
+                Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y ||
+                Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
+                Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y - 1;
     }
 
     public void minion27Power(Minion minion) {
@@ -183,14 +186,7 @@ public class Minion extends Card {
     public void minion17Power() {
         if (this.healthPoint == 0) {
             for (int k = 0; k < Cell.getCells().size(); k++) {
-                if (Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
-                        Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y ||
-                        Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y + 1 ||
-                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y + 1 ||
-                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y ||
-                        Cell.getCells().get(k).getX() == this.x - 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
-                        Cell.getCells().get(k).getX() == this.x + 1 && Cell.getCells().get(k).getX() == this.y - 1 ||
-                        Cell.getCells().get(k).getX() == this.x && Cell.getCells().get(k).getX() == this.y - 1) {
+                if (checking(k)) {
                     if (Cell.getCells().get(k).getMinion() != null) {
                         Cell.getCells().get(k).getMinion().setHealthPoint(Cell.getCells().get(k).getMinion().getHealthPoint() - 2);
                     }
@@ -242,13 +238,7 @@ public class Minion extends Card {
         return item10;
     }
 
-    public int getCost() {
-        return cost;
-    }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
 
     public void setHealthPoint(int healthPoint) {
         if (minion21Effect) {
