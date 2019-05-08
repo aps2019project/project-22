@@ -24,6 +24,10 @@ public class Deck {
         Deck.decks = decks;
     }
 
+    public static void showDecks() {
+
+    }
+
     public int getSize() {
         return size;
     }

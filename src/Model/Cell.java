@@ -69,7 +69,7 @@ public class Cell {
         cardInside = card;
     }
 
-    public void setFlag(Flag flag) {
+    public void setFlag(boolean flag) {
         this.flag = flag;
     }
 
@@ -154,14 +154,5 @@ public class Cell {
 
     public void addSpell(Spell spell) {
         spells.add(spell);
-    }
-
-    public static Cell getCellByxy(int x, int y) {
-        for (Cell cell : cells) {
-            if (cell.getX() == x && cell.getY() == y) {
-                return cell;
-            }
-        }
-        return null;
     }
 }

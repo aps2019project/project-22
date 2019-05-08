@@ -272,4 +272,20 @@ public class Spell extends Card {
         c[0][1] = b[random][1];
         return c;
     }
+
+    public void increaseHP(int number) {
+        this.healthPoint+=number;
+    }
+
+    public void decreaseHP(int number) {
+        this.healthPoint -=number;
+    }
+
+    public void increaseAP(int number) {
+        this.attackPower+=number;
+    }
+
+    public void decreaseAP(int number) {
+        this.attackPower-=number;
+    }
 }
