@@ -213,6 +213,7 @@ public class Show {
                 Account.createAccount(str[2], scanner);
             }
         } else if (input.equals("2")) {
+            System.out.println("please enter your username by -login [username]-");
             input = scanner.nextLine().trim();
             str = input.split("\\s+");
             if (str.length == 2 && str[0].equals("login")) {
@@ -223,13 +224,13 @@ public class Show {
                 }
             }
         } else if (input.equals("3")) {
-            Show.showLeaderboard();
+            Show.showLeaderBoard();
         }
         showMainMenu(scanner);
         return;
     }
 
-    private static void showLeaderboard() {
+    private static void showLeaderBoard() {
         Account.sortAll();
         for (int i = 0; i < Account.getAccounts().size(); i++) {
             System.out.println((i + 1) + " - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
@@ -238,7 +239,7 @@ public class Show {
     }
 
     public static void accountIsAvailableNow() {
-        System.out.println("Account Is Available Now!");
+        System.out.println("Account Is Available Now! =)");
     }
 
     public static String getPassword(Scanner scanner) {
