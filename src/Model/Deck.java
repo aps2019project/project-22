@@ -13,9 +13,10 @@ public class Deck {
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);
 
-    public Deck(String name){
+    public Deck(String name) {
         this.setName(name);
     }
+
     public static ArrayList<Deck> getDecks() {
         return decks;
     }
@@ -101,8 +102,8 @@ public class Deck {
     }
 
     public static void deleteDeck(String deckName) {
-        for (int i=0;i<decks.size();i++){
-            if(decks.get(i).getName().equals(deckName)){
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(deckName)) {
                 decks.remove(i);
                 return;
             }
@@ -180,53 +181,83 @@ public class Deck {
         this.spells = spells;
     }
 
-    public void addCard(int id,Account account) {
-        if(hero!=null){
-            System.out.println("deck has hero now.");
-            return;
-        }
-        if(cardsOfDeck.size()==20){
-            System.out.println("deck is full!");
-            return;
-        }
-        for (int i=0;i<cardsOfDeck.size();i++){
-            if(cardsOfDeck.get(i).getId()==id){
-                System.out.println("this card is in deck now");
-                return;
-            }
-        }
-        int i=0;
-        for(;i<account.getCollection().getItems().size();i++){
-            if(account.getCollection().getItems().get(i).getId()==id){
-                break;
-            }
-        }
-        if(i==account.getCollection().getItems().size()){
-            System.out.println("this item hasn't in collection");
-       return;
-        }
-         i=0;
-        for(;i<account.getCollection().getSpells().size();i++){
-            if(account.getCollection().getSpells().get(i).getId()==id){
-                break;
-            }
-        }
-        if(i==account.getCollection().getSpells().size()){
-            System.out.println("this spell hasn't in collection");
-        return;
-        }
-        i=0;
-        for(;i<account.getCollection().getMinions().size();i++){
-            if(account.getCollection().getMinions().get(i).getId()==id){
-                break;
-            }
-        }
-        if(i==account.getCollection().getMinions().size()){
-            System.out.println("this minion hasn't in collection");
-        return;
-        }
+    public void addCard(int id, Account account) {
+        if (hasHeroInDeck()) return;
+        if (deckIsFull()) return;
+        if (isCardInDeck(id)) return;
+        int i = 0;
+        if (noItemInCollection(id, account, i)) return;
+        i = 0;
+        if (noSpellInCollection(id, account, i)) return;
+        i = 0;
+        if (noMinionInCollection(id, account, i)) return;
         Card card = new Card();
         card.setId(id);
         cardsOfDeck.add(card);
+    }
+
+    private boolean noMinionInCollection(int id, Account account, int i) {
+        for (; i < account.getCollection().getMinions().size(); i++) {
+            if (account.getCollection().getMinions().get(i).getId() == id) {
+                break;
+            }
+        }
+        if (i == account.getCollection().getMinions().size()) {
+            System.out.println("this minion hasn't in collection");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean noSpellInCollection(int id, Account account, int i) {
+        for (; i < account.getCollection().getSpells().size(); i++) {
+            if (account.getCollection().getSpells().get(i).getId() == id) {
+                break;
+            }
+        }
+        if (i == account.getCollection().getSpells().size()) {
+            System.out.println("this spell hasn't in collection");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean noItemInCollection(int id, Account account, int i) {
+        for (; i < account.getCollection().getItems().size(); i++) {
+            if (account.getCollection().getItems().get(i).getId() == id) {
+                break;
+            }
+        }
+        if (i == account.getCollection().getItems().size()) {
+            System.out.println("this item hasn't in collection");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isCardInDeck(int id) {
+        for (int i = 0; i < cardsOfDeck.size(); i++) {
+            if (cardsOfDeck.get(i).getId() == id) {
+                System.out.println("this card is in deck now");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean deckIsFull() {
+        if (cardsOfDeck.size() == 20) {
+            System.out.println("deck is full!");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasHeroInDeck() {
+        if (hero != null) {
+            System.out.println("deck has hero now.");
+            return true;
+        }
+        return false;
     }
 }

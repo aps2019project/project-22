@@ -26,8 +26,8 @@ public class Show {
         } else if ("help".equals(input)) {
             Show.helpInCollection();
         } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
-                && partsOfInput[3].equals("deck")){
-            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]),account);
+                && partsOfInput[3].equals("deck")) {
+            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
         }
     }
 
@@ -43,7 +43,8 @@ public class Show {
                 shopMenu(scanner, account);
                 break;
             case "Enter battle":
-                showBattleMenu(scanner, );
+                Battle battle = new Battle();
+                showBattleMenu(battle, scanner);
                 break;
             case "Save":
                 //save

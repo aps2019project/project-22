@@ -32,7 +32,6 @@ public class Card {
     protected int rangeOfAttack;
     protected int manaPoint;
     private boolean item12 = false;
-    protected int cost;
     protected String typeOfAttack;
     private boolean haveBeenUsed = false;
     private int counterMinion10 = 0;
@@ -312,14 +311,6 @@ public class Card {
 
     public void setManaPoint(int manaPoint) {
         this.manaPoint = manaPoint;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
     }
 
     public String getTypeOfAttack() {
