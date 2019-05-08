@@ -60,7 +60,7 @@ public class Cell {
     public void addCard(Card card){
         cardInside = card;
     }
-    public void setFlag(Flag flag) {
+    public void setFlag(boolean flag) {
         this.flag = flag;
     }
     public boolean isEmpty() {

@@ -113,4 +113,20 @@ public class Spell extends Card {
     public void setPermissionToCounterAttack(boolean permissionToCounterAttack) {
         this.permissionToCounterAttack = permissionToCounterAttack;
     }
+
+    public void increaseHp(int number) {
+        this.healthPoint+=number;
+    }
+
+    public void decreaseHp(int number) {
+        this.healthPoint-=number;
+    }
+
+    public void increaseAp(int number) {
+        this.attackPower+=number;
+    }
+
+    public void decreaseAp(int number) {
+        this.attackPower-=number;
+    }
 }

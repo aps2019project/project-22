@@ -27,7 +27,7 @@ public class Show {
             Show.helpInCollection();
         } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
                 && partsOfInput[3].equals("deck")){
-            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]));
+            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]),account);
         }
     }
 

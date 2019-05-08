@@ -240,5 +240,4 @@ public class Player {
         }
         this.manaInTurn = manaInTurn;
     }
-
 }

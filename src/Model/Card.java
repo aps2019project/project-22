@@ -77,7 +77,7 @@ public class Card {
     public int getHowLongItem9() {
         return howLongItem9;
     }
-    public int checkItem9(){
+    public void checkItem9(){
         if (howLongItem9 == 2){
             howLongItem9 = 0;
         }
@@ -358,7 +358,7 @@ public class Card {
 
     private int cardId;
 
-    public void addCard(Card card) {
+    public static void addCard(Card card) {
         cards.add(card);
     }
 

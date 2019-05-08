@@ -12,6 +12,22 @@ public class Hero extends Card{
     private String typeOfHero;
     private Spell specialPower;
     private boolean hero65Activated = false;
+
+    public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
+                int rangeOfAttack, int manaPoint, int cooldown) {
+        setType(0);
+        this.setId(id);
+        this.setName(name);
+        this.setPrice(price);
+        this.setHealthPoint(healthPoint);
+        this.setAttackPower(attackPower);
+        this.setTypeOfAttack(typeOfAttack);
+        this.setRangeOfAttack(rangeOfAttack);
+        this.setManaPoint(manaPoint);
+        this.setCooldown(cooldown);
+    }
+
+
     public void setItem17True(){
         item17 = true;
     }
