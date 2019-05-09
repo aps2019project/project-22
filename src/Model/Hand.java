@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.CharArrayReader;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -52,14 +53,9 @@ public class Hand {
         return null;
     }
 
-    public void addACard(int cardID) {
-        if (!handIfIsFull() && deck.getCardsOfDeck().size() > 0) {
-            Random random = new Random(deck.getCardsOfDeck().size());
-            int rand = random.nextInt();
-            cardsInThisHand.add(deck.getCardsOfDeck().get(rand));
-            deck.getCardsOfDeck().remove(rand);
-        }
-    }
+   public void addCard(Card card){
+        cardsInThisHand.add(card);
+   }
 
     public boolean handIfIsFull() {
         if (this.getCardsInThisHand().size() == getHand_capacity())

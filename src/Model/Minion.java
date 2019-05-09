@@ -6,24 +6,16 @@ public class Minion extends Card {
     private String description;
     private boolean minion25Effect = false;
     private boolean minion26Effect = false;
-//    private int x;
     private boolean minion21Effect = false;
     private boolean item10 = false;
     private boolean item7 = false;
-    //    private int y;
     private int minion22Effect = 0;
     private int minion23Effect = 0;
     private int minion24Effect = 0;
     private int sumOfPossetiveHealt = 0;
     private int sumOfPossetiveAttack = 0;
-   //boolean stun = false;
-   // private int healthPoint;
     private boolean disarm = false;
-   // private int manaPoint;
-   // private int cost;
     private String specialPower;
-   // private String typeOfAttack;
-   // private String activationTime;
     private static ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private int ID;
@@ -150,6 +142,9 @@ public class Minion extends Card {
         minion.setHealthPoint(minion.getHealthPoint()+1);
         minion.setSumOfPossetiveAttack(minion.getSumOfPossetiveAttack()+1);
         minion.setAttackPower(getAttackPower()-2);
+    }
+    public static ArrayList<Minion> getMinions(){
+        return minions;
     }
     public void setX(int x) {
         this.x = x;

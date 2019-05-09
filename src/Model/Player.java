@@ -2,6 +2,7 @@ package Model;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
     private static ArrayList<Player> players = new ArrayList<>();
@@ -9,7 +10,7 @@ public class Player {
     private Deck mainDeck;
     private Hand hand;
     private GraveYard graveYard = new GraveYard();
-    private int mana;
+    private int mana = 3;
     private boolean item8 = false;
     private Hero hero;
     private ArrayList<Minion> minionCards = new ArrayList<>();
@@ -71,7 +72,31 @@ public class Player {
         this.setAccount(account);
         this.setMainDeck(account.getMainDeck());
     }
-
+    public void setDeck(Deck deck){
+        Random rand = new Random();
+        for (int i = 0; i < 13; i++){
+            int n = rand.nextInt(40);
+            deck.addCardsOfDeck(Minion.getMinions().get(n));
+        }
+        for (int i = 0; i < 7; i++){
+            int n = rand.nextInt(20);
+            deck.addCardsOfDeck(Spell.getSpells().get(n));
+        }
+        int n = rand.nextInt(20);
+        deck.setItem(Item.getItems().get(n));
+        mainDeck = deck;
+    }
+    public void setHand(){
+        Random rand = new Random();
+        int n = rand.nextInt(20);
+        for (int i = 0; i < 5; i++){
+            hand.addCard(mainDeck.getCardsOfDeck().get(n));
+        }
+    }
+    public void setCard(){
+        this.minionCards = Minion.getMinions();
+        this.spellCards = Spell.getSpells();
+    }
     public Card findInGraveYard(int cardID) {
         for (Card card : getGraveYard().getCards()) {
             if (card.getCardId() == cardID) {

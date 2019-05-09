@@ -28,10 +28,84 @@ public class Deck {
 
     }
 
+    public void setLevel1(Deck deck){
+        deck.addCardsOfDeck(Minion.getMinions().get(0));
+        deck.addCardsOfDeck(Minion.getMinions().get(8));
+        deck.addCardsOfDeck(Minion.getMinions().get(10));
+        deck.addCardsOfDeck(Minion.getMinions().get(10));
+        deck.addCardsOfDeck(Minion.getMinions().get(12));
+        deck.addCardsOfDeck(Minion.getMinions().get(16));
+        deck.addCardsOfDeck(Minion.getMinions().get(17));
+        deck.addCardsOfDeck(Minion.getMinions().get(20));
+        deck.addCardsOfDeck(Minion.getMinions().get(21));
+        deck.addCardsOfDeck(Minion.getMinions().get(25));
+        deck.addCardsOfDeck(Minion.getMinions().get(37));
+        deck.addCardsOfDeck(Minion.getMinions().get(35));
+        deck.addCardsOfDeck(Minion.getMinions().get(39));
+        deck.addCardsOfDeck(Spell.getSpells().get(0));
+        deck.addCardsOfDeck(Spell.getSpells().get(6));
+        deck.addCardsOfDeck(Spell.getSpells().get(9));
+        deck.addCardsOfDeck(Spell.getSpells().get(10));
+        deck.addCardsOfDeck(Spell.getSpells().get(11));
+        deck.addCardsOfDeck(Spell.getSpells().get(17));
+        deck.addCardsOfDeck(Spell.getSpells().get(19));
+        deck.setItem(Item.getItems().get(0));
+    }
+
+    public void setLevel2(Deck deck){
+        deck.addCardsOfDeck(Minion.getMinions().get(1));
+        deck.addCardsOfDeck(Minion.getMinions().get(2));
+        deck.addCardsOfDeck(Minion.getMinions().get(4));
+        deck.addCardsOfDeck(Minion.getMinions().get(7));
+        deck.addCardsOfDeck(Minion.getMinions().get(11));
+        deck.addCardsOfDeck(Minion.getMinions().get(14));
+        deck.addCardsOfDeck(Minion.getMinions().get(14));
+        deck.addCardsOfDeck(Minion.getMinions().get(18));
+        deck.addCardsOfDeck(Minion.getMinions().get(22));
+        deck.addCardsOfDeck(Minion.getMinions().get(26));
+        deck.addCardsOfDeck(Minion.getMinions().get(29));
+        deck.addCardsOfDeck(Minion.getMinions().get(32));
+        deck.addCardsOfDeck(Minion.getMinions().get(38));
+        deck.addCardsOfDeck(Spell.getSpells().get(1));
+        deck.addCardsOfDeck(Spell.getSpells().get(2));
+        deck.addCardsOfDeck(Spell.getSpells().get(4));
+        deck.addCardsOfDeck(Spell.getSpells().get(8));
+        deck.addCardsOfDeck(Spell.getSpells().get(7));
+        deck.addCardsOfDeck(Spell.getSpells().get(12));
+        deck.addCardsOfDeck(Spell.getSpells().get(18));
+        deck.setItem(Item.getItems().get(17));
+    }
+
+    public void setLevel3(Deck deck){
+        deck.addCardsOfDeck(Minion.getMinions().get(5));
+        deck.addCardsOfDeck(Minion.getMinions().get(6));
+        deck.addCardsOfDeck(Minion.getMinions().get(9));
+        deck.addCardsOfDeck(Minion.getMinions().get(13));
+        deck.addCardsOfDeck(Minion.getMinions().get(15));
+        deck.addCardsOfDeck(Minion.getMinions().get(15));
+        deck.addCardsOfDeck(Minion.getMinions().get(19));
+        deck.addCardsOfDeck(Minion.getMinions().get(23));
+        deck.addCardsOfDeck(Minion.getMinions().get(24));
+        deck.addCardsOfDeck(Minion.getMinions().get(27));
+        deck.addCardsOfDeck(Minion.getMinions().get(28));
+        deck.addCardsOfDeck(Minion.getMinions().get(30));
+        deck.addCardsOfDeck(Minion.getMinions().get(33));
+        deck.addCardsOfDeck(Spell.getSpells().get(5));
+        deck.addCardsOfDeck(Spell.getSpells().get(9));
+        deck.addCardsOfDeck(Spell.getSpells().get(11));
+        deck.addCardsOfDeck(Spell.getSpells().get(13));
+        deck.addCardsOfDeck(Spell.getSpells().get(14));
+        deck.addCardsOfDeck(Spell.getSpells().get(15));
+        deck.addCardsOfDeck(Spell.getSpells().get(16));
+        deck.setItem(Item.getItems().get(11));
+    }
+
     public int getSize() {
         return size;
     }
-
+    public void addCardsOfDeck(Card card){
+        cardsOfDeck.add(card);
+    }
     public void setSize(int size) {
         this.size = size;
     }

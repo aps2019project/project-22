@@ -14,11 +14,6 @@ public class Battle {
     protected Player player2;
     protected int howManyFlags = 0;
     protected int mode;
-    Story storys;
-    Minion targetMinion;
-    Minion attackerMinion;
-    Hero targetHero;
-    Hero attackerHero;
     protected boolean endGame = false;
     private boolean singlePlayer = false;
     private boolean turn = false;
@@ -130,6 +125,31 @@ public class Battle {
         String command = "";
         Player player = new Player();
         Player enemyPlayer = new Player();
+        if (mode == 3) {
+            for (int i = 0; i < howManyFlags; i++) {
+                int inVvalid = 0;
+                Random rand = new Random();
+                int x = rand.nextInt(9) + 1;
+                int y = rand.nextInt(5) + 1;
+                for (int j = 0; j < Cell.getCells().size(); j++) {
+                    if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
+                        inVvalid = 1;
+                        Cell.getCells().get(j).setFlagTrue();
+                    }
+                }
+                if (inVvalid == 0)
+                    i--;
+            }
+        }else if (mode == 2){
+            Random rand = new Random();
+            int x = rand.nextInt(9) + 1;
+            int y = rand.nextInt(5) + 1;
+            for (int j = 0; j < Cell.getCells().size(); j++) {
+                if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
+                    Cell.getCells().get(j).setFlagTrue();
+                }
+            }
+        }
         while (!endGame) {
             if (!turn) {
                 player = player1;
@@ -364,6 +384,21 @@ public class Battle {
             } else {
                 player = player2;
                 enemyPlayer = player1;
+            }
+            if (player1Turns == 2){
+                player.setMana(4);
+            }else if (player1Turns == 3){
+                player.setMana(5);
+            }else if (player1Turns == 4){
+                player.setMana(6);
+            }else if (player1Turns == 5){
+                player.setMana(7);
+            }else if (player1Turns == 6){
+                player.setMana(8);
+            }else if (player1Turns == 7){
+                player.setMana(9);
+            }else if (player1Turns >= 8){
+                player.setMana(9);
             }
             if (player.getFlag()) {
                 player.setHowLongFlagsHasBeenKept(player.getHowLongFlagsHasBeenKept() + 1);
@@ -831,6 +866,10 @@ public class Battle {
                             } else {
                                 Cell.insertCard(player.getHand().getCardsInThisHand().get(card1ID), x, y);
                                 player.addCardsInTheFile(player.getHand().getCardsInThisHand().get(card1ID));
+                                player.getHand().getCardsInThisHand().remove(player.getHand().getCardsInThisHand().get(card1ID));
+                                Random rand = new Random();
+                                int n = rand.nextInt(20);
+                                player.getHand().addCard(player.getMainDeck().getCardsOfDeck().get(n));
                                 if (player.getMainDeck().getItem().getId() == 84) {
                                     enemyPlayer.getHero().setHealthPoint(enemyPlayer.getHero().getHealthPoint() - 1);
                                 } else if (player.getMainDeck().getItem().getId() == 89) {
@@ -933,7 +972,7 @@ public class Battle {
                         }
                     }
                 } else if (command.indexOf("End game") != -1) {
-
+                    return;
                 } else if (command.indexOf("Show collectables") != -1) {
                     for (int i = 0; i < player.getCollectibleItems().size(); i++)
                         player.getCollectibleItems().get(i).showItemInfo();
@@ -942,6 +981,7 @@ public class Battle {
                 }
             }
         }
+        System.out.println("Game end");
     }
 
     public int[] getPosition(int cardId) {
