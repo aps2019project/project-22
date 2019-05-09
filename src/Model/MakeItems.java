@@ -1,7 +1,7 @@
 package Model;
 
 public class MakeItems {
-    public void make() {
+    public static void make() {
         Item[] items = new Item[20];
         items[0] = new Item(71, "taje danaii", 300, "increase one unit mana in 3 turns ");
         items[1] = new Item(72, "namus separ", 4000, "active 12 holy buff in insider hero");
@@ -36,6 +36,7 @@ public class MakeItems {
 
         for (int i = 0; i < 20; i++) {
             Item.addItem(items[i]);
+            Shop.addItem(items[i]);
         }
     }
 }

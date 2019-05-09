@@ -1,7 +1,7 @@
 package Model;
 
 public class MakeSpell {
-    public void make() {
+    public static void make() {
         Spell[] spells = new Spell[20];
         spells[0] = new Spell(41, "Total Disarm", 1000, 0, "ENEMY_ONE_CARD",
                 "DISARM_ALL_TURNS");
@@ -68,6 +68,7 @@ public class MakeSpell {
         for (int i = 0; i < 20; i++) {
             Spell.addSpell(spells[i]);
             Card.addCard(spells[i]);
+            Shop.addSpell(spells[i]);
         }
     }
 

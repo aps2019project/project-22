@@ -1,33 +1,31 @@
 
-òsquid:S1186L"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÉµÁõ
-òsquid:S1186P"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(∆ÅØá
-Nsquid:UnusedPrivateMethod8")Remove this unused private "save" method.(¶Â‰Ó
-òsquid:S1186$"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯ºøÿ
-bsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(ˆö…Ù
-gsquid:CommentedOutCodeLine*"<This block of commented-out lines of code should be removed.(Èÿª⁄˚ˇˇˇˇ
-ùsquid:S1186<"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ä¶ÃÒ˚ˇˇˇˇ
-[squid:UnusedPrivateMethodL"6Remove this unused private "checkValidateDeck" method.(ÉµÁõ
-åsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ë–•◊¯ˇˇˇˇ
-Gsquid:S11720"+Remove this unused method parameter "name".(„¸ßò˚ˇˇˇˇ
-Wsquid:UnusedPrivateMethod0"-Remove this unused private "showDeck" method.(„¸ßò˚ˇˇˇˇ
-Ysquid:UnusedPrivateMethod<"/Remove this unused private "createDeck" method.(Ä¶ÃÒ˚ˇˇˇˇ
-gsquid:CommentedOutCodeLine6"<This block of commented-out lines of code should be removed.(Èÿª⁄˚ˇˇˇˇ
-Gsquid:S1172@"+Remove this unused method parameter "name".(•òÂ‘¯ˇˇˇˇ
-=squid:S1172D"&Remove these unused method parameters.(›±åß
-gsquid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(≈πØÍ¸ˇˇˇˇ
-òsquid:S1186D"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›±åß
-Psquid:UnusedPrivateMethodH"+Remove this unused private "remove" method.(ã‹õ•
-Bsquid:S1172L"+Remove this unused method parameter "name".(ÉµÁõ
+ùsquid:S1186W"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ç÷úì˙ˇˇˇˇ
+Nsquid:UnusedPrivateMethod|")Remove this unused private "help" method.(∆ÅØá
+gsquid:CommentedOutCodeLinea"<This block of commented-out lines of code should be removed.(Èÿª⁄˚ˇˇˇˇ
+bsquid:CommentedOutCodeLineS"<This block of commented-out lines of code should be removed.(ˆö…Ù
+=squid:S1172t"&Remove these unused method parameters.(ã‹õ•
+òsquid:S1186|"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(∆ÅØá
+òsquid:S1186t"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ã‹õ•
+Gsquid:S1172["+Remove this unused method parameter "name".(„¸ßò˚ˇˇˇˇ
+gsquid:CommentedOutCodeLineU"<This block of commented-out lines of code should be removed.(Èÿª⁄˚ˇˇˇˇ
+ásquid:S1319G"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÒÀ«≥
+Wsquid:UnusedPrivateMethod["-Remove this unused private "showDeck" method.(„¸ßò˚ˇˇˇˇ
+òsquid:S1186K"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜≠√Ì
+=squid:S1172p"&Remove these unused method parameters.(›±åß
+òsquid:S1186O"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯ºøÿ
+gsquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(≈πØÍ¸ˇˇˇˇ
+Ssquid:UnusedPrivateMethodW")Remove this unused private "show" method.(ç÷úì˙ˇˇˇˇ
+Psquid:UnusedPrivateMethodt"+Remove this unused private "remove" method.(ã‹õ•
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(·ñÃì
-ùsquid:S1186@"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•òÂ‘¯ˇˇˇˇ
-Nsquid:UnusedPrivateMethodP")Remove this unused private "help" method.(∆ÅØá
-ùsquid:S1186,"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ç÷úì˙ˇˇˇˇ
-òsquid:S1186H"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ã‹õ•
-=squid:S1172H"&Remove these unused method parameters.(ã‹õ•
-Ssquid:UnusedPrivateMethod,")Remove this unused private "show" method.(ç÷úì˙ˇˇˇˇ
-ùsquid:S11860"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„¸ßò˚ˇˇˇˇ
-òsquid:S11868"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶Â‰Ó
-Ysquid:UnusedPrivateMethod@"/Remove this unused private "deleteDeck" method.(•òÂ‘¯ˇˇˇˇ
-ásquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÒÀ«≥
-òsquid:S1186"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜≠√Ì
-Gsquid:S1172<"+Remove this unused method parameter "name".(Ä¶ÃÒ˚ˇˇˇˇ
+ùsquid:S1186["ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„¸ßò˚ˇˇˇˇ
+òsquid:S1186p"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›±åß
+Tsquid:UnusedPrivateMethodp"(Remove this unused private "add" method.(›±åß8µÂ—√©-
+isquid:CommentedOutCodeLinex"<This block of commented-out lines of code should be removed.(ﬂ©≠Á8µÂ—√©-
+nsquid:CommentedOutCodeLinez"<This block of commented-out lines of code should be removed.(Èÿª⁄˚ˇˇˇˇ8µÂ—√©-
+èsquid:S1319Ä"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(πÛîÏ8µÂ—√©-
+èsquid:S1319ç"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(÷¨¸ª8µÂ—√©-
+èsquid:S1319ë"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(π˛˜ç8µÂ—√©-
+îsquid:S1319ï"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Î€âì˝ˇˇˇˇ8µÂ—√©-
+§squid:S1186h"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(∞¨ø„˙ˇˇˇˇ8µÂ—√©-
+§squid:S1186l"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·”Áâ˙ˇˇˇˇ8µÂ—√©-
+bsquid:UselessImportCheck"2Remove this unused import 'java.util.Collections'.(¢≥Ô”˛ˇˇˇˇ8µÂ—√©-

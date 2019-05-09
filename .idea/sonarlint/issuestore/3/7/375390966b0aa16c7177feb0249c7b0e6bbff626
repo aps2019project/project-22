@@ -1,0 +1,90 @@
+
+Zsquid:S1854Û";Remove this useless assignment to local variable "enemyId".(ãÊ‚ñ8•™èÃ©-
+Lsquid:S1125"(Remove the literal "true" boolean value.(ßŠû¿ùÿÿÿÿ8•™èÃ©-
+Nsquid:S1066Ú"/Merge this if statement with the enclosing one.(›Ã»8•™èÃ©-
+\
+squid:S106é"9Replace this use of System.out or System.err by a logger.(„„…ğùÿÿÿÿ8•™èÃ©-
+\
+squid:S106ª"9Replace this use of System.out or System.err by a logger.(Ş¾ĞÅûÿÿÿÿ8•™èÃ©-
+\
+squid:S106‡"9Replace this use of System.out or System.err by a logger.(š‹Œ”şÿÿÿÿ8•™èÃ©-
+Xsquid:S1854ƒ":Remove this useless assignment to local variable "player".( öøX8•™èÃ©-
+W
+squid:S106¾"9Replace this use of System.out or System.err by a logger.(ëâ¦ø8•™èÃ©-
+qsquid:S00117€"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’á¦Ì8•™èÃ©-
+Bsquid:S2119õ"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8•™èÃ©-
+Wsquid:S1197­"8Move the array designator from the variable to the type.(‘‹Ş±8•™èÃ©-
+Bsquid:S2119"Save and re-use this "Random".(”ÈŒ†ÿÿÿÿÿ8•™èÃ©-
+Bsquid:S2119ì"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8•™èÃ©-
+squid:S1319."pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(°ÆØ…8•™èÃ©-
+csquid:S1854„"?Remove this useless assignment to local variable "enemyPlayer".(Æ¹èúÿÿÿÿÿ8•™èÃ©-
+Bsquid:S2119ó"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8•™èÃ©-
+@squid:S1643"Use a StringBuilder instead.(İßÁíşÿÿÿÿ8•™èÃ©-
+W
+squid:S106—"9Replace this use of System.out or System.err by a logger.(¡¥ä¦8•™èÃ©-
+W
+squid:S106î"9Replace this use of System.out or System.err by a logger.(òÑ‘ú8•™èÃ©-
+\
+squid:S106¡"9Replace this use of System.out or System.err by a logger.(Îâğúÿÿÿÿ8•™èÃ©-
+Msquid:S1125™")Remove the literal "false" boolean value.(¯¬—²şÿÿÿÿ8•™èÃ©-
+Nsquid:S1066ß"/Merge this if statement with the enclosing one.(›Ã»8•™èÃ©-
+\squid:S1197Ù"8Move the array designator from the variable to the type.(àøáòøÿÿÿÿ8•™èÃ©-
+\
+squid:S106»"9Replace this use of System.out or System.err by a logger.(“—àÅúÿÿÿÿ8•™èÃ©-
+Bsquid:S2119•"Save and re-use this "Random".(”ÈŒ†ÿÿÿÿÿ8•™èÃ©-
+\squid:S1197§"8Move the array designator from the variable to the type.(àøáòøÿÿÿÿ8•™èÃ©-
+Wsquid:S1197£"8Move the array designator from the variable to the type.(‘‹Ş±8•™èÃ©-
+Bsquid:S2119ö"Save and re-use this "Random".(©Î…ğÿÿÿÿÿ8•™èÃ©-
+Nsquid:S1066ó"/Merge this if statement with the enclosing one.(›Ã»8•™èÃ©-
+Hsquid:S1125«")Remove the literal "false" boolean value.(”ëéã8•™èÃ©-
+W
+squid:S106å"9Replace this use of System.out or System.err by a logger.(œŠäÕ8•™èÃ©-
+Msquid:S1125ú")Remove the literal "false" boolean value.(êª´¸øÿÿÿÿ8•™èÃ©-
+Bsquid:S2119†"Save and re-use this "Random".(¾à¢©øÿÿÿÿ8•™èÃ©-
+Bsquid:S2119Ñ"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8•™èÃ©-
+Msquid:S1066Å"/Merge this if statement with the enclosing one.(„æ¿v8•™èÃ©-
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÎºÙ8•™èÃ©-
+=squid:S2119™"Save and re-use this "Random".(îÕ§Ğ8•™èÃ©-
+Wsquid:S1197¨"8Move the array designator from the variable to the type.(Ãíœ8•™èÃ©-
+\
+squid:S106Ó"9Replace this use of System.out or System.err by a logger.(Ğ¸Ğûúÿÿÿÿ8•™èÃ©-
+Bsquid:S2119›"Save and re-use this "Random".(¾à¢©øÿÿÿÿ8•™èÃ©-
+Bsquid:S2119“"Save and re-use this "Random".(¾à¢©øÿÿÿÿ8•™èÃ©-
+csquid:S1854ş"?Remove this useless assignment to local variable "attackPower".(¦ğõµûÿÿÿÿ8•™èÃ©-
+Bsquid:S2119‚"Save and re-use this "Random".(”ÈŒ†ÿÿÿÿÿ8•™èÃ©-
+V
+squid:S106­"9Replace this use of System.out or System.err by a logger.(ŸÂû}8•™èÃ©-
+Tsquid:S1854–"5Remove this useless assignment to local variable "y".(‘™ûß8•™èÃ©-
+Isquid:S00108§")Either remove or fill this block of code.(œ…¼8•™èÃ©-
+Jsquid:S1481{",Remove this unused "isValid" local variable.(¸©Î•8•™èÃ©-
+psquid:S3776K"RRefactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.(ï³Ì‘8•™èÃ©-
+\
+squid:S106Ö"9Replace this use of System.out or System.err by a logger.(“—àÅúÿÿÿÿ8•™èÃ©-
+Nsquid:S00108")Either remove or fill this block of code.(İÎƒıøÿÿÿÿ8•™èÃ©-
+\
+squid:S106—"9Replace this use of System.out or System.err by a logger.(ã—ş¥ÿÿÿÿÿ8•™èÃ©-
+Wsquid:S1197Ú"8Move the array designator from the variable to the type.(Ãíœ8•™èÃ©-
+\
+squid:S106ù"9Replace this use of System.out or System.err by a logger.(š‹Œ”şÿÿÿÿ8•™èÃ©-
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
+Lsquid:S1125L")Remove the literal "false" boolean value.(Ï¨³Åûÿÿÿÿ8•™èÃ©-
+Tsquid:S1481ù"0Remove this unused "attackPower" local variable.(µÚõåúÿÿÿÿ8•™èÃ©-
+\
+squid:S106£"9Replace this use of System.out or System.err by a logger.(Ş¾ĞÅûÿÿÿÿ8•™èÃ©-
+jsquid:S1764´"KCorrect one of the identical sub-expressions on both sides of operator "||"(À¬ÿÅ8•™èÃ©-
+Bsquid:S2119€"Save and re-use this "Random".(¾à¢©øÿÿÿÿ8•™èÃ©-
+\
+squid:S106ç"9Replace this use of System.out or System.err by a logger.(¦ò¾Üşÿÿÿÿ8•™èÃ©-
+Ssquid:S1066ã"/Merge this if statement with the enclosing one.(¥€÷çùÿÿÿÿ8•™èÃ©-
+W
+squid:S106¸"9Replace this use of System.out or System.err by a logger.(œŠäÕ8•™èÃ©-
+\
+squid:S106›"9Replace this use of System.out or System.err by a logger.(±œöÎÿÿÿÿÿ8•™èÃ©-
+esquid:S1192ˆ"FDefine a constant instead of duplicating this literal "combo" 3 times.(¨ËÅÂ8•™èÃ©-
+Nsquid:S1066Æ"/Merge this if statement with the enclosing one.(›Ã»8•™èÃ©-
+W
+squid:S106ü"9Replace this use of System.out or System.err by a logger.(òÑ‘ú8•™èÃ©-
+Esquid:S1481–"&Remove this unused "y" local variable.(‘™ûß8•™èÃ©-
+vsquid:S3776z"SRefactor this method to reduce its Cognitive Complexity from 895 to the 15 allowed.(íÉğ­ûÿÿÿÿ8•™èÃ©-
+Hsquid:S1125Â")Remove the literal "false" boolean value.(ÕŒò8›¿Ç©-

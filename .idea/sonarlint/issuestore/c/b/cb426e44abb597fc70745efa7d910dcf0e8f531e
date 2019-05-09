@@ -1,8 +1,8 @@
 
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
-‡squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Î€•Ÿ
-squid:S11865"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.( öÈïûÿÿÿÿ
-Œsquid:S1319"uThe type of the "effectTime" object should be an interface such as "List" rather than the implementation "ArrayList".(¬éšÔ
-‡squid:S13199"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¹ş÷
-squid:S1186?"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰¸Ò øÿÿÿÿ
-‡squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õ¤—À
+squid:S1319$"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õ¤—À8³è¾Ç©-
+¥squid:S1186—"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.( öÈïûÿÿÿÿ8³è¾Ç©-
+squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Î€•Ÿ8³è¾Ç©-
+squid:S1319w"qThe type of the "spells" object should be an interface such as "List" rather than the implementation "ArrayList".(‚ğßİ8³è¾Ç©-
+”squid:S1319ƒ"uThe type of the "effectTime" object should be an interface such as "List" rather than the implementation "ArrayList".(¬éšÔ8³è¾Ç©-
+squid:S1319{"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¹ş÷8³è¾Ç©-

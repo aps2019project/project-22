@@ -1,7 +1,23 @@
 
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¤ÂÂœúÿÿÿÿ
-squid:S1186$"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ù¯ıÿÿÿÿ
-˜squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û†ÑÛ
+™squid:S1186„"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞÇæó
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
-˜squid:S1186
-"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞÇæó
+squid:S1186Œ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¤ÂÂœúÿÿÿÿ
+™squid:S1186ˆ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û†ÑÛ
+jsquid:S1192)"GDefine a constant instead of duplicating this literal "hybrid" 3 times.(Ôé¾›ÿÿÿÿÿ8ïÛäÄ©-
+jsquid:S1192)"GDefine a constant instead of duplicating this literal "ranged" 3 times.(Ôé¾›ÿÿÿÿÿ8ïÛäÄ©-
+Nsquid:S1444"+Make this "public static items" field final(š»Ñüúÿÿÿÿ8ïÛäÄ©-
+ysquid:S4144_"VUpdate this method so that its implementation is not identical to "item11" on line 90.(‹ûè”ûÿÿÿÿ8ïÛäÄ©-
+“squid:S1319"pThe type of the "items" object should be an interface such as "List" rather than the implementation "ArrayList".(š»Ñüúÿÿÿÿ8ïÛäÄ©-
+squid:S1319€"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÿˆâÒ8ïÛäÄ©-
+”squid:S1319È"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÄÊò‚ûÿÿÿÿ8ïÛäÄ©-
+›squid:S1319Ì"|The type of the "itemsOfUsableItem" object should be an interface such as "List" rather than the implementation "ArrayList".(Õš›Â8ïÛäÄ©-
+‹"squid:ClassVariableVisibilityCheck"QMake items a static final constant or non-public and provide accessors if needed.(š»Ñüúÿÿÿÿ8ïÛäÄ©-
+Ÿsquid:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(è¼áó8ïÛäÄ©-
+@squid:S2386"Make this member "protected".(š»Ñüúÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119$"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119/"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S21199"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119F"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119Q"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119["Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-
+Asquid:S2119`"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ïÛäÄ©-

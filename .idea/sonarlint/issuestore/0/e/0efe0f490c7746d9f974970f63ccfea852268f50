@@ -1,3 +1,17 @@
 
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
-˜squid:S1186N"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞÇæó
+Rsquid:S2387"/"healthPoint" is the name of a field in "Card".(¢’ìÎüÿÿÿÿ8ÁÜ¾Ç©-
+Fsquid:S2387
+")"price" is the name of a field in "Card".(ˆÑ€(8ÁÜ¾Ç©-
+Msquid:S2387	"/"attackPower" is the name of a field in "Card".(Å÷…©8ÁÜ¾Ç©-
+Tsquid:S2387"1"rangeOfAttack" is the name of a field in "Card".(¥ˆ¡Ùùÿÿÿÿ8ÁÜ¾Ç©-
+ squid:S1186‚"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ŞÇæó8ÁÜ¾Ç©-
+Xsquid:S1161E":Add the "@Override" annotation above this method signature(÷Ã¥”8ÁÜ¾Ç©-
+]squid:S1161f":Add the "@Override" annotation above this method signature(ñé¼Æøÿÿÿÿ8ÁÜ¾Ç©-
+Xsquid:S1161b":Add the "@Override" annotation above this method signature(¸òø8ÁÜ¾Ç©-
+Xsquid:S1161~":Add the "@Override" annotation above this method signature(¢¬¢ß8ÁÜ¾Ç©-
+]squid:S1161M":Add the "@Override" annotation above this method signature(Øä½–üÿÿÿÿ8ÁÜ¾Ç©-
+]squid:S1161A":Add the "@Override" annotation above this method signature(¯ôÍûÿÿÿÿ8ÁÜ¾Ç©-
+]squid:S1161z":Add the "@Override" annotation above this method signature(ê¾ƒ–úÿÿÿÿ8ÁÜ¾Ç©-
+Xsquid:S1161I":Add the "@Override" annotation above this method signature(’‡¢Ê8ÁÜ¾Ç©-
+esquid:S00107"AConstructor has 9 parameters, which is greater than 7 authorized.(ôŒôºıÿÿÿÿ8ÁÜ¾Ç©-

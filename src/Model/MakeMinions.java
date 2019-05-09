@@ -1,7 +1,7 @@
 package Model;
 
 public class MakeMinions {
-    public void make() {
+    public  static void make() {
         Minion[] minions = new Minion[40];
         minions[0] = new Minion(1, "kamandare fars", 300, 2, 6, 4,
                 "ranged", 7, "not","Nothing" );
@@ -89,6 +89,7 @@ public class MakeMinions {
         for (int i = 0; i < 40; i++) {
             Minion.addMinion(minions[i]);
             Card.addCard(minions[i]);
+            Shop.addMinion(minions[i]);
         }
     }
 }

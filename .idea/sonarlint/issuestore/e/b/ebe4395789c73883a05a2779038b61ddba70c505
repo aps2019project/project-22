@@ -1,12 +1,38 @@
 
-†squid:S1319&"pThe type of the "cards" object should be an interface such as "List" rather than the implementation "ArrayList".(—ü½
-—squid:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(—ü½
-‡squid:S1319#"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õ“Í¶
-Œsquid:S1319 "pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ò­öşøÿÿÿÿ
-?squid:S1068
-"(Remove this unused "buff" private field.(»í™æ
-—squid:S1186)"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ª·¤Y
+dsquid:UnusedPrivateMethod…"2Remove this unused private "oneEnemyForce" method.(´®’ºúÿÿÿÿ8Ìô¡Ç©-
+Jsquid:S1168Ñ"&Return an empty array instead of null.(¯»ñëşÿÿÿÿ8—¤Ç©-
+bsquid:UnusedPrivateMethod•"0Remove this unused private "oneOwnForce" method.(”ó—¬ûÿÿÿÿ8íÙ Ç©-
+vsquid:S1450
+"SRemove the "cost" field and declare it as a local variable in the relevant methods.(«Š„ãüÿÿÿÿ8ÊÚ¾Ç©-
+w
+squid:S135"YReduce the total number of break and continue statements in this loop to use at most one.(¦Õıú8—¤Ç©-
+Esquid:S1168ù"&Return an empty array instead of null.(¥¹ï8—¤Ç©-
+msquid:S4201œ"IRemove this unnecessary null check; "instanceof" returns false for nulls.(ü§ üÿÿÿÿ8íÙ Ç©-
+vsquid:S3776ü"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(¸¯ùÊùÿÿÿÿ8—¤Ç©-
+”squid:S1319"qThe type of the "spells" object should be an interface such as "List" rather than the implementation "ArrayList".(©¾ì“øÿÿÿÿ8ÊÚ¾Ç©-
+psquid:S00117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìåÇ8ÊÚ¾Ç©-
+Jsquid:S1168Œ"&Return an empty array instead of null.(¨®›øÿÿÿÿ8±ü¢Ç©-
+squid:S1845œ"nRename method "increaseAP" to prevent any misunderstanding/clash with method "increaseAp" defined on line 126.(şèÓ8İÆÌÇ©-
+^squid:UnusedPrivateMethod¶"2Remove this unused private "allEnemyForce" method.(Ğ¦êa8íÙ Ç©-
+Esquid:S1168ã"&Return an empty array instead of null.(œÓ­Á8—¤Ç©-
+dsquid:UnusedPrivateMethodÅ"7Remove this unused private "oneOwnOrEnemyForce" method.(˜¡ñÉ8—¤Ç©-
+csquid:UnusedPrivateMethodî"1Remove this unused private "oneOwnMinion" method.(Ì¡ÆÚıÿÿÿÿ8—¤Ç©-
+Ysquid:UnusedPrivateMethod˜",Remove this unused private "ownHero" method.(Ø8íÙ Ç©-
+msquid:S4201«"IRemove this unnecessary null check; "instanceof" returns false for nulls.(ü§ üÿÿÿÿ8íÙ Ç©-
+Esquid:S1168’"&Return an empty array instead of null.(¥¹ï8±ü¢Ç©-
+squid:S1845˜"nRename method "decreaseHP" to prevent any misunderstanding/clash with method "decreaseHp" defined on line 122.(ÊèƒÑ8„ËÇ©-
+’squid:S1845”"nRename method "increaseHP" to prevent any misunderstanding/clash with method "increaseHp" defined on line 118.(²ıøºÿÿÿÿÿ8ôÊÇ©-
+esquid:UnusedPrivateMethodà"3Remove this unused private "oneEnemyMinion" method.(Ö˜Šéıÿÿÿÿ8—¤Ç©-
+Esquid:S1168Í"&Return an empty array instead of null.(¥¹ï8—¤Ç©-
+Esquid:S1168´"&Return an empty array instead of null.(¥¹ï8íÙ Ç©-
+“squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¸ÌşËüÿÿÿÿ8ÊÚ¾Ç©-
+Ksquid:S1068
+"(Remove this unused "cost" private field.(«Š„ãüÿÿÿÿ8ÊÚ¾Ç©-
+Esquid:S1168ë"&Return an empty array instead of null.(¥¹ï8—¤Ç©-
+esquid:UnusedPrivateMethodĞ"8Remove this unused private "allEnemyInOneColumn" method.(è×áç8—¤Ç©-
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
-˜squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û†ÑÛ
-†squid:S1319)"pThe type of the "cells" object should be an interface such as "List" rather than the implementation "ArrayList".(ª·¤Y
-Asquid:S1068	"*Remove this unused "effect" private field.(££Œê
+Zsquid:UnusedPrivateMethod§".Remove this unused private "enemyHero" method.(¾î°K8íÙ Ç©-
+Esquid:S1168¥"&Return an empty array instead of null.(¥¹ï8íÙ Ç©-
+Esquid:S1168ñ"&Return an empty array instead of null.(œÓ­Á8—¤Ç©-
+ssquid:UnusedPrivateMethodü"ARemove this unused private "oneRandomMinionAroundOwnHero" method.(¸¯ùÊùÿÿÿÿ8—¤Ç©-
+squid:S1845 "nRename method "decreaseAP" to prevent any misunderstanding/clash with method "decreaseAp" defined on line 130.(—²¢ˆ8³îÍÇ©-

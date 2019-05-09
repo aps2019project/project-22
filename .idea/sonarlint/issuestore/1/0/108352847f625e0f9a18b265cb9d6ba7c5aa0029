@@ -1,0 +1,17 @@
+
+ásquid:S1319h"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Æçäﬁ
+hsquid:S1223F"LRename this method to prevent any misunderstanding or make it a constructor.(Øô≥Ü˚ˇˇˇˇ
+åsquid:S1319}"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¸òÊì˙ˇˇˇˇ
+çsquid:S1319©"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(√â‡Ö˚ˇˇˇˇ
+èsquid:S1845ù"rRename method "setGraveYard" to prevent any misunderstanding/clash with method "setGraveyard" defined on line 112.(°˜ﬂ≈˚ˇˇˇˇ
+ísquid:S1319µ"uThe type of the "spellCards" object should be an interface such as "List" rather than the implementation "ArrayList".(∂Æü§˘ˇˇˇˇ
+ésquid:S1845ô"qRename method "getGraveYard" to prevent any misunderstanding/clash with method "getGraveyard" defined on line 92.(∑ç’Ú˚ˇˇˇˇ
+Vsquid:S1854ﬂ">Remove this useless assignment to local variable "manaInTurn".(ÏÑÚ–
+ésquid:S1319≠"vThe type of the "minionCards" object should be an interface such as "List" rather than the implementation "ArrayList".(Æ€øı
+çsquid:S1319±"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(⁄êÚ¥˝ˇˇˇˇ
+ásquid:S1319C"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¿°Õ®
+âsquid:S1319="rThe type of the "players" object should be an interface such as "List" rather than the implementation "ArrayList".(’˘ Ù
+ksquid:S00100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øô≥Ü˚ˇˇˇˇ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(·ñÃì
+ósquid:S1319l"{The type of the "collectibleItems" object should be an interface such as "List" rather than the implementation "ArrayList".(áû—Ó˝ˇˇˇˇ
+asquid:HiddenFieldCheckﬂ">Rename "manaInTurn" which hides the field declared at line 24.(ÏÑÚ–

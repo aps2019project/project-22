@@ -286,12 +286,12 @@ public class Account {
     }
 
 
-    public void increaseMoney(int increase) {
-        this.money += increase;
+    public void increaseMoney(int price) {
+        this.money += price;
     }
 
-    public void decreaseMoney(int decrease) {
-        this.money -= decrease;
+    public void decreaseMoney(int price) {
+        this.money -= price;
     }
 
 

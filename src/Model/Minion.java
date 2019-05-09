@@ -79,6 +79,7 @@ public class Minion extends Card {
     public Minion(int ID,String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
         this.ID = ID;
         this.cost = cost;
+        this.price=cost;
         this.healthPoint = healthPoint;
         this.manaPoint = mana;
         this.attackPower = attackPower;
@@ -286,4 +287,11 @@ public class Minion extends Card {
     }
 
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -1,0 +1,12 @@
+
+csquid:S1192	"GDefine a constant instead of duplicating this literal "melee" 21 times.(ŒÅ™íÿÿÿÿÿ
+bsquid:S1192"FDefine a constant instead of duplicating this literal "Combo" 4 times.(—º¯Õøÿÿÿÿ
+bsquid:S1192"FDefine a constant instead of duplicating this literal "combo" 4 times.(—º¯Õøÿÿÿÿ
+fsquid:S1192	"JDefine a constant instead of duplicating this literal "On Attack" 8 times.(ŒÅ™íÿÿÿÿÿ
+csquid:S1192"GDefine a constant instead of duplicating this literal "hybrid" 4 times.(¿¿²ÿÿÿÿÿ
+esquid:S1192"IDefine a constant instead of duplicating this literal "Nothing" 13 times.(ÅğâÌùÿÿÿÿ
+esquid:S1192/"IDefine a constant instead of duplicating this literal "On Spawn" 3 times.(Œº¦©úÿÿÿÿ
+dsquid:S1192#"HDefine a constant instead of duplicating this literal "passive" 4 times.(Œøö˜ıÿÿÿÿ
+asquid:S1192?"JDefine a constant instead of duplicating this literal "On Defend" 4 times.(Ùû¬
+dsquid:S1192"HDefine a constant instead of duplicating this literal "ranged" 14 times.(ÅğâÌùÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“

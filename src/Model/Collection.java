@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Collection {
 
@@ -92,10 +91,6 @@ public class Collection {
 
     }
 
-//    private int search(String name) {
-//
-//    }
-
     public void save() {
         //save
 
@@ -116,10 +111,6 @@ public class Collection {
     private void remove(int id, String name) {
 
     }
-
-//    private void checkValidateDeck(String name) {
-//
-//    }
 
     private void help() {
 

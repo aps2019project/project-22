@@ -1,2 +1,41 @@
 
+Usquid:S1068"2Remove this unused "minion26Effect" private field.(´Òáÿÿÿÿÿ8»åÑÃ©-
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á–Ì“
+Nsquid:S1066°"/Merge this if statement with the enclosing one.(‰ŒÇ–8Óü¾Ç©-
+Rsquid:S1068"/Remove this unused "description" private field.(ÇÓæâıÿÿÿÿ8Óü¾Ç©-
+Lsquid:S1068")Remove this unused "item7" private field.(¸éÛ úÿÿÿÿ8Óü¾Ç©-
+Usquid:S1068"2Remove this unused "minion23Effect" private field.(¥ŒË”ùÿÿÿÿ8Óü¾Ç©-
+Usquid:S1068"2Remove this unused "minion24Effect" private field.(Îû°Âúÿÿÿÿ8Óü¾Ç©-
+Hsquid:S1068"*Remove this unused "disarm" private field.(îı·“8Óü¾Ç©-
+Hsquid:S1068"*Remove this unused "spells" private field.(°ğÀã8Óü¾Ç©-
+xsquid:S3973é"YUse curly braces or indentation to denote the code conditionally executed by this "else".(ÔÍØ8Óü¾Ç©-
+nsquid:CommentedOutCodeLine	"<This block of commented-out lines of code should be removed.(ñ®¤şÿÿÿÿ8Óü¾Ç©-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ªÄ¿šúÿÿÿÿ8Óü¾Ç©-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ø–èïüÿÿÿÿ8Óü¾Ç©-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Üşä¿şÿÿÿÿ8Óü¾Ç©-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ö¯¡×8Óü¾Ç©-
+psquid:S3776e"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(Å…×8Óü¾Ç©-
+vsquid:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(‘¨Ù´ÿÿÿÿÿ8Óü¾Ç©-
+asquid:S00107O"BConstructor has 10 parameters, which is greater than 7 authorized.(æ…â8Óü¾Ç©-
+‰squid:S1845"kRename field "ID" to prevent any misunderstanding/clash with field "id" defined in superclass "Model.Card".(ÆÌèš8Óü¾Ç©-
+—squid:S1845Á"sRename method "getID" to prevent any misunderstanding/clash with method "getId" defined in superclass "Model.Card".(ÙË¡Íıÿÿÿÿ8Óü¾Ç©-
+‘squid:S1845Î"sRename method "setID" to prevent any misunderstanding/clash with method "setId" defined in superclass "Model.Card".(ê£°M8Óü¾Ç©-
+lsquid:S00116"MRename this field "ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÌèš8Óü¾Ç©-
+psquid:S00117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ…â8Óü¾Ç©-
+psquid:S00117Î"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê£°M8Óü¾Ç©-
+Xsquid:S11615":Add the "@Override" annotation above this method signature(€Ü¿æ8Óü¾Ç©-
+Xsquid:S11618":Add the "@Override" annotation above this method signature(Ó¶Ä«8Óü¾Ç©-
+Xsquid:S1161\":Add the "@Override" annotation above this method signature(Äêñğ8Óü¾Ç©-
+^squid:S1161š":Add the "@Override" annotation above this method signature(ôÑ½şüÿÿÿÿ8Óü¾Ç©-
+^squid:S1161":Add the "@Override" annotation above this method signature(°¿´üÿÿÿÿ8Óü¾Ç©-
+^squid:S1161¡":Add the "@Override" annotation above this method signature(‰§¸Êşÿÿÿÿ8Óü¾Ç©-
+Ysquid:S1161æ":Add the "@Override" annotation above this method signature(÷Ã¥”8Óü¾Ç©-
+^squid:S1161í":Add the "@Override" annotation above this method signature(¯ôÍûÿÿÿÿ8Óü¾Ç©-
+Ysquid:S1161ñ":Add the "@Override" annotation above this method signature(’‡¢Ê8Óü¾Ç©-
+^squid:S1161õ":Add the "@Override" annotation above this method signature(Øä½–üÿÿÿÿ8Óü¾Ç©-
+Ysquid:S1161ù":Add the "@Override" annotation above this method signature(Œåß‚8Óü¾Ç©-
+^squid:S1161ı":Add the "@Override" annotation above this method signature(­Û°³ùÿÿÿÿ8Óü¾Ç©-
+^squid:S1161‰":Add the "@Override" annotation above this method signature(¯Àå¥üÿÿÿÿ8Óü¾Ç©-
+^squid:S1161”":Add the "@Override" annotation above this method signature(Šß±Ôûÿÿÿÿ8Óü¾Ç©-
+Ysquid:S1161˜":Add the "@Override" annotation above this method signature(¸òø8Óü¾Ç©-
+^squid:S1161œ":Add the "@Override" annotation above this method signature(ñé¼Æøÿÿÿÿ8Óü¾Ç©-
