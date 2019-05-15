@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Card {
-    private static ArrayList<Card> cards;
+    private static ArrayList<Card> cards = new ArrayList<>();
     protected int id;
     protected boolean stun;
     private boolean disarmFor1Turn;
@@ -21,12 +21,12 @@ public class Card {
     protected String activationTime;
     protected int type; // 0 hero | 1 spell | 2 minion
     protected String name;
-    private int row;
+  //  private int row;
     private boolean haveBeenMoved = false;
     protected int x;
     protected int y;
     protected int healthPoint;
-    private int column;
+    //private int column;
     private int numberOfPlayer;
     protected int attackPower;
     protected int rangeOfAttack;
@@ -234,7 +234,7 @@ public class Card {
     }
 
     public void setX(int x) {
-        x = x;
+        this.x = x;
     }
 
     public int getY() {
@@ -242,7 +242,7 @@ public class Card {
     }
 
     public void setY(int y) {
-        y = y;
+        this.y = y;
     }
 
     public void setType(int type) {
@@ -269,22 +269,7 @@ public class Card {
         return id;
     }
 
-    public void move(int x, int y, int maxDistance) {
-        int distance;
-        distance = Math.abs(x - row) + Math.abs(y - column);
-        if (distance <= maxDistance) {
-            setRow(x);
-            setColumn(y);
-            //tu view bge mishe o shodo ina.
-        }
-        else{
-            // tu view bege nmishe
-        }
-    }
 
-    public int getRow() {
-        return row;
-    }
 
     public int getHealthPoint() {
         return healthPoint;
@@ -334,18 +319,7 @@ public class Card {
 
         this.healthPoint = healthPoint;
     }
-    public void setRow(int row) {
-        this.row = row;
-    }
 
-
-    public int getColumn() {
-        return column;
-    }
-
-    public void setColumn(int column) {
-        this.column = column;
-    }
 
 
     public int getCardId() {
@@ -377,7 +351,7 @@ public class Card {
 
     public static Card searchCardByID(int ID){
         for(Card card : Card.cards) {
-            if (card.getCardId() == ID)
+            if (card.getId() == ID)
                 return card;
         }
         return null;

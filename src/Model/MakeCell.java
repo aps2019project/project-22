@@ -1,12 +1,17 @@
 package Model;
 
 public class MakeCell {
-    public static void make(){
+    public static void make() {
         Cell[] cells = new Cell[45];
-        for (int i = 0; i < 45; i++) {
-            cells[i].setX(i);
-            cells[i].setY(i);
-            Cell.addCells(cells[i]);
+        int i = 0;
+        for (int j = 1; j <= 5; j++) {
+            for (int k = 1; k <= 9; k++) {
+                cells[i] = new Cell();
+                cells[i].setX(j);
+                cells[i].setY(k);
+                Cell.addCells(cells[i]);
+                i++;
+            }
         }
     }
 }

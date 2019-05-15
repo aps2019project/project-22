@@ -98,20 +98,8 @@ public class Battle {
         }
     }
 
-    public int getDistance(int x1, int x, int y1, int y) {
-        int distance = 0;
-        if (x1 > x) {
-            if (y1 > y)
-                distance = x1 - x + y1 - y;
-            else
-                distance = x1 - x + y - y1;
-        } else {
-            if (y1 > y)
-                distance = x - x1 + y1 - y;
-            else
-                distance = x - x1 + y - y1;
-        }
-        return distance;
+    public int getDistance(int x1, int x2, int y1, int y2) {
+        return (Math.abs(x1 - x2) + Math.abs(y1 - y2));
     }
 
     public void fight(Scanner scanner) {
@@ -140,7 +128,7 @@ public class Battle {
                 if (inVvalid == 0)
                     i--;
             }
-        }else if (mode == 2){
+        } else if (mode == 2) {
             Random rand = new Random();
             int x = rand.nextInt(9) + 1;
             int y = rand.nextInt(5) + 1;
@@ -385,19 +373,19 @@ public class Battle {
                 player = player2;
                 enemyPlayer = player1;
             }
-            if (player1Turns == 2){
+            if (player1Turns == 2) {
                 player.setMana(4);
-            }else if (player1Turns == 3){
+            } else if (player1Turns == 3) {
                 player.setMana(5);
-            }else if (player1Turns == 4){
+            } else if (player1Turns == 4) {
                 player.setMana(6);
-            }else if (player1Turns == 5){
+            } else if (player1Turns == 5) {
                 player.setMana(7);
-            }else if (player1Turns == 6){
+            } else if (player1Turns == 6) {
                 player.setMana(8);
-            }else if (player1Turns == 7){
+            } else if (player1Turns == 7) {
                 player.setMana(9);
-            }else if (player1Turns >= 8){
+            } else if (player1Turns >= 8) {
                 player.setMana(9);
             }
             if (player.getFlag()) {
@@ -480,7 +468,7 @@ public class Battle {
                     int valid = 0;
                     int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
                     for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() != null) {
+                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
                             valid = 1;
                             if (Cell.getCells().get(i).getFlag()) {
                                 player.getCardsInTheFiled().get(card1ID).setFlagTrue();
@@ -496,10 +484,11 @@ public class Battle {
                             }
                         }
                     }
+
                     if (distance <= 2 && valid == 1) {
                         player.getCardsInTheFiled().get(card1ID).setX(x);
                         player.getCardsInTheFiled().get(card1ID).setY(y);
-                        System.out.println(IDNumber1 + "moved to" + x + " " + y);
+                        System.out.println(IDNumber1 + " moved to " + x + " " + y);
                         player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
                     } else
                         System.out.println("Invalid target");
@@ -998,20 +987,22 @@ public class Battle {
         }
         return result;
     }
+
     private Player getEnemyPlayer() {
-        if(turn == false){
+        if (turn == false) {
             return this.player1;
         }
         return this.player2;
     }
+
     public Hero getEnemyHero() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                Cell cell = Cell.getCellByxy(i,j);
+                Cell cell = Cell.getCellByxy(i, j);
                 if (cell.getInsideCard().getId() == (getEnemyPlayer().getHero().id)) {
                     continue;
                 }
-                if (cell.getInsideCard()instanceof Hero) {
+                if (cell.getInsideCard() instanceof Hero) {
                     return (Hero) cell.getInsideCard();
                 }
             }

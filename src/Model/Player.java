@@ -66,7 +66,7 @@ public class Player {
         this.cardsInTheFiled.add(cardsInTheFiled);
     }
     public ArrayList<Card> getCardsInTheFiled() {
-        return getCardsInTheFiled();
+        return cardsInTheFiled;
     }
     public void Player(Account account) {
         this.setAccount(account);
@@ -88,6 +88,7 @@ public class Player {
     }
     public void setHand(){
         Random rand = new Random();
+        hand = new Hand(graveYard);
         int n = rand.nextInt(20);
         for (int i = 0; i < 5; i++){
             hand.addCard(mainDeck.getCardsOfDeck().get(n));

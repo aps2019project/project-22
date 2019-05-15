@@ -18,7 +18,7 @@ public class Minion extends Card {
     private String specialPower;
     private static ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
-    private int ID;
+  //  private int ID;
     public void setMinion21EffectTrue(){
         minion21Effect = true;
     }
@@ -69,7 +69,7 @@ public class Minion extends Card {
     }
 
     public Minion(int ID,String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
-        this.ID = ID;
+        id = ID;
         this.cost = cost;
         this.price=cost;
         this.healthPoint = healthPoint;
@@ -187,7 +187,7 @@ public class Minion extends Card {
         minions.add(minion);
     }
     public int getID() {
-        return ID;
+        return id;
     }
     public void minionPower21(Minion minion){
         if (minion.getX() >= this.x-2 && minion.getX() <= this.x+2 && minion.getY() == this.y ||
@@ -200,7 +200,7 @@ public class Minion extends Card {
             minion.setMinion21EffectFalse();
     }
     public void setID(int ID) {
-        this.ID = ID;
+        id = ID;
     }
     public void minion22Power(Minion minion){
         minion22Effect++;

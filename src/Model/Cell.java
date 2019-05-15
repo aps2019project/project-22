@@ -6,13 +6,13 @@ public class Cell {
 
     private static Card[] rowsOfCells = new Card[5];
     private static Card[] columnsOfCells = new Card[9];
-    private ArrayList<Spell> spells;
-    private ArrayList<Integer> effectTime;
+    private ArrayList<Spell> spells = new ArrayList<>();
+    private ArrayList<Integer> effectTime = new ArrayList<>();
     private int x;
     private int y;
     private boolean flag;
     private Card cardInside;
-    private static ArrayList<Cell> cells;
+    private static ArrayList<Cell> cells = new ArrayList<>();
     private Minion minion;
     private Hero hero;
 

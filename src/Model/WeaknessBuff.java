@@ -2,9 +2,10 @@ package Model;
 
 import java.util.Random;
 
-public class WeaknessBuff extends Buff{
+public class WeaknessBuff extends Buff {
     private TypeOfPowers type;
-    public WeaknessBuff(int number, TypeOfPowers type, int turns, TimeOfBuff timeOfBuff){
+
+    public WeaknessBuff(int number, TypeOfPowers type, int turns, TimeOfBuff timeOfBuff) {
         super(number, turns, TypeOfBuff.NEGATIVE, timeOfBuff);
         this.type = type;
     }
@@ -19,11 +20,11 @@ public class WeaknessBuff extends Buff{
 
     @Override
     public void applyBuff(Spell spellCard) {
-        Random random=new Random(20);
-        int rand=random.nextInt();
-        if(rand%2==0){
+        Random random = new Random(20);
+        int rand = random.nextInt();
+        if (rand % 2 == 0) {
             spellCard.decreaseAP(rand);
-        }else{
+        } else {
             spellCard.decreaseHP(rand);
         }
     }
