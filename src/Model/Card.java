@@ -21,12 +21,10 @@ public class Card {
     protected String activationTime;
     protected int type; // 0 hero | 1 spell | 2 minion
     protected String name;
-  //  private int row;
     private boolean haveBeenMoved = false;
     protected int x;
     protected int y;
     protected int healthPoint;
-    //private int column;
     private int numberOfPlayer;
     protected int attackPower;
     protected int rangeOfAttack;

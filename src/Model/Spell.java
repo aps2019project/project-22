@@ -6,7 +6,6 @@ import java.util.Random;
 public class Spell extends Card {
 
     private static ArrayList<Spell> spells = new ArrayList<>();
-    private int mana;
     private String cost;
     private String targetPointName;
     private String description;
@@ -35,13 +34,6 @@ public class Spell extends Card {
         this.name = name;
     }
 
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
-    }
 
     public void setCost(String cost) {
         this.cost = cost;
@@ -61,7 +53,7 @@ public class Spell extends Card {
         this.setId(ID);
         this.setName(name);
         this.setPrice(price);
-        this.setMana(mana);
+        this.setManaPoint(mana);
         this.setTargetPointName(targetPointName);
         this.setDescription(description);
     }
@@ -116,21 +108,22 @@ public class Spell extends Card {
     }
 
     public void increaseHp(int number) {
-        this.healthPoint+=number;
+        this.healthPoint += number;
     }
 
     public void decreaseHp(int number) {
-        this.healthPoint-=number;
+        this.healthPoint -= number;
     }
 
     public void increaseAp(int number) {
-        this.attackPower+=number;
+        this.attackPower += number;
     }
 
     public void decreaseAp(int number) {
-        this.attackPower-=number;
+        this.attackPower -= number;
     }
-    private Integer[][] oneEnemyForce( int x, int y, int id) {
+
+    private Integer[][] oneEnemyForce(int x, int y, int id) {
         return force(x, y, id);
     }
 
@@ -146,13 +139,14 @@ public class Spell extends Card {
         return null;
     }
 
-    private Integer[][] oneOwnForce( int x, int y, int id) {
+    private Integer[][] oneOwnForce(int x, int y, int id) {
         return force(x, y, id);
     }
-    private Integer[][] ownHero( int id) {
+
+    private Integer[][] ownHero(int id) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                Cell cell = Cell.getCellByxy(i,j);
+                Cell cell = Cell.getCellByxy(i, j);
                 if (cell.getInsideCard() != null && cell.getInsideCard() instanceof Hero) {
                     if (cell.getInsideCard().getId() != id) continue;
                     Integer[][] integers = new Integer[1][2];
@@ -164,11 +158,12 @@ public class Spell extends Card {
         }
         return null;
     }
-    private Integer[][] enemyHero( int id) {
+
+    private Integer[][] enemyHero(int id) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                Cell cell = Cell.getCellByxy(i,j);
-                if (cell.getInsideCard()!= null && cell.getInsideCard() instanceof Hero) {
+                Cell cell = Cell.getCellByxy(i, j);
+                if (cell.getInsideCard() != null && cell.getInsideCard() instanceof Hero) {
                     if (cell.getInsideCard().getId() == id) continue;
                     Integer[][] integers = new Integer[1][2];
                     integers[0][0] = i;
@@ -179,13 +174,14 @@ public class Spell extends Card {
         }
         return null;
     }
+
     private Integer[][] allEnemyForce(int id) {
         Integer[][] integers = new Integer[15][2];
         int index = 0;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                Cell cell =Cell.getCellByxy(i,j);
-                if (cell.getInsideCard().getId() !=id) {
+                Cell cell = Cell.getCellByxy(i, j);
+                if (cell.getInsideCard().getId() != id) {
                     integers[index][0] = i;
                     integers[index][1] = j;
                     index++;
@@ -194,8 +190,9 @@ public class Spell extends Card {
         }
         return integers;
     }
-    private Integer[][] oneOwnOrEnemyForce( int x, int y) {
-        Cell cell = Cell.getCellByxy(x,y);
+
+    private Integer[][] oneOwnOrEnemyForce(int x, int y) {
+        Cell cell = Cell.getCellByxy(x, y);
         if (cell.getInsideCard() != null) {
             Integer[][] integers = new Integer[1][2];
             integers[0][0] = x;
@@ -205,14 +202,14 @@ public class Spell extends Card {
         return null;
     }
 
-    private Integer[][] allEnemyInOneColumn( int x, int y, int id) {
+    private Integer[][] allEnemyInOneColumn(int x, int y, int id) {
         if (x < 0 || x > 9) return null;
         Integer[][] integers = new Integer[5][2];
         int ind = 0;
         for (int j = 0; j < 5; j++) {
-            Cell cell = Cell.getCellByxy(x,j);
+            Cell cell = Cell.getCellByxy(x, j);
             if (cell.getInsideCard() == null) continue;
-            if (cell.getInsideCard().getId() ==id) {
+            if (cell.getInsideCard().getId() == id) {
                 integers[ind][0] = x;
                 integers[ind][1] = y;
                 ind++;
@@ -221,11 +218,11 @@ public class Spell extends Card {
         return integers;
     }
 
-    private Integer[][] oneEnemyMinion( int x, int y, int id) {
-        Cell cell = Cell.getCellByxy(x,y);
+    private Integer[][] oneEnemyMinion(int x, int y, int id) {
+        Cell cell = Cell.getCellByxy(x, y);
         if (cell.getInsideCard() != null) {
             if (cell.getInsideCard() instanceof Hero) return null;
-            if (cell.getInsideCard().getId() !=id) {
+            if (cell.getInsideCard().getId() != id) {
                 Integer[][] integers = new Integer[1][2];
                 integers[0][0] = x;
                 integers[0][1] = y;
@@ -235,11 +232,11 @@ public class Spell extends Card {
         return null;
     }
 
-    private Integer[][] oneOwnMinion( int x, int y, int id) {
-        Cell cell = Cell.getCellByxy(x,y);
+    private Integer[][] oneOwnMinion(int x, int y, int id) {
+        Cell cell = Cell.getCellByxy(x, y);
         if (cell.getInsideCard() != null) {
             if (cell.getInsideCard() instanceof Hero) return null;
-            if (cell.getInsideCard().getId()==id) {
+            if (cell.getInsideCard().getId() == id) {
                 Integer[][] integers = new Integer[1][2];
                 integers[0][0] = x;
                 integers[0][1] = y;
@@ -257,7 +254,7 @@ public class Spell extends Card {
             for (int j = 0; j < 5; j++) {
                 if (Math.abs(a[0] - i) > 1) continue;
                 if (Math.abs(a[1] - j) > 1) continue;
-                Cell cell = Cell.getCellByxy(i,j);
+                Cell cell = Cell.getCellByxy(i, j);
                 if (cell.getInsideCard() == null) continue;
                 if (cell.getInsideCard() instanceof Hero) continue;
                 if (cell.getInsideCard().getId() == id) continue;
@@ -274,18 +271,18 @@ public class Spell extends Card {
     }
 
     public void increaseHP(int number) {
-        this.healthPoint+=number;
+        this.healthPoint += number;
     }
 
     public void decreaseHP(int number) {
-        this.healthPoint -=number;
+        this.healthPoint -= number;
     }
 
     public void increaseAP(int number) {
-        this.attackPower+=number;
+        this.attackPower += number;
     }
 
     public void decreaseAP(int number) {
-        this.attackPower-=number;
+        this.attackPower -= number;
     }
 }

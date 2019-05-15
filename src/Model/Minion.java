@@ -18,7 +18,6 @@ public class Minion extends Card {
     private String specialPower;
     private static ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
-  //  private int ID;
     public void setMinion21EffectTrue(){
         minion21Effect = true;
     }
@@ -71,6 +70,7 @@ public class Minion extends Card {
     public Minion(int ID,String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
         id = ID;
         this.cost = cost;
+        setType(2);
         this.price=cost;
         this.healthPoint = healthPoint;
         this.manaPoint = mana;

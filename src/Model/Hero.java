@@ -9,7 +9,6 @@ public class Hero extends Card{
     private int attackPower;
     private int price;
     private int rangeOfAttack;
-    private int mp;
     private int howLongHasBeenCool = 0;
     private int cooldown;
     private boolean item17 = false;
@@ -101,14 +100,6 @@ public class Hero extends Card{
 
     public void setRangeOfAttack(int rangeOfAttack) {
         this.rangeOfAttack = rangeOfAttack;
-    }
-
-    public int getMp() {
-        return mp;
-    }
-
-    public void setMp(int mp) {
-        this.mp = mp;
     }
 
     public int getCooldown() {

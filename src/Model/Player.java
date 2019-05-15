@@ -7,7 +7,7 @@ import java.util.Random;
 public class Player {
     private static ArrayList<Player> players = new ArrayList<>();
     private Account account;
-    private Deck mainDeck;
+    private Deck mainDeck ;
     private Hand hand;
     private GraveYard graveYard = new GraveYard();
     private int mana = 3;
@@ -89,8 +89,8 @@ public class Player {
     public void setHand(){
         Random rand = new Random();
         hand = new Hand(graveYard);
-        int n = rand.nextInt(20);
         for (int i = 0; i < 5; i++){
+            int n = rand.nextInt(20);
             hand.addCard(mainDeck.getCardsOfDeck().get(n));
         }
     }
@@ -175,6 +175,7 @@ public class Player {
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;
     }
+
 
     public GraveYard getGraveYard() {
         return graveYard;

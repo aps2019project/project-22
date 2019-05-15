@@ -16,6 +16,7 @@ public class Deck {
     public Deck(String name){
         this.setName(name);
     }
+
     public static ArrayList<Deck> getDecks() {
         return decks;
     }

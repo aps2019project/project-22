@@ -156,7 +156,7 @@ public class Shop {
     }
 
     public static void addSpell(Spell spell) {
-        Spell newSpell = new Spell(getNewId(), spell.getName(), spell.getPrice(), spell.getMana(),
+        Spell newSpell = new Spell(getNewId(), spell.getName(), spell.getPrice(), spell.getManaPoint(),
                 spell.getTargetPointName(), spell.getDescription());
         spells.add(newSpell);
         cards.add(newSpell);
@@ -296,7 +296,7 @@ public class Shop {
         System.out.println("Cards :");
         for (int i = 0; i < Shop.getSpells().size(); i++) {
             System.out.println("\t" + number + " : Type : Spell - Name : " + Shop.getSpells().get(i).getName() +
-                    " - MP : " + Shop.getSpells().get(i).getMana() + " - " +
+                    " - MP : " + Shop.getSpells().get(i).getManaPoint() + " - " +
                     Shop.getSpells().get(i).getDescription() + " - price: " + Shop.getSpells().get(i).getPrice());
             number++;
         }

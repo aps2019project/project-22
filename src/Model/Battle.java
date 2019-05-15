@@ -820,11 +820,21 @@ public class Battle {
                         }
                     }
                 } else if (command.indexOf("Show hand") != -1) {
-                    //kasi ke hando zade
-
+                    int number = 1;
+                    for (int i = 0; i < player.getHand().getCardsInThisHand().size(); i++) {
+                        if (player.getHand().getCardsInThisHand().get(i).getType() == 1) {//spell
+                            System.out.println(number + ". Type: Spell - Name: " + player.getHand().getCardsInThisHand()
+                                    .get(i).getName() + " - Mana: " + player.getHand().getCardsInThisHand().get(i).getManaPoint());
+                            number++;
+                        } else if (player.getHand().getCardsInThisHand().get(i).getType() == 2) {//minion
+                            System.out.println(number + ". Type: Minion - Name: " + player.getHand().getCardsInThisHand()
+                                    .get(i).getName() + " - Mana: " + player.getHand().getCardsInThisHand().get(i).getManaPoint());
+                            number++;
+                        }
+                    }
                 } else if (command.indexOf("Insert") != -1) {
                     int inValidCard = 0;
-                    String split[] = command.split(" ");
+                    String split[] = command.split("\\s+");
                     int x = split[3].charAt(1) - 48;
                     int y = split[3].charAt(3) - 48;
                     for (int i = 0; i < player.getHand().getCardsInThisHand().size(); i++) {
@@ -854,6 +864,8 @@ public class Battle {
                                 System.out.println("You don't have enough mana");
                             } else {
                                 Cell.insertCard(player.getHand().getCardsInThisHand().get(card1ID), x, y);
+                                player.getHand().getCardsInThisHand().get(card1ID).setY(y);
+                                player.getHand().getCardsInThisHand().get(card1ID).setX(x);
                                 player.addCardsInTheFile(player.getHand().getCardsInThisHand().get(card1ID));
                                 player.getHand().getCardsInThisHand().remove(player.getHand().getCardsInThisHand().get(card1ID));
                                 Random rand = new Random();
@@ -954,7 +966,7 @@ public class Battle {
                     for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
                         enemyPlayer.getCardsInTheFiled().get(i).getCardInfo(enemyPlayer.getCardsInTheFiled().get(i));
                     }
-                    System.out.println("Cards you can inset into the field");
+                    System.out.println("you can insert Cards into the field");
                     for (int i = 0; i < player.getHand().getCardsInThisHand().size(); i++) {
                         if (player.getMana() >= player.getHand().getCardsInThisHand().get(i).getManaPoint()) {
                             player.getHand().getCardsInThisHand().get(i).getCardInfo(player.getHand().getCardsInThisHand().get(i));
@@ -967,6 +979,8 @@ public class Battle {
                         player.getCollectibleItems().get(i).showItemInfo();
                 } else if (command.indexOf("Show info") != -1) {
                     player.getCollectibleItems().get(itemIDNumber).showItemInfo();
+                } else if(command.indexOf("exit") != -1) {
+                    return;
                 }
             }
         }
