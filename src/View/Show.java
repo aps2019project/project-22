@@ -69,9 +69,34 @@ public class Show {
 
     private static void shopMenu(Scanner scanner, Account account) {
         String command = scanner.nextLine().trim();
-        if(command.equals("show")){
+        String[] partsOfCommand = command.split("\\s+");
+        if (command.equals("show")) {
             Shop.showAllCardsAndItems();
+        } else if (command.equals("exit")) {
+            return;
+        } else if (partsOfCommand[0].equals("show") && partsOfCommand[1].equals("collection")) {
+            Show.showCollection(account);
+        } else if (partsOfCommand[0].equals("search")) {
+            if (partsOfCommand[1].equals("colection")) {
+                if (account.getCollection().search(partsOfCommand[2]) != -1)
+                    System.out.println(account.getCollection().search(partsOfCommand[2]));
+                else
+                    System.out.println("Not Found!");
+            } else {
+                if (Shop.searchByName(partsOfCommand[1]) != -1)
+                    System.out.println("id = " + Shop.searchByName(partsOfCommand[1]));
+                else
+                    System.out.println("Not Found!");
+            }
+        } else if (partsOfCommand[0].equals("buy")) {
+            Shop.buy(partsOfCommand[1], account);
+        } else if (partsOfCommand[0].equals("sell")) {
+            Shop.sell(Integer.parseInt(partsOfCommand[1]), account);
+        } else if (partsOfCommand[0].equals("help") || partsOfCommand[0].equals("Help")) {
+            System.out.println("-show\n-show collection\n-search [item name | card name]\n-search collection [item name |" +
+                    " card name]\n-buy [card name | item name]\n-sell [card id | item id]\n-exit");
         }
+        shopMenu(scanner, account);
     }
 
     public static void showCollection(Account account) {
@@ -307,9 +332,8 @@ public class Show {
             battle.setPlayer1(player1);
             battle.setPlayer2(player2);
             battle.fight(scanner);
-        }
-        else{
-            showBattleMenu(battle,scanner);
+        } else {
+            showBattleMenu(battle, scanner);
         }
     }
 

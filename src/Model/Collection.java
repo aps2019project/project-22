@@ -140,4 +140,117 @@ public class Collection {
     public ArrayList<Minion> getMinions() {
         return minions;
     }
+
+    public boolean searchById(int id) {
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getId() == id)
+                return true;
+        }
+        for (int i = 0; i < spells.size(); i++) {
+            if (spells.get(i).getId() == id)
+                return true;
+        }
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getId() == id)
+                return true;
+        }
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id)
+                return true;
+        }
+        return false;
+    }
+
+    public int getPriceById(int id) {
+        for (int i = 0; i < spells.size(); i++) {
+            if (spells.get(i).getId() == id) {
+                return spells.get(i).getPrice();
+            }
+        }
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getId() == id) {
+                return minions.get(i).getPrice();
+            }
+        }
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getId() == id) {
+                return heroes.get(i).getPrice();
+            }
+        }
+
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                return items.get(i).getPrice();
+            }
+        }
+        return -1;
+    }
+
+    public Item searchItem(int id) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id)
+                return items.get(i);
+        }
+        return null;
+    }
+
+    public Hero searchHero(int id) {
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getId() == id)
+                return heroes.get(i);
+        }
+        return null;
+    }
+
+    public Spell searchSpell(int id) {
+        for (int i = 0; i < spells.size(); i++) {
+            if (spells.get(i).getId() == id)
+                return spells.get(i);
+        }
+        return null;
+    }
+
+    public Minion searchMinion(int id) {
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getId() == id)
+                return minions.get(i);
+        }
+        return null;
+    }
+
+    public void removeItem(int id) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                items.remove(i);
+                return;
+            }
+        }
+    }
+
+    public void removeHero(int id) {
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getId() == id) {
+                heroes.remove(i);
+                return;
+            }
+        }
+    }
+
+    public void removeSpell(int id) {
+        for (int i=0;i<spells.size();i++){
+            if(spells.get(i).getId()==id){
+                spells.remove(i);
+                return;
+            }
+        }
+    }
+
+    public void removeMinion(int id) {
+    for (int i=0;i<minions.size();i++){
+        if(minions.get(i).getId()==id){
+            minions.remove(i);
+            return;
+        }
+    }
+    }
 }

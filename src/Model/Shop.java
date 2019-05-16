@@ -18,22 +18,26 @@ public class Shop {
     }
 
     public static void sell(int id, Account account) {
-        if (searchById(id) == -1) {
-            System.out.println("this card/item isn't in shop.");
+        if (!account.getCollection().searchById(id)) {
+            System.out.println("this card/item isn't in your collection.");
             return;
         }
-        account.increaseMoney(getPriceById(id));
-        if (searchItem(getNameById(id)) != null) {
-            removeItem(getNameById(id));
-        } else if (searchHero(getNameById(id)) != null) {
-            removeHero(getNameById(id));
-            removeCards(getNameById(id));
-        } else if (searchSpell(getNameById(id)) != null) {
-            removeSpell(getNameById(id));
-            removeCards(getNameById(id));
-        } else if (searchMinion(getNameById(id)) != null) {
-            removeMinion(getNameById(id));
-            removeCards(getNameById(id));
+        account.increaseMoney(account.getCollection().getPriceById(id));
+        if (account.getCollection().searchItem(id) != null) {
+            items.add(account.getCollection().searchItem(id));
+            account.getCollection().removeItem(id);
+        } else if (account.getCollection().searchHero(id) != null) {
+            heroes.add(account.getCollection().searchHero(id));
+            cards.add(account.getCollection().searchHero(id));
+            account.getCollection().removeHero(id);
+        } else if (account.getCollection().searchSpell(id) != null) {
+            spells.add(account.getCollection().searchSpell(id));
+            cards.add(account.getCollection().searchSpell(id));
+            account.getCollection().removeSpell(id);
+        } else if (account.getCollection().searchMinion(id) != null) {
+            minions.add(account.getCollection().searchMinion(id));
+            cards.add(account.getCollection().searchMinion(id));
+            account.getCollection().removeMinion(id);
         }
     }
 
@@ -49,19 +53,6 @@ public class Shop {
         return "";
     }
 
-    private static int getPriceById(int id) {
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getId() == id) {
-                return cards.get(i).getPrice();
-            }
-        }
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getId() == id) {
-                return items.get(i).getPrice();
-            }
-        }
-        return -1;
-    }
 
     private static int searchById(int id) {
         for (int i = 0; i < items.size(); i++) {
@@ -77,7 +68,7 @@ public class Shop {
         return -1;
     }
 
-    public static int searchByName(String name) { // get id
+    public static int searchByName(String name) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getName().equals(name)) {
                 return items.get(i).getId();
@@ -180,22 +171,22 @@ public class Shop {
             return;
         }
         if (searchItem(name) != null) {
-            account.increaseMoney(searchItem(name).getPrice());
+            account.decreaseMoney(searchItem(name).getPrice());
             account.getCollection().addItem(searchItem(name));
             removeItem(name);
         } else if (searchMinion(name) != null) {
-            account.increaseMoney(searchMinion(name).getPrice());
+            account.decreaseMoney(searchMinion(name).getPrice());
             account.getCollection().addMinionToCollection(searchMinion(name));
             removeMinion(name);
             removeCards(name);
         } else if (searchSpell(name) != null) {
-            account.increaseMoney(searchSpell(name).getPrice());
+            account.decreaseMoney(searchSpell(name).getPrice());
             account.getCollection().addSpellToCollection(searchSpell(name));
             removeSpell(name);
             removeCards(name);
 
         } else if (searchHero(name) != null) {
-            account.increaseMoney(searchHero(name).getPrice());
+            account.decreaseMoney(searchHero(name).getPrice());
             account.getCollection().addHeroToCollection((searchHero(name)));
             removeHero(name);
             removeCards(name);

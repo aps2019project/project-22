@@ -186,9 +186,7 @@ public class Minion extends Card {
     public static void addMinion(Minion minion){
         minions.add(minion);
     }
-    public int getID() {
-        return id;
-    }
+
     public void minionPower21(Minion minion){
         if (minion.getX() >= this.x-2 && minion.getX() <= this.x+2 && minion.getY() == this.y ||
         minion.getY() >= this.y-2 && minion.getY() <= this.y && minion.getX() == this.x ||
