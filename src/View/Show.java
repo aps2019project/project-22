@@ -131,6 +131,7 @@ public class Show {
         makeSpell.make();
         System.out.println("1.single player");
         System.out.println("2.multi player");
+
         int singleOrMulti = scanner.nextInt();
         if (singleOrMulti == 1) {
             battle.setBooleanSinglePlayerTrue();
@@ -140,6 +141,7 @@ public class Show {
         int storyOrCustom = scanner.nextInt();
         if (storyOrCustom == 1) {
             battle = new Story();
+            battle.setStoryTrue();
             System.out.println("1. level1\n2. level2\n3. level3");
             int level = scanner.nextInt();
             if (level == 1) {
@@ -147,7 +149,6 @@ public class Show {
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
                 Player player1 = new Player();
-               // player1.setHand();
                 Card.searchCardByID(62).setX(1);
                 Card.searchCardByID(62).setY(3);
 
@@ -165,6 +166,14 @@ public class Show {
                 player2.setMainDeck(deckPlayer2);
                 player2.setHero((Hero) Card.searchCardByID(61));
                 player2.addCardsInTheFile(Card.searchCardByID(61));
+                Card.searchCardByID(61).setX(9);
+                Card.searchCardByID(61).setY(3);
+
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
+                        Cell.getCells().get(i).addCard(Card.searchCardByID(61));
+                    }
+                }
                 player1.setCard();
                 Deck deckPlayer1 = new Deck("player1");
                 player1.setDeck(deckPlayer1);
@@ -177,12 +186,32 @@ public class Show {
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
                 Player player1 = new Player();
+
+                Card.searchCardByID(62).setX(1);
+                Card.searchCardByID(62).setY(3);
+
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
+                        Cell.getCells().get(i).addCard(Card.searchCardByID(62));
+                    }
+                }
+
                 player1.setHero((Hero) Card.searchCardByID(62));
                 player1.addCardsInTheFile(Card.searchCardByID(62));
                 Deck deckPlayer2 = new Deck("level2");
                 deckPlayer2.setLevel2(deckPlayer2);
                 Player player2 = new Player();
                 player2.setMainDeck(deckPlayer2);
+
+                Card.searchCardByID(65).setX(9);
+                Card.searchCardByID(65).setY(3);
+
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
+                        Cell.getCells().get(i).addCard(Card.searchCardByID(65));
+                    }
+                }
+
                 player2.setHero((Hero) Card.searchCardByID(65));
                 player2.addCardsInTheFile(Card.searchCardByID(65));
                 player1.setCard();
@@ -198,12 +227,30 @@ public class Show {
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
                 Player player1 = new Player();
+
+                Card.searchCardByID(n).setX(1);
+                Card.searchCardByID(n).setY(3);
+
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
+                        Cell.getCells().get(i).addCard(Card.searchCardByID(n));
+                    }
+                }
                 player1.setHero((Hero) Card.searchCardByID(n));
                 player1.addCardsInTheFile(Card.searchCardByID(n));
                 Deck deckPlayer2 = new Deck("level3");
                 deckPlayer2.setLevel3(deckPlayer2);
                 Player player2 = new Player();
                 player2.setMainDeck(deckPlayer2);
+
+                Card.searchCardByID(67).setX(9);
+                Card.searchCardByID(67).setY(3);
+
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
+                        Cell.getCells().get(i).addCard(Card.searchCardByID(67));
+                    }
+                }
                 player2.setHero((Hero) Card.searchCardByID(67));
                 player2.addCardsInTheFile(Card.searchCardByID(67));
                 player1.setCard();
@@ -225,6 +272,15 @@ public class Show {
             Random rand = new Random();
             int n = rand.nextInt(10) + 61;
             Player player1 = new Player();
+
+            Card.searchCardByID(62).setX(1);
+            Card.searchCardByID(62).setY(3);
+
+            for (int i = 0; i < Cell.getCells().size(); i++) {
+                if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
+                    Cell.getCells().get(i).addCard(Card.searchCardByID(62));
+                }
+            }
             player1.setHero((Hero) Card.searchCardByID(62));
             player1.addCardsInTheFile(Card.searchCardByID(62));
             Deck deckPlayer2 = new Deck("player2");
@@ -234,6 +290,14 @@ public class Show {
             player2.setHand();
             player2.setMainDeck(deckPlayer2);
             int n2 = rand.nextInt(10) + 61;
+            Card.searchCardByID(n2).setX(9);
+            Card.searchCardByID(n2).setY(3);
+
+            for (int i = 0; i < Cell.getCells().size(); i++) {
+                if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
+                    Cell.getCells().get(i).addCard(Card.searchCardByID(n2));
+                }
+            }
             player2.setHero((Hero) Card.searchCardByID(n2));
             player2.addCardsInTheFile(Card.searchCardByID(n));
             player1.setCard();
