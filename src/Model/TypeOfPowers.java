@@ -1,5 +1,5 @@
 package Model;
 
-public enum  TypeOfPowers {
-    AP,HP,
+public enum TypeOfPowers {
+    AP, HP,
 }

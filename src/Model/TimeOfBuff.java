@@ -1,5 +1,5 @@
 package Model;
 
-public enum  TimeOfBuff {
+public enum TimeOfBuff {
     PERMANENT, NORMAL, CONTINUOUS,
 }

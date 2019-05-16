@@ -111,7 +111,7 @@ public class Battle {
         return (Math.abs(x1 - x2) + Math.abs(y1 - y2));
     }
 
-    public void fight(Scanner scanner) {
+    public void fight(Account account,Scanner scanner) {
         int isValid = 1;
         int card1ID = 0;
         int card2ID = 0;
@@ -132,6 +132,7 @@ public class Battle {
                     if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
                         inVvalid = 1;
                         Cell.getCells().get(j).setFlagTrue();
+                        System.out.println("flag is in x : "+x+" y : "+y);
                     }
                 }
                 if (inVvalid == 0)
@@ -144,6 +145,7 @@ public class Battle {
             for (int j = 0; j < Cell.getCells().size(); j++) {
                 if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
                     Cell.getCells().get(j).setFlagTrue();
+                    System.out.println("flag is in x : "+x+" y : "+y);
                 }
             }
         }
@@ -406,6 +408,10 @@ public class Battle {
             Random rand10 = new Random();
             int randomForCommand = rand10.nextInt(player2.getCardsInTheFiled().size());
             while (true) {
+                if (story){
+                    checkForWinnerInStory();
+                }else
+                    checkForWinnerInCustomGame();
                 counter++;
                 if (singlePlayer == false || player == player1)
                     command = scanner.nextLine();
@@ -898,7 +904,11 @@ public class Battle {
                             if (player.getMana() <= player.getHand().getCardsInThisHand().get(card1ID).getManaPoint()) {
                                 System.out.println("You don't have enough mana");
                             } else {
-                                Cell.insertCard(player.getHand().getCardsInThisHand().get(card1ID), x, y);
+                                for (int i = 0; i < Cell.getCells().size();i++){
+                                    if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null){
+                                        Cell.getCells().get(i).insertCard(player.getHand().getCardsInThisHand().get(card1ID));
+                                    }
+                                }
                                 player.getHand().getCardsInThisHand().get(card1ID).setY(y);
                                 player.getHand().getCardsInThisHand().get(card1ID).setX(x);
                                 player.addCardsInTheFile(player.getHand().getCardsInThisHand().get(card1ID));
@@ -995,7 +1005,7 @@ public class Battle {
                         turn = true;
                     break;
                 } else if (command.indexOf("Show menu") != -1) {
-                    Show.showBattleMenu(this, scanner);
+                    Show.showBattleMenu(account,this, scanner);
                 } else if (command.indexOf("Help") != -1) {
                     System.out.println("You can move");
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
@@ -1024,10 +1034,6 @@ public class Battle {
                     return;
                 }
 
-                if (story){
-                    checkForWinnerInStory();
-                }else
-                    checkForWinnerInCustomGame();
             }
         }
         System.out.println("Game end");

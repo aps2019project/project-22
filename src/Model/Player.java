@@ -85,6 +85,8 @@ public class Player {
         int n = rand.nextInt(20);
         deck.setItem(Item.getItems().get(n));
         mainDeck = deck;
+        account.setMainDeck(deck);
+        account.addDeck(deck);
     }
     public void setHand(){
         Random rand = new Random();
@@ -174,6 +176,8 @@ public class Player {
 
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;
+        account.setMainDeck(mainDeck);
+        account.addDeck(mainDeck);
     }
 
 
@@ -232,15 +236,15 @@ public class Player {
     public void setTimeOfKeepingFlag(int timeOfKeepingFlag) {
         this.timeOfKeepingFlag = timeOfKeepingFlag;
     }
-    public void insertCard(int x,int y){
-        Card card=hand.getNextCardInHand(manaInTurn);
-        if(card==null){
-            return;
-        }
-        card.setX(x);
-        card.setY(y);
-        Cell.insertCard(card,x,y);
-    }
+//    public void insertCard(int x,int y){
+//        Card card=hand.getNextCardInHand(manaInTurn);
+//        if(card==null){
+//            return;
+//        }
+//        card.setX(x);
+//        card.setY(y);
+//        Cell.insertCard(card,x,y);
+//    }
 
     public int getManaInTurn() {
         return manaInTurn;

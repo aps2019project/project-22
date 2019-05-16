@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class Buff  {
+public abstract class Buff {
 
     private Spell spellCard;
     private String nameOfBuff;
@@ -41,16 +41,17 @@ public abstract class Buff  {
         this.timeOfBuff = timeOfBuff;
     }
 
-    public Buff(int number, int turns, TypeOfBuff buffType, TimeOfBuff buffTImeType){
+    public Buff(int number, int turns, TypeOfBuff buffType, TimeOfBuff buffTImeType) {
         this.number = number;
         this.turns = turns;
         this.typeOfBuff = buffType;
         this.timeOfBuff = buffTImeType;
     }
 
-    public void decrementTurns (){
+    public void decrementTurns() {
         this.setTurns(this.turns--);
     }
+
     public abstract void applyBuff(Spell spellCard);
 
     public String getNameOfBuff() {

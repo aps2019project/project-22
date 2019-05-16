@@ -1,6 +1,6 @@
 package Model;
 
-public class Flag  {
+public class Flag {
     private Card card;
     private Cell cell;
     private boolean isUsed = false;
@@ -13,7 +13,6 @@ public class Flag  {
     public void setCard(Card card) {
         this.card = card;
     }
-
 
 
     public Cell getCell() {
@@ -35,13 +34,14 @@ public class Flag  {
 
     public void useBy(Card card) {
         this.setCard(card);
-        this.setCell( null);
-        this.setUsed( true);
+        this.setCell(null);
+        this.setUsed(true);
     }
+
     public void byACertainCell(Cell cell) {
-        this.setCell( cell);
+        this.setCell(cell);
         this.setCard(null);
-        this.setUsed( false);
+        this.setUsed(false);
     }
 
 }

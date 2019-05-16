@@ -3,9 +3,9 @@ package Model;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Hero extends Card{
-    private static ArrayList<Hero> heroes=new ArrayList<>();
-     private int healthPoint;
+public class Hero extends Card {
+    private static ArrayList<Hero> heroes = new ArrayList<>();
+    private int healthPoint;
     private int attackPower;
     private int price;
     private int rangeOfAttack;
@@ -17,32 +17,33 @@ public class Hero extends Card{
     private boolean hero65Activated = false;
     private boolean specialPowerActivated = false;
 
-    public void setSpecialPowerActivatedTrue(){
+    public void setSpecialPowerActivatedTrue() {
         specialPowerActivated = true;
     }
-    public void setSpecialPowerActivatedFalse(){
+
+    public void setSpecialPowerActivatedFalse() {
         specialPowerActivated = false;
     }
 
-    public void timer(Hero hero){
-        if (specialPowerActivated ){
-            hero.setHowLongHasBeenCool(hero.getHowLongHasBeenCool()+1);
-            if(hero.getId() == 68 || hero.getId() == 67 || hero.getId() == 64 || hero.getId() == 61) {
+    public void timer(Hero hero) {
+        if (specialPowerActivated) {
+            hero.setHowLongHasBeenCool(hero.getHowLongHasBeenCool() + 1);
+            if (hero.getId() == 68 || hero.getId() == 67 || hero.getId() == 64 || hero.getId() == 61) {
                 if (hero.getHowLongHasBeenCool() == 2) {
                     hero.setHowLongHasBeenCool(0);
                     hero.setSpecialPowerActivatedFalse();
                 }
-            }else if(hero.getId() == 62){
+            } else if (hero.getId() == 62) {
                 if (hero.getHowLongHasBeenCool() == 8) {
                     hero.setHowLongHasBeenCool(0);
                     hero.setSpecialPowerActivatedFalse();
                 }
-            }else if(hero.getId() == 66){
+            } else if (hero.getId() == 66) {
                 if (hero.getHowLongHasBeenCool() == 3) {
                     hero.setHowLongHasBeenCool(0);
                     hero.setSpecialPowerActivatedFalse();
                 }
-            }else if(hero.getId() == 63){
+            } else if (hero.getId() == 63) {
                 if (hero.getHowLongHasBeenCool() == 1) {
                     hero.setHowLongHasBeenCool(0);
                     hero.setSpecialPowerActivatedFalse();
@@ -50,6 +51,7 @@ public class Hero extends Card{
             }
         }
     }
+
     public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
         setType(0);
@@ -69,24 +71,30 @@ public class Hero extends Card{
     }
 
 
-    public void setItem17True(){
+    public void setItem17True() {
         item17 = true;
     }
-    public void setItem17False(){
+
+    public void setItem17False() {
         item17 = false;
     }
-    public boolean getItem17(){
+
+    public boolean getItem17() {
         return item17;
     }
-    public void setHero65ActivatedTrue(){
+
+    public void setHero65ActivatedTrue() {
         hero65Activated = true;
     }
-    public void setHero65ActivatedFalse(){
+
+    public void setHero65ActivatedFalse() {
         hero65Activated = false;
     }
-    public boolean gethero65Activated(){
+
+    public boolean gethero65Activated() {
         return hero65Activated;
     }
+
     public int getHowLongHasBeenCool() {
         return howLongHasBeenCool;
     }
@@ -152,7 +160,7 @@ public class Hero extends Card{
         this.price = price;
     }
 
-    public void applyType(){
+    public void applyType() {
 
     }
 }

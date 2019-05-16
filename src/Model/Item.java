@@ -15,99 +15,112 @@ public class Item {
     private ArrayList<Item> itemsOfUsableItem = new ArrayList<>();
 
 
-    public void item1(int turn,Player player){
-        if (turn == 1){
-            player.setMana(player.getMana()+1);
+    public void item1(int turn, Player player) {
+        if (turn == 1) {
+            player.setMana(player.getMana() + 1);
         }
-        if (turn == 2){
-            player.setMana(player.getMana()+1);
+        if (turn == 2) {
+            player.setMana(player.getMana() + 1);
         }
-        if (turn == 3){
-            player.setMana(player.getMana()+1);
+        if (turn == 3) {
+            player.setMana(player.getMana() + 1);
         }
     }
-    public void item2(Hero hero){
-        hero.setHowManyHolyBuff(hero.getHowManyHolyBuff()+12);
+
+    public void item2(Hero hero) {
+        hero.setHowManyHolyBuff(hero.getHowManyHolyBuff() + 12);
     }
-    public void item3(Card card){
+
+    public void item3(Card card) {
         card.setDisarmFor1TurnTrue();
     }
-    public void item4(Player player){
+
+    public void item4(Player player) {
         Random rand = new Random();
         int n = rand.nextInt(player.getCardsInTheFiled().size());
-        player.getCardsInTheFiled().get(n).setHealthPoint(player.getCardsInTheFiled().get(n).getHealthPoint()+6);
+        player.getCardsInTheFiled().get(n).setHealthPoint(player.getCardsInTheFiled().get(n).getHealthPoint() + 6);
     }
-    public void item6(Hero hero){
-        if (hero.getTypeOfAttack().matches("ranged") || hero.getTypeOfAttack().matches("hybrid")){
-            hero.setAttackPower(hero.getAttackPower()-2);
+
+    public void item6(Hero hero) {
+        if (hero.getTypeOfAttack().matches("ranged") || hero.getTypeOfAttack().matches("hybrid")) {
+            hero.setAttackPower(hero.getAttackPower() - 2);
         }
     }
-    public void item5(Player player){
-        while (true){
+
+    public void item5(Player player) {
+        while (true) {
             Random rand = new Random();
             int n = rand.nextInt(player.getCardsInTheFiled().size());
-            if (player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("ranged") || player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("hybrid")){
-                player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower()+2);
+            if (player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("ranged") || player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("hybrid")) {
+                player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower() + 2);
                 break;
             }
         }
     }
-    public void item7(Player player){
-        while (true){
+
+    public void item7(Player player) {
+        while (true) {
             Random rand = new Random();
             int n = rand.nextInt(player.getCardsInTheFiled().size());
             if (player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("ranged") || player.getCardsInTheFiled().get(n).getTypeOfAttack().matches("hybrid")
-            && player.getCardsInTheFiled().get(n).getId() <= 40){
-                Minion temp = (Minion)player.getCardsInTheFiled().get(n);
-                temp.setAttackPower(temp.getAttackPower()+3);
+                    && player.getCardsInTheFiled().get(n).getId() <= 40) {
+                Minion temp = (Minion) player.getCardsInTheFiled().get(n);
+                temp.setAttackPower(temp.getAttackPower() + 3);
                 temp.setSumOfPossetiveAttack(3);
                 break;
             }
         }
     }
-    public void item9(Player player){
+
+    public void item9(Player player) {
         while (true) {
             Random rand = new Random();
             int n = rand.nextInt(player.getCardsInTheFiled().size());
             if (player.getCardsInTheFiled().get(n).getId() <= 40) {
-                player.getCardsInTheFiled().get(n).setHowManyHolyBuff(player.getCardsInTheFiled().get(n).getHowManyHolyBuff()+12);
-                player.getCardsInTheFiled().get(n).setHowLongItem9(player.getCardsInTheFiled().get(n).getHowLongItem9()+1);
+                player.getCardsInTheFiled().get(n).setHowManyHolyBuff(player.getCardsInTheFiled().get(n).getHowManyHolyBuff() + 12);
+                player.getCardsInTheFiled().get(n).setHowLongItem9(player.getCardsInTheFiled().get(n).getHowLongItem9() + 1);
                 break;
             }
         }
     }
-    public void item10(Player player){
+
+    public void item10(Player player) {
         while (true) {
             Random rand = new Random();
             int n = rand.nextInt(player.getCardsInTheFiled().size());
             if (player.getCardsInTheFiled().get(n).getId() <= 40) {
-                Minion temp = (Minion)player.getCardsInTheFiled().get(n);
+                Minion temp = (Minion) player.getCardsInTheFiled().get(n);
                 temp.setItem10True();
                 break;
             }
         }
     }
-    public void item11(Player player){
+
+    public void item11(Player player) {
         Random rand = new Random();
         int n = rand.nextInt(player.getCardsInTheFiled().size());
-        player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower()+2);
+        player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower() + 2);
     }
-    public void item13(Player player){
+
+    public void item13(Player player) {
         Random rand = new Random();
         int n = rand.nextInt(player.getCardsInTheFiled().size());
-        player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower()+2);
+        player.getCardsInTheFiled().get(n).setAttackPower(player.getCardsInTheFiled().get(n).getAttackPower() + 2);
     }
-    public void item14(Player player){
-        player.setMana(player.getMana()+1);
+
+    public void item14(Player player) {
+        player.setMana(player.getMana() + 1);
     }
-    public void item20(Player player){
-        for (int i = 0; i < player.getCardsInTheFiled().size(); i++){
-            if (player.getCardsInTheFiled().get(i).getTypeOfAttack().matches("melee")){
-                player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower()+5);
+
+    public void item20(Player player) {
+        for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+            if (player.getCardsInTheFiled().get(i).getTypeOfAttack().matches("melee")) {
+                player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 5);
             }
         }
     }
-    public Item(int id, String name, int price,String description) {
+
+    public Item(int id, String name, int price, String description) {
         this.setId(id);
         this.setName(name);
         this.setPrice(price);
@@ -118,9 +131,11 @@ public class Item {
             this.setTypeOfItem("Usable");
         }
     }
-    public void showItemInfo(){
+
+    public void showItemInfo() {
 
     }
+
     public static void addItem(Item item) {
         items.add(item);
     }

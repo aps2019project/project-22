@@ -16,9 +16,8 @@ public class Cell {
     private Minion minion;
     private Hero hero;
 
-    public static void insertCard(Card card, int x, int y) {
-        rowsOfCells[x] = card;
-        columnsOfCells[y] = card;
+    public void insertCard(Card card) {
+        this.cardInside = card;
     }
 
     public void setFlagTrue() {

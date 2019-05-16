@@ -20,10 +20,12 @@ public class KeepFlags {
     public int getFinishTime() {
         return finishTime;
     }
-    public void resetPlayer1Time(){
+
+    public void resetPlayer1Time() {
         howLongFlagsHasBeenKeptByPlayer1 = 0;
     }
-    public void resetPlayer2Time(){
+
+    public void resetPlayer2Time() {
         howLongFlagsHasBeenKeptByPlayer2 = 0;
     }
 

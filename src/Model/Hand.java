@@ -53,9 +53,9 @@ public class Hand {
         return null;
     }
 
-   public void addCard(Card card){
+    public void addCard(Card card) {
         cardsInThisHand.add(card);
-   }
+    }
 
     public boolean handIfIsFull() {
         if (this.getCardsInThisHand().size() == getHand_capacity())

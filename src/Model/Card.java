@@ -36,22 +36,28 @@ public class Card {
     private int counterMinion10 = 0;
     private boolean item15 = false;
     private boolean flag = false;
-    public void setItem12True(){
+
+    public void setItem12True() {
         item12 = true;
     }
-    public void setItem12False(){
+
+    public void setItem12False() {
         item12 = false;
     }
-    public boolean getItem12(){
+
+    public boolean getItem12() {
         return item12;
     }
-    public void setFlagTrue(){
+
+    public void setFlagTrue() {
         flag = true;
     }
-    public void setFlagFalse(){
+
+    public void setFlagFalse() {
         flag = false;
     }
-    public boolean getFlag(){
+
+    public boolean getFlag() {
         return flag;
     }
 
@@ -67,40 +73,48 @@ public class Card {
     public int getHowLongItem9() {
         return howLongItem9;
     }
-    public void checkItem9(){
-        if (howLongItem9 == 2){
+
+    public void checkItem9() {
+        if (howLongItem9 == 2) {
             howLongItem9 = 0;
         }
     }
+
     public void setHowLongItem9(int howLongItem9) {
         this.howLongItem9 = howLongItem9;
     }
 
-    public void setHaveBeenMovedTrue(){
+    public void setHaveBeenMovedTrue() {
         haveBeenMoved = true;
     }
-    public void setHaveBeenMovedFalse(){
+
+    public void setHaveBeenMovedFalse() {
         haveBeenMoved = false;
     }
-    public boolean getHaveBeenMoved(){
+
+    public boolean getHaveBeenMoved() {
         return haveBeenMoved;
     }
-    public void setCounterMinion10(Card card){
+
+    public void setCounterMinion10(Card card) {
         counterMinion10++;
-        if (counterMinion10 <5 && counterMinion10 != 0)
-         card.setHealthPoint(card.getHealthPoint()-1);
-        if (counterMinion10 == 4){
-            card.setHealthPoint(card.getHealthPoint()+4);
+        if (counterMinion10 < 5 && counterMinion10 != 0)
+            card.setHealthPoint(card.getHealthPoint() - 1);
+        if (counterMinion10 == 4) {
+            card.setHealthPoint(card.getHealthPoint() + 4);
             counterMinion10 = 0;
         }
     }
-    public void getCardInfo(Card card){}
-    public void setCounterHero65(Card card){
+
+    public void getCardInfo(Card card) {
+    }
+
+    public void setCounterHero65(Card card) {
         hero65Power++;
-        if (hero65Power <4 && hero65Power != 0)
-            card.setHealthPoint(card.getHealthPoint()-1);
-        if (hero65Power == 3){
-            card.setHealthPoint(card.getHealthPoint()+3);
+        if (hero65Power < 4 && hero65Power != 0)
+            card.setHealthPoint(card.getHealthPoint() - 1);
+        if (hero65Power == 3) {
+            card.setHealthPoint(card.getHealthPoint() + 3);
             hero65Power = 0;
         }
     }
@@ -111,7 +125,7 @@ public class Card {
 
     public void setHowLongHaveBeenStun(int howLongHaveBeenStun) {
         this.howLongHaveBeenStun = howLongHaveBeenStun;
-        if (this.howLongHaveBeenStun == 2){
+        if (this.howLongHaveBeenStun == 2) {
             this.stun = false;
         }
     }
@@ -122,7 +136,7 @@ public class Card {
 
     public void setHowLongHaveBeenDisarmed(int howLongHaveBeenDisarmed) {
         this.howLongHaveBeenDisarmed = howLongHaveBeenDisarmed;
-        if (this.howLongHaveBeenDisarmed == 2){
+        if (this.howLongHaveBeenDisarmed == 2) {
             this.disarmFor1Turn = false;
         }
     }
@@ -150,40 +164,50 @@ public class Card {
     public void setTempHealtPoint(int tempHealtPoint) {
         this.tempHealtPoint = tempHealtPoint;
     }
-    public int getCounterMinion18(){
+
+    public int getCounterMinion18() {
         return counterMinion18;
     }
-    public int getHero65Power(){
+
+    public int getHero65Power() {
         return hero65Power;
     }
-    public int getCounterMinion10(){
+
+    public int getCounterMinion10() {
         return counterMinion10;
     }
-    public void setCounterMinion18(Card card){
+
+    public void setCounterMinion18(Card card) {
         counterMinion18++;
-        if (counterMinion18 <4 && counterMinion18 != 0)
-            card.setHealthPoint(card.getHealthPoint()-1);
-        if (counterMinion18 == 3){
-            card.setHealthPoint(card.getHealthPoint()+3);
+        if (counterMinion18 < 4 && counterMinion18 != 0)
+            card.setHealthPoint(card.getHealthPoint() - 1);
+        if (counterMinion18 == 3) {
+            card.setHealthPoint(card.getHealthPoint() + 3);
             counterMinion18 = 0;
         }
     }
-    public void setDisarmFor1TurnTrue(){
+
+    public void setDisarmFor1TurnTrue() {
         disarmFor1Turn = true;
     }
-    public void setDisarmFor1TurnFalse(){
+
+    public void setDisarmFor1TurnFalse() {
         disarmFor1Turn = false;
     }
-    public boolean getDisarmFor1Turn(){
+
+    public boolean getDisarmFor1Turn() {
         return disarmFor1Turn;
     }
-    public void setHaveBeenUsedTrue(){
+
+    public void setHaveBeenUsedTrue() {
         haveBeenUsed = true;
     }
+
     public String getActivationTime() {
         return activationTime;
     }
-    public void addMinion5Counter(){
+
+    public void addMinion5Counter() {
         this.minion5Counter++;
     }
 
@@ -195,30 +219,38 @@ public class Card {
         this.activationTime = activationTime;
     }
 
-    public void setHaveBeenUsedFalse(){
+    public void setHaveBeenUsedFalse() {
         haveBeenUsed = false;
     }
-    public boolean getHaveBeenUsed(){
+
+    public boolean getHaveBeenUsed() {
         return haveBeenUsed;
     }
-    public void setStunTrue(){
+
+    public void setStunTrue() {
         stun = true;
     }
-    public void setStunFalse(){
+
+    public void setStunFalse() {
         stun = false;
     }
-    public boolean getStun(){
+
+    public boolean getStun() {
         return stun;
     }
-    public boolean getStunByMinion5(){
+
+    public boolean getStunByMinion5() {
         return stun;
     }
-    public void setStunByMinion5True(){
+
+    public void setStunByMinion5True() {
         stun = true;
     }
-    public void setStunByMinion5False(){
+
+    public void setStunByMinion5False() {
         stun = false;
     }
+
     public int getX() {
         return x;
     }
@@ -251,14 +283,13 @@ public class Card {
         return name;
     }
 
-    public void setId(int id){
-        this.id =id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
         return id;
     }
-
 
 
     public int getHealthPoint() {
@@ -311,7 +342,6 @@ public class Card {
     }
 
 
-
     public int getCardId() {
         return cardId;
     }
@@ -339,8 +369,8 @@ public class Card {
         return price;
     }
 
-    public static Card searchCardByID(int ID){
-        for(Card card : Card.cards) {
+    public static Card searchCardByID(int ID) {
+        for (Card card : Card.cards) {
             if (card.getId() == ID)
                 return card;
         }

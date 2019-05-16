@@ -1,5 +1,5 @@
 package Model;
 
-public enum  TypeOfBuff {
+public enum TypeOfBuff {
     POSITIVE, NEGATIVE
 }

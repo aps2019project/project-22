@@ -7,14 +7,16 @@ public class Deck {
     private static ArrayList<Deck> decks = new ArrayList<>();
     private String name;
     private int size = 0;
-    private Hero hero;
+    private Hero hero ;
     private Item item;
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Card> cardsOfDeck = new ArrayList<>(20);
 
-    public Deck(String name){
+    public Deck(String name) {
         this.setName(name);
+        this.hero = new Hero(62, "simorq", 9000, 50, 4, "melee",
+                -1, 5, 8);
     }
 
     public static ArrayList<Deck> getDecks() {
@@ -25,11 +27,8 @@ public class Deck {
         Deck.decks = decks;
     }
 
-    public static void showDecks() {
 
-    }
-
-    public void setLevel1(Deck deck){
+    public void setLevel1(Deck deck) {
         deck.addCardsOfDeck(Minion.getMinions().get(0));
         deck.addCardsOfDeck(Minion.getMinions().get(8));
         deck.addCardsOfDeck(Minion.getMinions().get(10));
@@ -53,7 +52,7 @@ public class Deck {
         deck.setItem(Item.getItems().get(0));
     }
 
-    public void setLevel2(Deck deck){
+    public void setLevel2(Deck deck) {
         deck.addCardsOfDeck(Minion.getMinions().get(1));
         deck.addCardsOfDeck(Minion.getMinions().get(2));
         deck.addCardsOfDeck(Minion.getMinions().get(4));
@@ -77,7 +76,7 @@ public class Deck {
         deck.setItem(Item.getItems().get(17));
     }
 
-    public void setLevel3(Deck deck){
+    public void setLevel3(Deck deck) {
         deck.addCardsOfDeck(Minion.getMinions().get(5));
         deck.addCardsOfDeck(Minion.getMinions().get(6));
         deck.addCardsOfDeck(Minion.getMinions().get(9));
@@ -104,9 +103,11 @@ public class Deck {
     public int getSize() {
         return size;
     }
-    public void addCardsOfDeck(Card card){
+
+    public void addCardsOfDeck(Card card) {
         cardsOfDeck.add(card);
     }
+
     public void setSize(int size) {
         this.size = size;
     }
@@ -176,8 +177,8 @@ public class Deck {
     }
 
     public static void deleteDeck(String deckName) {
-        for (int i=0;i<decks.size();i++){
-            if(decks.get(i).getName().equals(deckName)){
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(deckName)) {
                 decks.remove(i);
                 return;
             }
@@ -255,50 +256,50 @@ public class Deck {
         this.spells = spells;
     }
 
-    public void addCard(int id,Account account) {
-        if(hero!=null){
+    public void addCard(int id, Account account) {
+        if (hero != null) {
             System.out.println("deck has hero now.");
             return;
         }
-        if(cardsOfDeck.size()==20){
+        if (cardsOfDeck.size() == 20) {
             System.out.println("deck is full!");
             return;
         }
-        for (int i=0;i<cardsOfDeck.size();i++){
-            if(cardsOfDeck.get(i).getId()==id){
+        for (int i = 0; i < cardsOfDeck.size(); i++) {
+            if (cardsOfDeck.get(i).getId() == id) {
                 System.out.println("this card is in deck now");
                 return;
             }
         }
-        int i=0;
-        for(;i<account.getCollection().getItems().size();i++){
-            if(account.getCollection().getItems().get(i).getId()==id){
+        int i = 0;
+        for (; i < account.getCollection().getItems().size(); i++) {
+            if (account.getCollection().getItems().get(i).getId() == id) {
                 break;
             }
         }
-        if(i==account.getCollection().getItems().size()){
+        if (i == account.getCollection().getItems().size()) {
             System.out.println("this item hasn't in collection");
-       return;
+            return;
         }
-         i=0;
-        for(;i<account.getCollection().getSpells().size();i++){
-            if(account.getCollection().getSpells().get(i).getId()==id){
+        i = 0;
+        for (; i < account.getCollection().getSpells().size(); i++) {
+            if (account.getCollection().getSpells().get(i).getId() == id) {
                 break;
             }
         }
-        if(i==account.getCollection().getSpells().size()){
+        if (i == account.getCollection().getSpells().size()) {
             System.out.println("this spell hasn't in collection");
-        return;
+            return;
         }
-        i=0;
-        for(;i<account.getCollection().getMinions().size();i++){
-            if(account.getCollection().getMinions().get(i).getId()==id){
+        i = 0;
+        for (; i < account.getCollection().getMinions().size(); i++) {
+            if (account.getCollection().getMinions().get(i).getId() == id) {
                 break;
             }
         }
-        if(i==account.getCollection().getMinions().size()){
+        if (i == account.getCollection().getMinions().size()) {
             System.out.println("this minion hasn't in collection");
-        return;
+            return;
         }
         Card card = new Card();
         card.setId(id);

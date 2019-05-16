@@ -14,6 +14,7 @@ public class Account {
     private Collection collection = new Collection();
     private String password;
     private int ID;
+    private String userName;
     private boolean logIn;
     private static final int firstMoney = 15000;
     private int money;
@@ -22,7 +23,6 @@ public class Account {
     private Player player = new Player();
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
-    private String userName;
     private Deck mainDeck;
     private int story;
     private static int count = 0;
@@ -31,6 +31,11 @@ public class Account {
         accounts.add(account);
     }
 
+    public void showAllDecks() {
+        for (int i = 0; i < decks.size(); i++) {
+            showDeckByIndex(i);
+        }
+    }
 
     public Account(String userName, String password) {
         this.setWins(0);
@@ -116,7 +121,7 @@ public class Account {
 
             for (int j = 0; j < accounts.size() - 1 - i; j++) {
                 if (accounts.get(j + 1).getWins() > accounts.get(j).getWins())
-                   Collections.swap(accounts,j,j+1);
+                    Collections.swap(accounts, j, j + 1);
             }
         }
     }
@@ -321,4 +326,94 @@ public class Account {
     }
 
 
+    public void showDeckByName(String name) {
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(name)) {
+                showDeckByIndex(i);
+                return;
+            }
+        }
+        System.out.println("not found!");
+
+    }
+
+    private void showDeckByIndex(int i) {
+        System.out.println((i + 1) + " : " + decks.get(i).getName() + " :\n\tHeroes :");
+        if (decks.get(i).getHero() != null) {
+            System.out.println("\t\t1 : Name : " + (decks.get(i).getHero().getName() +
+                    " - AP: " + decks.get(i).getHero().getAttackPower() + " - HP : " + decks.get(i).getHero().getHealthPoint()
+                    + " - class: " + decks.get(i).getHero().getTypeOfHero() + " - special power : " + decks.get(i).getHero().getSpecialPower().getDescription()));
+        }
+        System.out.println("\tItems :");
+        if (decks.get(i).getItem() != null) {
+            System.out.println("\t\t1 : Name : " + decks.get(i).getItem().getName() + " - Desc : " + decks.get(i).getItem().getDescription());
+        }
+        System.out.println("\tCards:");
+        for (int j = 0; j < decks.get(i).getCardsOfDeck().size(); j++) {
+            System.out.println("\t\t" + (j + 1) + " : Type:" + decks.get(i).getCardsOfDeck().get(j).getType() +
+                    " - Name : " + decks.get(i).getCardsOfDeck().get(j).getName() + " - Id : " + decks.get(i).getCardsOfDeck().get(j).getId());
+        }
+    }
+
+    public void checkIsValidate(String deckName) {
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(deckName)) {
+                if (decks.get(i).getCardsOfDeck().size() == 20 && decks.get(i).getHero() != null) {
+                    System.out.println("deck is valid:)!");
+                } else {
+                    System.out.println("deck is invalid!:(");
+                }
+                return;
+            }
+        }
+
+    }
+
+    public void removeCardFromDeckByIdAndName(int id, String nameOfDeck) {
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(nameOfDeck)) {
+                if (decks.get(i).getHero() != null && decks.get(i).getHero().getId() == id) {
+                    decks.get(i).setHero(null);
+                    System.out.println("hero removed.");
+                    return;
+                }
+                if (decks.get(i).getItem() != null && decks.get(i).getItem().getId() == id) {
+                    decks.get(i).setItem(null);
+                    System.out.println("item removed.");
+                    return;
+                }
+                for (int j = 0; j < decks.get(i).getCardsOfDeck().size(); j++) {
+                    if (decks.get(i).getCardsOfDeck().get(j).getId() == id) {
+                        decks.get(i).getCardsOfDeck().remove(j);
+                        System.out.println("card removed.");
+                        return;
+                    }
+                }
+                return;
+            }
+        }
+        System.out.println("invalid deck name.");
+    }
+
+    public Deck searchDeckByName(String nameOfDeck) {
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(nameOfDeck)) {
+                return decks.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void setMainDeckByName(String name) {
+        for (int i = 0; i < decks.size(); i++) {
+            if (decks.get(i).getName().equals(name)) {
+                if (decks.get(i).getCardsOfDeck().size() == 20 && decks.get(i).getHero() != null) {
+                    setMainDeck(decks.get(i));
+                } else {
+                    System.out.println("this deck is invalid!");
+                }
+                return;
+            }
+        }
+    }
 }

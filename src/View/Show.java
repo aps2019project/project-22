@@ -11,8 +11,14 @@ public class Show {
         String[] partsOfInput = input.split("\\s+");
         if ("exit".equals(input)) {
             return;
-        } else if ("show".equals(input)) {
-            Show.showCollection(account);
+        } else if ("show".equals(partsOfInput[0])) {
+            if (partsOfInput.length == 1)
+                Show.showCollection(account);
+            else if (partsOfInput[1].equals("all") && partsOfInput[2].equals("decks")) {
+                account.showAllDecks();
+            } else if (partsOfInput[1].equals("deck")) {
+                account.showDeckByName(partsOfInput[2]);
+            }
         } else if (partsOfInput[0].equals("search")) {
             if (account.getCollection().search(partsOfInput[1]) != -1)
                 System.out.println(account.getCollection().search(partsOfInput[1]));
@@ -29,6 +35,12 @@ public class Show {
         } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
                 && partsOfInput[3].equals("deck")) {
             Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
+        } else if (partsOfInput[0].equals("validate") && partsOfInput[1].equals("deck")) {
+            account.checkIsValidate(partsOfInput[2]);
+        } else if (partsOfInput[0].equals("remove") && partsOfInput[2].equals("from") && partsOfInput[3].equals("deck")) {
+            account.removeCardFromDeckByIdAndName(Integer.parseInt(partsOfInput[1]), partsOfInput[4]);
+        } else if (partsOfInput[0].equals("select") && partsOfInput[1].equals("deck")) {
+            account.setMainDeckByName(partsOfInput[2]);
         }
         collectionMenu(scanner, account);
     }
@@ -45,7 +57,7 @@ public class Show {
                 break;
             case "Enter battle":
                 Battle battle = new Battle();
-                showBattleMenu(battle, scanner);
+                showBattleMenu(account, battle, scanner);
                 break;
             case "Save":
                 //save
@@ -147,8 +159,12 @@ public class Show {
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
 
-    public static void showBattleMenu(Battle battle, Scanner scanner) {
+    public static void showBattleMenu(Account account, Battle battle, Scanner scanner) {
         System.out.println("~~~BattleMenu~~~");
+        System.out.println("choose opponent");
+        showAllUserNames();
+        int opponent = Integer.parseInt(scanner.nextLine());
+        opponent--;
         MakeCell.make();
         MakeHero makeHero = new MakeHero();
         makeHero.make();
@@ -158,6 +174,10 @@ public class Show {
         makeItems.make();
         MakeSpell makeSpell = new MakeSpell();
         makeSpell.make();
+        Player player1 = new Player();
+        Player player2 = new Player();
+        player2.setAccount(Account.getAccounts().get(opponent));
+        player1.setAccount(account);
         System.out.println("1.single player");
         System.out.println("2.multi player");
         System.out.println("3. exit");
@@ -171,7 +191,7 @@ public class Show {
         System.out.println("2.Custom game");
         System.out.println("3. exit");
 
-        int storyOrCustom = scanner.nextInt();
+        int storyOrCustom = Integer.parseInt(scanner.nextLine());
         if (storyOrCustom == 1) {
             battle = new Story();
             battle.setStoryTrue();
@@ -179,12 +199,11 @@ public class Show {
                 battle.setBooleanSinglePlayerTrue();
             }
             System.out.println("1. level1\n2. level2\n3. level3\n4. exit");
-            int level = scanner.nextInt();
+            int level = Integer.parseInt(scanner.nextLine());
             if (level == 1) {
                 ((Story) battle).setLevel(1);
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
-                Player player1 = new Player();
                 Card.searchCardByID(62).setX(1);
                 Card.searchCardByID(62).setY(3);
 
@@ -198,7 +217,6 @@ public class Show {
                 player1.addCardsInTheFile((Hero) Card.searchCardByID(62));
                 Deck deckPlayer2 = new Deck("level1");
                 deckPlayer2.setLevel1(deckPlayer2);
-                Player player2 = new Player();
                 player2.setMainDeck(deckPlayer2);
                 player2.setHand();
                 player2.setHero((Hero) Card.searchCardByID(61));
@@ -212,17 +230,16 @@ public class Show {
                     }
                 }
                 player1.setCard();
-                Deck deckPlayer1 = new Deck("player1");
+                Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
                 player1.setDeck(deckPlayer1);
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(scanner);
+                battle.fight(account, scanner);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
-                Player player1 = new Player();
 
                 Card.searchCardByID(62).setX(1);
                 Card.searchCardByID(62).setY(3);
@@ -237,7 +254,6 @@ public class Show {
                 player1.addCardsInTheFile(Card.searchCardByID(62));
                 Deck deckPlayer2 = new Deck("level2");
                 deckPlayer2.setLevel2(deckPlayer2);
-                Player player2 = new Player();
                 player2.setMainDeck(deckPlayer2);
                 player2.setHand();
                 Card.searchCardByID(65).setX(9);
@@ -252,18 +268,17 @@ public class Show {
                 player2.setHero((Hero) Card.searchCardByID(65));
                 player2.addCardsInTheFile(Card.searchCardByID(65));
                 player1.setCard();
-                Deck deckPlayer1 = new Deck("player1");
+                Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
                 player1.setDeck(deckPlayer1);
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(scanner);
+                battle.fight(account, scanner);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
-                Player player1 = new Player();
 
                 Card.searchCardByID(n).setX(1);
                 Card.searchCardByID(n).setY(3);
@@ -277,7 +292,6 @@ public class Show {
                 player1.addCardsInTheFile(Card.searchCardByID(n));
                 Deck deckPlayer2 = new Deck("level3");
                 deckPlayer2.setLevel3(deckPlayer2);
-                Player player2 = new Player();
                 player2.setMainDeck(deckPlayer2);
 
                 player2.setHand();
@@ -292,12 +306,12 @@ public class Show {
                 player2.setHero((Hero) Card.searchCardByID(67));
                 player2.addCardsInTheFile(Card.searchCardByID(67));
                 player1.setCard();
-                Deck deckPlayer1 = new Deck("player1");
+                Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
                 player1.setDeck(deckPlayer1);
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(scanner);
+                battle.fight(account, scanner);
             } else if (level == 4) {
                 return;
             }
@@ -306,9 +320,9 @@ public class Show {
             if (singleOrMulti == 1) {
                 battle.setBooleanSinglePlayerTrue();
             }
-            Deck.showDecks();
+            account.showAllDecks();
             System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
-            int num = scanner.nextInt();
+            int num = Integer.parseInt(scanner.nextLine());
             if (num == 4)
                 return;
             ((CustomGame) battle).setMode(num);
@@ -317,7 +331,6 @@ public class Show {
 
             Random rand = new Random();
             int n = rand.nextInt(10) + 61;
-            Player player1 = new Player();
 
             Card.searchCardByID(62).setX(1);
             Card.searchCardByID(62).setY(3);
@@ -330,7 +343,6 @@ public class Show {
             player1.setHero((Hero) Card.searchCardByID(62));
             player1.addCardsInTheFile(Card.searchCardByID(62));
             Deck deckPlayer2 = new Deck("player2");
-            Player player2 = new Player();
             player2.setCard();
             player2.setDeck(deckPlayer2);
             player2.setHand();
@@ -352,11 +364,11 @@ public class Show {
             player1.setHand();
             battle.setPlayer1(player1);
             battle.setPlayer2(player2);
-            battle.fight(scanner);
+            battle.fight(account, scanner);
         } else if (singleOrMulti == 3) {
             return;
         } else {
-            showBattleMenu(battle, scanner);
+            showBattleMenu(account, battle, scanner);
         }
     }
 

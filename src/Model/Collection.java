@@ -237,8 +237,8 @@ public class Collection {
     }
 
     public void removeSpell(int id) {
-        for (int i=0;i<spells.size();i++){
-            if(spells.get(i).getId()==id){
+        for (int i = 0; i < spells.size(); i++) {
+            if (spells.get(i).getId() == id) {
                 spells.remove(i);
                 return;
             }
@@ -246,11 +246,11 @@ public class Collection {
     }
 
     public void removeMinion(int id) {
-    for (int i=0;i<minions.size();i++){
-        if(minions.get(i).getId()==id){
-            minions.remove(i);
-            return;
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getId() == id) {
+                minions.remove(i);
+                return;
+            }
         }
-    }
     }
 }
