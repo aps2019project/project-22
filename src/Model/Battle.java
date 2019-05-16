@@ -2,6 +2,7 @@ package Model;
 
 import View.Show;
 
+import javax.net.ssl.HandshakeCompletedEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -402,6 +403,7 @@ public class Battle {
             int counter = -1;
             Random rand10 = new Random();
             int randomForCommand = rand10.nextInt(player2.getCardsInTheFiled().size());
+            System.out.println("----------->"+randomForCommand);
             while (true) {
                 counter++;
                 if (singlePlayer == false || player == player1)
@@ -466,6 +468,7 @@ public class Battle {
                         command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " " + x + "," + y;
                     } else if (counter == 5) {
                         command = "End turn";
+                        System.out.println("End Turn Enemy");
                     }
                 }
 
@@ -846,6 +849,9 @@ public class Battle {
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 70) {
                             System.out.println("Hero dosn't have special power");
                         }
+                        Hero tempHero = (Hero)Cell.getCells().get(card1ID).getInsideCard();
+                        tempHero.setSpecialPowerActivatedTrue();
+
                     }
                 } else if (command.indexOf("Show hand") != -1) {
                     int number = 1;
@@ -964,6 +970,10 @@ public class Battle {
                     }
                 } else if (command.matches("End turn")) {
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                        if (player.getCardsInTheFiled().get(i).getType() == 0){
+                            Hero hero = (Hero)player.getCardsInTheFiled().get(i);
+                            hero.timer(hero );
+                        }
                         player.getCardsInTheFiled().get(i).setHaveBeenMovedFalse();
                         player.getCardsInTheFiled().get(i).setHaveBeenUsedFalse();
                         if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
@@ -978,7 +988,6 @@ public class Battle {
                         if (player.getCardsInTheFiled().get(i).getStunByMinion5())
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
                     }
-                    System.out.println("------------->"+player.getCardsInTheFiled().get(0).getHealthPoint());
                     if (turn == true)
                         turn = false;
                     else

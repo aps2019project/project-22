@@ -15,7 +15,41 @@ public class Hero extends Card{
     private String typeOfHero;
     private Spell specialPower;
     private boolean hero65Activated = false;
+    private boolean specialPowerActivated = false;
 
+    public void setSpecialPowerActivatedTrue(){
+        specialPowerActivated = true;
+    }
+    public void setSpecialPowerActivatedFalse(){
+        specialPowerActivated = false;
+    }
+
+    public void timer(Hero hero){
+        if (specialPowerActivated ){
+            hero.setHowLongHasBeenCool(hero.getHowLongHasBeenCool()+1);
+            if(hero.getId() == 68 || hero.getId() == 67 || hero.getId() == 64 || hero.getId() == 61) {
+                if (hero.getHowLongHasBeenCool() == 2) {
+                    hero.setHowLongHasBeenCool(0);
+                    hero.setSpecialPowerActivatedFalse();
+                }
+            }else if(hero.getId() == 62){
+                if (hero.getHowLongHasBeenCool() == 8) {
+                    hero.setHowLongHasBeenCool(0);
+                    hero.setSpecialPowerActivatedFalse();
+                }
+            }else if(hero.getId() == 66){
+                if (hero.getHowLongHasBeenCool() == 3) {
+                    hero.setHowLongHasBeenCool(0);
+                    hero.setSpecialPowerActivatedFalse();
+                }
+            }else if(hero.getId() == 63){
+                if (hero.getHowLongHasBeenCool() == 1) {
+                    hero.setHowLongHasBeenCool(0);
+                    hero.setSpecialPowerActivatedFalse();
+                }
+            }
+        }
+    }
     public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
         setType(0);

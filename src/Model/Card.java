@@ -54,15 +54,7 @@ public class Card {
     public boolean getFlag(){
         return flag;
     }
-    public void setItem15True(){
-        item15 = true;
-    }
-    public void setItem15False(){
-        item15 = false;
-    }
-    public boolean getItem15(){
-        return item15;
-    }
+
 
     public int getAttackPointByItem() {
         return attackPointByItem;
