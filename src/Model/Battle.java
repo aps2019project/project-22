@@ -414,6 +414,28 @@ public class Battle {
                         int x = rand2.nextInt(5) + 1;
                         Random rand3 = new Random();
                         int y = rand3.nextInt(9) + 1;
+                        if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX()+1;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY()+1;
+                        }else if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX()+2;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY();
+                        }else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY()+2;
+                        }else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX()-1;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY()-1;
+                        }else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY()-2;
+                        }else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()){
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX()-2;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY();
+                        }else {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY()+1;
+                        }
                         command = "Move to(" + x + "" + y + ")";
                     } else if (counter == 2) {
                         Random rand2 = new Random();
@@ -705,8 +727,7 @@ public class Battle {
                                         getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
                                 attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
                             }
-                        System.out.println("player =========>"+player.getCardsInTheFiled().get(0).getHealthPoint());
-                        System.out.println("enemyplayer =========>"+enemyPlayer.getCardsInTheFiled().get(0).getHealthPoint());
+
                             player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
 
                     } else
