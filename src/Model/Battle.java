@@ -2,7 +2,6 @@ package Model;
 
 import View.Show;
 
-import javax.net.ssl.HandshakeCompletedEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
