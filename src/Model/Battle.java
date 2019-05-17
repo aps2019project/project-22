@@ -77,7 +77,7 @@ public class Battle {
 
     public void attachBack(Card card1, Card card2) {
 
-        if (card2.getDisarmFor1Turn() == false) {
+        if (card2.getDisarmFor1Turn() == false && card2.getStunByMinion5() == false) {
             int attackPower = 0;
             if (card1.getHowManyHolyBuff() > card2.getAttackPower()) {
                 card1.setHowManyHolyBuff(card1.getHowManyHolyBuff() - card2.getAttackPower());
@@ -506,7 +506,7 @@ public class Battle {
                     int valid = 0;
                     int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
                     for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
+                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null && player.getCardsInTheFiled().get(card1ID).getHaveBeenMoved() == false) {
                             valid = 1;
                             if (Cell.getCells().get(i).getFlag()) {
                                 player.getCardsInTheFiled().get(card1ID).setFlagTrue();
@@ -524,6 +524,14 @@ public class Battle {
                     }
 
                     if (distance <= 2 && valid == 1) {
+                        for (int i = 0; i  < Cell.getCells().size(); i++){
+                            if (Cell.getCells().get(i).getY() == player.getCardsInTheFiled().get(card1ID).getY() &&
+                                    Cell.getCells().get(i).getX() == player.getCardsInTheFiled().get(card1ID).getX()){
+                                Cell.getCells().get(i).setInsideCard(null);
+                            }else if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y){
+                                Cell.getCells().get(i).setInsideCard(player.getCardsInTheFiled().get(card1ID));
+                            }
+                        }
                         player.getCardsInTheFiled().get(card1ID).setX(x);
                         player.getCardsInTheFiled().get(card1ID).setY(y);
                         System.out.println(IDNumber1 + " moved to " + x + " " + y);
@@ -791,19 +799,19 @@ public class Battle {
                                 - player.getCardsInTheFiled().get(mainCardID).getAttackPower());
                         attachBack(player.getCardsInTheFiled().get(mainCardID), enemyPlayer.getCardsInTheFiled().get(card2ID));
                     }
-                } else if (command.matches("Use special power")) {
+                } else if (command.indexOf("Use special power") != -1) {
                     int x = command.charAt(19) - 48;
                     int y = command.charAt(21) - 48;
                     int isValidSpecialPower = 0;
                     for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y) {
+                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() != null) {
                             isValidSpecialPower = 1;
                             card1ID = i;
                         }
                     }
                     if (isValidSpecialPower == 0) {
                         System.out.println("Invalid card");
-                    } else if (Cell.getCells().get(card1ID).getInsideCard().getManaPoint() >= player.getMana()) {
+                    } else if (Cell.getCells().get(card1ID).getInsideCard().getManaPoint() > player.getMana()) {
                         System.out.println("invalid mana point");
                     } else {
                         if (Cell.getCells().get(card1ID).getInsideCard().getId() == 61) {
@@ -812,10 +820,12 @@ public class Battle {
                             System.out.println("Inter card ID");
                             int idNum = scanner.nextInt();
                             int valid = 0;
+                            int target = 0;
                             for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
                                 if (enemyPlayer.getCardsInTheFiled().get(i).getId() == idNum) {
                                     enemyPlayer.getCardsInTheFiled().get(i).setStunByMinion5True();
                                     valid = 1;
+                                    target = i;
                                     break;
                                 }
                             }
@@ -980,6 +990,7 @@ public class Battle {
                         }
                     }
                 } else if (command.matches("End turn")) {
+                    System.out.printf("---------->"+player.getCardsInTheFiled().get(0).getHealthPoint());
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                         if (player.getCardsInTheFiled().get(i).getType() == 0){
                             Hero hero = (Hero)player.getCardsInTheFiled().get(i);
