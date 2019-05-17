@@ -339,10 +339,11 @@ public class Account {
 
     private void showDeckByIndex(int i) {
         System.out.println((i + 1) + " : " + decks.get(i).getName() + " :\n\tHeroes :");
+
         if (decks.get(i).getHero() != null) {
-            System.out.println("\t\t1 : Name : " + (decks.get(i).getHero().getName() +
+            System.out.println("\t\t1 : Name : " + decks.get(i).getHero().getName() +
                     " - AP: " + decks.get(i).getHero().getAttackPower() + " - HP : " + decks.get(i).getHero().getHealthPoint()
-                    + " - class: " + decks.get(i).getHero().getTypeOfHero() + " - special power : " + decks.get(i).getHero().getSpecialPower().getDescription()));
+                    + " - ID : " + decks.get(i).getHero().getId() + " Type of attack: " + decks.get(i).getHero().getTypeOfAttack());
         }
         System.out.println("\tItems :");
         if (decks.get(i).getItem() != null) {
@@ -350,8 +351,21 @@ public class Account {
         }
         System.out.println("\tCards:");
         for (int j = 0; j < decks.get(i).getCardsOfDeck().size(); j++) {
-            System.out.println("\t\t" + (j + 1) + " : Type:" + decks.get(i).getCardsOfDeck().get(j).getType() +
+            System.out.println("\t\t" + (j + 1) + " : Type: " + printTypeOfCard(decks.get(i).getCardsOfDeck().get(j).getType()) +
                     " - Name : " + decks.get(i).getCardsOfDeck().get(j).getName() + " - Id : " + decks.get(i).getCardsOfDeck().get(j).getId());
+        }
+    }
+
+    private String printTypeOfCard(int type) {//0 hero | 1 spell | 2 minion
+        switch (type){
+            case 0:
+                return "Hero";
+            case 1:
+                return "Spell";
+            case 2:
+                return "Minion";
+                default:
+                    return "";
         }
     }
 
@@ -415,5 +429,9 @@ public class Account {
                 return;
             }
         }
+    }
+
+    public void deleteDeck(int i) {
+        decks.remove(i);
     }
 }

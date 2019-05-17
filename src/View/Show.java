@@ -25,16 +25,20 @@ public class Show {
             else
                 System.out.println("not found...:[");
         } else if (partsOfInput.length == 3 && partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")) {
-            Deck.createDeck(partsOfInput[2]);
+            Deck.createDeck(partsOfInput[2],account);
         } else if (partsOfInput.length == 3 && partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")) {
-            Deck.deleteDeck(partsOfInput[2]);
+            Deck.deleteDeck(partsOfInput[2],account);
         } else if ("save".equals(input)) {
             account.getCollection().save();
         } else if ("help".equals(input)) {
             Show.helpInCollection();
         } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
                 && partsOfInput[3].equals("deck")) {
-            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
+            try {
+                Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
+            }catch (Exception name){
+                System.out.println("deckName is invalid");
+            }
         } else if (partsOfInput[0].equals("validate") && partsOfInput[1].equals("deck")) {
             account.checkIsValidate(partsOfInput[2]);
         } else if (partsOfInput[0].equals("remove") && partsOfInput[2].equals("from") && partsOfInput[3].equals("deck")) {
@@ -93,7 +97,7 @@ public class Show {
         } else if (partsOfCommand[0].equals("show") && partsOfCommand[1].equals("collection")) {
             Show.showCollection(account);
         } else if (partsOfCommand[0].equals("search")) {
-            if (partsOfCommand[1].equals("colection")) {
+            if (partsOfCommand[1].equals("collection")) {
                 if (account.getCollection().search(partsOfCommand[2]) != -1)
                     System.out.println(account.getCollection().search(partsOfCommand[2]));
                 else
@@ -123,15 +127,16 @@ public class Show {
             System.out.println("\t" + number + " : Name : " + collection.getHeroes().get(i).getName() + " - AP : " +
                     collection.getHeroes().get(i).getAttackPower() + " - HP : " + collection.getHeroes().get(i).
                     getHealthPoint() + " - Class : " + collection.getHeroes().get(i).getTypeOfAttack() +
-                    " - Special power: " + "attack" + " - price: " + collection.getHeroes().get(i).getPrice());
-            //attack nmidunm jash chie!
+                    " - Special power: " + "attack" + " - price: " + collection.getHeroes().get(i).getPrice()+" Id= "+
+                    collection.getHeroes().get(i).getId());
             number++;
         }
         number = 1;
         System.out.println("Items :");
         for (int i = 0; i < collection.getItems().size(); i++) {
             System.out.println("\t" + number + " : Name : " + collection.getItems().get(i).getName() + " Desc: " +
-                    collection.getItems().get(i).getDescription() + " - price: " + collection.getItems().get(i).getPrice());
+                    collection.getItems().get(i).getDescription() + " - price: " + collection.getItems().get(i).getPrice()
+            + " ID="+collection.getItems().get(i).getId());
             number++;
         }
         number = 1;
@@ -139,7 +144,8 @@ public class Show {
         for (int i = 0; i < collection.getSpells().size(); i++) {
             System.out.println("\t" + number + " : Type : Spell - Name : " + collection.getSpells().get(i).getName() +
                     " - MP : " + collection.getSpells().get(i).getManaPoint() + " - " +
-                    collection.getSpells().get(i).getDescription() + " - price: " + collection.getSpells().get(i).getPrice());
+                    collection.getSpells().get(i).getDescription() + " - price: " + collection.getSpells().get(i).getPrice()
+            +" ID= "+collection.getSpells().get(i).getId());
             number++;
         }
         for (int i = 0; i < collection.getMinions().size(); i++) {
@@ -147,7 +153,8 @@ public class Show {
                     + " - Class: " + collection.getMinions().get(i).getTypeOfAttack() + " - AP : " + collection.
                     getMinions().get(i).getAttackPower() + " - HP : " + collection.getMinions().get(i).getHealthPoint()
                     + " - MP : " + collection.getMinions().get(i).getManaPoint() + " - Special power : " +
-                    collection.getMinions().get(i).getSpecialPower() + " - price: " + collection.getMinions().get(i).getPrice());
+                    collection.getMinions().get(i).getSpecialPower() + " - price: " + collection.getMinions().get(i).getPrice()
+            +" ID= "+collection.getMinions().get(i).getId());
             number++;
         }
     }

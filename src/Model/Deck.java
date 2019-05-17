@@ -7,7 +7,7 @@ public class Deck {
     private static ArrayList<Deck> decks = new ArrayList<>();
     private String name;
     private int size = 0;
-    private Hero hero ;
+    private Hero hero;
     private Item item;
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
@@ -15,8 +15,9 @@ public class Deck {
 
     public Deck(String name) {
         this.setName(name);
-        this.hero = new Hero(62, "simorq", 9000, 50, 4, "melee",
+        Hero hero1 = new Hero(62, "simorq", 9000, 50, 4, "melee",
                 -1, 5, 8);
+        setHero(hero1);
     }
 
     public static ArrayList<Deck> getDecks() {
@@ -130,8 +131,7 @@ public class Deck {
     }
 
     public void setHero(Hero hero) {
-        if (this.getHero() == null)
-            this.hero = hero;
+        this.hero = hero;
     }
 
     public ArrayList<Card> getCardsOfDeck() {
@@ -166,20 +166,27 @@ public class Deck {
         return null;
     }
 
-    public static void createDeck(String deckName) {
+    public static void createDeck(String deckName, Account account) {
         Deck deck = searchDeckByName(deckName);
         if (deck != null) {
             System.out.println("it is available now !\nplease change deck's name");
             return;
         }
         deck = new Deck(deckName);
-        Deck.getDecks().add(deck);
+        decks.add(deck);
+        account.addDeck(deck);
     }
 
-    public static void deleteDeck(String deckName) {
+    public static void deleteDeck(String deckName, Account account) {
         for (int i = 0; i < decks.size(); i++) {
             if (decks.get(i).getName().equals(deckName)) {
                 decks.remove(i);
+                break;
+            }
+        }
+        for (int i = 0; i < account.getDecks().size(); i++) {
+            if (account.getDecks().get(i).getName().equals(deckName)) {
+                account.deleteDeck(i);
                 return;
             }
         }
@@ -257,11 +264,7 @@ public class Deck {
     }
 
     public void addCard(int id, Account account) {
-        if (hero != null) {
-            System.out.println("deck has hero now.");
-            return;
-        }
-        if (cardsOfDeck.size() == 20) {
+        if (cardsOfDeck.size() == 20 && hero != null) {
             System.out.println("deck is full!");
             return;
         }
@@ -272,14 +275,14 @@ public class Deck {
             }
         }
         int i = 0;
+        boolean notFound[] =new boolean[4];
         for (; i < account.getCollection().getItems().size(); i++) {
             if (account.getCollection().getItems().get(i).getId() == id) {
                 break;
             }
         }
         if (i == account.getCollection().getItems().size()) {
-            System.out.println("this item hasn't in collection");
-            return;
+            notFound[0]=true;
         }
         i = 0;
         for (; i < account.getCollection().getSpells().size(); i++) {
@@ -288,8 +291,7 @@ public class Deck {
             }
         }
         if (i == account.getCollection().getSpells().size()) {
-            System.out.println("this spell hasn't in collection");
-            return;
+            notFound[1]=true;
         }
         i = 0;
         for (; i < account.getCollection().getMinions().size(); i++) {
@@ -298,9 +300,53 @@ public class Deck {
             }
         }
         if (i == account.getCollection().getMinions().size()) {
-            System.out.println("this minion hasn't in collection");
+            notFound[2]=true;
+        }
+        i = 0;
+        for (; i < account.getCollection().getHeroes().size(); i++) {
+            if (account.getCollection().getHeroes().get(i).getId() == id) {
+                break;
+            }
+        }
+        if (i == account.getCollection().getHeroes().size()) {
+            notFound[3]=true;
+        }
+        if(notFound[0]&&notFound[1]&&notFound[2]&&notFound[3])
+        {
+            System.out.println("this card or item isn't in your collection.");
             return;
         }
+        for (i = 0; i < account.getCollection().getHeroes().size(); i++) {
+            if (account.getCollection().getHeroes().get(i).getId() == id) {
+                if (hero != null) {
+                    System.out.println("deck has hero now.");
+                } else {
+                    hero = account.getCollection().getHeroes().get(i);
+                }
+                return;
+            }
+        }
+        for (i=0;i<account.getCollection().getMinions().size();i++){
+            if(account.getCollection().getMinions().get(i).getId()==id){
+                cardsOfDeck.add(account.getCollection().getMinions().get(i));
+                minions.add(account.getCollection().getMinions().get(i));
+                return;
+            }
+        }
+        for (i=0;i<account.getCollection().getSpells().size();i++){
+            if(account.getCollection().getSpells().get(i).getId()==id){
+                cardsOfDeck.add(account.getCollection().getSpells().get(i));
+                spells.add(account.getCollection().getSpells().get(i));
+                return;
+            }
+        }
+        for (i=0;i<account.getCollection().getItems().size();i++){
+            if(account.getCollection().getItems().get(i).getId()==id){
+                this.item=account.getCollection().getItems().get(i);
+                return;
+            }
+        }
+
         Card card = new Card();
         card.setId(id);
         cardsOfDeck.add(card);
