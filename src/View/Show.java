@@ -25,9 +25,9 @@ public class Show {
             else
                 System.out.println("not found...:[");
         } else if (partsOfInput.length == 3 && partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")) {
-            Deck.createDeck(partsOfInput[2],account);
+            Deck.createDeck(partsOfInput[2], account);
         } else if (partsOfInput.length == 3 && partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")) {
-            Deck.deleteDeck(partsOfInput[2],account);
+            Deck.deleteDeck(partsOfInput[2], account);
         } else if ("save".equals(input)) {
             account.getCollection().save();
         } else if ("help".equals(input)) {
@@ -36,7 +36,7 @@ public class Show {
                 && partsOfInput[3].equals("deck")) {
             try {
                 Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
-            }catch (Exception name){
+            } catch (Exception name) {
                 System.out.println("deckName is invalid");
             }
         } else if (partsOfInput[0].equals("validate") && partsOfInput[1].equals("deck")) {
@@ -127,7 +127,7 @@ public class Show {
             System.out.println("\t" + number + " : Name : " + collection.getHeroes().get(i).getName() + " - AP : " +
                     collection.getHeroes().get(i).getAttackPower() + " - HP : " + collection.getHeroes().get(i).
                     getHealthPoint() + " - Class : " + collection.getHeroes().get(i).getTypeOfAttack() +
-                    " - Special power: " + "attack" + " - price: " + collection.getHeroes().get(i).getPrice()+" Id= "+
+                    " - Special power: " + "attack" + " - price: " + collection.getHeroes().get(i).getPrice() + " Id= " +
                     collection.getHeroes().get(i).getId());
             number++;
         }
@@ -136,7 +136,7 @@ public class Show {
         for (int i = 0; i < collection.getItems().size(); i++) {
             System.out.println("\t" + number + " : Name : " + collection.getItems().get(i).getName() + " Desc: " +
                     collection.getItems().get(i).getDescription() + " - price: " + collection.getItems().get(i).getPrice()
-            + " ID="+collection.getItems().get(i).getId());
+                    + " ID=" + collection.getItems().get(i).getId());
             number++;
         }
         number = 1;
@@ -145,7 +145,7 @@ public class Show {
             System.out.println("\t" + number + " : Type : Spell - Name : " + collection.getSpells().get(i).getName() +
                     " - MP : " + collection.getSpells().get(i).getManaPoint() + " - " +
                     collection.getSpells().get(i).getDescription() + " - price: " + collection.getSpells().get(i).getPrice()
-            +" ID= "+collection.getSpells().get(i).getId());
+                    + " ID= " + collection.getSpells().get(i).getId());
             number++;
         }
         for (int i = 0; i < collection.getMinions().size(); i++) {
@@ -154,7 +154,7 @@ public class Show {
                     getMinions().get(i).getAttackPower() + " - HP : " + collection.getMinions().get(i).getHealthPoint()
                     + " - MP : " + collection.getMinions().get(i).getManaPoint() + " - Special power : " +
                     collection.getMinions().get(i).getSpecialPower() + " - price: " + collection.getMinions().get(i).getPrice()
-            +" ID= "+collection.getMinions().get(i).getId());
+                    + " ID= " + collection.getMinions().get(i).getId());
             number++;
         }
     }
@@ -185,8 +185,8 @@ public class Show {
         Player player2 = new Player();
         player2.setAccount(Account.getAccounts().get(opponent));
         player1.setAccount(account);
-        System.out.println("1.single player");
-        System.out.println("2.multi player");
+        System.out.println("1. single player");
+        System.out.println("2. multi player");
         System.out.println("3. exit");
 
         String input0 = scanner.nextLine();
@@ -210,7 +210,10 @@ public class Show {
                 battle.setBooleanSinglePlayerTrue();
             }
             System.out.println("1. level1\n2. level2\n3. level3\n4. exit");
-            int level = Integer.parseInt(scanner.nextLine());
+            String input2 = scanner.nextLine();
+            if (input2.equals("4") || input2.equals("exit"))
+                return;
+            int level = Integer.parseInt(input2);
             if (level == 1) {
                 ((Story) battle).setLevel(1);
                 Random rand = new Random();
@@ -333,7 +336,10 @@ public class Show {
             }
             account.showAllDecks();
             System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
-            int num = Integer.parseInt(scanner.nextLine());
+            String input3 = scanner.nextLine();
+            if (input3.equals("4") || input3.equals("exit"))
+                return;
+            int num = Integer.parseInt(input3);
             if (num == 4)
                 return;
             ((CustomGame) battle).setMode(num);

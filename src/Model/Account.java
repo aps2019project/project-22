@@ -357,15 +357,15 @@ public class Account {
     }
 
     private String printTypeOfCard(int type) {//0 hero | 1 spell | 2 minion
-        switch (type){
+        switch (type) {
             case 0:
                 return "Hero";
             case 1:
                 return "Spell";
             case 2:
                 return "Minion";
-                default:
-                    return "";
+            default:
+                return "";
         }
     }
 
