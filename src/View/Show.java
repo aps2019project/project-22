@@ -183,15 +183,19 @@ public class Show {
         System.out.println("3. exit");
 
         String input0 = scanner.nextLine();
-        int singleOrMulti = Integer.parseInt(input0);
-        if (input0.equals("exit") || input0.equals("Exit") || input0.equals("3"))
+        if (input0.equals("exit") || input0.equals("Exit") || input0.equals("3")) {
             return;
+        }
+        int singleOrMulti = Integer.parseInt(input0);
 
         System.out.println("1.Story");
         System.out.println("2.Custom game");
         System.out.println("3. exit");
+        String numberOfInput = scanner.nextLine();
 
-        int storyOrCustom = Integer.parseInt(scanner.nextLine());
+        if (numberOfInput.equals("exit") || numberOfInput.equals("3") || numberOfInput.equals("Exit"))
+            return;
+        int storyOrCustom = Integer.parseInt(numberOfInput);
         if (storyOrCustom == 1) {
             battle = new Story();
             battle.setStoryTrue();
