@@ -155,7 +155,7 @@ public class Battle {
             int xCollectable = rand78.nextInt(9) + 1;
             int yCollectable = rand78.nextInt(5) + 1;
             int randCollectable = rand78.nextInt(10) + 1;
-            if (randCollectable == 1){
+            if (true){
                 Item item = new Item(81, "RandomDamage", -1, "2 power strike for random power");
                 for (int i = 0; i < Cell.getCells().size(); i++){
                     if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable){
@@ -521,7 +521,7 @@ public class Battle {
                     int valid = 0;
                     int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
                     for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null && player.getCardsInTheFiled().get(card1ID).getHaveBeenMoved() == false) {
+                        if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null ) {
                             valid = 1;
                             if (Cell.getCells().get(i).getFlag()) {
                                 player.getCardsInTheFiled().get(card1ID).setFlagTrue();
@@ -1060,6 +1060,7 @@ public class Battle {
                 }else if (command.indexOf("Show card info") != -1){
                     String split[] = command.split(" ");
                     int cardId = Integer.parseInt(split[3]);
+                    System.out.println(player.getCardsInTheFiled().get(0).getAttackPower());
                     showCardInfoByCardId(cardId, player);
                 }else if (command.indexOf("Game info") != -1){
                     System.out.println(player1.getAccount().getUserName()+" mana point is "+player1.getMana());
@@ -1278,6 +1279,7 @@ public class Battle {
                 }
             }
         } catch (Exception name) {
+            System.out.println("invalid command!");
         }
     }
 }

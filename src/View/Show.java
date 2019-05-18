@@ -218,17 +218,17 @@ public class Show {
                 ((Story) battle).setLevel(1);
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
-                Card.searchCardByID(62).setX(1);
-                Card.searchCardByID(62).setY(3);
+                Card.searchCardByID(68).setX(1);
+                Card.searchCardByID(68).setY(3);
 
                 for (int i = 0; i < Cell.getCells().size(); i++) {
                     if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
                         Cell.getCells().get(i).addCard(Card.searchCardByID(62));
                     }
                 }
-                player1.setHero((Hero) Card.searchCardByID(62));
-                player1.addCardsInTheFile(Card.searchCardByID(62));
-                player1.addCardsInTheFile((Hero) Card.searchCardByID(62));
+                player1.setHero((Hero) Card.searchCardByID(68));
+                player1.addCardsInTheFile(Card.searchCardByID(68));
+                player1.addCardsInTheFile((Hero) Card.searchCardByID(68));
                 Deck deckPlayer2 = new Deck("level1");
                 deckPlayer2.setLevel1(deckPlayer2);
                 player2.setMainDeck(deckPlayer2);
@@ -294,16 +294,16 @@ public class Show {
                 Random rand = new Random();
                 int n = rand.nextInt(10) + 61;
 
-                Card.searchCardByID(n).setX(1);
-                Card.searchCardByID(n).setY(3);
+                Card.searchCardByID(68).setX(1);
+                Card.searchCardByID(68).setY(3);
 
                 for (int i = 0; i < Cell.getCells().size(); i++) {
                     if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
                         Cell.getCells().get(i).addCard(Card.searchCardByID(n));
                     }
                 }
-                player1.setHero((Hero) Card.searchCardByID(n));
-                player1.addCardsInTheFile(Card.searchCardByID(n));
+                player1.setHero((Hero) Card.searchCardByID(68));
+                player1.addCardsInTheFile(Card.searchCardByID(62));
                 Deck deckPlayer2 = new Deck("level3");
                 deckPlayer2.setLevel3(deckPlayer2);
                 player2.setMainDeck(deckPlayer2);
