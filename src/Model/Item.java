@@ -133,7 +133,7 @@ public class Item {
     }
 
     public void showItemInfo() {
-
+        System.out.println("name : "+this.name+" id : "+this.id+" description : "+description );
     }
 
     public static void addItem(Item item) {

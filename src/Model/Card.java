@@ -126,6 +126,7 @@ public class Card {
     public void setHowLongHaveBeenStun(int howLongHaveBeenStun) {
         this.howLongHaveBeenStun = howLongHaveBeenStun;
         if (this.howLongHaveBeenStun == 2) {
+            this.howLongHaveBeenStun = 0;
             this.stun = false;
         }
     }
@@ -137,6 +138,7 @@ public class Card {
     public void setHowLongHaveBeenDisarmed(int howLongHaveBeenDisarmed) {
         this.howLongHaveBeenDisarmed = howLongHaveBeenDisarmed;
         if (this.howLongHaveBeenDisarmed == 2) {
+            this.howLongHaveBeenDisarmed = 0;
             this.disarmFor1Turn = false;
         }
     }

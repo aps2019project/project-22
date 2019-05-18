@@ -151,6 +151,19 @@ public class Battle {
             }
         }
         while (!endGame) {
+            Random rand78 = new Random();
+            int xCollectable = rand78.nextInt(9) + 1;
+            int yCollectable = rand78.nextInt(5) + 1;
+            int randCollectable = rand78.nextInt(10) + 1;
+            if (randCollectable == 1){
+                Item item = new Item(81, "RandomDamage", -1, "2 power strike for random power");
+                for (int i = 0; i < Cell.getCells().size(); i++){
+                    if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable){
+                        Cell.getCells().get(i).setItem(item);
+                        System.out.println("collectable item in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                    }
+                }
+            }
             if (!turn) {
                 player = player1;
                 player1Turns++;
@@ -159,6 +172,21 @@ public class Battle {
                 player = player2;
                 player2Turn++;
                 enemyPlayer = player1;
+            }
+            if (player1Turns == 2) {
+                player.setMana(4);
+            } else if (player1Turns == 3) {
+                player.setMana(5);
+            } else if (player1Turns == 4) {
+                player.setMana(6);
+            } else if (player1Turns == 5) {
+                player.setMana(7);
+            } else if (player1Turns == 6) {
+                player.setMana(8);
+            } else if (player1Turns == 7) {
+                player.setMana(9);
+            } else if (player1Turns >= 8) {
+                player.setMana(9);
             }
             if (player.getItem8()) {
                 player.setMana(player.getMana() + 3);
@@ -190,7 +218,7 @@ public class Battle {
                     tempItem.item20(player);
                 }
             }
-            if (player.getMainDeck().getItem().getId() == 1) {
+            if (player.getMainDeck().getItem().getId() == 71) {
                 if (player == player1)
                     tempItem.item1(player1Turns, player1);
                 else
@@ -298,7 +326,7 @@ public class Battle {
                     tempItem.item20(player);
                 }
             }
-            if (player.getMainDeck().getItem().getId() == 1) {
+            if (player.getMainDeck().getItem().getId() == 71) {
                 if (player == player1)
                     tempItem.item1(player1Turns, player1);
                 else
@@ -385,21 +413,7 @@ public class Battle {
                 player = player2;
                 enemyPlayer = player1;
             }
-            if (player1Turns == 2) {
-                player.setMana(4);
-            } else if (player1Turns == 3) {
-                player.setMana(5);
-            } else if (player1Turns == 4) {
-                player.setMana(6);
-            } else if (player1Turns == 5) {
-                player.setMana(7);
-            } else if (player1Turns == 6) {
-                player.setMana(8);
-            } else if (player1Turns == 7) {
-                player.setMana(9);
-            } else if (player1Turns >= 8) {
-                player.setMana(9);
-            }
+
             if (player.getFlag()) {
                 player.setHowLongFlagsHasBeenKept(player.getHowLongFlagsHasBeenKept() + 1);
             } else if (enemyPlayer.getFlag()) {
@@ -520,6 +534,10 @@ public class Battle {
                                     player.setHowManyFlag(player.getHowManyFlag() + 1);
                                 }
 
+                            }
+                            if (Cell.getCells().get(i).getItem() != null){
+                                player1.addCollectableItems(Cell.getCells().get(i).getItem());
+                                Cell.getCells().get(i).setItem(null);
                             }
                         }
                     }
@@ -803,25 +821,23 @@ public class Battle {
                             card1ID = i;
                         }
                     }
+                    Hero cooldown = new Hero(61, "diveSefid", 8000, 50, 4, "melee", -1, 1, 2);
+                    if (isValidSpecialPower == 1)
+                        cooldown = (Hero) Cell.getCells().get(card1ID).getInsideCard();
                     if (isValidSpecialPower == 0) {
                         System.out.println("Invalid card");
+                    }else if (cooldown.getHowLongHasBeenCool() != 0){
+                        System.out.println("your hero has not been cooldown yet");
                     } else if (Cell.getCells().get(card1ID).getInsideCard().getManaPoint() > player.getMana()) {
                         System.out.println("invalid mana point");
                     } else {
                         if (Cell.getCells().get(card1ID).getInsideCard().getId() == 61) {
                             Cell.getCells().get(card1ID).getInsideCard().setAttackPower(Cell.getCells().get(card1ID).getInsideCard().getAttackPower() + 4);
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 62) {
-                            System.out.println("Inter card ID");
-                            int idNum = scanner.nextInt();
                             int valid = 0;
-                            int target = 0;
                             for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                if (enemyPlayer.getCardsInTheFiled().get(i).getId() == idNum) {
                                     enemyPlayer.getCardsInTheFiled().get(i).setStunByMinion5True();
                                     valid = 1;
-                                    target = i;
-                                    break;
-                                }
                             }
                             if (valid == 0) {
                                 System.out.println("Invalid card ID");
@@ -846,7 +862,6 @@ public class Battle {
                                 temp.setHero65ActivatedTrue();
                             }
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 66) {
-                            //vaghti spello zadim
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 67) {
                             for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
                                 if (enemyPlayer.getCardsInTheFiled().get(i).getY() == Cell.getCells().get(card1ID).getInsideCard().getY()) {
@@ -854,7 +869,7 @@ public class Battle {
                                 }
                             }
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 68) {
-                            //bade spell
+                                enemyPlayer.getCardsInTheFiled().get(0).setAttackPower(enemyPlayer.getCardsInTheFiled().get(0).getAttackPower()-2);
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 69) {
                             Cell.getCells().get(card1ID).getInsideCard().setHowManyHolyBuff(Cell.getCells().get(card1ID).getInsideCard().getHowManyHolyBuff() + 3);
                         } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 70) {
@@ -984,7 +999,6 @@ public class Battle {
                         }
                     }
                 } else if (command.matches("End turn")) {
-                    System.out.printf("---------->" + player.getCardsInTheFiled().get(0).getHealthPoint());
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                         if (player.getCardsInTheFiled().get(i).getType() == 0) {
                             Hero hero = (Hero) player.getCardsInTheFiled().get(i);
@@ -994,15 +1008,17 @@ public class Battle {
                         player.getCardsInTheFiled().get(i).setHaveBeenUsedFalse();
                         if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                        if (player.getCardsInTheFiled().get(i).getStunByMinion5())
+                        if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
+                        }
                     }
                     player = enemyPlayer;
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                         if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                        if (player.getCardsInTheFiled().get(i).getStunByMinion5())
+                        if (player.getCardsInTheFiled().get(i).getStunByMinion5()){
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
+                        }
                     }
                     if (turn == true)
                         turn = false;
@@ -1037,11 +1053,64 @@ public class Battle {
                     player.getCollectibleItems().get(itemIDNumber).showItemInfo();
                 } else if (command.indexOf("exit") != -1) {
                     return;
+                }else if (command.indexOf("Show my minions") != -1){
+                    showMinions(player);
+                }else if (command.indexOf("Show opponent minions") != -1){
+                    showMinions(enemyPlayer);
+                }else if (command.indexOf("Show card info") != -1){
+                    String split[] = command.split(" ");
+                    int cardId = Integer.parseInt(split[3]);
+                    showCardInfoByCardId(cardId, player);
+                }else if (command.indexOf("Game info") != -1){
+                    System.out.println(player1.getAccount().getUserName()+" mana point is "+player1.getMana());
+                    System.out.println(player2.getAccount().getUserName()+" mana point is "+player2.getMana());
+                    if (mode == 1){
+                        System.out.println(player1.getAccount().getUserName()+" health point is "+player1.getCardsInTheFiled().get(0).getHealthPoint());
+                        System.out.println(player2.getAccount().getUserName()+" health point is "+player2.getCardsInTheFiled().get(0).getHealthPoint());
+                    }else if (mode == 2){
+                        int exist = 0;
+                        for (int i = 0; i  <Cell.getCells().size(); i++){
+                            if (Cell.getCells().get(i).getFlag()){
+                                exist = 1;
+                                System.out.println("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                                break;
+                            }
+                        }
+                        if (exist == 0){
+                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                                if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                    System.out.println("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY());
+                                    exist = 1;
+                                    break;
+                                }
+                            }
+                            if (exist == 0){
+                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                        System.out.println("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY());
+                                        exist = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }else if (mode == 3){
+                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                            if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                            }
+                        }
+                            for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                                if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                    System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                                }
+
+                        }
+                    }
                 }
 
             }
         }
-        System.out.println("Game end");
     }
 
     public void checkForWinnerInStory() {
@@ -1050,12 +1119,14 @@ public class Battle {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
+                System.out.println(player2.getAccount().getUserName()+" win");
 
                 endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
+                System.out.println(player1.getAccount().getUserName()+" win");
                 endGame = true;
             }
         } else if (mode == 2) {
@@ -1063,20 +1134,24 @@ public class Battle {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
+                System.out.println(player1.getAccount().getUserName()+" win");
                 endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
+                System.out.println(player2.getAccount().getUserName()+" win");
                 endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2) {
+            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
+                System.out.println(player1.getAccount().getUserName()+" win");
                 endGame = true;
-            } else if (player2.getHowManyFlag() == howManyFlags / 2) {
+            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.println(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
@@ -1088,12 +1163,14 @@ public class Battle {
     public void checkForWinnerInCustomGame() {
         if (mode == 1) {
             if (player1.getHero().getHealthPoint() <= 0) {
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
 
                 endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
@@ -1101,23 +1178,27 @@ public class Battle {
             }
         } else if (mode == 2) {
             if (player1.getHowLongFlagsHasBeenKept() == 6) {
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
                 endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2) {
+            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 endGame = true;
-            } else if (player2.getHowManyFlag() == howManyFlags / 2) {
+            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);

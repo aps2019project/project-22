@@ -15,6 +15,15 @@ public class Cell {
     private static ArrayList<Cell> cells = new ArrayList<>();
     private Minion minion;
     private Hero hero;
+    private Item item;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     public void insertCard(Card card) {
         this.cardInside = card;

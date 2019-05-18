@@ -72,6 +72,9 @@ public class Player {
         this.setAccount(account);
         this.setMainDeck(account.getMainDeck());
     }
+    public void addCollectableItems(Item item){
+        collectibleItems.add(item);
+    }
     public void setDeck(Deck deck){
         Random rand = new Random();
         for (int i = 0; i < 13; i++){
