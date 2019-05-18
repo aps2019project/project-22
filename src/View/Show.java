@@ -334,18 +334,6 @@ public class Show {
             if (singleOrMulti == 1) {
                 battle.setBooleanSinglePlayerTrue();
             }
-            account.showAllDecks();
-            System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
-            String input3 = scanner.nextLine();
-            if (input3.equals("4") || input3.equals("exit"))
-                return;
-            int num = Integer.parseInt(input3);
-            if (num == 4)
-                return;
-            ((CustomGame) battle).setMode(num);
-            String input = scanner.nextLine();
-            ((CustomGame) battle).setCoustomGame(input);
-
             Random rand = new Random();
             int n = rand.nextInt(10) + 61;
 
@@ -381,7 +369,20 @@ public class Show {
             player1.setHand();
             battle.setPlayer1(player1);
             battle.setPlayer2(player2);
+            account.showAllDecks();
+            System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
+            String input3 = scanner.nextLine();
+            if (input3.equals("4") || input3.equals("exit"))
+                return;
+            int num = Integer.parseInt(input3);
+            if (num == 4)
+                return;
+            ((CustomGame) battle).setMode(num);
+            String input = scanner.nextLine();
+            ((CustomGame) battle).setCoustomGame(input);
             battle.fight(account, scanner);
+
+
         } else if (singleOrMulti == 3) {
             return;
         } else {
