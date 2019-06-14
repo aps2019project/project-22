@@ -1,6 +1,7 @@
 package View;
 
 import Model.*;
+import javafx.scene.Group;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -49,7 +50,7 @@ public class Show {
         collectionMenu(scanner, account);
     }
 
-    public static void showMainMenuOfAccount(Scanner scanner, Account account) {
+    public static void showMainMenuOfAccount(Scanner scanner, Account account,Group root) {
         System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
         String input = scanner.nextLine().trim();
         switch (input) {
@@ -61,7 +62,7 @@ public class Show {
                 break;
             case "Enter battle":
                 Battle battle = new Battle();
-                showBattleMenu(account, battle, scanner);
+                showBattleMenu(account, battle, scanner,root);
                 break;
             case "Save":
                 //save
@@ -77,7 +78,7 @@ public class Show {
                 System.out.println("-Enter collection\n-Enter shop\n-Enter battle\n-Save\n-Logout");
                 break;
         }
-        showMainMenuOfAccount(scanner, account);
+        showMainMenuOfAccount(scanner, account,root);
     }
 
     private static void showAllUserNames() {
@@ -166,7 +167,7 @@ public class Show {
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
 
-    public static void showBattleMenu(Account account, Battle battle, Scanner scanner) {
+    public static void showBattleMenu(Account account, Battle battle, Scanner scanner,Group root) {
         System.out.println("~~~BattleMenu~~~");
         System.out.println("choose opponent");
         showAllUserNames();
@@ -249,7 +250,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner);
+                battle.fight(account, scanner,root);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
@@ -287,7 +288,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner);
+                battle.fight(account, scanner,root);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
@@ -325,7 +326,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner);
+                battle.fight(account, scanner,root);
             } else if (level == 4) {
                 return;
             }
@@ -380,17 +381,17 @@ public class Show {
             ((CustomGame) battle).setMode(num);
             String input = scanner.nextLine();
             ((CustomGame) battle).setCoustomGame(input);
-            battle.fight(account, scanner);
+            battle.fight(account, scanner,root);
 
 
         } else if (singleOrMulti == 3) {
             return;
         } else {
-            showBattleMenu(account, battle, scanner);
+            showBattleMenu(account, battle, scanner,root);
         }
     }
 
-    public static void showMainMenu(Scanner scanner) {
+    public static void showMainMenu(Scanner scanner, Group root) {
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
         System.out.println("\t*** please enter a number : ***");
         String input = scanner.nextLine().trim();
@@ -411,7 +412,7 @@ public class Show {
                 System.out.println("please enter your password.:)");
                 String password = scanner.nextLine();
                 if (Account.checkLogin(str[1], password)) {
-                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated());
+                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(),root);
                 }
             }
         } else if (input.equals("3") || input.equals("show leaderboard")) {
@@ -419,7 +420,7 @@ public class Show {
         } else if (input.equals("4") || input.equals("Help") || input.equals("help")) {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
-        showMainMenu(scanner);
+        showMainMenu(scanner,root);
     }
 
     private static void showLeaderBoard() {
