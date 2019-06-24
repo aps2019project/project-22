@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ public class Hero extends Card {
     private int rangeOfAttack;
     private int howLongHasBeenCool = 0;
     private int cooldown;
+
     private boolean item17 = false;
     private String typeOfHero;
     private Spell specialPower;
@@ -24,6 +27,7 @@ public class Hero extends Card {
     public void setSpecialPowerActivatedFalse() {
         specialPowerActivated = false;
     }
+
 
     public void timer(Hero hero) {
         if (specialPowerActivated) {
@@ -52,8 +56,11 @@ public class Hero extends Card {
         }
     }
 
-    public Hero(int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
+    public Hero(String image1,String image2,String image3,int id, String name, int price, int healthPoint, int attackPower, String typeOfAttack,
                 int rangeOfAttack, int manaPoint, int cooldown) {
+        breath = new Image(image1);
+        attack = new Image(image2);
+        run = new Image(image3);
         setType(0);
         this.setId(id);
         this.setName(name);

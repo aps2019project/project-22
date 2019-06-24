@@ -126,20 +126,20 @@ public class Shop {
         return newId;
     }
 
-    public static void addMinion(Minion minion) {
-        Minion newMinion = new Minion(getNewId(), minion.getName(), minion.getPrice(), minion.getManaPoint(),
-                minion.getHealthPoint(), minion.getAttackPower(), minion.getTypeOfAttack(), minion.getRangeOfAttack(),
-                minion.getActivationTime(), minion.getDescription());
-        minions.add(newMinion);
-        cards.add(newMinion);
-    }
-
-    public static void addHero(Hero hero) {
-        Hero newHero = new Hero(getNewId(), hero.getName(), hero.getPrice(), hero.getHealthPoint(),
-                hero.getAttackPower(), hero.getTypeOfAttack(), hero.getRangeOfAttack(), hero.getManaPoint(), hero.getCooldown());
-        heroes.add(newHero);
-        cards.add(newHero);
-    }
+//    public static void addMinion(Minion minion) {
+//        Minion newMinion = new Minion(getNewId(), minion.getName(), minion.getPrice(), minion.getManaPoint(),
+//                minion.getHealthPoint(), minion.getAttackPower(), minion.getTypeOfAttack(), minion.getRangeOfAttack(),
+//                minion.getActivationTime(), minion.getDescription());
+//        minions.add(newMinion);
+//        cards.add(newMinion);
+//    }
+//
+//    public static void addHero(Hero hero) {
+//        Hero newHero = new Hero(getNewId(), hero.getName(), hero.getPrice(), hero.getHealthPoint(),
+//                hero.getAttackPower(), hero.getTypeOfAttack(), hero.getRangeOfAttack(), hero.getManaPoint(), hero.getCooldown());
+//        heroes.add(newHero);
+//        cards.add(newHero);
+//    }
 
     public static void addItem(Item item) {
         Item newItem = new Item(getNewId(), item.getName(), item.getPrice(), item.getDescription());

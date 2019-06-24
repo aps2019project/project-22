@@ -545,18 +545,27 @@ public class Battle implements EventHandler<ActionEvent> {
             x12 = x12-25;
         }
         groundNumber = 0;
-        int x10 = 195 , y10 = 180;
+        int x10 = 195 , y10 = 160;
         for (int i = 0; i < 5; i++){
             x10 = 230;
             for (int j = 0 ; j < 9; j++){
                 ground[groundNumber] = new Rectangle(55,55);
                 ground[groundNumber].relocate(x10,y10);
-                ground[groundNumber].setFill(Color.rgb(92,144,183));
+                ground[groundNumber].setFill(Color.rgb(75,105,113));
                 groundNumber++;
                 x10 = x10+60;
             }
             y10 = y10 + 60;
         }
+        ImageView hero1 = new ImageView();
+        hero1.setFitHeight(55);
+        hero1.setFitWidth(55);
+        hero1.setImage(player1.getHero().getBreath());
+        hero1.relocate(230,280);
+        ImageView hero2 = new ImageView(player2.getHero().getBreath());
+        hero2.setFitWidth(55);
+        hero2.setFitHeight(55);
+        hero2.relocate(710,280);
         Image image1 = new Image("file:Duelyst.PNG");
         ImageView iv = new ImageView();
         label.relocate(820,550);
@@ -564,12 +573,26 @@ public class Battle implements EventHandler<ActionEvent> {
         iv.setFitWidth(1000);
         iv.setFitHeight(600);
         iv.setImage(image1);
+        ImageView hands1[] = new ImageView[5];
+        int xHand = 285;
+        for (int i = 0; i < 5; i++ ){
+            hands1[i] = new ImageView();
+            hands1[i].setFitHeight(70);
+            hands1[i].setFitWidth(70);
+            hands1[i].relocate(xHand,500);
+            hands1[i].setImage(player1.getHand().getCardsInThisHand().get(i).getBreath());
+            xHand+= 100;
+        }
+
         Platform.runLater(
                 new Runnable(){
                     public void run(){
 
                         root.getChildren().addAll(iv);
                         root.getChildren().addAll(ground);
+                        root.getChildren().addAll(hero1);
+                        root.getChildren().addAll(hero2);
+                        root.getChildren().addAll(hands1);
                         root.getChildren().addAll(mana1);
                         root.getChildren().addAll(mana2);
                     }
@@ -1017,7 +1040,11 @@ public class Battle implements EventHandler<ActionEvent> {
                     card1ID = i;
                 }
             }
-            Hero cooldown = new Hero(61, "diveSefid", 8000, 50, 4, "melee", -1, 1, 2);
+            Hero cooldown = new Hero("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (41)\\breathing.GIF",
+                    "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (41)\\attack.GIF",
+                    "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (41)\\run.GIF",
+                    61, "diveSefid", 8000, 50, 4, "melee",
+                    -1, 1, 2);
             if (isValidSpecialPower == 1)
                 cooldown = (Hero) Cell.getCells().get(card1ID).getInsideCard();
             if (isValidSpecialPower == 0) {

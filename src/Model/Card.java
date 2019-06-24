@@ -1,11 +1,28 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Card {
+    protected Image breath;
+    protected javafx.scene.image.Image run;
+    protected javafx.scene.image.Image attack;
     private static ArrayList<Card> cards = new ArrayList<>();
     protected int id;
     protected boolean stun;
+    public Image getBreath() {
+        return breath;
+    }
+
+    public Image getRun() {
+        return run;
+    }
+
+    public Image getAttack() {
+        return attack;
+    }
+
     private boolean disarmFor1Turn;
     private int attackPointByItem = 0;
     private int minion5Counter = 0;

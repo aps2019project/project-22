@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Minion extends Card {
@@ -75,8 +77,11 @@ public class Minion extends Card {
         this.sumOfPossetiveAttack = sumOfPossetiveAttack;
     }
 
-    public Minion(int ID, String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
+    public Minion(String image1,String image2,String image3,int ID, String name, int cost, int mana, int healthPoint, int attackPower, String typeOfAttack, int rangeOfAttack, String activationTime, String description) {
         id = ID;
+        breath = new Image(image1);
+        attack = new Image(image2);
+        run = new Image(image3);
         this.cost = cost;
         setType(2);
         this.price = cost;

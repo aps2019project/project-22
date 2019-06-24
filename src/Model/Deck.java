@@ -15,7 +15,10 @@ public class Deck {
 
     public Deck(String name) {
         this.setName(name);
-        Hero hero1 = new Hero(62, "simorq", 9000, 50, 4, "melee",
+        Hero hero1 = new Hero("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (42)\\breathing.GIF",
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (42)\\attack.GIF",
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (42)\\run.GIF",
+                62, "simorq", 9000, 50, 4, "melee",
                 -1, 5, 8);
         setHero(hero1);
     }

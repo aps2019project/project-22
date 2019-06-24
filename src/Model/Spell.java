@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -49,6 +51,7 @@ public class Spell extends Card {
 
     public Spell(int ID, String name, int price, int mana, String targetPointName, String description) {
         setType(1);
+        breath = new Image("file:spell.PNG");
         this.setPermissionToAttackOrMove(true);
         this.setId(ID);
         this.setName(name);
