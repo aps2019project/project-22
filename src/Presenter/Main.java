@@ -24,25 +24,26 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Thread thread = new Thread(new Runnable(){
             public void run(){
-                Image image = new Image("file:menu.JPG");
-                ImageView menu = new ImageView();
-                menu.setImage(image);
-                menu.setFitHeight(600);
-                menu.setFitWidth(1000);
-                Platform.runLater(
-                        new Runnable(){
-                            public void run(){
-                                root.getChildren().addAll(menu);
-
-
-                            }
-                        }
-                );
+//                Image image = new Image("File:menu.jpg");
+//                ImageView menu = new ImageView();
+//                menu.setImage(image);
+//                menu.setFitHeight(600);
+//                menu.setFitWidth(1000);
+//                Platform.runLater(
+//                        new Runnable(){
+//                            public void run(){
+//                                root.getChildren().addAll(menu);
+//
+//
+//                            }
+//                        }
+//                );
                 Show.showMainMenu(scanner,root);
             }
         });
         thread.start();
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Duelyst Game");
         primaryStage.show();
     }
 }

@@ -1,8 +1,20 @@
 package View;
 
 import Model.*;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -50,7 +62,7 @@ public class Show {
         collectionMenu(scanner, account);
     }
 
-    public static void showMainMenuOfAccount(Scanner scanner, Account account,Group root) {
+    public static void showMainMenuOfAccount(Scanner scanner, Account account, Group root) {
         System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
         String input = scanner.nextLine().trim();
         switch (input) {
@@ -62,7 +74,7 @@ public class Show {
                 break;
             case "Enter battle":
                 Battle battle = new Battle();
-                showBattleMenu(account, battle, scanner,root);
+                showBattleMenu(account, battle, scanner, root);
                 break;
             case "Save":
                 //save
@@ -78,7 +90,7 @@ public class Show {
                 System.out.println("-Enter collection\n-Enter shop\n-Enter battle\n-Save\n-Logout");
                 break;
         }
-        showMainMenuOfAccount(scanner, account,root);
+        showMainMenuOfAccount(scanner, account, root);
     }
 
     private static void showAllUserNames() {
@@ -167,7 +179,7 @@ public class Show {
                 " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
     }
 
-    public static void showBattleMenu(Account account, Battle battle, Scanner scanner,Group root) {
+    public static void showBattleMenu(Account account, Battle battle, Scanner scanner, Group root) {
         System.out.println("~~~BattleMenu~~~");
         System.out.println("choose opponent");
         showAllUserNames();
@@ -250,7 +262,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner,root);
+                battle.fight(account, scanner, root);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
@@ -288,7 +300,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner,root);
+                battle.fight(account, scanner, root);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
@@ -326,7 +338,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner,root);
+                battle.fight(account, scanner, root);
             } else if (level == 4) {
                 return;
             }
@@ -381,17 +393,89 @@ public class Show {
             ((CustomGame) battle).setMode(num);
             String input = scanner.nextLine();
             ((CustomGame) battle).setCoustomGame(input);
-            battle.fight(account, scanner,root);
+            battle.fight(account, scanner, root);
 
 
         } else if (singleOrMulti == 3) {
             return;
         } else {
-            showBattleMenu(account, battle, scanner,root);
+            showBattleMenu(account, battle, scanner, root);
         }
     }
 
     public static void showMainMenu(Scanner scanner, Group root) {
+        Image image = new Image("File:menu.jpg");
+        ImageView menu = new ImageView();
+        menu.setImage(image);
+        menu.setFitHeight(600);
+        menu.setFitWidth(1000);
+
+        Button btn = new Button("Sign Up");
+        HBox hbBtn = new HBox(10);
+        hbBtn.setAlignment(Pos.BOTTOM_LEFT);
+        hbBtn.setPrefSize(600, 200);
+        hbBtn.setTranslateX(155);
+        hbBtn.getChildren().add(btn);
+
+        Button btn1 = new Button("   Login  ");
+        HBox hbBtn1 = new HBox(10);
+        hbBtn1.setAlignment(Pos.BOTTOM_LEFT);
+        hbBtn1.setPrefSize(600, 200);
+        hbBtn1.setTranslateX(162);
+        hbBtn1.setTranslateY(45);
+        hbBtn1.getChildren().add(btn1);
+
+        Button btn2 = new Button("   Leaderboard  ");
+        HBox hbBtn2 = new HBox(10);
+        hbBtn2.setAlignment(Pos.BOTTOM_LEFT);
+        hbBtn2.setPrefSize(600, 200);
+        hbBtn2.setTranslateX(162);
+        hbBtn2.setTranslateY(90);
+        hbBtn2.getChildren().add(btn2);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(menu, hbBtn, hbBtn1, hbBtn2);
+                    }
+                }
+        );
+
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("siiiiiiiiiiign up");
+            }
+        });
+
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("loginiiiiiiiiiiiiin");
+                Image image1 = new Image("File:loginpage.jpg");
+                menu.setImage(image1);
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2);
+                            }
+                        }
+                );
+            }
+        });
+
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("leaderboard !!!!!!!!!!!");
+                Show.showLeaderBoard();
+            }
+        });
+
+
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
         System.out.println("\t*** please enter a number : ***");
         String input = scanner.nextLine().trim();
@@ -412,7 +496,7 @@ public class Show {
                 System.out.println("please enter your password.:)");
                 String password = scanner.nextLine();
                 if (Account.checkLogin(str[1], password)) {
-                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(),root);
+                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                 }
             }
         } else if (input.equals("3") || input.equals("show leaderboard")) {
@@ -420,7 +504,7 @@ public class Show {
         } else if (input.equals("4") || input.equals("Help") || input.equals("help")) {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
-        showMainMenu(scanner,root);
+        showMainMenu(scanner, root);
     }
 
     private static void showLeaderBoard() {

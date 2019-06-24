@@ -48,6 +48,7 @@ public class Battle implements EventHandler<ActionEvent> {
     private boolean turn = false;
     private boolean story = false;
     private int endTurn = 0;
+
     public void setStoryTrue() {
         story = true;
     }
@@ -104,17 +105,17 @@ public class Battle implements EventHandler<ActionEvent> {
         singlePlayer = false;
     }
 
-    public void beforAttack(){
+    public void beforAttack() {
         Random rand78 = new Random();
         int xCollectable = rand78.nextInt(9) + 1;
         int yCollectable = rand78.nextInt(5) + 1;
         int randCollectable = rand78.nextInt(10) + 1;
-        if (true){
+        if (true) {
             Item item = new Item(81, "RandomDamage", -1, "2 power strike for random power");
-            for (int i = 0; i < Cell.getCells().size(); i++){
-                if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable){
+            for (int i = 0; i < Cell.getCells().size(); i++) {
+                if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable) {
                     Cell.getCells().get(i).setItem(item);
-                    System.out.println("collectable item in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                    System.out.println("collectable item in x : " + Cell.getCells().get(i).getX() + " y : " + Cell.getCells().get(i).getY());
                 }
             }
         }
@@ -122,9 +123,9 @@ public class Battle implements EventHandler<ActionEvent> {
             player = player1;
 
             Platform.runLater(
-                    new Runnable(){
-                        public void run(){
-                            if (singlePlayer == true){
+                    new Runnable() {
+                        public void run() {
+                            if (singlePlayer == true) {
                                 root.getChildren().remove(label);
                             }
                             root.getChildren().remove(player2Button);
@@ -134,17 +135,16 @@ public class Battle implements EventHandler<ActionEvent> {
             );
 
 
-
             player1Turns++;
             enemyPlayer = player2;
         } else {
             player = player2;
             Platform.runLater(
-                    new Runnable(){
-                        public void run(){
-                            if (singlePlayer == true){
+                    new Runnable() {
+                        public void run() {
+                            if (singlePlayer == true) {
                                 root.getChildren().add(label);
-                            }else {
+                            } else {
                                 root.getChildren().addAll(player2Button);
                             }
                             root.getChildren().remove(player1Button);
@@ -157,26 +157,26 @@ public class Battle implements EventHandler<ActionEvent> {
 
         if (player.getItem8()) {
             player.setMana(player.getMana() + 3);
-            if (player == player1){
-                for (int i = 0; i  < player.getMana(); i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+            if (player == player1) {
+                for (int i = 0; i < player.getMana(); i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
-            }else {
-                for (int i = 0; i  < player.getMana(); i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+            } else {
+                for (int i = 0; i < player.getMana(); i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
             }
             player.setItem8False();
         }
         if (enemyPlayer.getItem8()) {
             enemyPlayer.setMana(enemyPlayer.getMana() + 3);
-            if (player == player1){
-                for (int i = 0; i  < player.getMana(); i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+            if (player == player1) {
+                for (int i = 0; i < player.getMana(); i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
-            }else {
-                for (int i = 0; i  < player.getMana(); i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+            } else {
+                for (int i = 0; i < player.getMana(); i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
             }
             enemyPlayer.setItem8False();
@@ -407,72 +407,73 @@ public class Battle implements EventHandler<ActionEvent> {
         j = -1;
         Random rand10 = new Random();
         randomForCommand = rand10.nextInt(player2.getCardsInTheFiled().size());
-        if (player == player1){
+        if (player == player1) {
             if (player1Turns == 2) {
-                for (int i = 0; i  < 4; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 4; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(4);
             } else if (player1Turns == 3) {
-                for (int i = 0; i  < 5; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 5; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(5);
             } else if (player1Turns == 6) {
-                for (int i = 0; i  < 4; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 4; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(6);
             } else if (player1Turns == 5) {
-                for (int i = 0; i  < 7; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 7; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(7);
             } else if (player1Turns == 6) {
-                for (int i = 0; i  < 8; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 8; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(8);
             } else if (player1Turns >= 7) {
-                for (int i = 0; i  < 9; i++){
-                    mana1[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 9; i++) {
+                    mana1[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(9);
             }
-        }else {
+        } else {
             if (player2Turn == 2) {
-                for (int i = 0; i  < 4; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 4; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(4);
             } else if (player2Turn == 3) {
-                for (int i = 0; i  < 5; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 5; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(5);
             } else if (player2Turn == 6) {
-                for (int i = 0; i  < 4; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 4; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(6);
             } else if (player2Turn == 5) {
-                for (int i = 0; i  < 7; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 7; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(7);
             } else if (player2Turn == 6) {
-                for (int i = 0; i  < 8; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 8; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(8);
             } else if (player2Turn >= 7) {
-                for (int i = 0; i  < 9; i++){
-                    mana2[i].setFill(Color.rgb(158,243,249));
+                for (int i = 0; i < 9; i++) {
+                    mana2[i].setFill(Color.rgb(158, 243, 249));
                 }
                 player.setMana(9);
             }
         }
     }
+
     public void attachBack(Card card1, Card card2) {
 
         if (card2.getDisarmFor1Turn() == false && card2.getStunByMinion5() == false) {
@@ -512,8 +513,8 @@ public class Battle implements EventHandler<ActionEvent> {
     public void fight(Account account, Scanner scanners, Group roat) {
         scanner = scanners;
         root = roat;
-        player1Button.relocate(820,550);
-        player2Button.relocate(820,550);
+        player1Button.relocate(820, 550);
+        player2Button.relocate(820, 550);
         player1Button.setFont(Font.font(20));
         player2Button.setFont(Font.font(20));
         player1Button.setOnAction(this);
@@ -522,38 +523,38 @@ public class Battle implements EventHandler<ActionEvent> {
 
         int y11 = 60, x11 = 120;
         int groundNumber = 0;
-        for (int i = 0; i < 9; i++){
-            mana1[groundNumber] = new Rectangle(20,20);
-            mana1[groundNumber].relocate(x11,y11);
-            mana1[groundNumber].setFill(Color.rgb(152,155,158));
-            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0){
-                mana1[groundNumber].setFill(Color.rgb(158,243,249));
+        for (int i = 0; i < 9; i++) {
+            mana1[groundNumber] = new Rectangle(20, 20);
+            mana1[groundNumber].relocate(x11, y11);
+            mana1[groundNumber].setFill(Color.rgb(152, 155, 158));
+            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0) {
+                mana1[groundNumber].setFill(Color.rgb(158, 243, 249));
             }
             groundNumber++;
-            x11 = x11+25;
+            x11 = x11 + 25;
         }
-        int y12 = 60, x12= 860;
+        int y12 = 60, x12 = 860;
         groundNumber = 0;
-        for (int i = 0; i < 9; i++){
-            mana2[groundNumber] = new Rectangle(20,20);
-            mana2[groundNumber].relocate(x12,y12);
-            mana2[groundNumber].setFill(Color.rgb(152,155,158));
-            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0){
-                mana2[groundNumber].setFill(Color.rgb(158,243,249));
+        for (int i = 0; i < 9; i++) {
+            mana2[groundNumber] = new Rectangle(20, 20);
+            mana2[groundNumber].relocate(x12, y12);
+            mana2[groundNumber].setFill(Color.rgb(152, 155, 158));
+            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0) {
+                mana2[groundNumber].setFill(Color.rgb(158, 243, 249));
             }
             groundNumber++;
-            x12 = x12-25;
+            x12 = x12 - 25;
         }
         groundNumber = 0;
-        int x10 = 195 , y10 = 160;
-        for (int i = 0; i < 5; i++){
+        int x10 = 195, y10 = 160;
+        for (int i = 0; i < 5; i++) {
             x10 = 230;
-            for (int j = 0 ; j < 9; j++){
-                ground[groundNumber] = new Rectangle(55,55);
-                ground[groundNumber].relocate(x10,y10);
-                ground[groundNumber].setFill(Color.rgb(75,105,113));
+            for (int j = 0; j < 9; j++) {
+                ground[groundNumber] = new Rectangle(55, 55);
+                ground[groundNumber].relocate(x10, y10);
+                ground[groundNumber].setFill(Color.rgb(75, 105, 113));
                 groundNumber++;
-                x10 = x10+60;
+                x10 = x10 + 60;
             }
             y10 = y10 + 60;
         }
@@ -561,32 +562,32 @@ public class Battle implements EventHandler<ActionEvent> {
         hero1.setFitHeight(55);
         hero1.setFitWidth(55);
         hero1.setImage(player1.getHero().getBreath());
-        hero1.relocate(230,280);
+        hero1.relocate(230, 280);
         ImageView hero2 = new ImageView(player2.getHero().getBreath());
         hero2.setFitWidth(55);
         hero2.setFitHeight(55);
-        hero2.relocate(710,280);
+        hero2.relocate(710, 280);
         Image image1 = new Image("file:Duelyst.PNG");
         ImageView iv = new ImageView();
-        label.relocate(820,550);
+        label.relocate(820, 550);
         label.setFont(Font.font(20));
         iv.setFitWidth(1000);
         iv.setFitHeight(600);
         iv.setImage(image1);
         ImageView hands1[] = new ImageView[5];
         int xHand = 285;
-        for (int i = 0; i < 5; i++ ){
+        for (int i = 0; i < 5; i++) {
             hands1[i] = new ImageView();
             hands1[i].setFitHeight(70);
             hands1[i].setFitWidth(70);
-            hands1[i].relocate(xHand,500);
+            hands1[i].relocate(xHand, 500);
             hands1[i].setImage(player1.getHand().getCardsInThisHand().get(i).getBreath());
-            xHand+= 100;
+            xHand += 100;
         }
 
         Platform.runLater(
-                new Runnable(){
-                    public void run(){
+                new Runnable() {
+                    public void run() {
 
                         root.getChildren().addAll(iv);
                         root.getChildren().addAll(ground);
@@ -627,87 +628,88 @@ public class Battle implements EventHandler<ActionEvent> {
                 }
             }
         }
-            beforAttack();
-            handleCommands();
-        }
-        public void setSinglePlayer(){
-        for (int j = 0; j  <6; j++){
-                if (j == 0) {
-                    command = "Select [" + player2.getCardsInTheFiled().get(randomForCommand).getId() + "]";
-                    handleCommands();
-                } else if (j == 1) {
-                    Random rand2 = new Random();
-                    int x = rand2.nextInt(5) + 1;
-                    Random rand3 = new Random();
-                    int y = rand3.nextInt(9) + 1;
-                    if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
-                    } else if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY();
-                    } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 2;
-                    } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 1;
-                    } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 2;
-                    } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY();
-                    } else {
-                        x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                        y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
-                    }
-                    command = "Move to (" + x + "," + y + ")";
-                    handleCommands();
-                } else if (j == 2) {
-                    Random rand2 = new Random();
-                    int enemy = rand2.nextInt(player1.getCardsInTheFiled().size());
-                    if (player2.getCardsInTheFiled().get(randomForCommand).getType() != 0 && player2.getCardsInTheFiled().get(randomForCommand).getActivationTime().matches("combo")) {
-                        command = "Attack combo " + enemy + " ";
-                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
-                            if (player2.getCardsInTheFiled().get(i).getActivationTime().matches("combo") &&
-                                    player2.getCardsInTheFiled().get(i).getId() != player2.getCardsInTheFiled().get(randomForCommand).getId()) {
-                                command = command + player2.getCardsInTheFiled().get(i).getId() + " ";
-                            }
-                        }
-                    } else
-                        command = "Attack [" + enemy + "]";
-                    handleCommands();
-                } else if (j == 3) {
-                    Random rand2 = new Random();
-                    int x = rand2.nextInt(5) + 1;
-                    Random rand3 = new Random();
-                    int y = rand3.nextInt(9) + 1;
-                    command = "Use special power (" + x + "," + y + ")";
-                    handleCommands();
-                } else if (j == 4) {
-                    Random rand4 = new Random();
-                    int interCard = rand4.nextInt(player2.getHand().getCardsInThisHand().size());
-                    Random rand2 = new Random();
-                    int x = player2.getCardsInTheFiled().get(0).getX() - 1;
-                    Random rand3 = new Random();
-                    int y = player2.getCardsInTheFiled().get(0).getY() + 1;
-                    command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " in (" + x + "," + y + ")";
-                    handleCommands();
-                } else if (j == 5) {
-                    beforAttack();
+        beforAttack();
+        handleCommands();
+    }
 
-                    while (true){
-                       // command = scanner.nextLine();
-                        handleCommands();
-                    }
-
+    public void setSinglePlayer() {
+        for (int j = 0; j < 6; j++) {
+            if (j == 0) {
+                command = "Select [" + player2.getCardsInTheFiled().get(randomForCommand).getId() + "]";
+                handleCommands();
+            } else if (j == 1) {
+                Random rand2 = new Random();
+                int x = rand2.nextInt(5) + 1;
+                Random rand3 = new Random();
+                int y = rand3.nextInt(9) + 1;
+                if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
+                } else if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY();
+                } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 2;
+                } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 1;
+                } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 2;
+                } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY();
+                } else {
+                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
                 }
-                System.out.println(command);
-            }
-        }
+                command = "Move to (" + x + "," + y + ")";
+                handleCommands();
+            } else if (j == 2) {
+                Random rand2 = new Random();
+                int enemy = rand2.nextInt(player1.getCardsInTheFiled().size());
+                if (player2.getCardsInTheFiled().get(randomForCommand).getType() != 0 && player2.getCardsInTheFiled().get(randomForCommand).getActivationTime().matches("combo")) {
+                    command = "Attack combo " + enemy + " ";
+                    for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                        if (player2.getCardsInTheFiled().get(i).getActivationTime().matches("combo") &&
+                                player2.getCardsInTheFiled().get(i).getId() != player2.getCardsInTheFiled().get(randomForCommand).getId()) {
+                            command = command + player2.getCardsInTheFiled().get(i).getId() + " ";
+                        }
+                    }
+                } else
+                    command = "Attack [" + enemy + "]";
+                handleCommands();
+            } else if (j == 3) {
+                Random rand2 = new Random();
+                int x = rand2.nextInt(5) + 1;
+                Random rand3 = new Random();
+                int y = rand3.nextInt(9) + 1;
+                command = "Use special power (" + x + "," + y + ")";
+                handleCommands();
+            } else if (j == 4) {
+                Random rand4 = new Random();
+                int interCard = rand4.nextInt(player2.getHand().getCardsInThisHand().size());
+                Random rand2 = new Random();
+                int x = player2.getCardsInTheFiled().get(0).getX() - 1;
+                Random rand3 = new Random();
+                int y = player2.getCardsInTheFiled().get(0).getY() + 1;
+                command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " in (" + x + "," + y + ")";
+                handleCommands();
+            } else if (j == 5) {
+                beforAttack();
 
-    public void handleCommands(){
+                while (true) {
+                    // command = scanner.nextLine();
+                    handleCommands();
+                }
+
+            }
+            System.out.println(command);
+        }
+    }
+
+    public void handleCommands() {
 
         if (story) {
             checkForWinnerInStory();
@@ -740,7 +742,7 @@ public class Battle implements EventHandler<ActionEvent> {
             int valid = 0;
             int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
             for (int i = 0; i < Cell.getCells().size(); i++) {
-                if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null ) {
+                if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
                     valid = 1;
                     if (Cell.getCells().get(i).getFlag()) {
                         player.getCardsInTheFiled().get(card1ID).setFlagTrue();
@@ -754,7 +756,7 @@ public class Battle implements EventHandler<ActionEvent> {
                         }
 
                     }
-                    if (Cell.getCells().get(i).getItem() != null){
+                    if (Cell.getCells().get(i).getItem() != null) {
                         player1.addCollectableItems(Cell.getCells().get(i).getItem());
                         Cell.getCells().get(i).setItem(null);
                     }
@@ -1049,7 +1051,7 @@ public class Battle implements EventHandler<ActionEvent> {
                 cooldown = (Hero) Cell.getCells().get(card1ID).getInsideCard();
             if (isValidSpecialPower == 0) {
                 System.out.println("Invalid card");
-            }else if (cooldown.getHowLongHasBeenCool() != 0){
+            } else if (cooldown.getHowLongHasBeenCool() != 0) {
                 System.out.println("your hero has not been cooldown yet");
             } else if (Cell.getCells().get(card1ID).getInsideCard().getManaPoint() > player.getMana()) {
                 System.out.println("invalid mana point");
@@ -1092,7 +1094,7 @@ public class Battle implements EventHandler<ActionEvent> {
                         }
                     }
                 } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 68) {
-                    enemyPlayer.getCardsInTheFiled().get(0).setAttackPower(enemyPlayer.getCardsInTheFiled().get(0).getAttackPower()-2);
+                    enemyPlayer.getCardsInTheFiled().get(0).setAttackPower(enemyPlayer.getCardsInTheFiled().get(0).getAttackPower() - 2);
                 } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 69) {
                     Cell.getCells().get(card1ID).getInsideCard().setHowManyHolyBuff(Cell.getCells().get(card1ID).getInsideCard().getHowManyHolyBuff() + 3);
                 } else if (Cell.getCells().get(card1ID).getInsideCard().getId() == 70) {
@@ -1149,14 +1151,14 @@ public class Battle implements EventHandler<ActionEvent> {
                         for (int i = 0; i < Cell.getCells().size(); i++) {
                             if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
                                 Cell.getCells().get(i).insertCard(player.getHand().getCardsInThisHand().get(card1ID));
-                                player.setMana(player.getMana()-player.getHand().getCardsInThisHand().get(card1ID).getManaPoint());
-                                if (player == player1){
-                                    for (int k = 8; k >= player.getMana(); k--){
-                                            mana1[i].setFill(Color.rgb(152,155,158));
-                                        }
-                                    }else {
-                                    for (int k = 8; k >= player.getMana(); k--){
-                                        mana2[i].setFill(Color.rgb(152,155,158));
+                                player.setMana(player.getMana() - player.getHand().getCardsInThisHand().get(card1ID).getManaPoint());
+                                if (player == player1) {
+                                    for (int k = 8; k >= player.getMana(); k--) {
+                                        mana1[i].setFill(Color.rgb(152, 155, 158));
+                                    }
+                                } else {
+                                    for (int k = 8; k >= player.getMana(); k--) {
+                                        mana2[i].setFill(Color.rgb(152, 155, 158));
                                     }
                                 }
                             }
@@ -1259,57 +1261,57 @@ public class Battle implements EventHandler<ActionEvent> {
             player.getCollectibleItems().get(itemIDNumber).showItemInfo();
         } else if (command.indexOf("exit") != -1) {
             return;
-        }else if (command.indexOf("Show my minions") != -1){
+        } else if (command.indexOf("Show my minions") != -1) {
             showMinions(player);
-        }else if (command.indexOf("Show opponent minions") != -1){
+        } else if (command.indexOf("Show opponent minions") != -1) {
             showMinions(enemyPlayer);
-        }else if (command.indexOf("Show card info") != -1){
+        } else if (command.indexOf("Show card info") != -1) {
             String split[] = command.split(" ");
             int cardId = Integer.parseInt(split[3]);
             System.out.println(player.getCardsInTheFiled().get(0).getAttackPower());
             showCardInfoByCardId(cardId, player);
-        }else if (command.indexOf("Game info") != -1){
-            System.out.println(player1.getAccount().getUserName()+" mana point is "+player1.getMana());
-            System.out.println(player2.getAccount().getUserName()+" mana point is "+player2.getMana());
-            if (mode == 1){
-                System.out.println(player1.getAccount().getUserName()+" health point is "+player1.getCardsInTheFiled().get(0).getHealthPoint());
-                System.out.println(player2.getAccount().getUserName()+" health point is "+player2.getCardsInTheFiled().get(0).getHealthPoint());
-            }else if (mode == 2){
+        } else if (command.indexOf("Game info") != -1) {
+            System.out.println(player1.getAccount().getUserName() + " mana point is " + player1.getMana());
+            System.out.println(player2.getAccount().getUserName() + " mana point is " + player2.getMana());
+            if (mode == 1) {
+                System.out.println(player1.getAccount().getUserName() + " health point is " + player1.getCardsInTheFiled().get(0).getHealthPoint());
+                System.out.println(player2.getAccount().getUserName() + " health point is " + player2.getCardsInTheFiled().get(0).getHealthPoint());
+            } else if (mode == 2) {
                 int exist = 0;
-                for (int i = 0; i  <Cell.getCells().size(); i++){
-                    if (Cell.getCells().get(i).getFlag()){
+                for (int i = 0; i < Cell.getCells().size(); i++) {
+                    if (Cell.getCells().get(i).getFlag()) {
                         exist = 1;
-                        System.out.println("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                        System.out.println("the flag is in x : " + Cell.getCells().get(i).getX() + " y : " + Cell.getCells().get(i).getY());
                         break;
                     }
                 }
-                if (exist == 0){
-                    for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                        if (player1.getCardsInTheFiled().get(i).getFlag()){
-                            System.out.println("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY());
+                if (exist == 0) {
+                    for (int i = 0; i < player1.getCardsInTheFiled().size(); i++) {
+                        if (player1.getCardsInTheFiled().get(i).getFlag()) {
+                            System.out.println("the flag is in x : " + player1.getCardsInTheFiled().get(i).getX() + " y : " + player1.getCardsInTheFiled().get(i).getY());
                             exist = 1;
                             break;
                         }
                     }
-                    if (exist == 0){
-                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                            if (player2.getCardsInTheFiled().get(i).getFlag()){
-                                System.out.println("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY());
+                    if (exist == 0) {
+                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                            if (player2.getCardsInTheFiled().get(i).getFlag()) {
+                                System.out.println("the flag is in x : " + player2.getCardsInTheFiled().get(i).getX() + " y : " + player2.getCardsInTheFiled().get(i).getY());
                                 exist = 1;
                                 break;
                             }
                         }
                     }
                 }
-            }else if (mode == 3){
-                for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                    if (player1.getCardsInTheFiled().get(i).getFlag()){
-                        System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+            } else if (mode == 3) {
+                for (int i = 0; i < player1.getCardsInTheFiled().size(); i++) {
+                    if (player1.getCardsInTheFiled().get(i).getFlag()) {
+                        System.out.println("team : " + player1.getAccount().getUserName() + " card : " + player1.getCardsInTheFiled().get(i).getName());
                     }
                 }
-                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                    if (player2.getCardsInTheFiled().get(i).getFlag()){
-                        System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                    if (player2.getCardsInTheFiled().get(i).getFlag()) {
+                        System.out.println("team : " + player1.getAccount().getUserName() + " card : " + player1.getCardsInTheFiled().get(i).getName());
                     }
 
                 }
@@ -1323,14 +1325,14 @@ public class Battle implements EventHandler<ActionEvent> {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                System.out.println(player2.getAccount().getUserName()+" win");
+                System.out.println(player2.getAccount().getUserName() + " win");
 
                 endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName()+" win");
+                System.out.println(player1.getAccount().getUserName() + " win");
                 endGame = true;
             }
         } else if (mode == 2) {
@@ -1338,24 +1340,24 @@ public class Battle implements EventHandler<ActionEvent> {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName()+" win");
+                System.out.println(player1.getAccount().getUserName() + " win");
                 endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                System.out.println(player2.getAccount().getUserName()+" win");
+                System.out.println(player2.getAccount().getUserName() + " win");
                 endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
+            if (player1.getHowManyFlag() == howManyFlags / 2 + 1) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName()+" win");
+                System.out.println(player1.getAccount().getUserName() + " win");
                 endGame = true;
-            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
-                System.out.println(player2.getAccount().getUserName()+" win");
+            } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
+                System.out.println(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
@@ -1367,14 +1369,14 @@ public class Battle implements EventHandler<ActionEvent> {
     public void checkForWinnerInCustomGame() {
         if (mode == 1) {
             if (player1.getHero().getHealthPoint() <= 0) {
-                System.out.printf(player2.getAccount().getUserName()+" win");
+                System.out.printf(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
 
                 endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
-                System.out.printf(player1.getAccount().getUserName()+" win");
+                System.out.printf(player1.getAccount().getUserName() + " win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
@@ -1382,27 +1384,27 @@ public class Battle implements EventHandler<ActionEvent> {
             }
         } else if (mode == 2) {
             if (player1.getHowLongFlagsHasBeenKept() == 6) {
-                System.out.printf(player1.getAccount().getUserName()+" win");
+                System.out.printf(player1.getAccount().getUserName() + " win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
-                System.out.printf(player2.getAccount().getUserName()+" win");
+                System.out.printf(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
                 endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
-                System.out.printf(player1.getAccount().getUserName()+" win");
+            if (player1.getHowManyFlag() == howManyFlags / 2 + 1) {
+                System.out.printf(player1.getAccount().getUserName() + " win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 endGame = true;
-            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
-                System.out.printf(player2.getAccount().getUserName()+" win");
+            } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
+                System.out.printf(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
@@ -1488,7 +1490,7 @@ public class Battle implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        if (event.getSource() == player1Button || event.getSource() == player2Button){
+        if (event.getSource() == player1Button || event.getSource() == player2Button) {
             for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                 if (player.getCardsInTheFiled().get(i).getType() == 0) {
                     Hero hero = (Hero) player.getCardsInTheFiled().get(i);
@@ -1506,7 +1508,7 @@ public class Battle implements EventHandler<ActionEvent> {
             for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                 if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
                     player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                if (player.getCardsInTheFiled().get(i).getStunByMinion5()){
+                if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
                     player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
                 }
             }
@@ -1515,12 +1517,11 @@ public class Battle implements EventHandler<ActionEvent> {
             else
                 turn = true;
             beforAttack();
-            while (true){
+            while (true) {
                 if (singlePlayer == false || player == player1) {
                     command = scanner.nextLine();
                     handleCommands();
-                }
-                else
+                } else
                     setSinglePlayer();
             }
         }
