@@ -1,6 +1,8 @@
 package Model;
 
 
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,6 +11,9 @@ public class Player {
     private Account account;
     private Deck mainDeck ;
     private Hand hand;
+    private ArrayList<ImageView> cards1 = new ArrayList<>();
+    private ArrayList<ImageView> cards2 = new ArrayList<>();
+
     private GraveYard graveYard = new GraveYard();
     private int mana = 3;
     private boolean item8 = false;
@@ -24,6 +29,19 @@ public class Player {
     private int howManyFlag = 0;
     private int manaInTurn;
     private boolean flag = false;
+    public void addCards2 ( ImageView card2){
+        cards2.add(card2);
+    }
+    public ArrayList<ImageView> getCards2(){
+        return cards2;
+    }
+    public ArrayList<ImageView> getCards1() {
+        return cards1;
+    }
+
+    public void addCards1(ImageView cards1) {
+        this.cards1.add(cards1);
+    }
 
     public boolean getItem8(){
         return item8;

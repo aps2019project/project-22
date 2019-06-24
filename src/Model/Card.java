@@ -219,7 +219,7 @@ public class Card {
     }
 
     public void setHaveBeenUsedTrue() {
-        haveBeenUsed = true;
+        haveBeenUsed = false;
     }
 
     public String getActivationTime() {
