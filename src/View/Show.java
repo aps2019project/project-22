@@ -1,16 +1,24 @@
 package View;
 
 import Model.*;
+import Presenter.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
@@ -417,7 +425,7 @@ public class Show {
         hbBtn.setTranslateX(155);
         hbBtn.getChildren().add(btn);
 
-        Button btn1 = new Button("   Login  ");
+        Button btn1 = new Button("   Leaderboard  ");
         HBox hbBtn1 = new HBox(10);
         hbBtn1.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn1.setPrefSize(600, 200);
@@ -425,7 +433,7 @@ public class Show {
         hbBtn1.setTranslateY(45);
         hbBtn1.getChildren().add(btn1);
 
-        Button btn2 = new Button("   Leaderboard  ");
+        Button btn2 = new Button("       Login            ");
         HBox hbBtn2 = new HBox(10);
         hbBtn2.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn2.setPrefSize(600, 200);
@@ -442,36 +450,62 @@ public class Show {
         );
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent e) {
-                System.out.println("siiiiiiiiiiign up");
+                System.out.println("siiiiiiiiign up");
             }
         });
 
         btn1.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent e) {
-                System.out.println("loginiiiiiiiiiiiiin");
+                System.out.println("leaderboard !!!!!!!!!!!");
+                Show.showLeaderBoard();
+            }
+        });
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
                 Image image1 = new Image("File:loginpage.jpg");
                 menu.setImage(image1);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
                                 root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2);
+
+                                TextField userTextField = new TextField();
+                                userTextField.setTranslateY(270);
+                                userTextField.setTranslateX(500);
+                                PasswordField passwordField = new PasswordField();
+                                passwordField.setTranslateY(315);
+                                passwordField.setTranslateX(460);
+                                Button btn4 = new Button("   Login   ");
+                                HBox hbBtn4 = new HBox(10);
+                                hbBtn4.setAlignment(Pos.BOTTOM_CENTER);
+                                hbBtn4.setTranslateY(365);
+                                hbBtn4.setTranslateX(455);
+                                hbBtn4.getChildren().add(btn4);
+
+                                final Text actiontarget = new Text();
+                                root.getChildren().addAll(userTextField,hbBtn4,passwordField,actiontarget);
+
+                                btn4.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent e) {
+                                        actiontarget.setFill(Color.FIREBRICK);
+                                        String text = "";
+                                        try {
+                                            if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
+                                                Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                                            }
+                                        } catch (Exception name) {
+                                        }
+                                        actiontarget.setText(text);
+                                    }
+                                });
                             }
                         }
                 );
-            }
-        });
-
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                System.out.println("leaderboard !!!!!!!!!!!");
-                Show.showLeaderBoard();
             }
         });
 
