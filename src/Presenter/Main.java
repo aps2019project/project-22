@@ -1,5 +1,6 @@
 package Presenter;
 
+import Model.SaveAccounts;
 import View.Show;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Thread thread = new Thread(new Runnable(){
             public void run(){
+                SaveAccounts.read();
                 Show.showMainMenu(scanner,root);
             }
         });

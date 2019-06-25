@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.AccessibleAction;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -420,6 +422,7 @@ public class Show {
 
         Button btn = new Button("Sign Up");
         HBox hbBtn = new HBox(10);
+
         hbBtn.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn.setPrefSize(600, 200);
         hbBtn.setTranslateX(155);
@@ -463,6 +466,13 @@ public class Show {
                 Show.showLeaderBoard();
             }
         });
+        btn1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("mouse leaderboard !!!!!!!!!!!");
+            }
+        });
+
         btn2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -496,6 +506,7 @@ public class Show {
                                         String text = "";
                                         try {
                                             if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
+                                                root.getChildren().removeAll(userTextField,hbBtn4,passwordField,actiontarget);
                                                 Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                                             }
                                         } catch (Exception name) {
@@ -515,6 +526,7 @@ public class Show {
         String input = scanner.nextLine().trim();
         String str[];
         if (input.equals("exit") || input.equals("Exit")) {
+            SaveAccounts.save();
             return;
         } else if (input.equals("1") || input.equals("create account")) {
             input = scanner.nextLine().trim();

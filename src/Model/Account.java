@@ -15,11 +15,11 @@ public class Account {
     private String password;
     private int ID;
     private String userName;
-    private boolean logIn;
-    private static final int firstMoney = 15000;
     private int money;
     private int wins = 0;
     private int loses = 0;
+    private boolean logIn;
+    private static final int firstMoney = 15000;
     private Player player = new Player();
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
