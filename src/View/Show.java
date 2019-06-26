@@ -562,10 +562,16 @@ public class Show {
         label3.relocate(184, 269);
         label3.setTextFill(Color.WHITESMOKE);
 
+        ImageView exitButton = new ImageView();
+        buttonImage1.setImage(new Image("file:photos/exitButton.png"));
+        buttonImage1.relocate(27, 508);
+        buttonImage1.setFitWidth(80);
+        buttonImage1.setFitHeight(80);
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3,exitButton);
                     }
                 }
         );
@@ -603,6 +609,15 @@ public class Show {
                         root.getChildren().clear();
                         boardPage(root, scanner);
                     }
+                }
+                else if (x > 26 && x < 108 && y > 507 && y < 589) {
+                    Platform.runLater(
+                            new Runnable() {
+                                public void run() {
+                                    System.out.println("exit");
+                                    root.getChildren().clear();
+                                }
+                            });
                 }
             }
         });
