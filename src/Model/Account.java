@@ -130,6 +130,17 @@ public class Account {
         }
     }
 
+    public static String checking(String userName, String password) {
+        if (searchByUserName(userName) == null) {
+            return "Invalid Username!";
+        }
+        if (!searchByUserName(userName).getPassword().equals(password)) {
+            return "Incorrect Password! Try Again.";
+        }
+        Account.accountActivated = searchByUserName(userName);
+        return "welcome";
+    }
+
     public static void sortAll() {
         for (int i = 0; i < accounts.size() - 1; i++) {
 

@@ -68,6 +68,122 @@ public class Show {
     }
 
     public static void showMainMenuOfAccount(Scanner scanner, Account account, Group root) {
+
+        Image image = new Image("File:menu.jpg");
+        ImageView menu = new ImageView();
+        menu.setImage(image);
+        menu.setFitHeight(600);
+        menu.setFitWidth(1000);
+
+//      Exit\n5. Save\n6 .Help");
+
+        Image i1 = new Image("file:button.png");
+        Image i2 = new Image("file:photos/blueButton.png");
+
+        ImageView buttonImage1 = new ImageView();
+        buttonImage1.setImage(i1);
+        buttonImage1.relocate(155, 162);
+        buttonImage1.setFitWidth(140);
+        buttonImage1.setFitHeight(35);
+
+        Label label1 = new Label("Collection");
+        label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label1.relocate(198, 172);
+        label1.setTextFill(Color.WHITESMOKE);
+
+        ImageView buttonImage2 = new ImageView();
+        buttonImage2.setImage(i2);
+        buttonImage2.relocate(154, 215);
+        buttonImage2.setFitWidth(145);
+        buttonImage2.setFitHeight(40);
+
+        Label label2 = new Label("Shop");
+        label2.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label2.relocate(205, 225);
+        label2.setTextFill(Color.WHITESMOKE);
+
+        ImageView buttonImage3 = new ImageView();
+        buttonImage3.setImage(i1);
+        buttonImage3.relocate(154, 258);
+        buttonImage3.setFitWidth(145);
+        buttonImage3.setFitHeight(40);
+
+        Label label3 = new Label("Battle");
+        label3.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label3.relocate(196, 269);
+        label3.setTextFill(Color.WHITESMOKE);
+
+        ImageView buttonImage4 = new ImageView();
+        buttonImage4.setImage(i2);
+        buttonImage4.relocate(154, 301);
+        buttonImage4.setFitWidth(145);
+        buttonImage4.setFitHeight(40);
+
+        Label label4 = new Label("Logout");
+        label4.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label4.relocate(197, 312);
+        label4.setTextFill(Color.WHITESMOKE);
+
+        ImageView exitButton = new ImageView();
+        buttonImage1.setImage(new Image("file:photos/exitButton.png"));
+        buttonImage1.relocate(27, 508);
+        buttonImage1.setFitWidth(80);
+        buttonImage1.setFitHeight(80);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(menu, buttonImage1, label1, buttonImage2, label2,
+                                buttonImage3, label3, buttonImage4, label4, exitButton);
+                    }
+                }
+        );
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX();
+                double y = event.getY();
+                if (x > 154) {
+                    Platform.runLater(
+                            new Runnable() {
+                                public void run() {
+                                    root.getChildren().clear();
+                                    if (x < 296 && y > 161 && y < 198) {
+                                        root.getChildren().clear();
+                                        collectionMenu(scanner, account);
+                                    }
+                                    if (x < 300 && y > 214 && y < 256) {
+                                        root.getChildren().clear();
+                                        shopMenu(scanner, account);
+                                    }
+                                    if (x < 300 && y > 262 && y < 294) {
+                                        System.out.println("battle");
+                                        root.getChildren().clear();
+                                        Battle battle = new Battle();
+                                        showBattleMenu(account, battle, scanner, root);
+                                    }
+                                    if (x < 300 && y > 298 && y < 330) {
+                                        root.getChildren().clear();
+                                        System.out.println("logout");
+                                    }
+                                }
+                            }
+                    );
+                } else if (x > 26 && x < 108 && y > 507 && y < 589) {
+                    Platform.runLater(
+                            new Runnable() {
+                                public void run() {
+                                    System.out.println("exit");
+                                    root.getChildren().clear();
+                                }
+                            });
+                }
+            }
+        });
+
+
         System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
         String input = scanner.nextLine().trim();
         switch (input) {
@@ -103,7 +219,6 @@ public class Show {
             System.out.println((i + 1) + ".  " + Account.getAccounts().get(i).getUserName());
         }
     }
-
 
     private static void shopMenu(Scanner scanner, Account account) {
         String command = scanner.nextLine().trim();
@@ -433,6 +548,7 @@ public class Show {
         Label label2 = new Label("Login");
         label2.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label2.relocate(205, 225);
+        label2.setTextFill(Color.WHITESMOKE);
 
         Image i3 = new Image("file:photos/blueButton.png");
         ImageView buttonImage3 = new ImageView();
@@ -444,6 +560,7 @@ public class Show {
         Label label3 = new Label("Leaderboard");
         label3.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label3.relocate(184, 269);
+        label3.setTextFill(Color.WHITESMOKE);
 
         Platform.runLater(
                 new Runnable() {
@@ -459,7 +576,6 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-//                System.out.println("x=\t" + x + "\ty=\t" + y);
                 if (x > 154) {
                     if (x < 296 && y > 161 && y < 198) {
                         Platform.runLater(
@@ -490,7 +606,6 @@ public class Show {
                 }
             }
         });
-
 
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
         System.out.println("\t*** please enter a number : ***");
@@ -539,11 +654,13 @@ public class Show {
         Line underline = new Line(158, 135, 253, 135);
         underline.setFill(Color.BLACK);
 
-        root.getChildren().addAll(board, sceneTitle, underline);
-        Account.addNewAccount(new Account("yys", "edjkwdwe"));
-        Account s = new Account("OOO0", "468");
-        s.setWins(5);
-        Account.addNewAccount(s);
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(board, sceneTitle, underline);
+                    }
+                }
+        );
         Account.sortAll();
 
         for (int i = 0; i < Account.getAccounts().size(); i++) {
@@ -618,8 +735,15 @@ public class Show {
         command.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 13));
         command.relocate(230, 455);
 
-        root.getChildren().addAll(menu, userName, userTextField, passwordField1, passwordField2, labelPw1,
-                labelPw2, buttonForCreateAccount, label, command);
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(menu, userName, userTextField, passwordField1, passwordField2, labelPw1,
+                                labelPw2, buttonForCreateAccount, label, command);
+                    }
+                }
+        );
+
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -633,48 +757,68 @@ public class Show {
                         showMainMenu(scanner, root);
                     }
                 }
-
             }
         });
     }
 
     private static void loginPage(Group root, Scanner scanner) {
+
         Image image = new Image("File:loginpage.jpg");
-        ImageView menu = new ImageView();
-        menu.setImage(image);
-        menu.setFitHeight(600);
-        menu.setFitWidth(1000);
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
 
         TextField userTextField = new TextField();
-        userTextField.setTranslateY(270);
-        userTextField.setTranslateX(500);
+        userTextField.relocate(377, 267);
+        userTextField.setPrefSize(240, 34);
+
         PasswordField passwordField = new PasswordField();
-        passwordField.setTranslateY(315);
-        passwordField.setTranslateX(460);
-        Button btn4 = new Button("   Login   ");
-        HBox hbBtn4 = new HBox(10);
-        hbBtn4.setAlignment(Pos.BOTTOM_CENTER);
-        hbBtn4.setTranslateY(365);
-        hbBtn4.setTranslateX(455);
-        hbBtn4.getChildren().add(btn4);
+        passwordField.relocate(377, 310);
+        passwordField.setPrefSize(240, 33);
 
-        final Text actiontarget = new Text();
+        Image i = new Image("file:photos/blueButton.png");
+        ImageView buttonImage = new ImageView();
+        buttonImage.setImage(i);
+        buttonImage.relocate(420, 350);
+        buttonImage.setFitWidth(154);
+        buttonImage.setFitHeight(52);
 
-        root.getChildren().addAll(menu, userTextField, hbBtn4, passwordField, actiontarget);
+        Label text = new Label("Login");
+        text.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        text.setTextFill(Color.WHITESMOKE);
+        text.relocate(476, 367);
 
-        btn4.setOnAction(new EventHandler<ActionEvent>() {
+        Label command = new Label();
+        command.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+        command.setTextFill(Color.WHITESMOKE);
+        command.relocate(377, 240);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(imageView, userTextField, passwordField, buttonImage, text, command);
+                    }
+                }
+        );
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.FIREBRICK);
-                String text = "";
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                System.out.println("x= " + x + "\ty= " + y);
                 try {
-                    if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
-                        root.getChildren().removeAll(menu, userTextField, hbBtn4, passwordField, actiontarget);
-                        Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                    if (x > 439 && x < 557 && y > 356 && y < 397) {
+                        String cm = Account.checking(userTextField.getText(), passwordField.getText());
+                        System.out.println(userTextField.getText() + "\t" + passwordField.getText() + "\n" + cm);
+                        command.setText(cm);
+                        if (cm.contains("welcome")) {
+                            root.getChildren().clear();
+                            showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                        }
                     }
                 } catch (Exception name) {
                 }
-                actiontarget.setText(text);
             }
         });
     }
