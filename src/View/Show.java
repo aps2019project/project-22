@@ -473,7 +473,7 @@ public class Show {
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
-                                        root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2,biy);
+                                        root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2,bi);
                                         loginPage(root, scanner);
                                     }
                                 }
