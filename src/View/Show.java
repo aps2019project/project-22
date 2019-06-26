@@ -1,30 +1,21 @@
 package View;
 
 import Model.*;
-import Presenter.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.AccessibleAction;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -497,7 +488,7 @@ public class Show {
                                 hbBtn4.getChildren().add(btn4);
 
                                 final Text actiontarget = new Text();
-                                root.getChildren().addAll(userTextField,hbBtn4,passwordField,actiontarget);
+                                root.getChildren().addAll(userTextField, hbBtn4, passwordField, actiontarget);
 
                                 btn4.setOnAction(new EventHandler<ActionEvent>() {
                                     @Override
@@ -506,7 +497,7 @@ public class Show {
                                         String text = "";
                                         try {
                                             if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
-                                                root.getChildren().removeAll(userTextField,hbBtn4,passwordField,actiontarget);
+                                                root.getChildren().removeAll(userTextField, hbBtn4, passwordField, actiontarget);
                                                 Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                                             }
                                         } catch (Exception name) {
