@@ -428,6 +428,10 @@ public class Show {
         buttonImage2.setFitWidth(145);
         buttonImage2.setFitHeight(40);
 
+        Label label2 = new Label("Login");
+        label2.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label2.relocate(205, 225);
+
         Image i3 = new Image("file:photos/blueButton.png");
         ImageView buttonImage3 = new ImageView();
         buttonImage3.setImage(i3);
@@ -435,11 +439,14 @@ public class Show {
         buttonImage3.setFitWidth(145);
         buttonImage3.setFitHeight(40);
 
+        Label label3 = new Label("Leaderboard");
+        label3.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label3.relocate(184, 269);
 
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, buttonImage3);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2,label2, buttonImage3,label3);
                     }
                 }
         );
@@ -454,9 +461,6 @@ public class Show {
 
                 if (x > 154) {
                     if (x < 296 && y > 161 && y < 198) {
-                        System.out.println("siiiiiiiiign up");
-                        Image image = new Image("File:photos/signUpPage.jpg");
-                        menu.setImage(image);
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
@@ -467,8 +471,6 @@ public class Show {
                         );
                     }
                     if (x < 300 && y > 214 && y < 256) {
-                        Image image1 = new Image("File:loginpage.jpg");
-                        menu.setImage(image1);
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
@@ -519,59 +521,80 @@ public class Show {
     }
 
     private static void signUpPage(Group root, Scanner scanner) {
+        Image image = new Image("File:photos/signUpPage.jpg");
+        ImageView menu = new ImageView();
+        menu.setImage(image);
+        menu.setFitHeight(600);
+        menu.setFitWidth(1000);
 
         Label userName = new Label("UserName");
         userName.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        userName.setTranslateX(182);
-        userName.setTranslateY(230);
+        userName.relocate(182, 230);
 
         TextField userTextField = new TextField();
         userTextField.setPrefWidth(140);
-        userTextField.setTranslateX(190);
-        userTextField.setTranslateY(254);
+        userTextField.relocate(190, 254);
 
         Label labelPw1 = new Label("Password");
         labelPw1.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        labelPw1.setTranslateX(182);
-        labelPw1.setTranslateY(290);
+        labelPw1.relocate(182, 290);
 
         PasswordField passwordField1 = new PasswordField();
         passwordField1.setPrefWidth(140);
-        passwordField1.setTranslateX(190);
-        passwordField1.setTranslateY(314);
+        passwordField1.relocate(190, 314);
 
-        Label labelPw2 = new Label("Repeat Password");
+        Label labelPw2 = new Label("Enter Again");
         labelPw2.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        labelPw2.setTranslateX(182);
-        labelPw2.setTranslateY(349);
+        labelPw2.relocate(182, 349);
 
         PasswordField passwordField2 = new PasswordField();
         passwordField2.setPrefWidth(140);
-        passwordField2.setTranslateX(190);
-        passwordField2.setTranslateY(373);
+        passwordField2.relocate(190, 373);
 
 
-        Image i = new Image("File:photos/buttonCreateAccount.png");
+        Image i = new Image("File:photos/blueButton.png");
         ImageView buttonForCreateAccount = new ImageView();
         buttonForCreateAccount.setImage(i);
         buttonForCreateAccount.relocate(195, 413);
-        buttonForCreateAccount.setFitWidth(130);
-        buttonForCreateAccount.setFitHeight(33);
+        buttonForCreateAccount.setFitWidth(140);
+        buttonForCreateAccount.setFitHeight(40);
 
-        root.getChildren().addAll(userName, userTextField, passwordField1, passwordField2, labelPw1,
-                labelPw2, buttonForCreateAccount);
+        Label label = new Label("Sign Up");
+        label.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label.relocate(235, 425);
+
+        Label command = new Label();
+        command.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 13));
+        command.relocate(230, 455);
+
+        root.getChildren().addAll(menu,userName, userTextField, passwordField1, passwordField2, labelPw1,
+                labelPw2, buttonForCreateAccount, label,command);
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                if (x > 210 && x < 322 && y > 420 && y < 449) {
+                    String cm=Account.signUp(userTextField.getText(), passwordField1.getText(), passwordField2.getText());
+                    command.setText(cm);
+                    if(cm.contains("welcome")){
+                        root.getChildren().removeAll(menu,userName, userTextField, passwordField1, passwordField2, labelPw1,
+                                labelPw2, buttonForCreateAccount, label,command);
+                    }
+                }
 
             }
         });
 
-//        Account.createAccount(userTextField.getText(), scanner);
     }
 
     private static void loginPage(Group root, Scanner scanner) {
+        Image image = new Image("File:loginpage.jpg");
+        ImageView menu = new ImageView();
+        menu.setImage(image);
+        menu.setFitHeight(600);
+        menu.setFitWidth(1000);
+
         TextField userTextField = new TextField();
         userTextField.setTranslateY(270);
         userTextField.setTranslateX(500);
@@ -586,7 +609,7 @@ public class Show {
         hbBtn4.getChildren().add(btn4);
 
         final Text actiontarget = new Text();
-        root.getChildren().addAll(userTextField, hbBtn4, passwordField, actiontarget);
+        root.getChildren().addAll(menu,userTextField, hbBtn4, passwordField, actiontarget);
 
         btn4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -595,7 +618,7 @@ public class Show {
                 String text = "";
                 try {
                     if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
-                        root.getChildren().removeAll(userTextField, hbBtn4, passwordField, actiontarget);
+                        root.getChildren().removeAll(menu,userTextField, hbBtn4, passwordField, actiontarget);
                         Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                     }
                 } catch (Exception name) {

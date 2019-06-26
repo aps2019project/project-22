@@ -3,12 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/pg2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="553" column="54" selection-start-line="553" selection-start-column="54" selection-end-line="553" selection-end-column="54" />
+            <state relative-caret-position="-936">
+              <caret line="409" column="66" selection-start-line="409" selection-start-column="66" selection-end-line="409" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#collectionMenu#0;class#Show#0" />
@@ -47,12 +50,10 @@
                 <element signature="method#showCollection#0;class#Show#0" />
                 <element signature="method#helpInCollection#0;class#Show#0" />
                 <element signature="method#showBattleMenu#0;class#Show#0" />
-                <element signature="e#20110#20111#0" expanded="true" />
-                <element signature="e#20231#20232#0" expanded="true" />
-                <element signature="e#27597#27598#0" expanded="true" />
+                <element signature="e#28572#28573#0" expanded="true" />
                 <element signature="method#getPassword#0;class#Show#0" />
-                <element signature="e#27848#27849#0" expanded="true" />
-                <element signature="e#27957#27958#0" expanded="true" />
+                <element signature="e#28823#28824#0" expanded="true" />
+                <element signature="e#28932#28933#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+            <state relative-caret-position="55">
+              <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#872#873#0" expanded="true" />
@@ -226,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/Model/Story.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeHero.java" />
         <option value="$PROJECT_DIR$/src/Model/CustomCard.java" />
-        <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Model/Card.java" />
         <option value="$PROJECT_DIR$/src/Model/Cell.java" />
         <option value="$PROJECT_DIR$/src/Model/CustomGame.java" />
@@ -240,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/Model/MakeItems.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
         <option value="$PROJECT_DIR$/src/Model/Battle.java" />
+        <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
       </list>
     </option>
@@ -301,7 +302,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561555343781" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561557944012" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -395,7 +396,7 @@
       <workItem from="1561477443129" duration="5759000" />
       <workItem from="1561495749108" duration="1502000" />
       <workItem from="1561538697451" duration="7592000" />
-      <workItem from="1561550490522" duration="4779000" />
+      <workItem from="1561550490522" duration="7408000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -436,11 +437,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176541000" />
+    <option name="totallyTimeSpent" value="179170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22027135" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -452,7 +452,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31433225" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2931596" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -848,8 +848,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+        <state relative-caret-position="55">
+          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#872#873#0" expanded="true" />
@@ -938,8 +938,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="553" column="54" selection-start-line="553" selection-start-column="54" selection-end-line="553" selection-end-column="54" />
+        <state relative-caret-position="-936">
+          <caret line="409" column="66" selection-start-line="409" selection-start-column="66" selection-end-line="409" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#collectionMenu#0;class#Show#0" />
@@ -948,12 +948,10 @@
             <element signature="method#showCollection#0;class#Show#0" />
             <element signature="method#helpInCollection#0;class#Show#0" />
             <element signature="method#showBattleMenu#0;class#Show#0" />
-            <element signature="e#20110#20111#0" expanded="true" />
-            <element signature="e#20231#20232#0" expanded="true" />
-            <element signature="e#27597#27598#0" expanded="true" />
+            <element signature="e#28572#28573#0" expanded="true" />
             <element signature="method#getPassword#0;class#Show#0" />
-            <element signature="e#27848#27849#0" expanded="true" />
-            <element signature="e#27957#27958#0" expanded="true" />
+            <element signature="e#28823#28824#0" expanded="true" />
+            <element signature="e#28932#28933#0" expanded="true" />
           </folding>
         </state>
       </provider>
