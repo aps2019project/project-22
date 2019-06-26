@@ -3,45 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Battle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Battle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Cell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Deck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Hero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Presenter/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Presenter/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Presenter/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Presenter/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images (1).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo (4).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo (9).jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -70,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="475" column="93" selection-start-line="475" selection-start-column="93" selection-end-line="475" selection-end-column="93" />
+            <state relative-caret-position="77">
+              <caret line="475" column="94" selection-start-line="475" selection-start-column="94" selection-end-line="475" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#collectionMenu#0;class#Show#0" />
@@ -80,10 +46,6 @@
                 <element signature="method#showCollection#0;class#Show#0" />
                 <element signature="method#helpInCollection#0;class#Show#0" />
                 <element signature="method#showBattleMenu#0;class#Show#0" />
-                <element signature="e#20169#20170#0" expanded="true" />
-                <element signature="e#20271#20272#0" expanded="true" />
-                <element signature="e#20430#20431#0" expanded="true" />
-                <element signature="e#20513#20514#0" expanded="true" />
                 <element signature="method#getPassword#0;class#Show#0" />
               </folding>
             </state>
@@ -93,7 +55,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18642">
+            <state relative-caret-position="594">
               <caret line="50" column="39" selection-start-line="49" selection-start-column="2" selection-end-line="50" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -190,7 +152,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="67" />
     <option name="y" value="27" />
     <option name="width" value="1299" />
@@ -229,12 +191,6 @@
               <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -247,7 +203,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561545777705" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561550602134" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Treadmill" />
@@ -341,6 +297,7 @@
       <workItem from="1561477443129" duration="5759000" />
       <workItem from="1561495749108" duration="1502000" />
       <workItem from="1561538697451" duration="7592000" />
+      <workItem from="1561550490522" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -381,13 +338,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171762000" />
+    <option name="totallyTimeSpent" value="172073000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21707901" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22027135" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,7 +362,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.23289903" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.23289903" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -476,13 +432,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-22/src/Presenter/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="14" lean-forward="true" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/project-22/src/Presenter/Main.java" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -493,15 +443,11 @@
     <entry file="file://$PROJECT_DIR$/Accounts.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-22/spell.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/project-22/spell.png" />
     <entry file="file://$PROJECT_DIR$/spell.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-22/CustomGame.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/project-22/CustomGame.java" />
     <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2232">
@@ -877,20 +823,10 @@
     <entry file="file://$PROJECT_DIR$/menu.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18642">
-          <caret line="50" column="39" selection-start-line="49" selection-start-column="2" selection-end-line="50" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="475" column="93" selection-start-line="475" selection-start-column="93" selection-end-line="475" selection-end-column="93" />
+        <state relative-caret-position="77">
+          <caret line="475" column="94" selection-start-line="475" selection-start-column="94" selection-end-line="475" selection-end-column="94" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#collectionMenu#0;class#Show#0" />
@@ -899,11 +835,17 @@
             <element signature="method#showCollection#0;class#Show#0" />
             <element signature="method#helpInCollection#0;class#Show#0" />
             <element signature="method#showBattleMenu#0;class#Show#0" />
-            <element signature="e#20169#20170#0" expanded="true" />
-            <element signature="e#20271#20272#0" expanded="true" />
-            <element signature="e#20430#20431#0" expanded="true" />
-            <element signature="e#20513#20514#0" expanded="true" />
             <element signature="method#getPassword#0;class#Show#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="50" column="39" selection-start-line="49" selection-start-column="2" selection-end-line="50" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
