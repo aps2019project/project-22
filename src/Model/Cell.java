@@ -98,6 +98,7 @@ public class Cell {
         this.setInsideCard(null);
         return card;
     }
+
     public static Cell getCellByxy(int x, int y) {
         for (Cell cell : cells) {
             if (cell.getX() == x && cell.getY() == y) {

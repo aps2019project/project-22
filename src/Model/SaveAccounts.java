@@ -32,23 +32,23 @@ public class SaveAccounts {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String[] line = bufferedReader.readLine().split("\\s+");
             for (int i = 0; i < line.length; i++) {
-                Account account =  new Account(line[i], line[i + 1]);
-                account.setID(Integer.parseInt(line[i+2]));
-                account.setMoney(Integer.parseInt(line[i+3]));
-                account.setWins(Integer.parseInt(line[i+4]));
-                account.setStory(Integer.parseInt(line[i+5]));
+                Account account = new Account(line[i], line[i + 1]);
+                account.setID(Integer.parseInt(line[i + 2]));
+                account.setMoney(Integer.parseInt(line[i + 3]));
+                account.setWins(Integer.parseInt(line[i + 4]));
+                account.setStory(Integer.parseInt(line[i + 5]));
                 account.setMatchHistory(new ArrayList<MatchHistory>());
                 account.setCollection(new Collection());
                 accounts.add(account);
-                i+=5;
+                i += 5;
             }
             Account.setAccounts(accounts);
         } catch (Exception name) {
         }
         System.out.println("read");
-        for (int i=0;i<Account.getAccounts().size();i++)
+        for (int i = 0; i < Account.getAccounts().size(); i++)
             System.out.println(Account.getAccounts().get(i).getUserName());
-        for (int i=0;i<accounts.size();i++)
+        for (int i = 0; i < accounts.size(); i++)
             System.out.println(accounts.get(i).getUserName());
     }
 }

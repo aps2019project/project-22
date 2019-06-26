@@ -11,6 +11,7 @@ public class Card {
     private static ArrayList<Card> cards = new ArrayList<>();
     protected int id;
     protected boolean stun;
+
     public Image getBreath() {
         return breath;
     }

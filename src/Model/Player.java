@@ -9,7 +9,7 @@ import java.util.Random;
 public class Player {
     private static ArrayList<Player> players = new ArrayList<>();
     private Account account;
-    private Deck mainDeck ;
+    private Deck mainDeck;
     private Hand hand;
     private ArrayList<ImageView> cards1 = new ArrayList<>();
     private ArrayList<ImageView> cards2 = new ArrayList<>();
@@ -29,12 +29,15 @@ public class Player {
     private int howManyFlag = 0;
     private int manaInTurn;
     private boolean flag = false;
-    public void addCards2 ( ImageView card2){
+
+    public void addCards2(ImageView card2) {
         cards2.add(card2);
     }
-    public ArrayList<ImageView> getCards2(){
+
+    public ArrayList<ImageView> getCards2() {
         return cards2;
     }
+
     public ArrayList<ImageView> getCards1() {
         return cards1;
     }
@@ -43,9 +46,10 @@ public class Player {
         this.cards1.add(cards1);
     }
 
-    public boolean getItem8(){
+    public boolean getItem8() {
         return item8;
     }
+
     public int getHowLongFlagsHasBeenKept() {
         return howLongFlagsHasBeenKept;
     }
@@ -62,44 +66,54 @@ public class Player {
         this.howManyFlag = howManyFlag;
     }
 
-    public void setFlagTrue(){
+    public void setFlagTrue() {
         flag = true;
     }
-    public void setFlagFalse(){
+
+    public void setFlagFalse() {
         flag = false;
     }
-    public boolean getFlag(){
+
+    public boolean getFlag() {
         return flag;
     }
-    public void setItem8True(){
+
+    public void setItem8True() {
         item8 = true;
     }
-    public void setItem8False(){
+
+    public void setItem8False() {
         item8 = false;
     }
+
     public static void setPlayers(ArrayList<Player> players) {
         Player.players = players;
     }
-    public void addCardsInTheFile (Card cardsInTheFiled) {
+
+    public void addCardsInTheFile(Card cardsInTheFiled) {
         this.cardsInTheFiled.add(cardsInTheFiled);
     }
+
     public ArrayList<Card> getCardsInTheFiled() {
         return cardsInTheFiled;
     }
+
     public void Player(Account account) {
         this.setAccount(account);
         this.setMainDeck(account.getMainDeck());
     }
-    public void addCollectableItems(Item item){
+
+    public void addCollectableItems(Item item) {
         collectibleItems.add(item);
     }
-    public void setDeck(Deck deck){
+
+    public void setDeck(Deck deck) {
         Random rand = new Random();
-        for (int i = 0; i < 13; i++){
+        for (int i = 0; i < 13; i++) {
             int n = rand.nextInt(40);
             deck.addCardsOfDeck(Minion.getMinions().get(n));
         }
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < 7; i++) {
             int n = rand.nextInt(20);
             deck.addCardsOfDeck(Spell.getSpells().get(n));
         }
@@ -109,18 +123,21 @@ public class Player {
         account.setMainDeck(deck);
         account.addDeck(deck);
     }
-    public void setHand(){
+
+    public void setHand() {
         Random rand = new Random();
         hand = new Hand(graveYard);
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             int n = rand.nextInt(20);
             hand.addCard(mainDeck.getCardsOfDeck().get(n));
         }
     }
-    public void setCard(){
+
+    public void setCard() {
         this.minionCards = Minion.getMinions();
         this.spellCards = Spell.getSpells();
     }
+
     public Card findInGraveYard(int cardID) {
         for (Card card : getGraveYard().getCards()) {
             if (card.getCardId() == cardID) {
@@ -272,7 +289,7 @@ public class Player {
     }
 
     public void setManaInTurn() {
-        int manaInTurn=2;
+        int manaInTurn = 2;
         if (turnNumber == 1) {
             manaInTurn = 2;
         } else if (turnNumber == 2 || turnNumber == 3) {

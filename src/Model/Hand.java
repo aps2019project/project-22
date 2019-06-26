@@ -1,6 +1,5 @@
 package Model;
 
-import java.io.CharArrayReader;
 import java.util.ArrayList;
 import java.util.Random;
 

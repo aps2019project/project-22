@@ -278,14 +278,14 @@ public class Deck {
             }
         }
         int i = 0;
-        boolean notFound[] =new boolean[4];
+        boolean notFound[] = new boolean[4];
         for (; i < account.getCollection().getItems().size(); i++) {
             if (account.getCollection().getItems().get(i).getId() == id) {
                 break;
             }
         }
         if (i == account.getCollection().getItems().size()) {
-            notFound[0]=true;
+            notFound[0] = true;
         }
         i = 0;
         for (; i < account.getCollection().getSpells().size(); i++) {
@@ -294,7 +294,7 @@ public class Deck {
             }
         }
         if (i == account.getCollection().getSpells().size()) {
-            notFound[1]=true;
+            notFound[1] = true;
         }
         i = 0;
         for (; i < account.getCollection().getMinions().size(); i++) {
@@ -303,7 +303,7 @@ public class Deck {
             }
         }
         if (i == account.getCollection().getMinions().size()) {
-            notFound[2]=true;
+            notFound[2] = true;
         }
         i = 0;
         for (; i < account.getCollection().getHeroes().size(); i++) {
@@ -312,10 +312,9 @@ public class Deck {
             }
         }
         if (i == account.getCollection().getHeroes().size()) {
-            notFound[3]=true;
+            notFound[3] = true;
         }
-        if(notFound[0]&&notFound[1]&&notFound[2]&&notFound[3])
-        {
+        if (notFound[0] && notFound[1] && notFound[2] && notFound[3]) {
             System.out.println("this card or item isn't in your collection.");
             return;
         }
@@ -329,23 +328,23 @@ public class Deck {
                 return;
             }
         }
-        for (i=0;i<account.getCollection().getMinions().size();i++){
-            if(account.getCollection().getMinions().get(i).getId()==id){
+        for (i = 0; i < account.getCollection().getMinions().size(); i++) {
+            if (account.getCollection().getMinions().get(i).getId() == id) {
                 cardsOfDeck.add(account.getCollection().getMinions().get(i));
                 minions.add(account.getCollection().getMinions().get(i));
                 return;
             }
         }
-        for (i=0;i<account.getCollection().getSpells().size();i++){
-            if(account.getCollection().getSpells().get(i).getId()==id){
+        for (i = 0; i < account.getCollection().getSpells().size(); i++) {
+            if (account.getCollection().getSpells().get(i).getId() == id) {
                 cardsOfDeck.add(account.getCollection().getSpells().get(i));
                 spells.add(account.getCollection().getSpells().get(i));
                 return;
             }
         }
-        for (i=0;i<account.getCollection().getItems().size();i++){
-            if(account.getCollection().getItems().get(i).getId()==id){
-                this.item=account.getCollection().getItems().get(i);
+        for (i = 0; i < account.getCollection().getItems().size(); i++) {
+            if (account.getCollection().getItems().get(i).getId() == id) {
+                this.item = account.getCollection().getItems().get(i);
                 return;
             }
         }

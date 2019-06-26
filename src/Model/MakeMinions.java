@@ -20,7 +20,7 @@ public class MakeMinions {
                 "hibrid", 3, "not", "Nothing");
         minions[3] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (4)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (4)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (4)\\run.GIF",4, "asbsavareFars", 200, 4, 10, 6,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (4)\\run.GIF", 4, "asbsavareFars", 200, 4, 10, 6,
                 "melee", -1, "not", "Nothing");
         minions[4] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (5)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (5)\\attack.GIF",
@@ -39,15 +39,15 @@ public class MakeMinions {
                 "ranged", 5, "not", "Nothing");
         minions[7] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (8)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (8)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (8)\\run.GIF",8, "qolabSangdareTurani", 600, 1, 4, 2,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (8)\\run.GIF", 8, "qolabSangdareTurani", 600, 1, 4, 2,
                 "ranged", 7, "not", "Nothing");
         minions[8] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (9)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (9)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (9)\\run.GIF",9, "neyzedareTurani", 600, 1, 4, 4,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (9)\\run.GIF", 9, "neyzedareTurani", 600, 1, 4, 4,
                 "hybrid", 3, "not", "Nothing");
         minions[9] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (10)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (10)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (10)\\run.GIF",10, "jasuseTurani", 700, 4, 6, 6,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (10)\\run.GIF", 10, "jasuseTurani", 700, 4, 6, 6,
                 "melee", -1, "On Attack", "disarm power of enemy and 4 poison");
         minions[10] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (11)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (11)\\attack.GIF",
@@ -61,7 +61,7 @@ public class MakeMinions {
                 "melee", -1, "combo", "Combo");
         minions[12] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (13)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (13)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (13)\\run.GIF",13, "divSiah", 300, 9, 14, 10,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (13)\\run.GIF", 13, "divSiah", 300, 9, 14, 10,
                 "hybrid", 7, "not", "Nothing");
         minions[13] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (14)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (14)\\attack.GIF",
@@ -100,7 +100,7 @@ public class MakeMinions {
                 "melee", -1, "On Attack", "no effect holy buff on");
         minions[20] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (21)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (21)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (21)\\run.GIF",21, "mareQulpeykar", 500, 8, 14, 7,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (21)\\run.GIF", 21, "mareQulpeykar", 500, 8, 14, 7,
                 "ranged", 5, "On Spawn", "Opposite holy buff");
         minions[21] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (22)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (22)\\attack.GIF",
@@ -130,7 +130,7 @@ public class MakeMinions {
                 "1 power by 2unit attack power and 1 holy buff with contius");
         minions[26] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (27)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (27)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (27)\\run.GIF",27, "jen", 500, 5, 10, 4,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (27)\\run.GIF", 27, "jen", 500, 5, 10, 4,
                 "ranged", 4, "On Turn",
                 "add power buff by 1 unit attack power with continuous for all minions");
         minions[27] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (28)\\breathing.GIF",
@@ -175,7 +175,7 @@ public class MakeMinions {
                 "melee", -1, "On Attack", "not apply positive buffs");
         minions[35] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (36)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (36)\\attack.GIF",
-                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (36)\\run.GIF",36, "naneSarma", 500, 3, 3, 4,
+                "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (36)\\run.GIF", 36, "naneSarma", 500, 3, 3, 4,
                 "ranged", 5, "On Spawn", "stun minions of 8 cell around");
         minions[36] = new Minion("file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (37)\\breathing.GIF",
                 "file:C:\\Users\\MS\\Desktop\\project-22-master\\1 (37)\\attack.GIF",
@@ -201,7 +201,7 @@ public class MakeMinions {
         for (int i = 0; i < 40; i++) {
             Minion.addMinion(minions[i]);
             Card.addCard(minions[i]);
-          //  Shop.addMinion(minions[i]);
+            //  Shop.addMinion(minions[i]);
         }
     }
 }
