@@ -46,7 +46,6 @@ public class Account {
         this.setUserName(userName);
         this.setPassword(password);
         this.setID(Account.count++);
-
     }
 
     public static boolean booleanSearchByUserName(String userName) {

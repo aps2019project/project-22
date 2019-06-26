@@ -26,7 +26,16 @@ public class Main extends Application {
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 SaveAccounts.read();
-                Show.showMainMenu(scanner, root);
+
+                Account a = new Account("o", "o");
+                Account b = new Account("i", "i");
+                Account.addNewAccount(a);
+                Account.addNewAccount(b);
+                Account.setAccountActivated(a);
+
+                Show.showMainMenuOfAccount(scanner,Account.getAccountActivated(),root);
+
+//                Show.showMainMenu(scanner, root);
             }
         });
         thread.start();
