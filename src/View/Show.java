@@ -411,15 +411,15 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-        Button btn = new Button("Sign Up");
+        Button btn = new Button("  Sign Up  ");
         HBox hbBtn = new HBox(10);
 
         hbBtn.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn.setPrefSize(600, 200);
-        hbBtn.setTranslateX(155);
+        hbBtn.setTranslateX(162);
         hbBtn.getChildren().add(btn);
 
-        Button btn1 = new Button("   Leaderboard  ");
+        Button btn1 = new Button("      Login        ");
         HBox hbBtn1 = new HBox(10);
         hbBtn1.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn1.setPrefSize(600, 200);
@@ -427,7 +427,7 @@ public class Show {
         hbBtn1.setTranslateY(45);
         hbBtn1.getChildren().add(btn1);
 
-        Button btn2 = new Button("       Login            ");
+        Button btn2 = new Button("     Leaderboard      ");
         HBox hbBtn2 = new HBox(10);
         hbBtn2.setAlignment(Pos.BOTTOM_LEFT);
         hbBtn2.setPrefSize(600, 200);
@@ -435,81 +435,54 @@ public class Show {
         hbBtn2.setTranslateY(90);
         hbBtn2.getChildren().add(btn2);
 
+        Image i = new Image("file:button.png");
+        ImageView bi = new ImageView();
+        bi.setImage(i);
+        bi.relocate(155,215);
+        bi.setFitWidth(140);
+        bi.setFitHeight(35);
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, hbBtn, hbBtn1, hbBtn2);
+                        root.getChildren().addAll(menu, hbBtn,  hbBtn2,bi);
                     }
                 }
         );
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                System.out.println("siiiiiiiiign up");
-            }
-        });
-
-        btn1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                System.out.println("leaderboard !!!!!!!!!!!");
-                Show.showLeaderBoard();
-            }
-        });
-        btn1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
                 System.out.println("mouse leaderboard !!!!!!!!!!!");
             }
         });
 
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
             @Override
-            public void handle(ActionEvent e) {
-                Image image1 = new Image("File:loginpage.jpg");
-                menu.setImage(image1);
-                Platform.runLater(
-                        new Runnable() {
-                            public void run() {
-                                root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2);
-
-                                TextField userTextField = new TextField();
-                                userTextField.setTranslateY(270);
-                                userTextField.setTranslateX(500);
-                                PasswordField passwordField = new PasswordField();
-                                passwordField.setTranslateY(315);
-                                passwordField.setTranslateX(460);
-                                Button btn4 = new Button("   Login   ");
-                                HBox hbBtn4 = new HBox(10);
-                                hbBtn4.setAlignment(Pos.BOTTOM_CENTER);
-                                hbBtn4.setTranslateY(365);
-                                hbBtn4.setTranslateX(455);
-                                hbBtn4.getChildren().add(btn4);
-
-                                final Text actiontarget = new Text();
-                                root.getChildren().addAll(userTextField, hbBtn4, passwordField, actiontarget);
-
-                                btn4.setOnAction(new EventHandler<ActionEvent>() {
-                                    @Override
-                                    public void handle(ActionEvent e) {
-                                        actiontarget.setFill(Color.FIREBRICK);
-                                        String text = "";
-                                        try {
-                                            if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
-                                                root.getChildren().removeAll(userTextField, hbBtn4, passwordField, actiontarget);
-                                                Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
-                                            }
-                                        } catch (Exception name) {
-                                        }
-                                        actiontarget.setText(text);
+            public void handle(MouseEvent event) {
+                double x = event.getX();
+                double y = event.getY();
+                if (x > 164) {
+                    if (x < 246 && y > 174 && y < 201) {
+                        System.out.println("siiiiiiiiign up");
+                    }
+                    if (x < 280 && y > 220 && y < 246) {
+                        Image image1 = new Image("File:loginpage.jpg");
+                        menu.setImage(image1);
+                        Platform.runLater(
+                                new Runnable() {
+                                    public void run() {
+                                        root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2,bi);
+                                        loginPage(root, scanner);
                                     }
-                                });
-                            }
-                        }
-                );
+                                }
+                        );
+                    }
+                }
             }
         });
+
 
 
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
@@ -542,6 +515,40 @@ public class Show {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
         showMainMenu(scanner, root);
+    }
+
+    private static void loginPage(Group root, Scanner scanner) {
+        TextField userTextField = new TextField();
+        userTextField.setTranslateY(270);
+        userTextField.setTranslateX(500);
+        PasswordField passwordField = new PasswordField();
+        passwordField.setTranslateY(315);
+        passwordField.setTranslateX(460);
+        Button btn4 = new Button("   Login   ");
+        HBox hbBtn4 = new HBox(10);
+        hbBtn4.setAlignment(Pos.BOTTOM_CENTER);
+        hbBtn4.setTranslateY(365);
+        hbBtn4.setTranslateX(455);
+        hbBtn4.getChildren().add(btn4);
+
+        final Text actiontarget = new Text();
+        root.getChildren().addAll(userTextField, hbBtn4, passwordField, actiontarget);
+
+        btn4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                actiontarget.setFill(Color.FIREBRICK);
+                String text = "";
+                try {
+                    if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
+                        root.getChildren().removeAll(userTextField, hbBtn4, passwordField, actiontarget);
+                        Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                    }
+                } catch (Exception name) {
+                }
+                actiontarget.setText(text);
+            }
+        });
     }
 
     private static void showLeaderBoard() {
