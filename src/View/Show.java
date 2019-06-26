@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -408,6 +409,7 @@ public class Show {
     }
 
     public static void showMainMenu(Scanner scanner, Group root) {
+
         Image image = new Image("File:menu.jpg");
         ImageView menu = new ImageView();
         menu.setImage(image);
@@ -446,7 +448,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2,label2, buttonImage3,label3);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3);
                     }
                 }
         );
@@ -458,14 +460,14 @@ public class Show {
                 double x = event.getX();
                 double y = event.getY();
 //                System.out.println("x=\t" + x + "\ty=\t" + y);
-
                 if (x > 154) {
                     if (x < 296 && y > 161 && y < 198) {
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
-                                        root.getChildren().removeAll(buttonImage1, buttonImage2, buttonImage3);
+                                        root.getChildren().clear();
                                         signUpPage(root, scanner);
+                                        return;
                                     }
                                 }
                         );
@@ -474,7 +476,7 @@ public class Show {
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
-                                        root.getChildren().removeAll(buttonImage1, buttonImage2, buttonImage3);
+                                        root.getChildren().clear();
                                         loginPage(root, scanner);
                                     }
                                 }
@@ -482,6 +484,8 @@ public class Show {
                     }
                     if (x < 300 && y > 262 && y < 294) {
                         System.out.println("loaderboard");
+                        root.getChildren().clear();
+                        boardPage(root, scanner);
                     }
                 }
             }
@@ -518,6 +522,53 @@ public class Show {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
         showMainMenu(scanner, root);
+    }
+
+    private static void boardPage(Group root, Scanner scanner) {
+        Image image = new Image("File:photos/boardPage.jpg");
+        ImageView board = new ImageView();
+        board.setImage(image);
+        board.setFitHeight(600);
+        board.setFitWidth(1000);
+
+        Text sceneTitle = new Text("Ranking");
+        sceneTitle.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+        sceneTitle.setFill(Color.MEDIUMSLATEBLUE);
+        sceneTitle.relocate(160, 110);
+
+        Line underline = new Line(158, 135, 253, 135);
+        underline.setFill(Color.BLACK);
+
+        root.getChildren().addAll(board, sceneTitle, underline);
+        Account.addNewAccount(new Account("yys", "edjkwdwe"));
+        Account s = new Account("OOO0", "468");
+        s.setWins(5);
+        Account.addNewAccount(s);
+        Account.sortAll();
+
+        for (int i = 0; i < Account.getAccounts().size(); i++) {
+            Label username = new Label();
+            username.setText(i + 1 + ".\tUsername: " + Account.getAccounts().get(i).getUserName());
+            username.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+            username.setTextFill(Color.DEEPPINK);
+            username.relocate(250, 150 + 40 * i);
+
+            Label wins = new Label();
+            wins.setText("Wins: " + Account.getAccounts().get(i).getWins());
+            wins.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+            wins.setTextFill(Color.DEEPPINK);
+            wins.relocate(575, 150 + 40 * i);
+
+            root.getChildren().addAll(username, wins);
+        }
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                System.out.println("x= " + x + "\ty= " + y);
+            }
+        });
     }
 
     private static void signUpPage(Group root, Scanner scanner) {
@@ -567,25 +618,24 @@ public class Show {
         command.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 13));
         command.relocate(230, 455);
 
-        root.getChildren().addAll(menu,userName, userTextField, passwordField1, passwordField2, labelPw1,
-                labelPw2, buttonForCreateAccount, label,command);
+        root.getChildren().addAll(menu, userName, userTextField, passwordField1, passwordField2, labelPw1,
+                labelPw2, buttonForCreateAccount, label, command);
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
                 if (x > 210 && x < 322 && y > 420 && y < 449) {
-                    String cm=Account.signUp(userTextField.getText(), passwordField1.getText(), passwordField2.getText());
+                    String cm = Account.signUp(userTextField.getText(), passwordField1.getText(), passwordField2.getText());
                     command.setText(cm);
-                    if(cm.contains("welcome")){
-                        root.getChildren().removeAll(menu,userName, userTextField, passwordField1, passwordField2, labelPw1,
-                                labelPw2, buttonForCreateAccount, label,command);
+                    if (cm.contains("welcome")) {
+                        root.getChildren().clear();
+                        showMainMenu(scanner, root);
                     }
                 }
 
             }
         });
-
     }
 
     private static void loginPage(Group root, Scanner scanner) {
@@ -609,7 +659,8 @@ public class Show {
         hbBtn4.getChildren().add(btn4);
 
         final Text actiontarget = new Text();
-        root.getChildren().addAll(menu,userTextField, hbBtn4, passwordField, actiontarget);
+
+        root.getChildren().addAll(menu, userTextField, hbBtn4, passwordField, actiontarget);
 
         btn4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -618,7 +669,7 @@ public class Show {
                 String text = "";
                 try {
                     if (Account.checkLogin(userTextField.getText(), passwordField.getText())) {
-                        root.getChildren().removeAll(menu,userTextField, hbBtn4, passwordField, actiontarget);
+                        root.getChildren().removeAll(menu, userTextField, hbBtn4, passwordField, actiontarget);
                         Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                     }
                 } catch (Exception name) {
