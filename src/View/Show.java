@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.Random;
@@ -411,14 +414,6 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-        Button btn1 = new Button("      Login        ");
-        HBox hbBtn1 = new HBox(10);
-        hbBtn1.setAlignment(Pos.BOTTOM_LEFT);
-        hbBtn1.setPrefSize(600, 200);
-        hbBtn1.setTranslateX(162);
-        hbBtn1.setTranslateY(45);
-        hbBtn1.getChildren().add(btn1);
-
         Image i1 = new Image("File:photos/buttonCreateAccount.png");
         ImageView buttonImage1 = new ImageView();
         buttonImage1.setImage(i1);
@@ -444,7 +439,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2,buttonImage3);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, buttonImage3);
                     }
                 }
         );
@@ -460,6 +455,16 @@ public class Show {
                 if (x > 154) {
                     if (x < 296 && y > 161 && y < 198) {
                         System.out.println("siiiiiiiiign up");
+                        Image image = new Image("File:photos/signUpPage.jpg");
+                        menu.setImage(image);
+                        Platform.runLater(
+                                new Runnable() {
+                                    public void run() {
+                                        root.getChildren().removeAll(buttonImage1, buttonImage2, buttonImage3);
+                                        signUpPage(root, scanner);
+                                    }
+                                }
+                        );
                     }
                     if (x < 300 && y > 214 && y < 256) {
                         Image image1 = new Image("File:loginpage.jpg");
@@ -467,7 +472,7 @@ public class Show {
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
-                                        root.getChildren().removeAll(hbBtn1, buttonImage1, buttonImage2,buttonImage3);
+                                        root.getChildren().removeAll(buttonImage1, buttonImage2, buttonImage3);
                                         loginPage(root, scanner);
                                     }
                                 }
@@ -511,6 +516,59 @@ public class Show {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
         showMainMenu(scanner, root);
+    }
+
+    private static void signUpPage(Group root, Scanner scanner) {
+
+        Label userName = new Label("UserName");
+        userName.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        userName.setTranslateX(182);
+        userName.setTranslateY(230);
+
+        TextField userTextField = new TextField();
+        userTextField.setPrefWidth(140);
+        userTextField.setTranslateX(190);
+        userTextField.setTranslateY(254);
+
+        Label labelPw1 = new Label("Password");
+        labelPw1.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        labelPw1.setTranslateX(182);
+        labelPw1.setTranslateY(290);
+
+        PasswordField passwordField1 = new PasswordField();
+        passwordField1.setPrefWidth(140);
+        passwordField1.setTranslateX(190);
+        passwordField1.setTranslateY(314);
+
+        Label labelPw2 = new Label("Repeat Password");
+        labelPw2.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        labelPw2.setTranslateX(182);
+        labelPw2.setTranslateY(349);
+
+        PasswordField passwordField2 = new PasswordField();
+        passwordField2.setPrefWidth(140);
+        passwordField2.setTranslateX(190);
+        passwordField2.setTranslateY(373);
+
+
+        Image i = new Image("File:photos/buttonCreateAccount.png");
+        ImageView buttonForCreateAccount = new ImageView();
+        buttonForCreateAccount.setImage(i);
+        buttonForCreateAccount.relocate(195, 413);
+        buttonForCreateAccount.setFitWidth(130);
+        buttonForCreateAccount.setFitHeight(33);
+
+        root.getChildren().addAll(userName, userTextField, passwordField1, passwordField2, labelPw1,
+                labelPw2, buttonForCreateAccount);
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+            }
+        });
+
+//        Account.createAccount(userTextField.getText(), scanner);
     }
 
     private static void loginPage(Group root, Scanner scanner) {
