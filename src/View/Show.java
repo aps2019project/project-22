@@ -411,14 +411,6 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-        Button btn = new Button("  Sign Up  ");
-        HBox hbBtn = new HBox(10);
-
-        hbBtn.setAlignment(Pos.BOTTOM_LEFT);
-        hbBtn.setPrefSize(600, 200);
-        hbBtn.setTranslateX(162);
-        hbBtn.getChildren().add(btn);
-
         Button btn1 = new Button("      Login        ");
         HBox hbBtn1 = new HBox(10);
         hbBtn1.setAlignment(Pos.BOTTOM_LEFT);
@@ -427,35 +419,35 @@ public class Show {
         hbBtn1.setTranslateY(45);
         hbBtn1.getChildren().add(btn1);
 
-        Button btn2 = new Button("     Leaderboard      ");
-        HBox hbBtn2 = new HBox(10);
-        hbBtn2.setAlignment(Pos.BOTTOM_LEFT);
-        hbBtn2.setPrefSize(600, 200);
-        hbBtn2.setTranslateX(162);
-        hbBtn2.setTranslateY(90);
-        hbBtn2.getChildren().add(btn2);
+        Image i1 = new Image("File:photos/buttonCreateAccount.png");
+        ImageView buttonImage1 = new ImageView();
+        buttonImage1.setImage(i1);
+        buttonImage1.relocate(155, 162);
+        buttonImage1.setFitWidth(140);
+        buttonImage1.setFitHeight(35);
 
-        Image i = new Image("file:button.png");
-        ImageView bi = new ImageView();
-        bi.setImage(i);
-        bi.relocate(155,215);
-        bi.setFitWidth(140);
-        bi.setFitHeight(35);
+        Image i2 = new Image("file:button.png");
+        ImageView buttonImage2 = new ImageView();
+        buttonImage2.setImage(i2);
+        buttonImage2.relocate(154, 215);
+        buttonImage2.setFitWidth(145);
+        buttonImage2.setFitHeight(40);
+
+        Image i3 = new Image("file:photos/blueButton.png");
+        ImageView buttonImage3 = new ImageView();
+        buttonImage3.setImage(i3);
+        buttonImage3.relocate(154, 258);
+        buttonImage3.setFitWidth(145);
+        buttonImage3.setFitHeight(40);
+
 
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, hbBtn,  hbBtn2,bi);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2,buttonImage3);
                     }
                 }
         );
-
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                System.out.println("mouse leaderboard !!!!!!!!!!!");
-            }
-        });
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -463,26 +455,30 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-                if (x > 164) {
-                    if (x < 246 && y > 174 && y < 201) {
+//                System.out.println("x=\t" + x + "\ty=\t" + y);
+
+                if (x > 154) {
+                    if (x < 296 && y > 161 && y < 198) {
                         System.out.println("siiiiiiiiign up");
                     }
-                    if (x < 280 && y > 220 && y < 246) {
+                    if (x < 300 && y > 214 && y < 256) {
                         Image image1 = new Image("File:loginpage.jpg");
                         menu.setImage(image1);
                         Platform.runLater(
                                 new Runnable() {
                                     public void run() {
-                                        root.getChildren().removeAll(hbBtn, hbBtn1, hbBtn2,bi);
+                                        root.getChildren().removeAll(hbBtn1, buttonImage1, buttonImage2,buttonImage3);
                                         loginPage(root, scanner);
                                     }
                                 }
                         );
                     }
+                    if (x < 300 && y > 262 && y < 294) {
+                        System.out.println("loaderboard");
+                    }
                 }
             }
         });
-
 
 
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
