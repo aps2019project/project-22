@@ -1,6 +1,7 @@
 package View;
 
 import Model.*;
+import Presenter.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -145,10 +146,10 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-                if (x > 154) {
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                if (x > 154) {
                                     root.getChildren().clear();
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
@@ -168,22 +169,17 @@ public class Show {
                                         root.getChildren().clear();
                                         System.out.println("logout");
                                     }
-                                }
-                            }
-                    );
-                } else if (x > 26 && x < 108 && y > 507 && y < 589) {
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
+                                } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     System.out.println("exit");
                                     root.getChildren().clear();
+                                    showExitPage(root);
                                 }
-                            });
-                }
+                            }
+                        });
             }
         });
 
-
+/*
         System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
         String input = scanner.nextLine().trim();
         switch (input) {
@@ -212,6 +208,7 @@ public class Show {
                 break;
         }
         showMainMenuOfAccount(scanner, account, root);
+        */
     }
 
     private static void showAllUserNames() {
@@ -531,7 +528,7 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-        Image i1 = new Image("File:photos/buttonCreateAccount.png");
+        Image i1 = new Image("file:photos/buttonCreateAccount.png");
         ImageView buttonImage1 = new ImageView();
         buttonImage1.setImage(i1);
         buttonImage1.relocate(155, 162);
@@ -571,7 +568,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3,exitButton);
+                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3, exitButton);
                     }
                 }
         );
@@ -582,46 +579,37 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-                if (x > 154) {
-                    if (x < 296 && y > 161 && y < 198) {
-                        Platform.runLater(
-                                new Runnable() {
-                                    public void run() {
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                if (x > 154) {
+                                    if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
                                         signUpPage(root, scanner);
                                         return;
                                     }
-                                }
-                        );
-                    }
-                    if (x < 300 && y > 214 && y < 256) {
-                        Platform.runLater(
-                                new Runnable() {
-                                    public void run() {
+                                    if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
                                         loginPage(root, scanner);
+                                        return;
                                     }
-                                }
-                        );
-                    }
-                    if (x < 300 && y > 262 && y < 294) {
-                        System.out.println("loaderboard");
-                        root.getChildren().clear();
-                        boardPage(root, scanner);
-                    }
-                }
-                else if (x > 26 && x < 108 && y > 507 && y < 589) {
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
-                                    System.out.println("exit");
+                                    if (x < 300 && y > 262 && y < 294) {
+                                        root.getChildren().clear();
+                                        System.out.println("board page");
+                                        boardPage(root, scanner);
+                                        System.out.println("show board page");
+                                        return;
+                                    }
+                                } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     root.getChildren().clear();
+                                    showExitPage(root);
+                                    return;
                                 }
-                            });
-                }
+                            }
+                        });
             }
         });
-
+/*
         System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
         System.out.println("\t*** please enter a number : ***");
         String input = scanner.nextLine().trim();
@@ -651,7 +639,30 @@ public class Show {
         } else if (input.equals("4") || input.equals("Help") || input.equals("help")) {
             System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
         }
-        showMainMenu(scanner, root);
+        */
+//        showMainMenu(scanner, root);
+    }
+
+    private static void showExitPage(Group root) {
+        Image image = new Image("File:photos/exit.jpg");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(imageView);
+                        try {
+                            root.getChildren().addAll(imageView);
+                            Thread.sleep(5000);
+                            Main.primaryStage.close();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+        );
     }
 
     private static void boardPage(Group root, Scanner scanner) {
@@ -748,7 +759,8 @@ public class Show {
 
         Label command = new Label();
         command.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 13));
-        command.relocate(230, 455);
+        command.setTextFill(Color.BLACK);
+        command.relocate(218, 400);
 
         Platform.runLater(
                 new Runnable() {
@@ -764,14 +776,19 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
-                if (x > 210 && x < 322 && y > 420 && y < 449) {
-                    String cm = Account.signUp(userTextField.getText(), passwordField1.getText(), passwordField2.getText());
-                    command.setText(cm);
-                    if (cm.contains("welcome")) {
-                        root.getChildren().clear();
-                        showMainMenu(scanner, root);
-                    }
-                }
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                if (x > 210 && x < 322 && y > 420 && y < 449) {
+                                    String cm = Account.signUp(userTextField.getText(), passwordField1.getText(), passwordField2.getText());
+                                    command.setText(cm);
+                                    if (cm.contains("welcome")) {
+                                        root.getChildren().clear();
+                                        showMainMenu(scanner, root);
+                                    }
+                                }
+                            }
+                        });
             }
         });
     }
@@ -822,18 +839,36 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
                 System.out.println("x= " + x + "\ty= " + y);
-                try {
-                    if (x > 439 && x < 557 && y > 356 && y < 397) {
-                        String cm = Account.checking(userTextField.getText(), passwordField.getText());
-                        System.out.println(userTextField.getText() + "\t" + passwordField.getText() + "\n" + cm);
-                        command.setText(cm);
-                        if (cm.contains("welcome")) {
-                            root.getChildren().clear();
-                            showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                try {
+                                    if (x > 438 && x < 560) {
+                                        if (y > 356 && y < 397) {
+                                            String cm = Account.checking(userTextField.getText(), passwordField.getText());
+                                            if (cm.contains("welcome")) {
+                                                root.getChildren().clear();
+                                                System.out.println("menu account");
+                                                showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                                                return;
+                                            }
+                                        }
+                                        if (y > 450 && y < 489) {
+                                            root.getChildren().clear();
+                                            signUpPage(root, scanner);
+                                            return;
+                                        }
+                                    }
+                                    if (x > 885 && x < 977 && y > 585) {
+                                        root.getChildren().clear();
+                                        showMainMenu(scanner, root);
+                                        return;
+                                    }
+                                } catch (Exception name) {
+                                }
+                            }
                         }
-                    }
-                } catch (Exception name) {
-                }
+                );
             }
         });
     }

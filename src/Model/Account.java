@@ -118,12 +118,13 @@ public class Account {
 
     public static String signUp(String username, String pw,String rpw) {
         Account account = searchByUserName(username);
-        if (account != null) {
+        if (account != null || username.isEmpty()) {
             return "Ooops! that username is unavailable! Try again.";
         } else {
-            if(!pw.equals(rpw)){
+            if(pw.isEmpty())
+                return "Please enter your password.";
+            if(!pw.equals(rpw))
                 return "Not match! Please re-enter your password.";
-            }
             Account newAccount = new Account(username, pw);
             Account.addNewAccount(newAccount);
             return "welcome "+username;

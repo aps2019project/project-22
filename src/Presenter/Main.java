@@ -14,6 +14,7 @@ public class Main extends Application {
     public static Group root = new Group();
     public static Scene scene = new Scene(root, 1000, 600, Color.rgb(175, 166, 143));
     Scanner scanner = new Scanner(System.in);
+    public static Stage primaryStage;
 
     public static void main(String[] args) {
         launch(args);
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 SaveAccounts.read();
