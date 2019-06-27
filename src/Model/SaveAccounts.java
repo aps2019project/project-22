@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class SaveAccounts {
+
     public static void save() {
         try {
             FileWriter fileWriter = new FileWriter("Accounts.txt");
@@ -23,7 +24,6 @@ public class SaveAccounts {
         }
         System.out.println("saved!");
     }
-
 
     public static void read() {
         ArrayList<Account> accounts = new ArrayList<>();

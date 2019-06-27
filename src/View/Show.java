@@ -78,19 +78,26 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-//      Save\n6 .Help");
-        Image i1 = new Image("file:button.png");
-        Image i2 = new Image("file:photos/blueButton.png");
+//      Save
+
+        Image i1 = new Image("file:photos/blueButton.png");
+        Image i2 = new Image("file:button.png");
+
+        ImageView buttonImage = new ImageView();
+        buttonImage.setImage(i1);
+        buttonImage.relocate(155, 162);
+        buttonImage.setFitWidth(145);
+        buttonImage.setFitHeight(40);
 
         ImageView buttonImage1 = new ImageView();
         buttonImage1.setImage(i1);
-        buttonImage1.relocate(155, 162);
-        buttonImage1.setFitWidth(140);
-        buttonImage1.setFitHeight(35);
+        buttonImage1.relocate(155, 165);
+        buttonImage1.setFitWidth(145);
+        buttonImage1.setFitHeight(40);
 
         Label label1 = new Label("Collection");
         label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label1.relocate(198, 172);
+        label1.relocate(193, 172);
         label1.setTextFill(Color.WHITESMOKE);
 
         ImageView buttonImage2 = new ImageView();
@@ -110,7 +117,7 @@ public class Show {
         buttonImage3.setFitWidth(145);
         buttonImage3.setFitHeight(40);
 
-        Label label3 = new Label("Battle");
+        Label label3 = new Label(" Battle");
         label3.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label3.relocate(196, 269);
         label3.setTextFill(Color.WHITESMOKE);
@@ -121,10 +128,21 @@ public class Show {
         buttonImage4.setFitWidth(145);
         buttonImage4.setFitHeight(40);
 
-        Label label4 = new Label("Logout");
+        Label label4 = new Label(" Save");
         label4.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label4.relocate(197, 312);
         label4.setTextFill(Color.WHITESMOKE);
+
+        ImageView buttonImage5 = new ImageView();
+        buttonImage5.setImage(i1);
+        buttonImage5.relocate(154, 344);
+        buttonImage5.setFitWidth(145);
+        buttonImage5.setFitHeight(40);
+
+        Label label5 = new Label("Logout");
+        label5.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label5.relocate(197, 354);
+        label5.setTextFill(Color.WHITESMOKE);
 
         ImageView exitButton = new ImageView();
         buttonImage1.setImage(new Image("file:photos/exitButton.png"));
@@ -135,8 +153,8 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, label1, buttonImage2, label2,
-                                buttonImage3, label3, buttonImage4, label4, exitButton);
+                        root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2,
+                                label2, buttonImage3, label3, buttonImage4, label4, buttonImage5, label5, exitButton);
                     }
                 }
         );
@@ -155,23 +173,34 @@ public class Show {
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
                                         collectionMenu(scanner, account);
+                                        return;
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
                                         shopMenu(scanner, account);
+                                        return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
                                         Battle battle = new Battle();
                                         showBattleMenu(account, battle, scanner, root, "Choose Opponent");
+                                        return;
                                     }
                                     if (x < 300 && y > 298 && y < 330) {
+                                        SaveAccounts.save();
                                         root.getChildren().clear();
                                         showMainMenu(scanner, root);
+                                        return;
+                                    }
+                                    if (x > 169 && x < 289 && y >= 350 && y < 382) {
+                                        root.getChildren().clear();
+                                        showMainMenu(scanner, root);
+                                        return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     root.getChildren().clear();
                                     showExitPage(root);
+                                    return;
                                 }
                             }
                         });
@@ -526,7 +555,8 @@ public class Show {
         });
     }
 
-    private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle, Scanner scanner, Group root, Player player1, Player player2,
+    private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle
+            , Scanner scanner, Group root, Player player1, Player player2,
                                  int levelOfGame) {
 
         int singleOrMulti = singleMulti;
@@ -705,7 +735,8 @@ public class Show {
         }
     }
 
-    private static void selectGamePage(Group root, Scanner scanner, Account account, Battle battle, Player player1, Player player2) {
+    private static void selectGamePage(Group root, Scanner scanner, Account account, Battle battle, Player
+            player1, Player player2) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -921,7 +952,7 @@ public class Show {
 
         Label label1 = new Label("Create Account");
         label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label1.relocate(175, 181);
+        label1.relocate(173, 181);
         label1.setTextFill(Color.WHITESMOKE);
 
 
@@ -949,6 +980,18 @@ public class Show {
         label3.relocate(184, 269);
         label3.setTextFill(Color.WHITESMOKE);
 
+        Image i4 = new Image("file:photos/yellowButton.png");
+        ImageView buttonImage4 = new ImageView();
+        buttonImage4.setImage(i4);
+        buttonImage4.relocate(154, 300);
+        buttonImage4.setFitWidth(146);
+        buttonImage4.setFitHeight(45);
+
+        Label label4 = new Label("  Save  ");
+        label4.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label4.relocate(198, 310);
+        label4.setTextFill(Color.WHITESMOKE);
+
         Image i = new Image("file:photos/greenButton.png");
         ImageView buttonImage = new ImageView();
         buttonImage.setImage(i);
@@ -965,7 +1008,8 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2, label2, buttonImage3, label3, exitButton);
+                        root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2, label2,
+                                buttonImage3, label3, buttonImage4, label4, exitButton);
                     }
                 }
         );
@@ -995,10 +1039,12 @@ public class Show {
                                         boardPage(root, scanner);
                                         return;
                                     }
+                                    if (x > 174 && x < 285 && y < 333 && y > 308) {
+                                        SaveAccounts.save();
+                                    }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     root.getChildren().clear();
                                     showExitPage(root);
-                                    return;
                                 }
                             }
                         });
@@ -1043,10 +1089,17 @@ public class Show {
         Line underline = new Line(158, 135, 253, 135);
         underline.setFill(Color.BLACK);
 
+        Image b = new Image("File:photos/backInBoard.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(920, 515);
+        back.setFitWidth(70);
+        back.setFitHeight(70);
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(board, sceneTitle, underline);
+                        root.getChildren().addAll(board, sceneTitle, back, underline);
                     }
                 }
         );
@@ -1072,7 +1125,10 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
-                System.out.println("x= " + x + "\ty= " + y);
+                if (x > 931 && x < 985 && y > 524 && y < 577) {
+                    root.getChildren().clear();
+                    showMainMenu(scanner, root);
+                }
             }
         });
     }
@@ -1140,7 +1196,7 @@ public class Show {
                 new Runnable() {
                     public void run() {
                         root.getChildren().addAll(menu, userName, userTextField, passwordField1, passwordField2, labelPw1,
-                                labelPw2, buttonForCreateAccount,back, label, command);
+                                labelPw2, buttonForCreateAccount, back, label, command);
                     }
                 }
         );
@@ -1161,7 +1217,7 @@ public class Show {
                                         showMainMenu(scanner, root);
                                     }
                                 }
-                                if(x>918 && x<968 && y>530 && y<580)
+                                if (x > 918 && x < 968 && y > 530 && y < 580)
                                     showMainMenu(scanner, root);
                             }
                         });
@@ -1204,10 +1260,10 @@ public class Show {
         text.setTextFill(Color.WHITESMOKE);
         text.relocate(476, 367);
 
-        Label txt = new Label("Menu");
+        Label txt = new Label("   Menu");
         txt.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         txt.setTextFill(Color.WHITESMOKE);
-        txt.relocate(900, 563);
+        txt.relocate(890, 567);
 
         Label command = new Label();
         command.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
@@ -1217,7 +1273,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(imageView, userTextField, passwordField,back,txt, buttonImage, text, command);
+                        root.getChildren().addAll(imageView, userTextField, passwordField, back, txt, buttonImage, text, command);
                     }
                 }
         );
@@ -1247,7 +1303,7 @@ public class Show {
                                             return;
                                         }
                                     }
-                                    if (x > 870 && x < 980 && y > 555 && y<596) {
+                                    if (x > 870 && x < 980 && y > 555 && y < 596) {
                                         root.getChildren().clear();
                                         showMainMenu(scanner, root);
                                         return;

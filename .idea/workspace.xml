@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/SaveAccounts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/SaveAccounts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" afterDir="false" />
@@ -15,6 +18,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$18$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1.class" afterDir="false" />
@@ -26,7 +31,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/symbol_booster_pack_center@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_empty@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_full@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SaveAccounts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SaveAccounts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,32 +63,37 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1209" column="29" selection-start-line="1209" selection-start-column="29" selection-end-line="1209" selection-end-column="29" />
+            <state relative-caret-position="66">
+              <caret line="1091" column="51" selection-start-line="1091" selection-start-column="51" selection-end-line="1091" selection-end-column="51" />
               <folding>
                 <element signature="method#collectionMenu#0;class#Show#0" />
                 <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
-                <element signature="method#shopMenu#0;class#Show#0" />
-                <element signature="method#showCollection#0;class#Show#0" />
-                <element signature="method#helpInCollection#0;class#Show#0" />
-                <element signature="method#showBattleMenu#0;class#Show#0" />
-                <element signature="method#playGame#0;class#Show#0" />
-                <element signature="method#selectGamePage#0;class#Show#0" />
-                <element signature="e#36709#36710#0" expanded="true" />
-                <element signature="e#36815#36816#0" expanded="true" />
-                <element signature="method#selectMode#0;class#Show#0" />
-                <element signature="e#38913#38914#0" expanded="true" />
-                <element signature="e#39019#39020#0" expanded="true" />
-                <element signature="method#selectMode#1;class#Show#0" />
-                <element signature="e#41149#41150#0" expanded="true" />
-                <element signature="e#41255#41256#0" expanded="true" />
-                <element signature="method#showMainMenu#0;class#Show#0" />
-                <element signature="method#showExitPage#0;class#Show#0" />
-                <element signature="method#boardPage#0;class#Show#0" />
-                <element signature="e#48908#48909#0" expanded="true" />
-                <element signature="e#49011#49012#0" expanded="true" />
-                <element signature="method#signUpPage#0;class#Show#0" />
-                <element signature="method#getPassword#0;class#Show#0" />
+                <element signature="class#5498:5779" />
+                <element signature="class#6448:8914" />
+                <element signature="e#9231#10986#1" />
+                <element signature="e#11047#13726#1" />
+                <element signature="e#13775#14212#1" />
+                <element signature="e#14333#27613#1" />
+                <element signature="e#27813#36265#1" />
+                <element signature="e#36411#38651#1" />
+                <element signature="e#34897#34898#0" expanded="true" />
+                <element signature="e#35003#35004#0" expanded="true" />
+                <element signature="e#38817#41076#1" />
+                <element signature="e#37114#37115#0" expanded="true" />
+                <element signature="e#37220#37221#0" expanded="true" />
+                <element signature="e#41260#44578#1" />
+                <element signature="e#40078#40079#0" expanded="true" />
+                <element signature="e#40195#40196#0" expanded="true" />
+                <element signature="e#44649#49708#1" />
+                <element signature="e#49763#50546#1" />
+                <element signature="e#47644#47645#0" expanded="true" />
+                <element signature="e#47747#47748#0" expanded="true" />
+                <element signature="e#52626#56537#1" />
+                <element signature="method#loginPage#0;class#Show#0" />
+                <element signature="e#61125#61126#0" expanded="true" />
+                <element signature="e#60939#61046#1" />
+                <element signature="e#61405#61406#0" expanded="true" />
+                <element signature="e#61527#61528#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            <state relative-caret-position="248">
+              <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
+            <state relative-caret-position="576">
               <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -185,10 +198,10 @@
         <option value="$PROJECT_DIR$/src/Model/Item.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
         <option value="$PROJECT_DIR$/src/Model/Player.java" />
-        <option value="$PROJECT_DIR$/src/Model/SaveAccounts.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeItems.java" />
         <option value="$PROJECT_DIR$/src/Model/Battle.java" />
         <option value="$PROJECT_DIR$/src/Model/Account.java" />
+        <option value="$PROJECT_DIR$/src/Model/SaveAccounts.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
       </list>
@@ -213,8 +226,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Default Changelist'; set:Default Changelist; class com.intellij.packageDependencies.ChangeListScope">
           <expand>
@@ -251,7 +264,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561645725848" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561662627977" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -348,7 +361,8 @@
       <workItem from="1561550490522" duration="27500000" />
       <workItem from="1561629435455" duration="1182000" />
       <workItem from="1561633075658" duration="2562000" />
-      <workItem from="1561638749586" duration="5189000" />
+      <workItem from="1561638749586" duration="5465000" />
+      <workItem from="1561656823622" duration="3654000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -389,13 +403,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208195000" />
+    <option name="totallyTimeSpent" value="212125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23224261" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23623304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -405,7 +419,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27687296" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33876222" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -414,7 +428,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.39413682" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.267101" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -476,7 +490,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project-22/spell.png" />
     <entry file="file://$PROJECT_DIR$/spell.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -681,16 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/SaveAccounts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Shop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -766,9 +769,6 @@
     <entry file="file://$PROJECT_DIR$/loginpage.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Accounts.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/photos/mainmenu3.jpg" />
     <entry file="file://$PROJECT_DIR$/photos/mainmenu2.jpg" />
     <entry file="file://$PROJECT_DIR$/photos/exitButton.png">
@@ -787,19 +787,9 @@
     <entry file="file://$PROJECT_DIR$/photos/blueButton.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
+        <state relative-caret-position="576">
           <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -809,34 +799,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/photos/yellowButton.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Accounts.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/SaveAccounts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#save#0;class#SaveAccounts#0" />
+            <element signature="method#read#0;class#SaveAccounts#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1209" column="29" selection-start-line="1209" selection-start-column="29" selection-end-line="1209" selection-end-column="29" />
+        <state relative-caret-position="66">
+          <caret line="1091" column="51" selection-start-line="1091" selection-start-column="51" selection-end-line="1091" selection-end-column="51" />
           <folding>
             <element signature="method#collectionMenu#0;class#Show#0" />
             <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
-            <element signature="method#shopMenu#0;class#Show#0" />
-            <element signature="method#showCollection#0;class#Show#0" />
-            <element signature="method#helpInCollection#0;class#Show#0" />
-            <element signature="method#showBattleMenu#0;class#Show#0" />
-            <element signature="method#playGame#0;class#Show#0" />
-            <element signature="method#selectGamePage#0;class#Show#0" />
-            <element signature="e#36709#36710#0" expanded="true" />
-            <element signature="e#36815#36816#0" expanded="true" />
-            <element signature="method#selectMode#0;class#Show#0" />
-            <element signature="e#38913#38914#0" expanded="true" />
-            <element signature="e#39019#39020#0" expanded="true" />
-            <element signature="method#selectMode#1;class#Show#0" />
-            <element signature="e#41149#41150#0" expanded="true" />
-            <element signature="e#41255#41256#0" expanded="true" />
-            <element signature="method#showMainMenu#0;class#Show#0" />
-            <element signature="method#showExitPage#0;class#Show#0" />
-            <element signature="method#boardPage#0;class#Show#0" />
-            <element signature="e#48908#48909#0" expanded="true" />
-            <element signature="e#49011#49012#0" expanded="true" />
-            <element signature="method#signUpPage#0;class#Show#0" />
-            <element signature="method#getPassword#0;class#Show#0" />
+            <element signature="class#5498:5779" />
+            <element signature="class#6448:8914" />
+            <element signature="e#9231#10986#1" />
+            <element signature="e#11047#13726#1" />
+            <element signature="e#13775#14212#1" />
+            <element signature="e#14333#27613#1" />
+            <element signature="e#27813#36265#1" />
+            <element signature="e#36411#38651#1" />
+            <element signature="e#34897#34898#0" expanded="true" />
+            <element signature="e#35003#35004#0" expanded="true" />
+            <element signature="e#38817#41076#1" />
+            <element signature="e#37114#37115#0" expanded="true" />
+            <element signature="e#37220#37221#0" expanded="true" />
+            <element signature="e#41260#44578#1" />
+            <element signature="e#40078#40079#0" expanded="true" />
+            <element signature="e#40195#40196#0" expanded="true" />
+            <element signature="e#44649#49708#1" />
+            <element signature="e#49763#50546#1" />
+            <element signature="e#47644#47645#0" expanded="true" />
+            <element signature="e#47747#47748#0" expanded="true" />
+            <element signature="e#52626#56537#1" />
+            <element signature="method#loginPage#0;class#Show#0" />
+            <element signature="e#61125#61126#0" expanded="true" />
+            <element signature="e#60939#61046#1" />
+            <element signature="e#61405#61406#0" expanded="true" />
+            <element signature="e#61527#61528#0" expanded="true" />
           </folding>
         </state>
       </provider>
