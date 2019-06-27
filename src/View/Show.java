@@ -78,8 +78,6 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-//      Save
-
         Image i1 = new Image("file:photos/blueButton.png");
         Image i2 = new Image("file:button.png");
 

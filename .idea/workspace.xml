@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Model/MakeHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MakeHero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MakeMinions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MakeMinions.java" afterDir="false" />
-    </list>
+    <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,16 +25,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
+            <state relative-caret-position="186">
+              <caret line="174" column="40" selection-start-line="174" selection-start-column="40" selection-end-line="174" selection-end-column="40" />
               <folding>
-                <element signature="method#collectionMenu#0;class#Show#0" />
-                <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
                 <element signature="class#5498:5779" />
-                <element signature="class#6448:8914" />
                 <element signature="method#shopMenu#0;class#Show#0" />
                 <element signature="method#showCollection#0;class#Show#0" />
                 <element signature="method#helpInCollection#0;class#Show#0" />
@@ -50,6 +44,7 @@
                 <element signature="e#37114#37115#0" expanded="true" />
                 <element signature="e#37220#37221#0" expanded="true" />
                 <element signature="method#selectLevel#0;class#Show#0" />
+                <element signature="class#40027:40214" />
                 <element signature="e#40078#40079#0" expanded="true" />
                 <element signature="e#40195#40196#0" expanded="true" />
                 <element signature="method#showMainMenu#0;class#Show#0" />
@@ -59,31 +54,13 @@
                 <element signature="e#47747#47748#0" expanded="true" />
                 <element signature="method#signUpPage#0;class#Show#0" />
                 <element signature="method#loginPage#0;class#Show#0" />
-                <element signature="e#57904#57905#0" expanded="true" />
+                <element signature="e#57471#57538#1" />
+                <element signature="e#48393#48394#0" expanded="true" />
                 <element signature="method#getPassword#0;class#Show#0" />
-                <element signature="e#58155#58156#0" expanded="true" />
-                <element signature="e#58264#58265#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#57732#57789#1" />
+                <element signature="e#48644#48645#0" expanded="true" />
+                <element signature="e#57834#57898#1" />
+                <element signature="e#48753#48754#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,20 +73,6 @@
               <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#909#910#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,10 +153,10 @@
         <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Model/SaveAccounts.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
-        <option value="$PROJECT_DIR$/src/Model/Battle.java" />
-        <option value="$PROJECT_DIR$/src/View/Show.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeHero.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
+        <option value="$PROJECT_DIR$/src/View/Show.java" />
+        <option value="$PROJECT_DIR$/src/Model/Battle.java" />
       </list>
     </option>
   </component>
@@ -242,16 +205,6 @@
             <path>
               <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="1 (40)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="1 (41)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="photos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -275,7 +228,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561665221531" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561666015947" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -373,7 +326,7 @@
       <workItem from="1561629435455" duration="1182000" />
       <workItem from="1561633075658" duration="2562000" />
       <workItem from="1561638749586" duration="5465000" />
-      <workItem from="1561656823622" duration="5710000" />
+      <workItem from="1561656823622" duration="6598000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -414,13 +367,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214181000" />
+    <option name="totallyTimeSpent" value="215069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23623304" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23623304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -439,7 +392,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.267101" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.267101" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -783,26 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/MakeHero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -824,15 +757,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="830" selection-start-line="830" selection-end-line="830" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
+        <state relative-caret-position="186">
+          <caret line="174" column="40" selection-start-line="174" selection-start-column="40" selection-end-line="174" selection-end-column="40" />
           <folding>
-            <element signature="method#collectionMenu#0;class#Show#0" />
-            <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
             <element signature="class#5498:5779" />
-            <element signature="class#6448:8914" />
             <element signature="method#shopMenu#0;class#Show#0" />
             <element signature="method#showCollection#0;class#Show#0" />
             <element signature="method#helpInCollection#0;class#Show#0" />
@@ -845,6 +809,7 @@
             <element signature="e#37114#37115#0" expanded="true" />
             <element signature="e#37220#37221#0" expanded="true" />
             <element signature="method#selectLevel#0;class#Show#0" />
+            <element signature="class#40027:40214" />
             <element signature="e#40078#40079#0" expanded="true" />
             <element signature="e#40195#40196#0" expanded="true" />
             <element signature="method#showMainMenu#0;class#Show#0" />
@@ -854,25 +819,14 @@
             <element signature="e#47747#47748#0" expanded="true" />
             <element signature="method#signUpPage#0;class#Show#0" />
             <element signature="method#loginPage#0;class#Show#0" />
-            <element signature="e#57904#57905#0" expanded="true" />
+            <element signature="e#57471#57538#1" />
+            <element signature="e#48393#48394#0" expanded="true" />
             <element signature="method#getPassword#0;class#Show#0" />
-            <element signature="e#58155#58156#0" expanded="true" />
-            <element signature="e#58264#58265#0" expanded="true" />
+            <element signature="e#57732#57789#1" />
+            <element signature="e#48644#48645#0" expanded="true" />
+            <element signature="e#57834#57898#1" />
+            <element signature="e#48753#48754#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
         </state>
       </provider>
     </entry>
