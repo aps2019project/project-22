@@ -78,7 +78,7 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-//      Exit\n5. Save\n6 .Help");
+//      Save\n6 .Help");
         Image i1 = new Image("file:button.png");
         Image i2 = new Image("file:photos/blueButton.png");
 
@@ -142,7 +142,7 @@ public class Show {
         );
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+            // save
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX();
@@ -170,7 +170,6 @@ public class Show {
                                         showMainMenu(scanner, root);
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
-                                    System.out.println("exit");
                                     root.getChildren().clear();
                                     showExitPage(root);
                                 }
@@ -178,37 +177,6 @@ public class Show {
                         });
             }
         });
-
-/*
-        System.out.println("1. Collection\n2. Shop\n3. Battle\n4. Exit\n5. Save\n6 .Logout\n7. Help");
-        String input = scanner.nextLine().trim();
-        switch (input) {
-            case "Enter collection":
-                collectionMenu(scanner, account);
-                break;
-            case "Enter shop":
-                shopMenu(scanner, account);
-                break;
-            case "Enter battle":
-                Battle battle = new Battle();
-                showBattleMenu(account, battle, scanner, root);
-                break;
-            case "Save":
-                //save
-                break;
-            case "Logout":
-                return;
-            case "Exit":
-                return;
-            case "Help":
-                System.out.println("-Enter collection\n-Enter shop\n-Enter battle\n-Save\n-Logout");
-                break;
-            case "help":
-                System.out.println("-Enter collection\n-Enter shop\n-Enter battle\n-Save\n-Logout");
-                break;
-        }
-        showMainMenuOfAccount(scanner, account, root);
-        */
     }
 
     private static void showAllUserNames() {
@@ -309,8 +277,8 @@ public class Show {
             Label username = new Label();
             username.setText(i + 1 + ".\tUsername: " + Account.getAccounts().get(i).getUserName());
             username.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
-            username.setTextFill(Color.ALICEBLUE);
-            username.relocate(140, 110 + 30 * i);
+            username.setTextFill(Color.BLUEVIOLET);
+            username.relocate(100, 95 + 30 * i);
             root.getChildren().addAll(username);
         }
 
@@ -342,7 +310,6 @@ public class Show {
                     showBattleMenu(account, battle, scanner, root, "Please Enter A Number.");
                     return;
                 }
-                ;
                 int opponent = Integer.parseInt(numberTextField.getText());
                 opponent--;
                 MakeCell.make();
@@ -359,7 +326,8 @@ public class Show {
                 player2.setAccount(Account.getAccounts().get(opponent));
                 player1.setAccount(account);
                 selectGamePage(root, scanner, account, battle, player1, player2);
-//                String input0 = scanner.nextLine();
+
+                //                String input0 = scanner.nextLine();
 //                if (input0.equals("exit") || input0.equals("Exit") || input0.equals("3")) {
 //                    return;
 //                }
@@ -564,8 +532,8 @@ public class Show {
         });
     }
 
-    private static void playGame( int storyCustom,int singleMulti, Account account, Battle battle,
-                                  Scanner scanner, Group root, Player player1, Player player2) {
+    private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle, Scanner scanner, Group root, Player player1, Player player2,
+                                 int levelOfGame) {
 
         int singleOrMulti = singleMulti;
         int storyOrCustom = storyCustom;
@@ -576,11 +544,7 @@ public class Show {
             if (singleOrMulti == 1) {
                 battle.setBooleanSinglePlayerTrue();
             }
-            System.out.println("1. level1\n2. level2\n3. level3\n4. exit");
-            String input2 = scanner.nextLine();
-            if (input2.equals("4") || input2.equals("exit"))
-                return;
-            int level = Integer.parseInt(input2);
+            int level = levelOfGame;
             if (level == 1) {
                 ((Story) battle).setLevel(1);
                 Random rand = new Random();
@@ -696,8 +660,7 @@ public class Show {
             } else if (level == 4) {
                 return;
             }
-        }
-        else if (storyOrCustom == 2) {
+        } else if (storyOrCustom == 2) {
             battle = new CustomGame();
             if (singleOrMulti == 1) {
                 battle.setBooleanSinglePlayerTrue();
@@ -738,19 +701,13 @@ public class Show {
             battle.setPlayer1(player1);
             battle.setPlayer2(player2);
             account.showAllDecks();
-            System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
-            String input3 = scanner.nextLine();
-            if (input3.equals("4") || input3.equals("exit"))
-                return;
-            int num = Integer.parseInt(input3);
+            int num = levelOfGame;
             if (num == 4)
                 return;
             ((CustomGame) battle).setMode(num);
             String input = scanner.nextLine();
             ((CustomGame) battle).setCoustomGame(input);
             battle.fight(account, scanner, root);
-
-
         }
     }
 
@@ -801,9 +758,9 @@ public class Show {
                         new Runnable() {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439)
-                                    selectMode(root,scanner,account,battle,player1,player2,1);
+                                    selectMode(root, scanner, account, battle, player1, player2, 1);
                                 if (x > 645 && x < 766 && y > 403 && y < 439)
-                                    selectMode(root,scanner,account,battle,player1,player2,2);
+                                    selectMode(root, scanner, account, battle, player1, player2, 2);
                             }
                         }
                 );
@@ -812,7 +769,7 @@ public class Show {
     }
 
     private static void selectMode(Group root, Scanner scanner, Account account, Battle battle,
-                                   Player player1, Player player2,int singleMulti) {
+                                   Player player1, Player player2, int singleMulti) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -859,9 +816,93 @@ public class Show {
                         new Runnable() {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439)
-                                    playGame(1, singleMulti,account, battle, scanner, root, player1, player2);
+                                    selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 1);
                                 if (x > 645 && x < 766 && y > 403 && y < 439)
-                                    playGame(2, singleMulti,account, battle, scanner, root, player1, player2);
+                                    selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 2);
+                            }
+                        }
+                );
+            }
+        });
+    }
+
+    private static void selectLevel(Group root, Scanner scanner, Account account, Battle battle,
+                                    Player player1, Player player2, int singleMulti, int storyCustom) {
+        String[] texts = new String[3];
+        if (storyCustom == 1) {
+            texts[0] = "Level 1";
+            texts[1] = "Level 2";
+            texts[2] = "Level 3";
+        } else {
+            texts[0] = "Mode 1";
+            texts[1] = "Mode 2";
+            texts[2] = "Mode 3";
+        }
+
+        Image image = new Image("File:photos/exit.jpg");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
+
+        Image i1 = new Image("File:button.png");
+        ImageView o1 = new ImageView();
+        o1.setImage(i1);
+        o1.relocate(240, 400);
+        o1.setFitHeight(40);
+        o1.setFitWidth(150);
+
+        Label text1 = new Label(texts[0]);
+        text1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        text1.setTextFill(Color.WHITESMOKE);
+        text1.relocate(270, 410);
+
+        Image i2 = new Image("File:photos/blueButton.png");
+        ImageView o2 = new ImageView();
+        o2.setImage(i2);
+        o2.relocate(435, 400);
+        o2.setFitHeight(40);
+        o2.setFitWidth(150);
+
+        Label text2 = new Label(texts[1]);
+        text2.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        text2.setTextFill(Color.WHITESMOKE);
+        text2.relocate(465, 410);
+
+        Image i3 = new Image("File:photos/grayButton.png");
+        ImageView o3 = new ImageView();
+        o3.setImage(i3);
+        o3.relocate(630, 400);
+        o3.setFitHeight(40);
+        o3.setFitWidth(150);
+
+        Label text3 = new Label(texts[2]);
+        text3.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        text3.setTextFill(Color.WHITESMOKE);
+        text3.relocate(665, 410);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(imageView, o1, o2, o3, text1, text2, text3);
+                    }
+                }
+        );
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                System.out.println("x= " + x + "\t\ty= " + y);
+                Platform.runLater(
+                        new Runnable() {
+                            public void run() {
+                                if (x > 256 && x < 374 && y > 403 && y < 439)
+                                    playGame(1, singleMulti, account, battle, scanner, root, player1, player2, 1);
+                                if (x > 440 && x < 560 && y > 403 && y < 439)
+                                    playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 2);
+                                if (x > 645 && x < 766 && y > 403 && y < 439)
+                                    playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 3);
                             }
                         }
                 );
@@ -877,12 +918,18 @@ public class Show {
         menu.setFitHeight(600);
         menu.setFitWidth(1000);
 
-        Image i1 = new Image("file:photos/buttonCreateAccount.png");
+        Image i1 = new Image("file:photos/greenButton.png");
         ImageView buttonImage1 = new ImageView();
         buttonImage1.setImage(i1);
-        buttonImage1.relocate(155, 162);
+        buttonImage1.relocate(154, 162);
         buttonImage1.setFitWidth(140);
         buttonImage1.setFitHeight(35);
+
+        Label label1 = new Label("Create Account");
+        label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label1.relocate(175, 181);
+        label1.setTextFill(Color.WHITESMOKE);
+
 
         Image i2 = new Image("file:button.png");
         ImageView buttonImage2 = new ImageView();
@@ -908,16 +955,23 @@ public class Show {
         label3.relocate(184, 269);
         label3.setTextFill(Color.WHITESMOKE);
 
+        Image i = new Image("file:photos/greenButton.png");
+        ImageView buttonImage = new ImageView();
+        buttonImage.setImage(i);
+        buttonImage.relocate(150, 170);
+        buttonImage.setFitWidth(160);
+        buttonImage.setFitHeight(45);
+
         ImageView exitButton = new ImageView();
         buttonImage1.setImage(new Image("file:photos/exitButton.png"));
-        buttonImage1.relocate(27, 508);
+        buttonImage1.relocate(25, 509);
         buttonImage1.setFitWidth(80);
         buttonImage1.setFitHeight(80);
 
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(menu, buttonImage1, buttonImage2, label2, buttonImage3, label3, exitButton);
+                        root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2, label2, buttonImage3, label3, exitButton);
                     }
                 }
         );
@@ -944,9 +998,7 @@ public class Show {
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
-                                        System.out.println("board page");
                                         boardPage(root, scanner);
-                                        System.out.println("show board page");
                                         return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
@@ -958,38 +1010,6 @@ public class Show {
                         });
             }
         });
-/*
-        System.out.println("1. create account\n2. login\n3. show leaderboard\n4. help");
-        System.out.println("\t*** please enter a number : ***");
-        String input = scanner.nextLine().trim();
-        String str[];
-        if (input.equals("exit") || input.equals("Exit")) {
-            SaveAccounts.save();
-            return;
-        } else if (input.equals("1") || input.equals("create account")) {
-            input = scanner.nextLine().trim();
-            str = input.split("\\s+");
-            if (str.length == 3 && str[0].equals("create") && str[1].equals("account")) {
-                Account.createAccount(str[2], scanner);
-            }
-        } else if (input.equals("2") || input.equals("login")) {
-            System.out.println("please enter your username by -login [username]-");
-            input = scanner.nextLine().trim();
-            str = input.split("\\s+");
-            if (str.length == 2 && str[0].equals("login")) {
-                System.out.println("please enter your password.:)");
-                String password = scanner.nextLine();
-                if (Account.checkLogin(str[1], password)) {
-                    Show.showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
-                }
-            }
-        } else if (input.equals("3") || input.equals("show leaderboard")) {
-            Show.showLeaderBoard();
-        } else if (input.equals("4") || input.equals("Help") || input.equals("help")) {
-            System.out.println("-create account [user name]\n-login [username]\n-show leaderboard\n-exit");
-        }
-        */
-//        showMainMenu(scanner, root);
     }
 
     private static void showExitPage(Group root) {
@@ -1072,6 +1092,7 @@ public class Show {
 
         Label userName = new Label("UserName");
         userName.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        userName.setTextFill(Color.WHITE);
         userName.relocate(182, 230);
 
         TextField userTextField = new TextField();
@@ -1080,6 +1101,7 @@ public class Show {
 
         Label labelPw1 = new Label("Password");
         labelPw1.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        labelPw1.setTextFill(Color.WHITE);
         labelPw1.relocate(182, 290);
 
         PasswordField passwordField1 = new PasswordField();
@@ -1088,6 +1110,7 @@ public class Show {
 
         Label labelPw2 = new Label("Enter Again");
         labelPw2.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
+        labelPw2.setTextFill(Color.WHITE);
         labelPw2.relocate(182, 349);
 
         PasswordField passwordField2 = new PasswordField();
@@ -1104,6 +1127,7 @@ public class Show {
 
         Label label = new Label("Sign Up");
         label.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label.setTextFill(Color.LIGHTPINK);
         label.relocate(235, 425);
 
         Label command = new Label();
