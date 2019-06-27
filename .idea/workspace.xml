@@ -2,40 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/SaveAccounts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/SaveAccounts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$16$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$16$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$18$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$5$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$7$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$7$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_empty.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_empty@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/ranked_chevron_full@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/SaveAccounts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SaveAccounts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MakeHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MakeHero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MakeMinions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MakeMinions.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,40 +28,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="1091" column="51" selection-start-line="1091" selection-start-column="51" selection-end-line="1091" selection-end-column="51" />
+            <state relative-caret-position="91">
+              <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
               <folding>
                 <element signature="method#collectionMenu#0;class#Show#0" />
                 <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
                 <element signature="class#5498:5779" />
                 <element signature="class#6448:8914" />
-                <element signature="e#9231#10986#1" />
-                <element signature="e#11047#13726#1" />
-                <element signature="e#13775#14212#1" />
-                <element signature="e#14333#27613#1" />
-                <element signature="e#27813#36265#1" />
-                <element signature="e#36411#38651#1" />
+                <element signature="method#shopMenu#0;class#Show#0" />
+                <element signature="method#showCollection#0;class#Show#0" />
+                <element signature="method#helpInCollection#0;class#Show#0" />
+                <element signature="method#showBattleMenu#0;class#Show#0" />
+                <element signature="method#playGame#0;class#Show#0" />
+                <element signature="method#selectGamePage#0;class#Show#0" />
                 <element signature="e#34897#34898#0" expanded="true" />
                 <element signature="e#35003#35004#0" expanded="true" />
-                <element signature="e#38817#41076#1" />
+                <element signature="method#selectMode#0;class#Show#0" />
                 <element signature="e#37114#37115#0" expanded="true" />
                 <element signature="e#37220#37221#0" expanded="true" />
-                <element signature="e#41260#44578#1" />
+                <element signature="method#selectLevel#0;class#Show#0" />
                 <element signature="e#40078#40079#0" expanded="true" />
                 <element signature="e#40195#40196#0" expanded="true" />
-                <element signature="e#44649#49708#1" />
-                <element signature="e#49763#50546#1" />
+                <element signature="method#showMainMenu#0;class#Show#0" />
+                <element signature="method#showExitPage#0;class#Show#0" />
+                <element signature="method#boardPage#0;class#Show#0" />
                 <element signature="e#47644#47645#0" expanded="true" />
                 <element signature="e#47747#47748#0" expanded="true" />
-                <element signature="e#52626#56537#1" />
+                <element signature="method#signUpPage#0;class#Show#0" />
                 <element signature="method#loginPage#0;class#Show#0" />
-                <element signature="e#61125#61126#0" expanded="true" />
-                <element signature="e#60939#61046#1" />
-                <element signature="e#61405#61406#0" expanded="true" />
-                <element signature="e#61527#61528#0" expanded="true" />
+                <element signature="e#57904#57905#0" expanded="true" />
+                <element signature="method#getPassword#0;class#Show#0" />
+                <element signature="e#58155#58156#0" expanded="true" />
+                <element signature="e#58264#58265#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/Model/Minion.java" />
         <option value="$PROJECT_DIR$/src/Model/PoisionBuff.java" />
         <option value="$PROJECT_DIR$/src/Model/Story.java" />
-        <option value="$PROJECT_DIR$/src/Model/MakeHero.java" />
         <option value="$PROJECT_DIR$/src/Model/CustomCard.java" />
         <option value="$PROJECT_DIR$/src/Model/Card.java" />
         <option value="$PROJECT_DIR$/src/Model/Cell.java" />
@@ -196,14 +185,15 @@
         <option value="$PROJECT_DIR$/src/Model/Hand.java" />
         <option value="$PROJECT_DIR$/src/Model/Hero.java" />
         <option value="$PROJECT_DIR$/src/Model/Item.java" />
-        <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
         <option value="$PROJECT_DIR$/src/Model/Player.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeItems.java" />
-        <option value="$PROJECT_DIR$/src/Model/Battle.java" />
         <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Model/SaveAccounts.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
+        <option value="$PROJECT_DIR$/src/Model/Battle.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
+        <option value="$PROJECT_DIR$/src/Model/MakeHero.java" />
+        <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
       </list>
     </option>
   </component>
@@ -252,7 +242,28 @@
             <path>
               <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="1 (40)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="1 (41)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="photos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -264,7 +275,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561662627977" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561665221531" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -362,7 +373,7 @@
       <workItem from="1561629435455" duration="1182000" />
       <workItem from="1561633075658" duration="2562000" />
       <workItem from="1561638749586" duration="5465000" />
-      <workItem from="1561656823622" duration="3654000" />
+      <workItem from="1561656823622" duration="5710000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -403,13 +414,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212125000" />
+    <option name="totallyTimeSpent" value="214181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23623304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23623304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -419,7 +430,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33876222" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33876222" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,7 +439,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.267101" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.267101" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -618,41 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeHero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeItems.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/MatchHistory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -756,16 +732,6 @@
     <entry file="file://$PROJECT_DIR$/menu.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="50" column="39" selection-start-line="49" selection-start-column="2" selection-end-line="50" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loginpage.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -827,40 +793,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="171" column="38" lean-forward="true" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeHero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeItems.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="1091" column="51" selection-start-line="1091" selection-start-column="51" selection-end-line="1091" selection-end-column="51" />
+        <state relative-caret-position="91">
+          <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
           <folding>
             <element signature="method#collectionMenu#0;class#Show#0" />
             <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
             <element signature="class#5498:5779" />
             <element signature="class#6448:8914" />
-            <element signature="e#9231#10986#1" />
-            <element signature="e#11047#13726#1" />
-            <element signature="e#13775#14212#1" />
-            <element signature="e#14333#27613#1" />
-            <element signature="e#27813#36265#1" />
-            <element signature="e#36411#38651#1" />
+            <element signature="method#shopMenu#0;class#Show#0" />
+            <element signature="method#showCollection#0;class#Show#0" />
+            <element signature="method#helpInCollection#0;class#Show#0" />
+            <element signature="method#showBattleMenu#0;class#Show#0" />
+            <element signature="method#playGame#0;class#Show#0" />
+            <element signature="method#selectGamePage#0;class#Show#0" />
             <element signature="e#34897#34898#0" expanded="true" />
             <element signature="e#35003#35004#0" expanded="true" />
-            <element signature="e#38817#41076#1" />
+            <element signature="method#selectMode#0;class#Show#0" />
             <element signature="e#37114#37115#0" expanded="true" />
             <element signature="e#37220#37221#0" expanded="true" />
-            <element signature="e#41260#44578#1" />
+            <element signature="method#selectLevel#0;class#Show#0" />
             <element signature="e#40078#40079#0" expanded="true" />
             <element signature="e#40195#40196#0" expanded="true" />
-            <element signature="e#44649#49708#1" />
-            <element signature="e#49763#50546#1" />
+            <element signature="method#showMainMenu#0;class#Show#0" />
+            <element signature="method#showExitPage#0;class#Show#0" />
+            <element signature="method#boardPage#0;class#Show#0" />
             <element signature="e#47644#47645#0" expanded="true" />
             <element signature="e#47747#47748#0" expanded="true" />
-            <element signature="e#52626#56537#1" />
+            <element signature="method#signUpPage#0;class#Show#0" />
             <element signature="method#loginPage#0;class#Show#0" />
-            <element signature="e#61125#61126#0" expanded="true" />
-            <element signature="e#60939#61046#1" />
-            <element signature="e#61405#61406#0" expanded="true" />
-            <element signature="e#61527#61528#0" expanded="true" />
+            <element signature="e#57904#57905#0" expanded="true" />
+            <element signature="method#getPassword#0;class#Show#0" />
+            <element signature="e#58155#58156#0" expanded="true" />
+            <element signature="e#58264#58265#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
         </state>
       </provider>
     </entry>

@@ -348,209 +348,8 @@ public class Show {
                 Player player2 = new Player();
                 player2.setAccount(Account.getAccounts().get(opponent));
                 player1.setAccount(account);
+                root.getChildren().clear();
                 selectGamePage(root, scanner, account, battle, player1, player2);
-
-                //                String input0 = scanner.nextLine();
-//                if (input0.equals("exit") || input0.equals("Exit") || input0.equals("3")) {
-//                    return;
-//                }
-                /*
-                int singleOrMulti = Integer.parseInt(input0);
-
-                System.out.println("1.Story");
-                System.out.println("2.Custom game");
-                System.out.println("3. exit");
-                String numberOfInput = scanner.nextLine();
-
-                if (numberOfInput.equals("exit") || numberOfInput.equals("3") || numberOfInput.equals("Exit"))
-                    return;
-                int storyOrCustom = Integer.parseInt(numberOfInput);
-                if (storyOrCustom == 1) {
-                    battle = new Story();
-                    battle.setStoryTrue();
-                    if (singleOrMulti == 1) {
-                        battle.setBooleanSinglePlayerTrue();
-                    }
-                    System.out.println("1. level1\n2. level2\n3. level3\n4. exit");
-                    String input2 = scanner.nextLine();
-                    if (input2.equals("4") || input2.equals("exit"))
-                        return;
-                    int level = Integer.parseInt(input2);
-                    if (level == 1) {
-                        ((Story) battle).setLevel(1);
-                        Random rand = new Random();
-                        int n = rand.nextInt(10) + 61;
-                        Card.searchCardByID(68).setX(1);
-                        Card.searchCardByID(68).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(62));
-                            }
-                        }
-                        player1.setHero((Hero) Card.searchCardByID(68));
-                        player1.addCardsInTheFile(Card.searchCardByID(68));
-                        player1.addCardsInTheFile((Hero) Card.searchCardByID(68));
-                        Deck deckPlayer2 = new Deck("level1");
-                        deckPlayer2.setLevel1(deckPlayer2);
-                        player2.setMainDeck(deckPlayer2);
-                        player2.setHand();
-                        player2.setHero((Hero) Card.searchCardByID(61));
-                        player2.addCardsInTheFile(Card.searchCardByID(61));
-                        Card.searchCardByID(61).setX(9);
-                        Card.searchCardByID(61).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(61));
-                            }
-                        }
-                        player1.setCard();
-                        Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
-                        player1.setDeck(deckPlayer1);
-                        player1.setHand();
-                        battle.setPlayer1(player1);
-                        battle.setPlayer2(player2);
-                        battle.fight(account, scanner, root);
-                    } else if (level == 2) {
-                        ((Story) battle).setLevel(2);
-                        Random rand = new Random();
-                        int n = rand.nextInt(10) + 61;
-
-                        Card.searchCardByID(62).setX(1);
-                        Card.searchCardByID(62).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(62));
-                            }
-                        }
-
-                        player1.setHero((Hero) Card.searchCardByID(62));
-                        player1.addCardsInTheFile(Card.searchCardByID(62));
-                        Deck deckPlayer2 = new Deck("level2");
-                        deckPlayer2.setLevel2(deckPlayer2);
-                        player2.setMainDeck(deckPlayer2);
-                        player2.setHand();
-                        Card.searchCardByID(65).setX(9);
-                        Card.searchCardByID(65).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(65));
-                            }
-                        }
-
-                        player2.setHero((Hero) Card.searchCardByID(65));
-                        player2.addCardsInTheFile(Card.searchCardByID(65));
-                        player1.setCard();
-                        Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
-                        player1.setDeck(deckPlayer1);
-                        player1.setHand();
-                        battle.setPlayer1(player1);
-                        battle.setPlayer2(player2);
-                        battle.fight(account, scanner, root);
-                    } else if (level == 3) {
-                        ((Story) battle).setLevel(3);
-                        battle.setHowManyFlags(7);
-                        Random rand = new Random();
-                        int n = rand.nextInt(10) + 61;
-
-                        Card.searchCardByID(68).setX(1);
-                        Card.searchCardByID(68).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(n));
-                            }
-                        }
-                        player1.setHero((Hero) Card.searchCardByID(68));
-                        player1.addCardsInTheFile(Card.searchCardByID(62));
-                        Deck deckPlayer2 = new Deck("level3");
-                        deckPlayer2.setLevel3(deckPlayer2);
-                        player2.setMainDeck(deckPlayer2);
-
-                        player2.setHand();
-                        Card.searchCardByID(67).setX(9);
-                        Card.searchCardByID(67).setY(3);
-
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
-                                Cell.getCells().get(i).addCard(Card.searchCardByID(67));
-                            }
-                        }
-                        player2.setHero((Hero) Card.searchCardByID(67));
-                        player2.addCardsInTheFile(Card.searchCardByID(67));
-                        player1.setCard();
-                        Deck deckPlayer1 = new Deck(player1.getAccount().getUserName());
-                        player1.setDeck(deckPlayer1);
-                        player1.setHand();
-                        battle.setPlayer1(player1);
-                        battle.setPlayer2(player2);
-                        battle.fight(account, scanner, root);
-                    } else if (level == 4) {
-                        return;
-                    }
-                } else if (storyOrCustom == 2) {
-                    battle = new CustomGame();
-                    if (singleOrMulti == 1) {
-                        battle.setBooleanSinglePlayerTrue();
-                    }
-                    Random rand = new Random();
-                    int n = rand.nextInt(10) + 61;
-
-                    Card.searchCardByID(62).setX(1);
-                    Card.searchCardByID(62).setY(3);
-
-                    for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == 1 && Cell.getCells().get(i).getY() == 3) {
-                            Cell.getCells().get(i).addCard(Card.searchCardByID(62));
-                        }
-                    }
-                    player1.setHero((Hero) Card.searchCardByID(62));
-                    player1.addCardsInTheFile(Card.searchCardByID(62));
-                    Deck deckPlayer2 = new Deck("player2");
-                    player2.setCard();
-                    player2.setDeck(deckPlayer2);
-                    player2.setHand();
-                    player2.setMainDeck(deckPlayer2);
-                    int n2 = rand.nextInt(10) + 61;
-                    Card.searchCardByID(n2).setX(9);
-                    Card.searchCardByID(n2).setY(3);
-
-                    for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getX() == 9 && Cell.getCells().get(i).getY() == 3) {
-                            Cell.getCells().get(i).addCard(Card.searchCardByID(n2));
-                        }
-                    }
-                    player2.setHero((Hero) Card.searchCardByID(n2));
-                    player2.addCardsInTheFile(Card.searchCardByID(n));
-                    player1.setCard();
-                    Deck deckPlayer1 = new Deck("player1");
-                    player1.setDeck(deckPlayer1);
-                    player1.setHand();
-                    battle.setPlayer1(player1);
-                    battle.setPlayer2(player2);
-                    account.showAllDecks();
-                    System.out.println("1. mode1\n2. mode2\n3. mode3\n4. exit");
-                    String input3 = scanner.nextLine();
-                    if (input3.equals("4") || input3.equals("exit"))
-                        return;
-                    int num = Integer.parseInt(input3);
-                    if (num == 4)
-                        return;
-                    ((CustomGame) battle).setMode(num);
-                    String input = scanner.nextLine();
-                    ((CustomGame) battle).setCoustomGame(input);
-                    battle.fight(account, scanner, root);
-
-
-                } else if (singleOrMulti == 3) {
-                    return;
-                } else {
-                    showBattleMenu(account, battle, scanner, root);
-                }
-                */
             }
         });
     }
@@ -782,10 +581,14 @@ public class Show {
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
-                                if (x > 256 && x < 374 && y > 403 && y < 439)
+                                if (x > 256 && x < 374 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
                                     selectMode(root, scanner, account, battle, player1, player2, 1);
-                                if (x > 645 && x < 766 && y > 403 && y < 439)
+                                }
+                                if (x > 645 && x < 766 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
                                     selectMode(root, scanner, account, battle, player1, player2, 2);
+                                }
                             }
                         }
                 );
@@ -840,10 +643,14 @@ public class Show {
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
-                                if (x > 256 && x < 374 && y > 403 && y < 439)
+                                if (x > 256 && x < 374 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
                                     selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 1);
-                                if (x > 645 && x < 766 && y > 403 && y < 439)
+                                }
+                                if (x > 645 && x < 766 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
                                     selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 2);
+                                }
                             }
                         }
                 );
@@ -922,12 +729,22 @@ public class Show {
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
-                                if (x > 256 && x < 374 && y > 403 && y < 439)
+                                if (x > 256 && x < 374 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
+                                    root.getChildren().clear();
                                     playGame(1, singleMulti, account, battle, scanner, root, player1, player2, 1);
-                                if (x > 440 && x < 560 && y > 403 && y < 439)
+                                }
+                                if (x > 440 && x < 560 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
+                                    root.getChildren().clear();
                                     playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 2);
-                                if (x > 645 && x < 766 && y > 403 && y < 439)
+                                }
+                                if (x > 645 && x < 766 && y > 403 && y < 439) {
+                                    root.getChildren().clear();
                                     playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 3);
+
+                                }
+
                             }
                         }
                 );
