@@ -3,29 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Presenter/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Presenter/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/Presenter/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Presenter/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photos/header4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presenter/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presenter/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="753" column="9" selection-start-line="753" selection-start-column="9" selection-end-line="753" selection-end-column="9" />
+            <state relative-caret-position="88">
+              <caret line="694" column="43" lean-forward="true" selection-start-line="694" selection-start-column="43" selection-end-line="694" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#collectionMenu#0;class#Show#0" />
@@ -62,26 +39,21 @@
                 <element signature="method#shopMenu#0;class#Show#0" />
                 <element signature="method#showCollection#0;class#Show#0" />
                 <element signature="method#helpInCollection#0;class#Show#0" />
-                <element signature="e#28463#34332#1" />
-                <element signature="e#34362#36594#1" />
-                <element signature="e#34439#34507#1" />
-                <element signature="e#36876#36877#0" expanded="true" />
-                <element signature="e#36982#36983#0" expanded="true" />
-                <element signature="e#39050#39051#0" expanded="true" />
-                <element signature="e#39156#39157#0" expanded="true" />
+                <element signature="method#showBattleMenu#0;class#Show#0" />
+                <element signature="method#selectGamePage#0;class#Show#0" />
                 <element signature="method#showMainMenu#0;class#Show#0" />
                 <element signature="method#showExitPage#0;class#Show#0" />
                 <element signature="method#boardPage#0;class#Show#0" />
-                <element signature="e#46786#46787#0" expanded="true" />
-                <element signature="e#46889#46890#0" expanded="true" />
                 <element signature="method#signUpPage#0;class#Show#0" />
                 <element signature="method#loginPage#0;class#Show#0" />
                 <element signature="method#showLeaderBoard#0;class#Show#0" />
-                <element signature="e#28106#28173#1" />
-                <element signature="e#54936#54937#0" expanded="true" />
+                <element signature="e#54826#54827#0" expanded="true" />
+                <element signature="e#54892#54893#0" expanded="true" />
                 <element signature="method#getPassword#0;class#Show#0" />
-                <element signature="e#55187#55188#0" expanded="true" />
-                <element signature="e#55296#55297#0" expanded="true" />
+                <element signature="e#55087#55088#0" expanded="true" />
+                <element signature="e#55143#55144#0" expanded="true" />
+                <element signature="e#55189#55190#0" expanded="true" />
+                <element signature="e#55252#55253#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,7 +67,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="504">
               <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -107,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="576">
               <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -209,8 +181,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="27" />
-    <option name="width" value="685" />
-    <option name="height" value="722" />
+    <option name="width" value="1299" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -234,26 +206,6 @@
           </expand>
           <select />
         </subPane>
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Presenter" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
       </pane>
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
@@ -263,7 +215,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561591088377" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561635154386" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -357,7 +309,9 @@
       <workItem from="1561477443129" duration="5759000" />
       <workItem from="1561495749108" duration="1502000" />
       <workItem from="1561538697451" duration="7592000" />
-      <workItem from="1561550490522" duration="27178000" />
+      <workItem from="1561550490522" duration="27500000" />
+      <workItem from="1561629435455" duration="1182000" />
+      <workItem from="1561633075658" duration="1836000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -398,13 +352,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198940000" />
+    <option name="totallyTimeSpent" value="202280000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22027135" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22825219" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -414,7 +368,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.514658" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.514658" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,7 +377,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.2019544" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.4136808" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -479,20 +433,6 @@
     <MESSAGE value="final" />
     <MESSAGE value="bugs fixed" />
     <option name="LAST_COMMIT_MESSAGE" value="bugs fixed" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/View/Show.java</url>
-          <line>299</line>
-          <properties class="View.Show" method="showBattleMenu">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -792,41 +732,12 @@
     <entry file="file://$PROJECT_DIR$/Accounts.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/photos/mainmenu3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/photos/mainmenu2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/photos/mainmenu3.jpg" />
+    <entry file="file://$PROJECT_DIR$/photos/mainmenu2.jpg" />
     <entry file="file://$PROJECT_DIR$/photos/exitButton.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/button.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/photos/blueButton.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Integer.java">
@@ -838,8 +749,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="753" column="9" selection-start-line="753" selection-start-column="9" selection-end-line="753" selection-end-column="9" />
+        <state relative-caret-position="88">
+          <caret line="694" column="43" lean-forward="true" selection-start-line="694" selection-start-column="43" selection-end-line="694" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#collectionMenu#0;class#Show#0" />
@@ -847,26 +758,46 @@
             <element signature="method#shopMenu#0;class#Show#0" />
             <element signature="method#showCollection#0;class#Show#0" />
             <element signature="method#helpInCollection#0;class#Show#0" />
-            <element signature="e#28463#34332#1" />
-            <element signature="e#34362#36594#1" />
-            <element signature="e#34439#34507#1" />
-            <element signature="e#36876#36877#0" expanded="true" />
-            <element signature="e#36982#36983#0" expanded="true" />
-            <element signature="e#39050#39051#0" expanded="true" />
-            <element signature="e#39156#39157#0" expanded="true" />
+            <element signature="method#showBattleMenu#0;class#Show#0" />
+            <element signature="method#selectGamePage#0;class#Show#0" />
             <element signature="method#showMainMenu#0;class#Show#0" />
             <element signature="method#showExitPage#0;class#Show#0" />
             <element signature="method#boardPage#0;class#Show#0" />
-            <element signature="e#46786#46787#0" expanded="true" />
-            <element signature="e#46889#46890#0" expanded="true" />
             <element signature="method#signUpPage#0;class#Show#0" />
             <element signature="method#loginPage#0;class#Show#0" />
             <element signature="method#showLeaderBoard#0;class#Show#0" />
-            <element signature="e#28106#28173#1" />
-            <element signature="e#54936#54937#0" expanded="true" />
+            <element signature="e#54826#54827#0" expanded="true" />
+            <element signature="e#54892#54893#0" expanded="true" />
             <element signature="method#getPassword#0;class#Show#0" />
-            <element signature="e#55187#55188#0" expanded="true" />
-            <element signature="e#55296#55297#0" expanded="true" />
+            <element signature="e#55087#55088#0" expanded="true" />
+            <element signature="e#55143#55144#0" expanded="true" />
+            <element signature="e#55189#55190#0" expanded="true" />
+            <element signature="e#55252#55253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/photos/blueButton.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Presenter/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
           </folding>
         </state>
       </provider>
