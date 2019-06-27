@@ -179,12 +179,6 @@ public class Show {
         });
     }
 
-    private static void showAllUserNames() {
-        for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1) + ".  " + Account.getAccounts().get(i).getUserName());
-        }
-    }
-
     private static void shopMenu(Scanner scanner, Account account) {
         String command = scanner.nextLine().trim();
         String[] partsOfCommand = command.split("\\s+");
@@ -1125,6 +1119,13 @@ public class Show {
         buttonForCreateAccount.setFitWidth(140);
         buttonForCreateAccount.setFitHeight(40);
 
+        Image b = new Image("File:photos/pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
+
         Label label = new Label("Sign Up");
         label.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label.setTextFill(Color.LIGHTPINK);
@@ -1139,7 +1140,7 @@ public class Show {
                 new Runnable() {
                     public void run() {
                         root.getChildren().addAll(menu, userName, userTextField, passwordField1, passwordField2, labelPw1,
-                                labelPw2, buttonForCreateAccount, label, command);
+                                labelPw2, buttonForCreateAccount,back, label, command);
                     }
                 }
         );
@@ -1160,6 +1161,8 @@ public class Show {
                                         showMainMenu(scanner, root);
                                     }
                                 }
+                                if(x>918 && x<968 && y>530 && y<580)
+                                    showMainMenu(scanner, root);
                             }
                         });
             }
@@ -1189,10 +1192,22 @@ public class Show {
         buttonImage.setFitWidth(154);
         buttonImage.setFitHeight(52);
 
+        Image b = new Image("File:photos/blueButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(860, 550);
+        back.setFitWidth(130);
+        back.setFitHeight(50);
+
         Label text = new Label("Login");
         text.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         text.setTextFill(Color.WHITESMOKE);
         text.relocate(476, 367);
+
+        Label txt = new Label("Menu");
+        txt.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        txt.setTextFill(Color.WHITESMOKE);
+        txt.relocate(900, 563);
 
         Label command = new Label();
         command.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
@@ -1202,7 +1217,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
-                        root.getChildren().addAll(imageView, userTextField, passwordField, buttonImage, text, command);
+                        root.getChildren().addAll(imageView, userTextField, passwordField,back,txt, buttonImage, text, command);
                     }
                 }
         );
@@ -1232,7 +1247,7 @@ public class Show {
                                             return;
                                         }
                                     }
-                                    if (x > 885 && x < 977 && y > 585) {
+                                    if (x > 870 && x < 980 && y > 555 && y<596) {
                                         root.getChildren().clear();
                                         showMainMenu(scanner, root);
                                         return;
@@ -1244,14 +1259,6 @@ public class Show {
                 );
             }
         });
-    }
-
-    private static void showLeaderBoard() {
-        Account.sortAll();
-        for (int i = 0; i < Account.getAccounts().size(); i++) {
-            System.out.println((i + 1) + " - UserName : " + Account.getAccounts().get(i).getUserName() + "\t-\tWins : "
-                    + Account.getAccounts().get(i).getWins());
-        }
     }
 
     public static void accountIsAvailableNow() {
