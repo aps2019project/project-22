@@ -273,15 +273,13 @@ public class Deck {
         this.spells = spells;
     }
 
-    public void addCard(int id, Account account) {
+    public String addCard(int id, Account account) {
         if (cardsOfDeck.size() == 20 && hero != null) {
-            System.out.println("deck is full!");
-            return;
+            return "deck is full!";
         }
         for (int i = 0; i < cardsOfDeck.size(); i++) {
             if (cardsOfDeck.get(i).getId() == id) {
-                System.out.println("this card is in deck now");
-                return;
+                return ("this card is in deck now");
             }
         }
         int i = 0;
@@ -322,42 +320,42 @@ public class Deck {
             notFound[3] = true;
         }
         if (notFound[0] && notFound[1] && notFound[2] && notFound[3]) {
-            System.out.println("this card or item isn't in your collection.");
-            return;
+            return ("this card or item isn't in your collection.");
         }
         for (i = 0; i < account.getCollection().getHeroes().size(); i++) {
             if (account.getCollection().getHeroes().get(i).getId() == id) {
                 if (hero != null) {
-                    System.out.println("deck has hero now.");
+                    return ("deck has hero now.");
                 } else {
                     hero = account.getCollection().getHeroes().get(i);
                 }
-                return;
+                return "Added";
             }
         }
         for (i = 0; i < account.getCollection().getMinions().size(); i++) {
             if (account.getCollection().getMinions().get(i).getId() == id) {
                 cardsOfDeck.add(account.getCollection().getMinions().get(i));
                 minions.add(account.getCollection().getMinions().get(i));
-                return;
+                return "Added";
             }
         }
         for (i = 0; i < account.getCollection().getSpells().size(); i++) {
             if (account.getCollection().getSpells().get(i).getId() == id) {
                 cardsOfDeck.add(account.getCollection().getSpells().get(i));
                 spells.add(account.getCollection().getSpells().get(i));
-                return;
+                return "Added";
             }
         }
         for (i = 0; i < account.getCollection().getItems().size(); i++) {
             if (account.getCollection().getItems().get(i).getId() == id) {
                 this.item = account.getCollection().getItems().get(i);
-                return;
+                return "Added";
             }
         }
 
         Card card = new Card();
         card.setId(id);
         cardsOfDeck.add(card);
+        return "Created & Added";
     }
 }

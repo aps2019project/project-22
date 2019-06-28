@@ -262,8 +262,6 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
-//                System.out.println("x = " + x + "\t\ty= " + y);
-
                 if (x < 940 && x > 919 && y < 500 && y > 66) {
 
                     root.getChildren().clear();
@@ -281,17 +279,42 @@ public class Show {
                         root.getChildren().addAll(label);
                         return;
                     }
-                    if (y > 106 && y < 135) {
-                        System.out.println("search");
-//                        if (account.getCollection().search(partsOfInput[1]) != -1)
-//                            System.out.println(account.getCollection().search(partsOfInput[1]));
-//                        else
-//                            System.out.println("not found...:[");
+                    if (y > 106 && y < 135) { //search
+
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(119, 196);
+
+                        Label label = new Label();
+                        label.relocate(119, 150);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Card Name");
+
+                        Button button = new Button();
+                        button.setText("Search");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                int num = account.getCollection().search(input.getText());
+                                if (num != -1)
+                                    popUpWindow("number = " + num, 280, 120);
+                                else
+                                    popUpWindow("Not Found. :(", 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button);
                         return;
                     }
-                    if (y > 147 && y < 177) {
-                        System.out.println("save");
+                    if (y > 147 && y < 177) { // save
                         account.getCollection().save();
+                        popUpWindow("SAVED", 280, 120);
                         return;
                     }
                     if (y > 185 && y < 215) {//create deck
@@ -343,46 +366,199 @@ public class Show {
                         button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
-                                popUpWindow( Deck.deleteDeck(input.getText(), account), 280, 120);
+                                popUpWindow(Deck.deleteDeck(input.getText(), account), 280, 120);
                             }
                         });
 
                         root.getChildren().addAll(input, label, button);
                         return;
                     }
-                    if (y > 266 && y < 295) {
-                        System.out.println("add"); //
-//                        try {
-//                            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
-//                        } catch (Exception name) {
-//                            System.out.println("deckName is invalid");
-//                        }
-                        return;
-                    }
-                    if (y > 306 && y < 336) {
-                        System.out.println("remove");
-//                        account.removeCardFromDeckByIdAndName(Integer.parseInt(partsOfInput[1]), partsOfInput[4]);
+                    if (y > 266 && y < 295) { // add
 
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(50, 120);
+
+                        Label label = new Label();
+                        label.relocate(50, 80);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        TextField input2 = new TextField();
+                        input2.setPrefWidth(120);
+                        input2.setMaxHeight(40);
+                        input2.relocate(50, 196);
+
+                        Label label2 = new Label();
+                        label2.relocate(50, 156);
+                        label2.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label2.setTextFill(Color.LIGHTPINK);
+                        label2.setPrefHeight(60);
+                        label2.setText("ID");
+
+                        Button button = new Button();
+                        button.setText("Add");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                try {
+                                    popUpWindow(Deck.searchDeckByName(input.getText()).addCard
+                                            (Integer.parseInt(input2.getText()), account), 280, 120);
+                                } catch (Exception name) {
+                                    popUpWindow("DeckName Is Invalid", 280, 120);
+                                }
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, input2, label2, button);
                         return;
                     }
-                    if (y > 344 && y < 375) {
-                        System.out.println("validate");
-//                        account.checkIsValidate(partsOfInput[2]);
+                    if (y > 306 && y < 336) { //remove
+
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(50, 120);
+
+                        Label label = new Label();
+                        label.relocate(50, 80);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        TextField input2 = new TextField();
+                        input2.setPrefWidth(120);
+                        input2.setMaxHeight(40);
+                        input2.relocate(50, 196);
+
+                        Label label2 = new Label();
+                        label2.relocate(50, 156);
+                        label2.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label2.setTextFill(Color.LIGHTPINK);
+                        label2.setPrefHeight(60);
+                        label2.setText("ID");
+
+                        Button button = new Button();
+                        button.setText("Remove");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                popUpWindow(account.removeCardFromDeckByIdAndName(Integer.parseInt(input2.getText()), input.getText())
+                                        , 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, input2, label2, button);
                         return;
                     }
-                    if (y > 385 && y < 414) {
-                        System.out.println("select");
-//                        account.setMainDeckByName(partsOfInput[2]);
+                    if (y > 344 && y < 375) { // validate
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(119, 196);
+
+                        Label label = new Label();
+                        label.relocate(119, 150);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        Button button = new Button();
+                        button.setText("Validate");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                popUpWindow(account.checkIsValidate(input.getText()), 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button);
                         return;
                     }
-                    if (y > 427 && y < 454) {
-                        System.out.println("show  all deck");
-                        account.showAllDecks();
+                    if (y > 385 && y < 414) { //select
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(119, 196);
+
+                        Label label = new Label();
+                        label.relocate(119, 150);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        Button button = new Button();
+                        button.setText("Select");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                popUpWindow(account.setMainDeckByName(input.getText()), 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button);
                         return;
                     }
-                    if (y > 465 && y < 494) {
-                        System.out.println("show deck");
-//                        account.showDeckByName(nameOfDeck);
+                    if (y > 427 && y < 454) { //show  all deck
+                        Label label = new Label();
+                        label.relocate(50, 100);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText(account.showAllDecks());
+                        root.getChildren().addAll(label);
+                        return;
+                    }
+                    if (y > 465 && y < 494) { // show deck
+                        Label str = new Label();
+                        str.relocate(50, 100);
+                        str.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        str.setTextFill(Color.LIGHTPINK);
+                        str.setPrefHeight(60);
+
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(100, 496);
+
+                        Label label = new Label();
+                        label.relocate(100, 450);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        Button button = new Button();
+                        button.setText("Show");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(130, 530);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                str.setText(account.showDeckByName(input.getText()));
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button, str);
                         return;
                     }
                 }
