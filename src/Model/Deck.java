@@ -169,30 +169,37 @@ public class Deck {
         return null;
     }
 
-    public static void createDeck(String deckName, Account account) {
+    public static String createDeck(String deckName, Account account) {
         Deck deck = searchDeckByName(deckName);
         if (deck != null) {
-            System.out.println("it is available now !\nplease change deck's name");
-            return;
+            return "it is available now !\nplease change deck's name";
         }
         deck = new Deck(deckName);
         decks.add(deck);
         account.addDeck(deck);
+        return "deck is created.";
     }
 
-    public static void deleteDeck(String deckName, Account account) {
+    public static String deleteDeck(String deckName, Account account) {
+        boolean found=false;
         for (int i = 0; i < decks.size(); i++) {
             if (decks.get(i).getName().equals(deckName)) {
                 decks.remove(i);
+                found = true;
                 break;
             }
         }
         for (int i = 0; i < account.getDecks().size(); i++) {
             if (account.getDecks().get(i).getName().equals(deckName)) {
                 account.deleteDeck(i);
-                return;
+                found = true;
+                break;
             }
         }
+        if(found)
+            return "Deleted.";
+        else
+            return "Not Found.";
     }
 
     public static void addCardToDeck(String deckName, int cardID) {

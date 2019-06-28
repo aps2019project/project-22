@@ -31,48 +31,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Show {
-    private static void collectionMenu(Scanner scanner, Account account) {
-        String input = scanner.nextLine().trim();
-        String[] partsOfInput = input.split("\\s+");
-        if ("exit".equals(input)) {
-            return;
-        } else if ("show".equals(partsOfInput[0])) {
-            if (partsOfInput.length == 1)
-                Show.showCollection(account);
-            else if (partsOfInput[1].equals("all") && partsOfInput[2].equals("decks")) {
-                account.showAllDecks();
-            } else if (partsOfInput[1].equals("deck")) {
-                account.showDeckByName(partsOfInput[2]);
-            }
-        } else if (partsOfInput[0].equals("search")) {
-            if (account.getCollection().search(partsOfInput[1]) != -1)
-                System.out.println(account.getCollection().search(partsOfInput[1]));
-            else
-                System.out.println("not found...:[");
-        } else if (partsOfInput.length == 3 && partsOfInput[0].equals("create") && partsOfInput[1].equals("deck")) {
-            Deck.createDeck(partsOfInput[2], account);
-        } else if (partsOfInput.length == 3 && partsOfInput[0].equals("delete") && partsOfInput[1].equals("deck")) {
-            Deck.deleteDeck(partsOfInput[2], account);
-        } else if ("save".equals(input)) {
-            account.getCollection().save();
-        } else if ("help".equals(input)) {
-            Show.helpInCollection();
-        } else if (partsOfInput.length == 5 && partsOfInput[0].equals("add") && partsOfInput[2].equals("to")
-                && partsOfInput[3].equals("deck")) {
-            try {
-                Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
-            } catch (Exception name) {
-                System.out.println("deckName is invalid");
-            }
-        } else if (partsOfInput[0].equals("validate") && partsOfInput[1].equals("deck")) {
-            account.checkIsValidate(partsOfInput[2]);
-        } else if (partsOfInput[0].equals("remove") && partsOfInput[2].equals("from") && partsOfInput[3].equals("deck")) {
-            account.removeCardFromDeckByIdAndName(Integer.parseInt(partsOfInput[1]), partsOfInput[4]);
-        } else if (partsOfInput[0].equals("select") && partsOfInput[1].equals("deck")) {
-            account.setMainDeckByName(partsOfInput[2]);
-        }
-        collectionMenu(scanner, account);
-    }
 
     public static void showMainMenuOfAccount(Scanner scanner, Account account, Group root) {
 
@@ -186,12 +144,12 @@ public class Show {
                                     root.getChildren().clear();
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
-                                        collectionMenu(scanner, account);
+                                        showCollectionMenu(root, account);
                                         return;
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
-                                        shopMenu(scanner, account);
+                                        shopMenu(scanner, account);////////////
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
@@ -227,8 +185,216 @@ public class Show {
         });
     }
 
-    private static void showCreateCustomCard(Group root) {
+    private static void showCollectionMenu(Group root, Account account) {
+        Image image = new Image("File:photos/bg4.jpg");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
+        root.getChildren().add(imageView);
 
+        Image b = new Image("File:photos/closeButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(0, 530);
+        back.setFitWidth(70);
+        back.setFitHeight(70);
+
+        Label[] labels = new Label[11];
+        ImageView[] options = new ImageView[11];
+        for (int i = 0; i < 11; i++) {
+            options[i] = new ImageView();
+            labels[i] = new Label();
+            labels[i].relocate(780, 49 + i * 40);
+            labels[i].setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+            labels[i].setTextFill(Color.DARKBLUE);
+            labels[i].setPrefHeight(60);
+            options[i].relocate(900, 50 + i * 40);
+            options[i].setFitWidth(60);
+            options[i].setFitHeight(60);
+            root.getChildren().addAll(options[i], labels[i]);
+        }
+
+        options[3].setFitWidth(68);
+        options[3].setFitHeight(68);
+        options[3].setTranslateY(options[3].getY() - 4);
+        options[7].setTranslateY(options[7].getY() - 4);
+        options[3].setTranslateX(options[3].getX() - 4);
+        options[7].setTranslateX(options[7].getX() - 4);
+        options[7].setFitWidth(68);
+        options[7].setFitHeight(68);
+
+        Image blue = new Image("File:photos/blueOC.png");
+        Image gray = new Image("File:photos/grayOC.png");
+        Image green = new Image("File:photos/greenOC.png");
+        Image purple = new Image("File:photos/purpleOC.png");
+
+        options[0].setImage(blue);
+        options[1].setImage(gray);
+        options[2].setImage(purple);
+        options[3].setImage(green);
+        options[4].setImage(blue);
+        options[5].setImage(gray);
+        options[6].setImage(purple);
+        options[7].setImage(green);
+        options[8].setImage(blue);
+        options[9].setImage(purple);
+        options[10].setImage(gray);
+
+        labels[0].setText("Show");
+        labels[1].setText("Search");
+        labels[2].setText("Save");
+        labels[3].setText("Create Deck");
+        labels[4].setText("Delete Deck");
+        labels[5].setText("Add Card");
+        labels[6].setText("Remove Card");
+        labels[7].setText("Validate Deck");
+        labels[8].setText("Select Deck");
+        labels[9].setText("Show All Decks");
+        labels[10].setText("Show Deck");
+
+
+        back.setImage(b);
+
+        root.getChildren().addAll(back);
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+//                System.out.println("x = " + x + "\t\ty= " + y);
+
+                if (x < 940 && x > 919 && y < 500 && y > 66) {
+
+                    root.getChildren().clear();
+                    root.getChildren().addAll(imageView, back);
+                    for (int i = 0; i < 11; i++)
+                        root.getChildren().addAll(options[i], labels[i]);
+
+                    if (y > 67 && y < 90) { // show collection
+                        Label label = new Label();
+                        label.relocate(50, 100);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText(showCollection(account));
+                        root.getChildren().addAll(label);
+                        return;
+                    }
+                    if (y > 106 && y < 135) {
+                        System.out.println("search");
+//                        if (account.getCollection().search(partsOfInput[1]) != -1)
+//                            System.out.println(account.getCollection().search(partsOfInput[1]));
+//                        else
+//                            System.out.println("not found...:[");
+                        return;
+                    }
+                    if (y > 147 && y < 177) {
+                        System.out.println("save");
+                        account.getCollection().save();
+                        return;
+                    }
+                    if (y > 185 && y < 215) {//create deck
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(119, 196);
+
+                        Label label = new Label();
+                        label.relocate(119, 150);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        Button button = new Button();
+                        button.setText("Create!");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                popUpWindow(Deck.createDeck(input.getText(), account), 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button);
+                        return;
+                    }
+                    if (y > 226 && y < 254) { //delete deck
+                        TextField input = new TextField();
+                        input.setPrefWidth(120);
+                        input.setMaxHeight(40);
+                        input.relocate(119, 196);
+
+                        Label label = new Label();
+                        label.relocate(119, 150);
+                        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+                        label.setTextFill(Color.LIGHTPINK);
+                        label.setPrefHeight(60);
+                        label.setText("Deck Name");
+
+                        Button button = new Button();
+                        button.setText("Delete!");
+                        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+                        button.relocate(138, 240);
+
+                        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                popUpWindow( Deck.deleteDeck(input.getText(), account), 280, 120);
+                            }
+                        });
+
+                        root.getChildren().addAll(input, label, button);
+                        return;
+                    }
+                    if (y > 266 && y < 295) {
+                        System.out.println("add"); //
+//                        try {
+//                            Deck.searchDeckByName(partsOfInput[4]).addCard(Integer.parseInt(partsOfInput[1]), account);
+//                        } catch (Exception name) {
+//                            System.out.println("deckName is invalid");
+//                        }
+                        return;
+                    }
+                    if (y > 306 && y < 336) {
+                        System.out.println("remove");
+//                        account.removeCardFromDeckByIdAndName(Integer.parseInt(partsOfInput[1]), partsOfInput[4]);
+
+                        return;
+                    }
+                    if (y > 344 && y < 375) {
+                        System.out.println("validate");
+//                        account.checkIsValidate(partsOfInput[2]);
+                        return;
+                    }
+                    if (y > 385 && y < 414) {
+                        System.out.println("select");
+//                        account.setMainDeckByName(partsOfInput[2]);
+                        return;
+                    }
+                    if (y > 427 && y < 454) {
+                        System.out.println("show  all deck");
+                        account.showAllDecks();
+                        return;
+                    }
+                    if (y > 465 && y < 494) {
+                        System.out.println("show deck");
+//                        account.showDeckByName(nameOfDeck);
+                        return;
+                    }
+                }
+                if (x < 65 && x > 10 && y < 590 && y > 537) {
+                    showMainMenuOfAccount(Main.scanner, account, root);
+                    return;
+                }
+            }
+        });
+    }
+
+    private static void showCreateCustomCard(Group root) {
 
         Image image = new Image("File:photos/bg0.jpg");
         ImageView imageView = new ImageView();
@@ -383,51 +549,45 @@ public class Show {
         shopMenu(scanner, account);
     }
 
-    public static void showCollection(Account account) {
+    public static String showCollection(Account account) {
         Collection collection = account.getCollection();
+        String string = "Heroes :\n";
         int number = 1;
-        System.out.println("Heroes :");
         for (int i = 0; i < collection.getHeroes().size(); i++) {
-            System.out.println("\t" + number + " : Name : " + collection.getHeroes().get(i).getName() + " - AP : " +
+            string += "\t" + number + " : Name : " + collection.getHeroes().get(i).getName() + " - AP : " +
                     collection.getHeroes().get(i).getAttackPower() + " - HP : " + collection.getHeroes().get(i).
                     getHealthPoint() + " - Class : " + collection.getHeroes().get(i).getTypeOfAttack() +
                     " - Special power: " + "attack" + " - price: " + collection.getHeroes().get(i).getPrice() + " Id= " +
-                    collection.getHeroes().get(i).getId());
+                    collection.getHeroes().get(i).getId() + "\n";
             number++;
         }
         number = 1;
-        System.out.println("Items :");
+        string += "Items :\n";
         for (int i = 0; i < collection.getItems().size(); i++) {
-            System.out.println("\t" + number + " : Name : " + collection.getItems().get(i).getName() + " Desc: " +
+            string += ("\t" + number + " : Name : " + collection.getItems().get(i).getName() + " Desc: " +
                     collection.getItems().get(i).getDescription() + " - price: " + collection.getItems().get(i).getPrice()
-                    + " ID=" + collection.getItems().get(i).getId());
+                    + " ID=" + collection.getItems().get(i).getId() + "\n");
             number++;
         }
         number = 1;
-        System.out.println("Cards :");
+        string += ("Cards :\n");
         for (int i = 0; i < collection.getSpells().size(); i++) {
-            System.out.println("\t" + number + " : Type : Spell - Name : " + collection.getSpells().get(i).getName() +
+            string += ("\t" + number + " : Type : Spell - Name : " + collection.getSpells().get(i).getName() +
                     " - MP : " + collection.getSpells().get(i).getManaPoint() + " - " +
                     collection.getSpells().get(i).getDescription() + " - price: " + collection.getSpells().get(i).getPrice()
-                    + " ID= " + collection.getSpells().get(i).getId());
+                    + " ID= " + collection.getSpells().get(i).getId() + "\n");
             number++;
         }
         for (int i = 0; i < collection.getMinions().size(); i++) {
-            System.out.println("\t" + number + " : Type : Minion - Name : " + collection.getMinions().get(i).getName()
+            string += ("\t" + number + " : Type : Minion - Name : " + collection.getMinions().get(i).getName()
                     + " - Class: " + collection.getMinions().get(i).getTypeOfAttack() + " - AP : " + collection.
                     getMinions().get(i).getAttackPower() + " - HP : " + collection.getMinions().get(i).getHealthPoint()
                     + " - MP : " + collection.getMinions().get(i).getManaPoint() + " - Special power : " +
                     collection.getMinions().get(i).getSpecialPower() + " - price: " + collection.getMinions().get(i).getPrice()
-                    + " ID= " + collection.getMinions().get(i).getId());
+                    + " ID= " + collection.getMinions().get(i).getId() + "\n");
             number++;
         }
-    }
-
-    public static void helpInCollection() {
-        System.out.println("-exit\n-show\n-search[card name | item name]\n-save\ncreate deck[deck name]\n-delete deck" +
-                "[deck name]\n-add[card id | card id |hero id| to deck [deck name]\n-remove" +
-                "[ card id|card id|hero id| lfrom deck[deck name]\n-validate deck[ deck name]\n-selsect deck" +
-                " [ deck name]\n-show all decks\n-show deck [deck name]\n-help");
+        return string;
     }
 
     public static void showBattleMenu(Account account, Battle battle, Scanner scanner, Group root, String command) {

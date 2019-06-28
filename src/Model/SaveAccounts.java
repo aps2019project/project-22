@@ -13,7 +13,7 @@ public class SaveAccounts {
                 String txt = "" + Account.getAccounts().get(i).getUserName() + " " +
                         Account.getAccounts().get(i).getPassword() + " " + Account.getAccounts().get(i).getID()
                         + " " + Account.getAccounts().get(i).getMoney() + " " + Account.getAccounts().get(i).getWins()
-                        + " " + Account.getAccounts().get(i).getStory();
+                        + " " + Account.getAccounts().get(i).getStory()+" ";
                 for (int l = 0; l < txt.length(); l++)
                     fileWriter.write(txt.charAt(l));
             }
