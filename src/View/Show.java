@@ -347,14 +347,15 @@ public class Show {
                 player2.setAccount(Account.getAccounts().get(opponent));
                 player1.setAccount(account);
                 root.getChildren().clear();
-                selectGamePage(root, scanner, account, battle, player1, player2);
+                selectGamePage(root,  account, battle, player1, player2);
             }
         });
     }
 
     private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle
-            , Scanner scanner, Group root, Player player1, Player player2,
-                                 int levelOfGame) {
+            , Group root, Player player1, Player player2,
+                                 int levelOfGame) //akharesh bara custom esme deck mikhad! commente  va bayad benevisim.
+    {
 
         int singleOrMulti = singleMulti;
         int storyOrCustom = storyCustom;
@@ -401,7 +402,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner, root);
+                battle.fight(account,  root);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
@@ -439,7 +440,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner, root);
+                battle.fight(account,  root);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
@@ -477,9 +478,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, scanner, root);
-            } else if (level == 4) {
-                return;
+                battle.fight(account, root);
             }
         } else if (storyOrCustom == 2) {
             battle = new CustomGame();
@@ -523,16 +522,16 @@ public class Show {
             battle.setPlayer2(player2);
             account.showAllDecks();
             int num = levelOfGame;
-            if (num == 4)
-                return;
             ((CustomGame) battle).setMode(num);
-            String input = scanner.nextLine();
+            System.out.println("there there albalu");
+//            String input = scanner.nextLine(); bayad biad esme deck bede!
+            String input="deck name player1"; // avaz she!
             ((CustomGame) battle).setCoustomGame(input);
-            battle.fight(account, scanner, root);
+            battle.fight(account, root);
         }
     }
 
-    private static void selectGamePage(Group root, Scanner scanner, Account account, Battle battle, Player
+    private static void selectGamePage(Group root,  Account account, Battle battle, Player
             player1, Player player2) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
@@ -581,11 +580,11 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectMode(root, scanner, account, battle, player1, player2, 1);
+                                    selectMode(root, account, battle, player1, player2, 1);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectMode(root, scanner, account, battle, player1, player2, 2);
+                                    selectMode(root,  account, battle, player1, player2, 2);
                                 }
                             }
                         }
@@ -594,7 +593,7 @@ public class Show {
         });
     }
 
-    private static void selectMode(Group root, Scanner scanner, Account account, Battle battle,
+    private static void selectMode(Group root, Account account, Battle battle,
                                    Player player1, Player player2, int singleMulti) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
@@ -643,11 +642,11 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 1);
+                                    selectLevel(root,  account, battle, player1, player2, singleMulti, 1);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectLevel(root, scanner, account, battle, player1, player2, singleMulti, 2);
+                                    selectLevel(root, account, battle, player1, player2, singleMulti, 2);
                                 }
                             }
                         }
@@ -656,7 +655,7 @@ public class Show {
         });
     }
 
-    private static void selectLevel(Group root, Scanner scanner, Account account, Battle battle,
+    private static void selectLevel(Group root, Account account, Battle battle,
                                     Player player1, Player player2, int singleMulti, int storyCustom) {
         String[] texts = new String[3];
         if (storyCustom == 1) {
@@ -730,16 +729,16 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(1, singleMulti, account, battle, scanner, root, player1, player2, 1);
+                                    playGame(1, singleMulti, account, battle,  root, player1, player2, 1);
                                 }
                                 if (x > 440 && x < 560 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 2);
+                                    playGame(2, singleMulti, account, battle,  root, player1, player2, 2);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    playGame(2, singleMulti, account, battle, scanner, root, player1, player2, 3);
+                                    playGame(2, singleMulti, account, battle, root, player1, player2, 3);
 
                                 }
 
