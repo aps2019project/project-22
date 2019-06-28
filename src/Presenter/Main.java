@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Main extends Application {
     public static Group root = new Group();
     public static Scene scene = new Scene(root, 1000, 600, Color.rgb(175, 166, 143));
-    Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
     public static Stage primaryStage;
 
     public static void main(String[] args) {

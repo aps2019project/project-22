@@ -305,12 +305,24 @@ public class Show {
         label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
         label.relocate(485, 540);
 
-        root.getChildren().addAll(button, label);
+        Image b = new Image("File:photos/pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
+
+        root.getChildren().addAll(button, label, back);
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
+                if (x > 918 && x < 968 && y > 530 && y < 580) {
+                    showMainMenuOfAccount(Main.scanner, Account.getAccountActivated(), root);
+                    return;
+                }
+
                 try {
                     if (x > 450 && x < 578 && y > 530 && y < 575) {
                         Spell spell = new Spell(Integer.parseInt(textFields[17].getText()), textFields[16].getText(),
@@ -337,46 +349,6 @@ public class Show {
                 }
             }
         });
-
-//
-//        Button btn = new Button("PLAY");
-//        HBox hbBtn = new HBox(10);
-//        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-//        hbBtn.getChildren().add(btn);
-//        hbBtn.setTranslateX(10);
-//        hbBtn.setTranslateY(290);
-//
-//        root.getChildren().addAll( numberTextField, hbBtn);
-
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//
-//            @Override
-//            public void handle(ActionEvent e) {
-//                Pattern pattern = Pattern.compile("\\d+");
-//                Matcher matcher = pattern.matcher(numberTextField.getText());
-//                if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
-//                    showBattleMenu(account, battle, scanner, root, "Please Enter A Number.");
-//                    return;
-//                }
-//                int opponent = Integer.parseInt(numberTextField.getText());
-//                opponent--;
-//                MakeCell.make();
-//                MakeHero makeHero = new MakeHero();
-//                makeHero.make();
-//                MakeMinions makeMinions = new MakeMinions();
-//                makeMinions.make();
-//                MakeItems makeItems = new MakeItems();
-//                makeItems.make();
-//                MakeSpell makeSpell = new MakeSpell();
-//                makeSpell.make();
-//                Player player1 = new Player();
-//                Player player2 = new Player();
-//                player2.setAccount(Account.getAccounts().get(opponent));
-//                player1.setAccount(account);
-//                root.getChildren().clear();
-//                selectGamePage(root,  account, battle, player1, player2);
-//            }
-//        });
     }
 
     private static void shopMenu(Scanner scanner, Account account) {
