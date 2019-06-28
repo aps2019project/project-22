@@ -10,9 +10,6 @@ public class WeaknessBuff extends Buff {
         this.type = type;
     }
 
-    public TypeOfPowers getType() {
-        return type;
-    }
 
     public void setType(TypeOfPowers type) {
         this.type = type;

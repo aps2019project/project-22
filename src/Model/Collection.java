@@ -9,6 +9,7 @@ public class Collection {
     private ArrayList<Hero> heroes = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();
+    private ArrayList<CustomCard> customCards =new ArrayList<>();
 
     public int search(String name) {
         int number = 0;
@@ -252,5 +253,13 @@ public class Collection {
                 return;
             }
         }
+    }
+
+    public ArrayList<CustomCard> getCustomCards() {
+        return customCards;
+    }
+
+    public void addCustomCards(CustomCard customCard) {
+        customCards.add(customCard);
     }
 }

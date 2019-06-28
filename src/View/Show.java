@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -15,11 +16,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -95,7 +99,7 @@ public class Show {
 
         Label label1 = new Label("Collection");
         label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label1.relocate(193, 172);
+        label1.relocate(193, 177);
         label1.setTextFill(Color.WHITESMOKE);
 
         ImageView buttonImage2 = new ImageView();
@@ -137,10 +141,21 @@ public class Show {
         buttonImage5.setFitWidth(145);
         buttonImage5.setFitHeight(40);
 
-        Label label5 = new Label("Logout");
+        Label label5 = new Label(" Custom Card");
         label5.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label5.relocate(197, 354);
+        label5.relocate(178, 354);
         label5.setTextFill(Color.WHITESMOKE);
+
+        ImageView buttonImage6 = new ImageView();
+        buttonImage6.setImage(i2);
+        buttonImage6.relocate(154, 387);
+        buttonImage6.setFitWidth(145);
+        buttonImage6.setFitHeight(40);
+
+        Label label6 = new Label("Logout");
+        label6.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label6.relocate(197, 397);
+        label6.setTextFill(Color.WHITESMOKE);
 
         ImageView exitButton = new ImageView();
         buttonImage1.setImage(new Image("file:photos/exitButton.png"));
@@ -152,7 +167,8 @@ public class Show {
                 new Runnable() {
                     public void run() {
                         root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2,
-                                label2, buttonImage3, label3, buttonImage4, label4, buttonImage5, label5, exitButton);
+                                label2, buttonImage3, label3, buttonImage4, label4, buttonImage5,
+                                label5, buttonImage6, label6, exitButton);
                     }
                 }
         );
@@ -192,6 +208,11 @@ public class Show {
                                     }
                                     if (x > 169 && x < 289 && y >= 350 && y < 382) {
                                         root.getChildren().clear();
+                                        showCreateCustomCard(root);
+                                        return;
+                                    }
+                                    if (x > 169 && x < 284 && y > 390 && y < 424) {
+                                        root.getChildren().clear();
                                         showMainMenu(scanner, root);
                                         return;
                                     }
@@ -204,6 +225,158 @@ public class Show {
                         });
             }
         });
+    }
+
+    private static void showCreateCustomCard(Group root) {
+
+
+        Image image = new Image("File:photos/bg0.jpg");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
+        root.getChildren().add(imageView);
+
+        Label[] labels = new Label[22];
+        for (int i = 0; i < 22; i++) {
+            labels[i] = new Label();
+            labels[i].setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+            labels[i].setTextFill(Color.SKYBLUE);
+            labels[i].relocate(120, 5 + 25 * i);
+            root.getChildren().add(labels[i]);
+        }
+        labels[0].setText("Name");
+        labels[1].setText("Cost");
+        labels[2].setText("Type(spell 0,minion 1,hero 2)");
+        labels[3].setText("Target For Spell");
+        labels[4].setText("AP");
+        labels[5].setText("HP");
+        labels[6].setText("Attack Type(melee,ranged,hybrid)");
+        labels[7].setText("Range Of Attack");
+        labels[8].setText("Special Power Activation");
+        labels[9].setText("Special Power Cooldown");
+
+        // buff
+        labels[11].setText("Name Of Buff");
+        labels[12].setText("Buff Type");
+        labels[13].setText("Effect Value");
+        labels[14].setText("Delay");
+        labels[15].setText("Last");
+        labels[16].setText("Friend 0 Or Enemy 1");
+        for (int i = 11; i < 17; i++) {
+            labels[i].setTranslateY(labels[i].getTranslateY() - 20);
+            labels[i].setTextFill(Color.BLUEVIOLET);
+        }
+
+        //spell
+        labels[18].setText("Name Of Spell");
+        labels[19].setText("ID");
+        labels[20].setText("Mana");
+        labels[21].setText("Description");
+
+        for (int i = 18; i < 22; i++) {
+            labels[i].setTranslateY(labels[i].getTranslateY() - 41);
+            labels[i].setTextFill(Color.MEDIUMVIOLETRED);
+        }
+
+        TextField[] textFields = new TextField[20];
+        for (int i = 0; i < 20; i++) {
+            textFields[i] = new TextField();
+            textFields[i].setPrefWidth(100);
+            textFields[i].setMaxHeight(15);
+            textFields[i].relocate(10, 25 * i);
+            root.getChildren().add(textFields[i]);
+        }
+        for (int i = 10; i < 16; i++) {
+            textFields[i].setTranslateY(textFields[i].getTranslateY() + 4);
+        }
+        for (int i = 16; i < 20; i++) {
+            textFields[i].setTranslateY(textFields[i].getTranslateY() + 8);
+        }
+
+        ImageView button = new ImageView();
+        button.setImage(new Image("File:photos/blueButton.png"));
+        button.relocate(430, 520);
+        button.setFitHeight(60);
+        button.setFitWidth(165);
+
+        Label label = new Label();
+        label.setText("Create");
+        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+        label.relocate(485, 540);
+
+        root.getChildren().addAll(button, label);
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                try {
+                    if (x > 450 && x < 578 && y > 530 && y < 575) {
+                        Spell spell = new Spell(Integer.parseInt(textFields[17].getText()), textFields[16].getText(),
+                                Integer.parseInt(textFields[1].getText()), Integer.parseInt(textFields[18].getText()),
+                                textFields[3].getText(), textFields[19].getText());
+
+                        Buff buff = new Buff(textFields[10].getText(), textFields[12].getText(), Integer.parseInt(
+                                textFields[14].getText()), textFields[11].getText(),
+                                Integer.parseInt(textFields[13].getText()), Integer.parseInt(textFields[15].getText())) {
+                            @Override
+                            public void applyBuff(Spell spellCard) {
+                                this.setSpellCard(spell);
+                            }
+                        };
+                        CustomCard customCard = new CustomCard(textFields[0].getText(), Integer.parseInt(textFields[2].getText()),
+                                textFields[3].getText(), buff, Integer.parseInt(textFields[4].getText()), Integer.parseInt(textFields[5].getText()),
+                                textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[9].getText(),
+                                textFields[8].getText(), Integer.parseInt(textFields[1].getText()), spell);
+                        Account.getAccountActivated().getCollection().addCustomCards(customCard);
+                        popUpWindow("Custom Card Is Created. :)", 300, 150);
+                    }
+                } catch (Exception n) {
+                    popUpWindow("invalid inputs", 300, 150);
+                }
+            }
+        });
+
+//
+//        Button btn = new Button("PLAY");
+//        HBox hbBtn = new HBox(10);
+//        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+//        hbBtn.getChildren().add(btn);
+//        hbBtn.setTranslateX(10);
+//        hbBtn.setTranslateY(290);
+//
+//        root.getChildren().addAll( numberTextField, hbBtn);
+
+//        btn.setOnAction(new EventHandler<ActionEvent>() {
+//
+//            @Override
+//            public void handle(ActionEvent e) {
+//                Pattern pattern = Pattern.compile("\\d+");
+//                Matcher matcher = pattern.matcher(numberTextField.getText());
+//                if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
+//                    showBattleMenu(account, battle, scanner, root, "Please Enter A Number.");
+//                    return;
+//                }
+//                int opponent = Integer.parseInt(numberTextField.getText());
+//                opponent--;
+//                MakeCell.make();
+//                MakeHero makeHero = new MakeHero();
+//                makeHero.make();
+//                MakeMinions makeMinions = new MakeMinions();
+//                makeMinions.make();
+//                MakeItems makeItems = new MakeItems();
+//                makeItems.make();
+//                MakeSpell makeSpell = new MakeSpell();
+//                makeSpell.make();
+//                Player player1 = new Player();
+//                Player player2 = new Player();
+//                player2.setAccount(Account.getAccounts().get(opponent));
+//                player1.setAccount(account);
+//                root.getChildren().clear();
+//                selectGamePage(root,  account, battle, player1, player2);
+//            }
+//        });
     }
 
     private static void shopMenu(Scanner scanner, Account account) {
@@ -347,7 +520,7 @@ public class Show {
                 player2.setAccount(Account.getAccounts().get(opponent));
                 player1.setAccount(account);
                 root.getChildren().clear();
-                selectGamePage(root,  account, battle, player1, player2);
+                selectGamePage(root, account, battle, player1, player2);
             }
         });
     }
@@ -402,7 +575,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account,  root);
+                battle.fight(account, root);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
@@ -440,7 +613,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account,  root);
+                battle.fight(account, root);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
@@ -525,13 +698,13 @@ public class Show {
             ((CustomGame) battle).setMode(num);
             System.out.println("there there albalu");
 //            String input = scanner.nextLine(); bayad biad esme deck bede!
-            String input="deck name player1"; // avaz she!
+            String input = "deck name player1"; // avaz she!
             ((CustomGame) battle).setCoustomGame(input);
             battle.fight(account, root);
         }
     }
 
-    private static void selectGamePage(Group root,  Account account, Battle battle, Player
+    private static void selectGamePage(Group root, Account account, Battle battle, Player
             player1, Player player2) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
@@ -584,7 +757,7 @@ public class Show {
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectMode(root,  account, battle, player1, player2, 2);
+                                    selectMode(root, account, battle, player1, player2, 2);
                                 }
                             }
                         }
@@ -642,7 +815,7 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    selectLevel(root,  account, battle, player1, player2, singleMulti, 1);
+                                    selectLevel(root, account, battle, player1, player2, singleMulti, 1);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
@@ -729,12 +902,12 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(1, singleMulti, account, battle,  root, player1, player2, 1);
+                                    playGame(1, singleMulti, account, battle, root, player1, player2, 1);
                                 }
                                 if (x > 440 && x < 560 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(2, singleMulti, account, battle,  root, player1, player2, 2);
+                                    playGame(2, singleMulti, account, battle, root, player1, player2, 2);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
@@ -1039,7 +1212,18 @@ public class Show {
         });
     }
 
-    private static void loginPage(Group root, Scanner scanner) {
+    private static void popUpWindow(String message, int width, int height) {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(Main.primaryStage);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(new Text(message));
+        Scene dialogScene = new Scene(dialogVbox, width, height);
+        dialog.setScene(dialogScene);
+        dialog.show();
+    }
+
+    public static void loginPage(Group root, Scanner scanner) {
 
         Image image = new Image("File:loginpage.jpg");
         ImageView imageView = new ImageView();
@@ -1096,7 +1280,6 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
-                System.out.println("x= " + x + "\ty= " + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
@@ -1106,7 +1289,6 @@ public class Show {
                                             String cm = Account.checking(userTextField.getText(), passwordField.getText());
                                             if (cm.contains("welcome")) {
                                                 root.getChildren().clear();
-                                                System.out.println("menu account");
                                                 showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
                                                 return;
                                             }

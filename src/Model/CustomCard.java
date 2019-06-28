@@ -4,22 +4,25 @@ public class CustomCard extends Card {
     private String targetPointName;
     private Buff buff;
     private String specialPower;
+    private Spell spell;
     private boolean specialPowerActivated = false;
 
-    public CustomCard(String name, int type, String targetPointName, Buff buff, int ap, int mp,
-                      String typeOfAttack, int range, String specialPower, boolean specialPowerActivated, int price) {
+    public CustomCard(String name, int type, String targetPointName, Buff buff, int ap, int hp,
+                      String typeOfAttack, int range, String specialPower, String specialPowerActivated, int price, Spell spell) {
         this.setName(name);
         this.setType(type);
         this.setTargetPointName(targetPointName);
         this.setBuff(buff);
         this.setAttackPower(ap);
-        this.setManaPoint(mp);
+        this.setHealthPoint(hp);
         this.setTypeOfAttack(typeOfAttack);
         this.setRangeOfAttack(range);
         this.setSpecialPower(specialPower);
-        this.setSpecialPowerActivated(specialPowerActivated);
+        if (specialPowerActivated.equals("true"))
+            this.setSpecialPowerActivated(true);
         this.setPrice(price);
         this.setCost(price);
+        this.setSpell(spell);
     }
 
     public String getTargetPointName() {
@@ -52,5 +55,13 @@ public class CustomCard extends Card {
 
     public void setSpecialPowerActivated(boolean specialPowerActivated) {
         this.specialPowerActivated = specialPowerActivated;
+    }
+
+    public Spell getSpell() {
+        return spell;
+    }
+
+    public void setSpell(Spell spell) {
+        this.spell = spell;
     }
 }

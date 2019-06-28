@@ -10,9 +10,6 @@ public class PowerBuff extends Buff {
         this.type = type;
     }
 
-    public TypeOfPowers getType() {
-        return type;
-    }
 
     public void setType(TypeOfPowers type) {
         this.type = type;

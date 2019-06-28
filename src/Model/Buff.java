@@ -2,12 +2,18 @@ package Model;
 
 public abstract class Buff {
 
+    private int friendOrEnemy;
+    private  int delay;
+    private  String effectValue;
+    private String type;
     private Spell spellCard;
     private String nameOfBuff;
     protected int number;
     protected int turns;
     protected TypeOfBuff typeOfBuff;
     protected TimeOfBuff timeOfBuff;
+
+    private String name;
 
     public int getNumber() {
         return number;
@@ -48,11 +54,20 @@ public abstract class Buff {
         this.timeOfBuff = buffTImeType;
     }
 
-    public void decrementTurns() {
-        this.setTurns(this.turns--);
+    public Buff(String name,String effectValue, int last, String buffType, int delay,int friendOrEnemy) {
+        this.name=name;
+        this.effectValue=effectValue;
+        this.turns = last;
+        this.type = buffType;
+        this.delay =delay;
+        this.friendOrEnemy=friendOrEnemy;
     }
 
     public abstract void applyBuff(Spell spellCard);
+
+    public void decrementTurns() {
+        this.setTurns(this.turns--);
+    }
 
     public String getNameOfBuff() {
         return nameOfBuff;
@@ -68,5 +83,37 @@ public abstract class Buff {
 
     public void setSpellCard(Spell spellCard) {
         this.spellCard = spellCard;
+    }
+
+    public String getEffectValue() {
+        return effectValue;
+    }
+
+    public void setEffectValue(String effectValue) {
+        this.effectValue = effectValue;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+
+    public int getFriendOrEnemy() {
+        return friendOrEnemy;
+    }
+
+    public void setFriendOrEnemy(int friendOrEnemy) {
+        this.friendOrEnemy = friendOrEnemy;
     }
 }
