@@ -34,7 +34,6 @@ public class Battle {
     Label label2 = new Label("Enemy's turn");
     int itemIDNumber = 0;
     String command = "";
-    Scanner scanner;
     int j;
     ImageView hands1[] = new ImageView[5];
     Rectangle mana1[] = new Rectangle[9];
@@ -166,7 +165,7 @@ public class Battle {
         return (Math.abs(x1 - x2) + Math.abs(y1 - y2));
     }
 
-    public void fight(Account account, Scanner scanners, Group roat) {
+    public void fight(Account account, Group roat) {
 
         label1.relocate(850, 525);
         label2.relocate(830, 525);
@@ -178,7 +177,6 @@ public class Battle {
         button.relocate(800, 510);
 
 
-        scanner = scanners;
         root = roat;
 
 
