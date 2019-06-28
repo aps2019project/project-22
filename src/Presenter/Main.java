@@ -32,7 +32,7 @@ public class Main extends Application {
                 Account.addNewAccount(a);
                 Account.addNewAccount(b);
                 Account.setAccountActivated(a);
-                Show.showMainMenuOfAccount(scanner,Account.getAccountActivated(),root);
+                Show.showMainMenuOfAccount(Account.getAccountActivated(),root);
 
 //                Show.showMainMenu(scanner, root);
             }

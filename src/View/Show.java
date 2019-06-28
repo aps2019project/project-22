@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 
 public class Show {
 
-    public static void showMainMenuOfAccount(Scanner scanner, Account account, Group root) {
+    public static void showMainMenuOfAccount( Account account, Group root) {
 
         Image image = new Image("File:menu.jpg");
         ImageView menu = new ImageView();
@@ -149,19 +149,19 @@ public class Show {
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
-                                        shopMenu(scanner, account);////////////
+                                        shopMenu(Main.scanner, account);////////////
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
                                         Battle battle = new Battle();
-                                        showBattleMenu(account, battle, scanner, root, "Choose Opponent");
+                                        showBattleMenu(account, battle, root, "Choose Opponent");
                                         return;
                                     }
                                     if (x < 300 && y > 298 && y < 330) {
                                         SaveAccounts.save();
                                         root.getChildren().clear();
-                                        showMainMenu(scanner, root);
+                                        showMainMenu( root);
                                         return;
                                     }
                                     if (x > 169 && x < 289 && y >= 350 && y < 382) {
@@ -171,7 +171,7 @@ public class Show {
                                     }
                                     if (x > 169 && x < 284 && y > 390 && y < 424) {
                                         root.getChildren().clear();
-                                        showMainMenu(scanner, root);
+                                        showMainMenu( root);
                                         return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
@@ -563,7 +563,7 @@ public class Show {
                     }
                 }
                 if (x < 65 && x > 10 && y < 590 && y > 537) {
-                    showMainMenuOfAccount(Main.scanner, account, root);
+                    showMainMenuOfAccount( account, root);
                     return;
                 }
             }
@@ -661,7 +661,7 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
                 if (x > 918 && x < 968 && y > 530 && y < 580) {
-                    showMainMenuOfAccount(Main.scanner, Account.getAccountActivated(), root);
+                    showMainMenuOfAccount(Account.getAccountActivated(), root);
                     return;
                 }
 
@@ -766,7 +766,7 @@ public class Show {
         return string;
     }
 
-    public static void showBattleMenu(Account account, Battle battle, Scanner scanner, Group root, String command) {
+    public static void showBattleMenu(Account account, Battle battle,  Group root, String command) {
 
         Image image = new Image("File:photos/opponents.jpg");
         ImageView imageView = new ImageView();
@@ -809,7 +809,7 @@ public class Show {
                 Pattern pattern = Pattern.compile("\\d+");
                 Matcher matcher = pattern.matcher(numberTextField.getText());
                 if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
-                    showBattleMenu(account, battle, scanner, root, "Please Enter A Number.");
+                    showBattleMenu(account, battle,  root, "Please Enter A Number.");
                     return;
                 }
                 int opponent = Integer.parseInt(numberTextField.getText());
@@ -1230,7 +1230,7 @@ public class Show {
         });
     }
 
-    public static void showMainMenu(Scanner scanner, Group root) {
+    public static void showMainMenu( Group root) {
 
         Image image = new Image("File:menu.jpg");
         ImageView menu = new ImageView();
@@ -1321,17 +1321,17 @@ public class Show {
                                 if (x > 154) {
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
-                                        signUpPage(root, scanner);
+                                        signUpPage(root);
                                         return;
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
-                                        loginPage(root, scanner);
+                                        loginPage(root);
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
-                                        boardPage(root, scanner);
+                                        boardPage(root);
                                         return;
                                     }
                                     if (x > 174 && x < 285 && y < 333 && y > 308) {
@@ -1369,7 +1369,7 @@ public class Show {
         );
     }
 
-    private static void boardPage(Group root, Scanner scanner) {
+    private static void boardPage(Group root) {
         Image image = new Image("File:photos/boardPage.jpg");
         ImageView board = new ImageView();
         board.setImage(image);
@@ -1422,13 +1422,13 @@ public class Show {
                 double x = event.getX(), y = event.getY();
                 if (x > 931 && x < 985 && y > 524 && y < 577) {
                     root.getChildren().clear();
-                    showMainMenu(scanner, root);
+                    showMainMenu( root);
                 }
             }
         });
     }
 
-    private static void signUpPage(Group root, Scanner scanner) {
+    private static void signUpPage(Group root) {
         Image image = new Image("File:photos/signUpPage.jpg");
         ImageView menu = new ImageView();
         menu.setImage(image);
@@ -1509,11 +1509,11 @@ public class Show {
                                     command.setText(cm);
                                     if (cm.contains("welcome")) {
                                         root.getChildren().clear();
-                                        showMainMenu(scanner, root);
+                                        showMainMenu( root);
                                     }
                                 }
                                 if (x > 918 && x < 968 && y > 530 && y < 580)
-                                    showMainMenu(scanner, root);
+                                    showMainMenu( root);
                             }
                         });
             }
@@ -1531,7 +1531,7 @@ public class Show {
         dialog.show();
     }
 
-    public static void loginPage(Group root, Scanner scanner) {
+    public static void loginPage(Group root) {
 
         Image image = new Image("File:loginpage.jpg");
         ImageView imageView = new ImageView();
@@ -1597,19 +1597,19 @@ public class Show {
                                             String cm = Account.checking(userTextField.getText(), passwordField.getText());
                                             if (cm.contains("welcome")) {
                                                 root.getChildren().clear();
-                                                showMainMenuOfAccount(scanner, Account.getAccountActivated(), root);
+                                                showMainMenuOfAccount( Account.getAccountActivated(), root);
                                                 return;
                                             }
                                         }
                                         if (y > 450 && y < 489) {
                                             root.getChildren().clear();
-                                            signUpPage(root, scanner);
+                                            signUpPage(root);
                                             return;
                                         }
                                     }
                                     if (x > 870 && x < 980 && y > 555 && y < 596) {
                                         root.getChildren().clear();
-                                        showMainMenu(scanner, root);
+                                        showMainMenu( root);
                                         return;
                                     }
                                 } catch (Exception name) {
@@ -1637,4 +1637,5 @@ public class Show {
     public static void incorrectPassword() {
         System.out.println("The password is incorrect");
     }
+
 }
