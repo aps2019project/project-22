@@ -1396,7 +1396,6 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-                System.out.println(x + "\t\t" + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
@@ -1525,7 +1524,6 @@ public class Show {
         }
         return y;
     }
-
 
     private static void showExitPage(Group root) {
         Image image = new Image("File:photos/exit.jpg");
@@ -1753,7 +1751,7 @@ public class Show {
 
         Label command = new Label();
         command.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        command.setTextFill(Color.WHITESMOKE);
+        command.setTextFill(Color.rgb(200, 255, 255));
         command.relocate(377, 240);
 
         Platform.runLater(
@@ -1775,6 +1773,7 @@ public class Show {
                                     if (x > 438 && x < 560) {
                                         if (y > 356 && y < 397) {
                                             String cm = Account.checking(userTextField.getText(), passwordField.getText());
+                                            command.setText(cm);
                                             if (cm.contains("welcome")) {
                                                 root.getChildren().clear();
                                                 showMainMenuOfAccount(Account.getAccountActivated(), root);
