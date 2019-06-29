@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -32,9 +33,41 @@ import java.util.regex.Pattern;
 
 public class Show {
 
+    private static void showIcons(Group root, int x, int y) {
+        Circle[] circles = new Circle[3];
+        Line[] lines = new Line[3];
+        Random random = new Random();
+
+        for (int i = 0; i < 3; i++) {
+            circles[i] = new Circle();
+            lines[i] = new Line();
+            lines[i].setFill(Color.WHITESMOKE);
+            circles[i].setFill(Color.WHITE);
+
+            circles[i].setRadius(3);
+
+            circles[i].relocate(x + random.nextInt(10) * (random.nextInt() % 2 == 0 ? 1 : -1),
+                    y + random.nextInt(10) * (random.nextInt() % 2 == 0 ? 1 : -1));
+
+            lines[i].setStartX(circles[i].getCenterX());
+            lines[i].setStartY(circles[i].getCenterY());
+
+            root.getChildren().addAll(circles[i], lines[i]);
+        }
+        lines[0].setEndX(circles[1].getCenterX());
+        lines[0].setEndY(circles[1].getCenterY());
+
+        lines[1].setEndX(circles[2].getCenterX());
+        lines[1].setEndY(circles[2].getCenterY());
+
+        lines[2].setEndX(circles[0].getCenterX());
+        lines[2].setEndY(circles[0].getCenterY());
+
+    }
+
     public static void showMainMenuOfAccount(Account account, Group root) {
 
-        Image image = new Image("File:menu.jpg");
+        Image image = new Image("File:photos/menuOfAccount.jpg");
         ImageView menu = new ImageView();
         menu.setImage(image);
         menu.setFitHeight(600);
@@ -57,7 +90,7 @@ public class Show {
 
         Label label1 = new Label("Collection");
         label1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label1.relocate(193, 177);
+        label1.relocate(193, 175);
         label1.setTextFill(Color.WHITESMOKE);
 
         ImageView buttonImage2 = new ImageView();
@@ -137,6 +170,7 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
+                System.out.println(x + "\t" + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
@@ -1060,7 +1094,7 @@ public class Show {
         Label text1 = new Label("Single Player");
         text1.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         text1.setTextFill(Color.WHITESMOKE);
-        text1.relocate(255, 410);
+        text1.relocate(258, 410);
 
         Image i2 = new Image("File:photos/blueButton.png");
         ImageView o2 = new ImageView();
@@ -1261,7 +1295,7 @@ public class Show {
 
     public static void showMainMenu(Group root) {
 
-        Image image = new Image("File:menu.jpg");
+        Image image = new Image("File:photos/menu.jpg");
         ImageView menu = new ImageView();
         menu.setImage(image);
         menu.setFitHeight(600);
@@ -1562,7 +1596,7 @@ public class Show {
 
     public static void loginPage(Group root) {
 
-        Image image = new Image("File:loginpage.jpg");
+        Image image = new Image("File:photos/loginpage.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
         imageView.setFitHeight(600);
