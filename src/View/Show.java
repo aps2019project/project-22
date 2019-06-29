@@ -1203,23 +1203,22 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
-                System.out.println("x= " + x + "\t\ty= " + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(1, singleMulti, account, battle, root, player1, player2, 1);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 1);
                                 }
                                 if (x > 440 && x < 560 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     root.getChildren().clear();
-                                    playGame(2, singleMulti, account, battle, root, player1, player2, 2);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 2);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    playGame(2, singleMulti, account, battle, root, player1, player2, 3);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 3);
 
                                 }
 
