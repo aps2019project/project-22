@@ -23,7 +23,7 @@ public class MakeMinions {
         minions[6] = new Minion("file:1 (7)/breathing.GIF", "file:1 (7)/attack.GIF", "file:1 (7)/run.GIF",
                 7, "kamandareTurani", 500, 1, 3, 4,
                 "ranged", 5, "not", "Nothing");
-        minions[7] = new Minion("file:1 (8)/breathing.GIF", "file:1 (8)/attack.GIF", "file:1 (8)/run.GIF", 8, "qolabSangdareTurani", 600, 1, 4, 2,
+        minions[7] = new Minion("file:1 (8)/breathing.GIF", "file:1 (8)/attack.GIF", "file:1 (8)/run.GIF", 8, "qolabSangdare", 600, 1, 4, 2,
                 "ranged", 7, "not", "Nothing");
         minions[8] = new Minion("file:1 (9)/breathing.GIF", "file:1 (9)/attack.GIF", "file:1 (9)/run.GIF", 9, "neyzedareTurani", 600, 1, 4, 4,
                 "hybrid", 3, "not", "Nothing");
