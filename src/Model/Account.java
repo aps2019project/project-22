@@ -1,11 +1,8 @@
 package Model;
 
-import View.Show;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Account {
 
@@ -18,7 +15,6 @@ public class Account {
     private int money;
     private int wins = 0;
     private int loses = 0;
-    private boolean logIn;
     private static final int firstMoney = 15000;
     private Player player = new Player();
     private ArrayList<MatchHistory> matchHistory = new ArrayList<>();
@@ -74,14 +70,6 @@ public class Account {
         return false;
     }
 
-    public static boolean booleanSearchByAccount(Account account1) {
-        for (Account account : Account.getAccounts()) {
-            if (account == account1)
-                return true;
-        }
-        return false;
-    }
-
     public static Account SearchByUserName(String userName) {
         for (Account account : Account.getAccounts()) {
             if (account.getUserName().compareTo(userName) == 0)
@@ -104,17 +92,6 @@ public class Account {
                 return accounts.get(i);
         }
         return null;
-    }
-
-    public static void createAccount(String username, Scanner scanner) {
-        Account account = searchByUserName(username);
-        if (account != null) {
-            Show.accountIsAvailableNow();
-        } else {
-            String password = Show.getPassword(scanner);
-            Account newAccount = new Account(username, password);
-            Account.addNewAccount(newAccount);
-        }
     }
 
     public static String signUp(String username, String pw, String rpw) {
@@ -151,12 +128,6 @@ public class Account {
                     Collections.swap(accounts, j, j + 1);
             }
         }
-    }
-
-    public boolean checkIfPasswordIsCorrect(String password) {
-
-        if (this.password.equals(password)) return true;
-        return false;
     }
 
     public static ArrayList<Account> getAccounts() {
@@ -264,14 +235,6 @@ public class Account {
         this.wins = wins;
     }
 
-    public boolean getLogIn() {
-        return logIn;
-    }
-
-    public void setLogIn(boolean logIn) {
-        this.logIn = logIn;
-    }
-
     public static Account getAccountActivated() {
         return accountActivated;
     }
@@ -299,23 +262,6 @@ public class Account {
         this.mainDeck = mainDeck;
     }
 
-    public static void deleteAccount(Account account) {
-        accounts.remove(account);
-    }
-
-    public static boolean checkLogin(String userName, String password) {
-        if (searchByUserName(userName) == null) {
-            Show.invalidUserName();
-            return false;
-        }
-        if (!searchByUserName(userName).getPassword().equals(password)) {
-            Show.incorrectPassword();
-            return false;
-        }
-        Account.accountActivated = searchByUserName(userName);
-        return true;
-    }
-
     public void increaseMoney(int price) {
         this.money += price;
     }
@@ -330,18 +276,6 @@ public class Account {
 
     public void removeDeck(Deck deck) {
         this.getDecks().remove(deck);
-    }
-
-    private static void sortAccounts() {
-        for (int i = 0; i < Account.getAccounts().size(); i++)
-            for (int j = i + 1; j < Account.getAccounts().size(); j++) {
-                if (accounts.get(i).getWins() > accounts.get(j).getWins()) {
-                    Account.swap(i, j);
-                }
-                if (accounts.get(i).getWins() == accounts.get(j).getWins())
-                    if (accounts.get(i).getLoses() < accounts.get(j).getLoses())
-                        Account.swap(i, j);
-            }
     }
 
     private static void swap(int i, int j) {

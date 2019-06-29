@@ -869,7 +869,7 @@ public class Show {
 
     private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle
             , Group root, Player player1, Player player2,
-                                 int levelOfGame) //akharesh bara custom esme deck mikhad! commente  va bayad benevisim.
+                                 int levelOfGame) //akharesh ?!
     {
 
         int singleOrMulti = singleMulti;
@@ -1798,23 +1798,6 @@ public class Show {
                 );
             }
         });
-    }
-
-    public static void accountIsAvailableNow() {
-        System.out.println("Account Is Available Now! =)");
-    }
-
-    public static String getPassword(Scanner scanner) {
-        System.out.println("please enter password");
-        return scanner.nextLine();
-    }
-
-    public static void invalidUserName() {
-        System.out.println("invalid username!!");
-    }
-
-    public static void incorrectPassword() {
-        System.out.println("The password is incorrect");
     }
 
 }

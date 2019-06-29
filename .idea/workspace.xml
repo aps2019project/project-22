@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="1753" column="52" selection-start-line="1753" selection-start-column="52" selection-end-line="1753" selection-end-column="52" />
+            <state relative-caret-position="126">
+              <caret line="1606" column="5" lean-forward="true" selection-start-line="1606" selection-start-column="5" selection-end-line="1606" selection-end-column="5" />
               <folding>
                 <element signature="method#showIcon#0;class#Show#0" />
                 <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
@@ -62,11 +63,38 @@
                 <element signature="e#66688#66689#0" expanded="true" />
                 <element signature="method#signUpPage#0;class#Show#0" />
                 <element signature="method#popUpWindow#0;class#Show#0" />
-                <element signature="e#76163#76230#1" />
-                <element signature="e#76043#76044#0" expanded="true" />
-                <element signature="method#getPassword#0;class#Show#0" />
-                <element signature="e#76294#76295#0" expanded="true" />
-                <element signature="e#76403#76404#0" expanded="true" />
+                <element signature="method#loginPage#0;class#Show#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#916#1111#0" />
+                <element signature="e#1117#1479#0" />
+                <element signature="e#1485#1736#0" />
+                <element signature="e#1742#1993#0" />
+                <element signature="e#1999#2210#0" />
+                <element signature="e#2446#2692#0" />
+                <element signature="e#2698#2904#0" />
+                <element signature="e#2910#3160#0" />
+                <element signature="e#3570#4183#0" />
+                <element signature="e#4189#4586#0" />
+                <element signature="e#4592#4910#0" />
+                <element signature="e#7384#7539#0" />
+                <element signature="e#9270#9523#0" />
+                <element signature="e#9529#10733#0" />
+                <element signature="e#10739#11054#0" />
+                <element signature="e#11060#11524#0" />
+                <element signature="e#11530#12560#0" />
+                <element signature="e#12566#12813#0" />
+                <element signature="e#12819#13338#0" />
               </folding>
             </state>
           </provider>
@@ -142,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/Model/WeaknessBuff.java" />
         <option value="$PROJECT_DIR$/src/Model/PowerBuff.java" />
         <option value="$PROJECT_DIR$/src/Model/Deck.java" />
-        <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Model/CustomGame.java" />
         <option value="$PROJECT_DIR$/src/Model/Battle.java" />
         <option value="$PROJECT_DIR$/Accounts.txt" />
@@ -151,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/Model/GraveYard.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
+        <option value="$PROJECT_DIR$/src/Model/Account.java" />
       </list>
     </option>
   </component>
@@ -217,7 +245,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561819646438" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561819702708" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -318,7 +346,7 @@
       <workItem from="1561656823622" duration="7275000" />
       <workItem from="1561733041992" duration="24150000" />
       <workItem from="1561807785281" duration="3140000" />
-      <workItem from="1561812561367" duration="6806000" />
+      <workItem from="1561812561367" duration="7219000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -359,11 +387,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249842000" />
+    <option name="totallyTimeSpent" value="250255000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19553073" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -375,7 +402,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2703583" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2703583" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -384,7 +411,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.29967427" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.29967427" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -675,18 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5211#5212#0" expanded="true" />
-            <element signature="e#5254#5255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/SaveAccounts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -759,8 +774,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="1753" column="52" selection-start-line="1753" selection-start-column="52" selection-end-line="1753" selection-end-column="52" />
+        <state relative-caret-position="126">
+          <caret line="1606" column="5" lean-forward="true" selection-start-line="1606" selection-start-column="5" selection-end-line="1606" selection-end-column="5" />
           <folding>
             <element signature="method#showIcon#0;class#Show#0" />
             <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
@@ -791,11 +806,36 @@
             <element signature="e#66688#66689#0" expanded="true" />
             <element signature="method#signUpPage#0;class#Show#0" />
             <element signature="method#popUpWindow#0;class#Show#0" />
-            <element signature="e#76163#76230#1" />
-            <element signature="e#76043#76044#0" expanded="true" />
-            <element signature="method#getPassword#0;class#Show#0" />
-            <element signature="e#76294#76295#0" expanded="true" />
-            <element signature="e#76403#76404#0" expanded="true" />
+            <element signature="method#loginPage#0;class#Show#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#916#1111#0" />
+            <element signature="e#1117#1479#0" />
+            <element signature="e#1485#1736#0" />
+            <element signature="e#1742#1993#0" />
+            <element signature="e#1999#2210#0" />
+            <element signature="e#2446#2692#0" />
+            <element signature="e#2698#2904#0" />
+            <element signature="e#2910#3160#0" />
+            <element signature="e#3570#4183#0" />
+            <element signature="e#4189#4586#0" />
+            <element signature="e#4592#4910#0" />
+            <element signature="e#7384#7539#0" />
+            <element signature="e#9270#9523#0" />
+            <element signature="e#9529#10733#0" />
+            <element signature="e#10739#11054#0" />
+            <element signature="e#11060#11524#0" />
+            <element signature="e#11530#12560#0" />
+            <element signature="e#12566#12813#0" />
+            <element signature="e#12819#13338#0" />
           </folding>
         </state>
       </provider>
