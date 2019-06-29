@@ -190,7 +190,7 @@ public class Show {
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
                                         mediaPlayer.stop();
-                                        shopMenu( account,root);////////////
+                                        shopMenu(account, root);////////////
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
@@ -1848,7 +1848,7 @@ public class Show {
         });
     }
 
-    private static void shopMenu( Account account,Group root) {
+    private static void shopMenu(Account account, Group root) {
 
         Image shop = new Image("file:shop.jpg");
         ImageView background = new ImageView();
@@ -1860,42 +1860,49 @@ public class Show {
         Label labelSearch = new Label("search");
         labelSearch.setFont(Font.font(20));
         labelSearch.setTextFill(Color.WHITE);
-        labelSearch.relocate(305 , 170);
+        labelSearch.relocate(305, 170);
 
         ImageView search = new ImageView();
         search.setImage(button);
-        search.relocate(250,160);
+        search.relocate(250, 160);
 
         Label sellLabel = new Label("sell");
-        sellLabel.relocate(620,170);
+        sellLabel.relocate(620, 170);
         sellLabel.setFont(Font.font(20));
         sellLabel.setTextFill(Color.WHITE);
 
         ImageView sell = new ImageView();
         sell.setImage(button);
-        sell.relocate(550,160);
+        sell.relocate(550, 160);
 
         ImageView buy = new ImageView();
         Label buyLabel = new Label("buy");
-        buyLabel.relocate(320,370);
+        buyLabel.relocate(320, 370);
         buyLabel.setTextFill(Color.WHITE);
         buyLabel.setFont(Font.font(20));
         buy.setImage(button);
-        buy.relocate(250,360);
+        buy.relocate(250, 360);
 
         Label showLabel = new Label("show collection");
-        showLabel.relocate(565,370);
+        showLabel.relocate(565, 370);
         showLabel.setFont(Font.font(20));
         showLabel.setTextFill(Color.WHITE);
 
         ImageView show = new ImageView();
         show.setImage(button);
-        show.relocate(550,360);
+        show.relocate(550, 360);
+
+        Image b = new Image("File:photos/pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                root.getChildren().addAll(background,search,show,sell,buy,buyLabel,showLabel,sellLabel,labelSearch);
+                root.getChildren().addAll(background, search, show, sell, buy, buyLabel, showLabel, sellLabel, labelSearch, back);
             }
         });
 
@@ -1911,7 +1918,13 @@ public class Show {
             public void handle(MouseEvent event) {
                 double mainX = event.getSceneX();
                 double mainY = event.getSceneY();
-                if (mainX >= 269 && mainX <=405 && mainY >=166 && mainY <= 210){
+
+                if (mainX > 918 && mainX < 968 && mainY > 530 && mainY < 580) { //back
+                    root.getChildren().clear();
+                    showMainMenuOfAccount(account, root);
+                    return;
+                }
+                if (mainX >= 269 && mainX <= 405 && mainY >= 166 && mainY <= 210) {  //search
 
                     TextField input = new TextField();
                     input.setPrefWidth(120);
@@ -1933,27 +1946,26 @@ public class Show {
                         @Override
                         public void run() {
                             root.getChildren().clear();
-                            root.getChildren().addAll(insideShop);
-                            root.getChildren().addAll(button,label,input);
+                            root.getChildren().addAll(button, label, input, insideShop, back);
                         }
                     });
                     button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            if (account.getCollection().search(input.getText()) != -1){
+                            if (account.getCollection().search(input.getText()) != -1) {
                                 Label answer = new Label("card exist in collection");
                                 answer.setFont(Font.font(25));
-                                answer.relocate(600,196);
+                                answer.relocate(600, 196);
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
                                         root.getChildren().addAll(answer);
                                     }
                                 });
-                            }else {
+                            } else {
                                 Label answer = new Label("Not Found!");
                                 answer.setFont(Font.font(25));
-                                answer.relocate(600,196);
+                                answer.relocate(600, 196);
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
@@ -1964,8 +1976,6 @@ public class Show {
 
                         }
                     });
-
-
 
                     TextField input2 = new TextField();
                     input2.setPrefWidth(120);
@@ -1987,27 +1997,27 @@ public class Show {
                         @Override
                         public void run() {
 
-                            root.getChildren().addAll(button2,label2,input2);
+                            root.getChildren().addAll(button2, label2, input2);
                         }
                     });
                     button2.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            if (Shop.searchByName(input2.getText()) != -1){
+                            if (Shop.searchByName(input2.getText()) != -1) {
                                 Label answer = new Label("card exist in collection");
                                 answer.setFont(Font.font(25));
                                 answer.setTextFill(Color.WHITE);
-                                answer.relocate(600,396);
+                                answer.relocate(600, 396);
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
                                         root.getChildren().addAll(answer);
                                     }
                                 });
-                            }else {
+                            } else {
                                 Label answer = new Label("Not Found!");
                                 answer.setFont(Font.font(25));
-                                answer.relocate(600,396);
+                                answer.relocate(600, 396);
                                 answer.setTextFill(Color.WHITE);
                                 Platform.runLater(new Runnable() {
                                     @Override
@@ -2016,17 +2026,22 @@ public class Show {
                                     }
                                 });
                             }
-
                         }
                     });
-
-                }else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207){
+                    root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double x = event.getX(), y = event.getY();
+                            if (x > 918 && x < 968 && y > 530 && y < 580) { //back
+                                root.getChildren().clear();
+                                shopMenu(account, root);
+                                return;
+                            }
+                        }
+                    });
+                } else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207) { // sell
                     root.getChildren().clear();
-                    root.getChildren().addAll(insideShop);
-
-
-
-
+                    root.getChildren().addAll(insideShop, back);
 
                     TextField input = new TextField();
                     input.setPrefWidth(120);
@@ -2039,6 +2054,7 @@ public class Show {
                     label.setTextFill(Color.LIGHTPINK);
                     label.setPrefHeight(60);
                     label.setText("give id to sell card");
+
                     Button button = new Button();
                     button.setText("sell");
                     button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
@@ -2047,23 +2063,31 @@ public class Show {
                         @Override
                         public void run() {
                             root.getChildren().clear();
-                            root.getChildren().addAll(insideShop);
-                            root.getChildren().addAll(button,label,input);
+                            root.getChildren().addAll(button, label, input, insideShop, back);
                         }
                     });
 
                     button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            Shop.sell(input.getText(), account,root);
-
+                            Shop.sell(input.getText(), account, root);
                         }
                     });
-
-                }else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409){
+                    root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double x = event.getX(), y = event.getY();
+                            if (x > 918 && x < 968 && y > 530 && y < 580) { //back
+                                root.getChildren().clear();
+                                shopMenu(account, root);
+                                return;
+                            }
+                        }
+                    });
+                } else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409) { //buy
 
                     root.getChildren().clear();
-                    root.getChildren().addAll(insideShop);
+                    root.getChildren().addAll(insideShop, back);
 
                     Image hero = new Image("file:heroCard.PNG");
                     Image minion = new Image("file:minionCard.PNG");
@@ -2076,19 +2100,20 @@ public class Show {
 
                     ImageView im1 = new ImageView();
                     im1.setImage(item);
-                    im1.relocate(125,200);
+                    im1.relocate(125, 200);
                     im1.setFitWidth(150);
                     im1.setFitHeight(200);
-                    itemLabel.relocate(170,450);
+                    itemLabel.relocate(170, 450);
                     itemLabel.setTextFill(Color.YELLOW);
                     itemLabel.setFont(Font.font(25));
 
                     ImageView im2 = new ImageView();
                     im2.setFitHeight(200);
                     im2.setFitWidth(150);
-                    im2.relocate(325,200);
+                    im2.relocate(325, 200);
                     im2.setImage(spell);
-                    spellLabel.relocate(370,450);
+
+                    spellLabel.relocate(370, 450);
                     spellLabel.setFont(Font.font(25));
                     spellLabel.setTextFill(Color.YELLOW);
 
@@ -2096,25 +2121,26 @@ public class Show {
                     im3.setFitWidth(150);
                     im3.setFitHeight(200);
                     im3.setImage(hero);
-                    im3.relocate(525,200);
+                    im3.relocate(525, 200);
+
                     heroLabel.setFont(Font.font(25));
-                    heroLabel.relocate(570,450);
+                    heroLabel.relocate(570, 450);
                     heroLabel.setTextFill(Color.YELLOW);
 
                     ImageView im4 = new ImageView();
                     im4.setImage(minion);
-                    im4.relocate(725,200);
+                    im4.relocate(725, 200);
                     im4.setFitHeight(200);
                     im4.setFitWidth(150);
 
-                    minionLabel.relocate(763,450);
+                    minionLabel.relocate(763, 450);
                     minionLabel.setTextFill(Color.YELLOW);
                     minionLabel.setFont(Font.font(25));
 
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            root.getChildren().addAll(im1,im2,im3,im4,spellLabel,minionLabel,heroLabel,itemLabel);
+                            root.getChildren().addAll(im1, im2, im3, im4, spellLabel, minionLabel, heroLabel, itemLabel);
                         }
                     });
 
@@ -2124,23 +2150,29 @@ public class Show {
                         public void handle(MouseEvent event) {
                             double x = event.getSceneX();
                             double y = event.getSceneY();
-                            if (x >= 125 && x <= 275 && y >= 200 && y <= 400){
+
+                            if (x > 918 && x < 968 && y > 530 && y < 580) { //back
+                                root.getChildren().clear();
+                                shopMenu(account, root);
+                                return;
+                            }
+                            if (x >= 125 && x <= 275 && y >= 200 && y <= 400) {
 
                                 MakeItems.make();
                                 ImageView items[] = new ImageView[20];
                                 Label itemLabels[] = new Label[20];
 
-                                int X = 50 , Y = 100, num = 0;
+                                int X = 50, Y = 100, num = 0;
                                 for (int j = 0; j < 4; j++) {
                                     for (int i = 0; i < 5; i++) {
-                                        num = ((j*5)+i);
+                                        num = ((j * 5) + i);
                                         items[num] = new ImageView();
                                         itemLabels[num] = new Label(Item.getItems().get(num).getName());
                                         items[num].setImage(button);
                                         itemLabels[num].setFont(Font.font(20));
                                         itemLabels[num].setTextFill(Color.WHITE);
-                                        itemLabels[num].relocate(X+20,Y+10);
-                                        items[num].relocate(X,Y);
+                                        itemLabels[num].relocate(X + 20, Y + 10);
+                                        items[num].relocate(X, Y);
                                         X += 175;
                                     }
                                     X = 50;
@@ -2151,12 +2183,11 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop);
+                                        root.getChildren().addAll(insideShop, back);
                                         root.getChildren().addAll(items);
                                         root.getChildren().addAll(itemLabels);
                                     }
                                 });
-
 
                                 root.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -2164,28 +2195,27 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
-                                        int xx = ((int)xminion-50)/175;
-                                        int yy = ((int)yminion-100)/100;
-                                        int num = (yy*5) + xx ;
-                                        Shop.buy(itemLabels[num].getText(),account,items,itemLabels,num,root);
+                                        int xx = ((int) xminion - 50) / 175;
+                                        int yy = ((int) yminion - 100) / 100;
+                                        int num = (yy * 5) + xx;
+                                        Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root);
                                     }
                                 });
-
-                            }else if (x >= 325 && x <= 475 && y >= 200 && y <= 400){
+                            } else if (x >= 325 && x <= 475 && y >= 200 && y <= 400) {
                                 MakeSpell.make();
                                 ImageView spells[] = new ImageView[20];
                                 Label spellLabels[] = new Label[20];
-                                int X = 50 , Y = 80, num = 0;
+                                int X = 50, Y = 80, num = 0;
                                 for (int j = 0; j < 4; j++) {
                                     for (int i = 0; i < 5; i++) {
-                                        num = ((j*5)+i);
+                                        num = ((j * 5) + i);
                                         spells[num] = new ImageView();
                                         spellLabels[num] = new Label(Spell.getSpells().get(num).getName());
                                         spells[num].setImage(button);
                                         spellLabels[num].setFont(Font.font(20));
                                         spellLabels[num].setTextFill(Color.WHITE);
-                                        spellLabels[num].relocate(X+20,Y+10);
-                                        spells[num].relocate(X,Y);
+                                        spellLabels[num].relocate(X + 20, Y + 10);
+                                        spells[num].relocate(X, Y);
                                         X += 175;
                                     }
                                     X = 50;
@@ -2207,27 +2237,27 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
-                                        int xx = ((int)xminion-50)/175;
-                                        int yy = ((int)yminion-80)/100;
-                                        int num = (yy*5) + xx ;
-                                        Shop.buy(spellLabels[num].getText(),account,spells,spellLabels,num,root);
+                                        int xx = ((int) xminion - 50) / 175;
+                                        int yy = ((int) yminion - 80) / 100;
+                                        int num = (yy * 5) + xx;
+                                        Shop.buy(spellLabels[num].getText(), account, spells, spellLabels, num, root);
                                     }
                                 });
-                            }else if (x >= 525 && x <= 675 && y >= 200 && y <= 400){
+                            } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
                                 MakeHero.make();
                                 ImageView hero[] = new ImageView[10];
                                 Label heroLabels[] = new Label[10];
-                                int X = 50 , Y = 200, num = 0;
+                                int X = 50, Y = 200, num = 0;
                                 for (int j = 0; j < 2; j++) {
                                     for (int i = 0; i < 5; i++) {
-                                        num = ((j*5)+i);
+                                        num = ((j * 5) + i);
                                         hero[num] = new ImageView();
                                         heroLabels[num] = new Label(Hero.getHeroes().get(num).getName());
                                         hero[num].setImage(button);
                                         heroLabels[num].setFont(Font.font(20));
                                         heroLabels[num].setTextFill(Color.WHITE);
-                                        heroLabels[num].relocate(X+20,Y+10);
-                                        hero[num].relocate(X,Y);
+                                        heroLabels[num].relocate(X + 20, Y + 10);
+                                        hero[num].relocate(X, Y);
                                         X += 175;
                                     }
                                     X = 50;
@@ -2249,27 +2279,27 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
-                                        int xx = ((int)xminion-50)/175;
-                                        int yy = ((int)yminion-200)/100;
-                                        int num = (yy*5) + xx ;
-                                        Shop.buy(heroLabels[num].getText(),account,hero,heroLabels,num,root);
+                                        int xx = ((int) xminion - 50) / 175;
+                                        int yy = ((int) yminion - 200) / 100;
+                                        int num = (yy * 5) + xx;
+                                        Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root);
                                     }
                                 });
-                            }else if (x >= 725 && x <= 875 && y >= 200 && y<= 400){
+                            } else if (x >= 725 && x <= 875 && y >= 200 && y <= 400) {
                                 MakeMinions.make();
                                 ImageView minions[] = new ImageView[40];
                                 Label minionLabels[] = new Label[40];
-                                int X = 50 , Y = 50, num = 0;
+                                int X = 50, Y = 50, num = 0;
                                 for (int j = 0; j < 8; j++) {
                                     for (int i = 0; i < 5; i++) {
-                                        num = ((j*5)+i);
+                                        num = ((j * 5) + i);
                                         minions[num] = new ImageView();
                                         minionLabels[num] = new Label(Minion.getMinions().get(num).getName());
                                         minions[num].setImage(button);
                                         minionLabels[num].setFont(Font.font(20));
                                         minionLabels[num].setTextFill(Color.WHITE);
-                                        minionLabels[num].relocate(X+20,Y+10);
-                                        minions[num].relocate(X,Y);
+                                        minionLabels[num].relocate(X + 20, Y + 10);
+                                        minions[num].relocate(X, Y);
                                         X += 175;
                                     }
                                     X = 50;
@@ -2289,54 +2319,23 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
-                                        int xx = ((int)xminion-50)/175;
-                                        int yy = ((int)yminion-50)/60;
-                                        int num = (yy*5) + xx ;
+                                        int xx = ((int) xminion - 50) / 175;
+                                        int yy = ((int) yminion - 50) / 60;
+                                        int num = (yy * 5) + xx;
 
-                                        Shop.buy(minionLabels[num].getText(),account,minions,minionLabels,num,root);
+                                        Shop.buy(minionLabels[num].getText(), account, minions, minionLabels, num, root);
                                     }
                                 });
                             }
                         }
                     });
-
-                }else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406){
+                } else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406) { // collection menu
                     root.getChildren().clear();
                     showCollectionMenu(root, account);
+                    return;
                 }
             }
         });
     }
 
-//    private static void shopMenu(Scanner scanner, Account account) {
-//        String command = scanner.nextLine().trim();
-//        String[] partsOfCommand = command.split("\\s+");
-//        if (command.equals("show")) {
-//            Shop.showAllCardsAndItems();
-//        } else if (command.equals("exit") || command.equals("Exit")) {
-//            return;
-//        } else if (partsOfCommand[0].equals("show") && partsOfCommand[1].equals("collection")) {
-//            Show.showCollection(account);
-//        } else if (partsOfCommand[0].equals("search")) {
-//            if (partsOfCommand[1].equals("collection")) {
-//                if (account.getCollection().search(partsOfCommand[2]) != -1)
-//                    System.out.println(account.getCollection().search(partsOfCommand[2]));
-//                else
-//                    System.out.println("Not Found!");
-//            } else {
-//                if (Shop.searchByName(partsOfCommand[1]) != -1)
-//                    System.out.println("id = " + Shop.searchByName(partsOfCommand[1]));
-//                else
-//                    System.out.println("Not Found!");
-//            }
-//        } else if (partsOfCommand[0].equals("buy")) {
-//            Shop.buy(partsOfCommand[1], account);
-//        } else if (partsOfCommand[0].equals("sell")) {
-//            Shop.sell(Integer.parseInt(partsOfCommand[1]), account);
-//        } else if (partsOfCommand[0].equals("help") || partsOfCommand[0].equals("Help")) {
-//            System.out.println("-show\n-show collection\n-search [item name | card name]\n-search collection [item name |" +
-//                    " card name]\n-buy [card name | item name]\n-sell [card id | item id]\n-exit");
-//        }
-//        shopMenu(scanner, account);
-//    }
 }
