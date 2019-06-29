@@ -1296,7 +1296,7 @@ public class Battle {
                             player.setMana(9);
                         }
                     }
-//                    Platform.requestNextPulse();
+                    Platform.requestNextPulse();
 
                     singlePlayerTurn();
 
