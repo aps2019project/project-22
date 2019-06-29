@@ -1347,8 +1347,26 @@ public class Show {
 
         Label label4 = new Label("  Save  ");
         label4.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
-        label4.relocate(198, 310);
+        label4.relocate(198, 312);
         label4.setTextFill(Color.WHITESMOKE);
+
+        Image i5 = new Image("file:photos/grayButton.png");
+        ImageView buttonImage5 = new ImageView();
+        buttonImage5.setImage(i5);
+        buttonImage5.relocate(154, 340);
+        buttonImage5.setFitWidth(146);
+        buttonImage5.setFitHeight(45);
+
+        Label label5 = new Label("Grave Yard");
+        label5.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label5.relocate(187, 352);
+        label5.setTextFill(Color.WHITESMOKE);
+
+        ImageView icon = new ImageView();
+        icon.setImage(new Image("file:photos/graveIcon.png"));
+        icon.relocate(113, 340);
+        icon.setFitWidth(55);
+        icon.setFitHeight(55);
 
         Image i = new Image("file:photos/greenButton.png");
         ImageView buttonImage = new ImageView();
@@ -1367,7 +1385,7 @@ public class Show {
                 new Runnable() {
                     public void run() {
                         root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2, label2,
-                                buttonImage3, label3, buttonImage4, label4, exitButton);
+                                buttonImage3, label3, buttonImage4, label4, buttonImage5, label5, icon, exitButton);
                     }
                 }
         );
@@ -1378,6 +1396,7 @@ public class Show {
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
+                System.out.println(x + "\t\t" + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
@@ -1399,6 +1418,11 @@ public class Show {
                                     }
                                     if (x > 174 && x < 285 && y < 333 && y > 308) {
                                         SaveAccounts.save();
+                                        popUpWindow("Saved ;)", 280, 120);
+                                    }
+                                    if (x > 173 && x < 281 && y < 379 && y > 348) {
+                                        graveyadPage(root);
+                                        return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     root.getChildren().clear();
@@ -1409,6 +1433,99 @@ public class Show {
             }
         });
     }
+
+    private static void graveyadPage(Group root) {
+        Image image = new Image("File:photos/bg5.jpg");
+        ImageView board = new ImageView();
+        board.setImage(image);
+        board.setFitHeight(600);
+        board.setFitWidth(1000);
+
+        Text sceneTitle = new Text("GRAVEYARD");
+        sceneTitle.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+        sceneTitle.setFill(Color.MEDIUMSLATEBLUE);
+        sceneTitle.relocate(8, 10);
+
+//        GraveYard.addSpell(new Spell(54, "test", 90, 78, "f", "p"));
+
+        Line underline = new Line(5, 38, 150, 38);
+        underline.setFill(Color.BLACK);
+
+        Image b = new Image("File:photos/backInBoard.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(920, 515);
+        back.setFitWidth(70);
+        back.setFitHeight(70);
+
+        Platform.runLater(
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().addAll(board, sceneTitle, back, underline);
+                        double y = 150;
+                        y = printSpells(y, root);
+                        y = printHeroes(y, root);
+                        printMinions(y, root);
+                    }
+                }
+        );
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                if (x > 931 && x < 985 && y > 524 && y < 577) {
+                    root.getChildren().clear();
+                    showMainMenu(root);
+                }
+            }
+        });
+    }
+
+    private static void printMinions(double y, Group root) {
+        for (int i = 0; i < GraveYard.getMinions().size(); i++) {
+            Label username = new Label();
+            username.setText("Minion Name: " + GraveYard.getMinions().get(i).getName() +
+                    "\tID: " + GraveYard.getMinions().get(i).getId() + "\tPrice: " + GraveYard.getMinions().get(i).getPrice());
+            username.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+            username.setTextFill(Color.BLACK);
+            username.relocate(250, y + 30 * i);
+            y = username.getTranslateY();
+
+            root.getChildren().addAll(username);
+        }
+    }
+
+    private static double printSpells(double y, Group root) {
+        for (int i = 0; i < GraveYard.getSpells().size(); i++) {
+            Label username = new Label();
+            username.setText("Spell Name: " + GraveYard.getSpells().get(i).getName() +
+                    "\tID: " + GraveYard.getSpells().get(i).getId() + "\tPrice: " + GraveYard.getSpells().get(i).getPrice());
+            username.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+            username.setTextFill(Color.BLACK);
+            username.relocate(250, y + 30 * i);
+            y = username.getTranslateY();
+
+            root.getChildren().addAll(username);
+        }
+        return y;
+    }
+
+    private static double printHeroes(double y, Group root) {
+        for (int i = 0; i < GraveYard.getHeroes().size(); i++) {
+            Label username = new Label();
+            username.setText("Hero Name: " + GraveYard.getHeroes().get(i).getName() +
+                    "\tID: " + GraveYard.getHeroes().get(i).getId() + "\tPrice: " + GraveYard.getHeroes().get(i).getPrice());
+            username.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+            username.setTextFill(Color.BLACK);
+            username.relocate(250, 150 + 30 * i);
+            y = username.getTranslateY();
+
+            root.getChildren().addAll(username);
+        }
+        return y;
+    }
+
 
     private static void showExitPage(Group root) {
         Image image = new Image("File:photos/exit.jpg");
