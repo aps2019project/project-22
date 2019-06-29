@@ -17,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -26,6 +28,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -154,6 +157,10 @@ public class Show {
         buttonImage1.setFitWidth(80);
         buttonImage1.setFitHeight(80);
 
+        String uriString = new File("musics/menuOfAccountSong.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -165,12 +172,10 @@ public class Show {
         );
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            // save
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX();
                 double y = event.getY();
-                System.out.println(x + "\t" + y);
                 Platform.runLater(
                         new Runnable() {
                             public void run() {
@@ -178,28 +183,32 @@ public class Show {
                                     root.getChildren().clear();
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         showCollectionMenu(root, account);
                                         return;
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         shopMenu(Main.scanner, account);////////////
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         Battle battle = new Battle();
                                         showBattleMenu(account, battle, root, "Choose Opponent");
                                         return;
                                     }
                                     if (x < 300 && y > 298 && y < 330) {
                                         SaveAccounts.save();
-                                        root.getChildren().clear();
-                                        showMainMenu(root);
+                                        popUpWindow("SAVED",280,120);
+                                        showMainMenuOfAccount(account, root);
                                         return;
                                     }
                                     if (x > 169 && x < 289 && y >= 350 && y < 382) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         showCreateCustomCard(root);
                                         return;
                                     }
@@ -220,6 +229,11 @@ public class Show {
     }
 
     private static void showCollectionMenu(Group root, Account account) {
+
+        String uriString = new File("musics/board.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Image image = new Image("File:photos/bg4.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -597,6 +611,8 @@ public class Show {
                     }
                 }
                 if (x < 65 && x > 10 && y < 590 && y > 537) {
+                    root.getChildren().clear();
+                    mediaPlayer.stop();
                     showMainMenuOfAccount(account, root);
                     return;
                 }
@@ -809,6 +825,10 @@ public class Show {
         imageView.setFitWidth(1000);
         root.getChildren().add(imageView);
 
+        String uriString = new File("musics/chooseOpponent.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         for (int i = 0; i < Account.getAccounts().size(); i++) {
             Label username = new Label();
             username.setText(i + 1 + ".\tUsername: " + Account.getAccounts().get(i).getUserName());
@@ -843,6 +863,7 @@ public class Show {
                 Pattern pattern = Pattern.compile("\\d+");
                 Matcher matcher = pattern.matcher(numberTextField.getText());
                 if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
+                   mediaPlayer.stop();
                     showBattleMenu(account, battle, root, "Please Enter A Number.");
                     return;
                 }
@@ -862,6 +883,7 @@ public class Show {
                 player2.setAccount(Account.getAccounts().get(opponent));
                 player1.setAccount(account);
                 root.getChildren().clear();
+                mediaPlayer.stop();
                 selectGamePage(root, account, battle, player1, player2);
             }
         });
@@ -871,6 +893,10 @@ public class Show {
             , Group root, Player player1, Player player2,
                                  int levelOfGame) //akharesh ?!
     {
+
+        String uriString = new File("musics/battle.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
 
         int singleOrMulti = singleMulti;
         int storyOrCustom = storyCustom;
@@ -1108,6 +1134,10 @@ public class Show {
         text2.setTextFill(Color.WHITESMOKE);
         text2.relocate(665, 410);
 
+        String uriString = new File("musics/chooseOpponent.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1125,10 +1155,12 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     selectMode(root, account, battle, player1, player2, 1);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     selectMode(root, account, battle, player1, player2, 2);
                                 }
                             }
@@ -1170,6 +1202,10 @@ public class Show {
         text2.setTextFill(Color.WHITESMOKE);
         text2.relocate(665, 410);
 
+        String uriString = new File("musics/chooseOpponent.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1187,10 +1223,12 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     selectLevel(root, account, battle, player1, player2, singleMulti, 1);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     selectLevel(root, account, battle, player1, player2, singleMulti, 2);
                                 }
                             }
@@ -1255,6 +1293,10 @@ public class Show {
         text3.setTextFill(Color.WHITESMOKE);
         text3.relocate(665, 410);
 
+        String uriString = new File("musics/graveyard.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1272,20 +1314,19 @@ public class Show {
                             public void run() {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 1);
                                 }
                                 if (x > 440 && x < 560 && y > 403 && y < 439) {
                                     root.getChildren().clear();
-                                    root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 2);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 3);
-
                                 }
-
                             }
                         }
                 );
@@ -1381,6 +1422,10 @@ public class Show {
         buttonImage1.setFitWidth(80);
         buttonImage1.setFitHeight(80);
 
+        String uriString = new File("musics/mainMenuSong.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1402,16 +1447,19 @@ public class Show {
                                 if (x > 154) {
                                     if (x < 296 && y > 161 && y < 198) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         signUpPage(root);
                                         return;
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         loginPage(root);
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         boardPage(root);
                                         return;
                                     }
@@ -1420,6 +1468,8 @@ public class Show {
                                         popUpWindow("Saved ;)", 280, 120);
                                     }
                                     if (x > 173 && x < 281 && y < 379 && y > 348) {
+                                        root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         graveyardPage(root);
                                         return;
                                     }
@@ -1457,6 +1507,10 @@ public class Show {
         back.setFitWidth(70);
         back.setFitHeight(70);
 
+        String uriString = new File("musics/graveyard.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1475,6 +1529,7 @@ public class Show {
                 double x = event.getX(), y = event.getY();
                 if (x > 931 && x < 985 && y > 524 && y < 577) {
                     root.getChildren().clear();
+                    mediaPlayer.stop();
                     showMainMenu(root);
                 }
             }
@@ -1569,6 +1624,10 @@ public class Show {
         back.setFitWidth(70);
         back.setFitHeight(70);
 
+        String uriString = new File("musics/board.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1600,6 +1659,7 @@ public class Show {
                 double x = event.getX(), y = event.getY();
                 if (x > 931 && x < 985 && y > 524 && y < 577) {
                     root.getChildren().clear();
+                    mediaPlayer.stop();
                     showMainMenu(root);
                 }
             }
@@ -1665,6 +1725,10 @@ public class Show {
         command.setTextFill(Color.BLACK);
         command.relocate(218, 400);
 
+        String uriString = new File("musics/signUp.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1687,11 +1751,15 @@ public class Show {
                                     command.setText(cm);
                                     if (cm.contains("welcome")) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         showMainMenu(root);
                                     }
                                 }
-                                if (x > 918 && x < 968 && y > 530 && y < 580)
+                                if (x > 918 && x < 968 && y > 530 && y < 580) {
+                                    root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     showMainMenu(root);
+                                }
                             }
                         });
             }
@@ -1754,6 +1822,10 @@ public class Show {
         command.setTextFill(Color.rgb(200, 255, 255));
         command.relocate(377, 240);
 
+        String uriString = new File("musics/login.mp3").toURI().toString();
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
+        mediaPlayer.play();
+
         Platform.runLater(
                 new Runnable() {
                     public void run() {
@@ -1776,18 +1848,21 @@ public class Show {
                                             command.setText(cm);
                                             if (cm.contains("welcome")) {
                                                 root.getChildren().clear();
+                                                mediaPlayer.stop();
                                                 showMainMenuOfAccount(Account.getAccountActivated(), root);
                                                 return;
                                             }
                                         }
                                         if (y > 450 && y < 489) {
                                             root.getChildren().clear();
+                                            mediaPlayer.stop();
                                             signUpPage(root);
                                             return;
                                         }
                                     }
                                     if (x > 870 && x < 980 && y > 555 && y < 596) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         showMainMenu(root);
                                         return;
                                     }
