@@ -27,6 +27,9 @@ public class Hero extends Card {
         specialPowerActivated = false;
     }
 
+    public static ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
 
     public void timer(Hero hero) {
         if (specialPowerActivated) {
