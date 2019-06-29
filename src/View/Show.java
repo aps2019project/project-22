@@ -214,11 +214,13 @@ public class Show {
                                     }
                                     if (x > 169 && x < 284 && y > 390 && y < 424) {
                                         root.getChildren().clear();
+                                        mediaPlayer.stop();
                                         showMainMenu(root);
                                         return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
                                     root.getChildren().clear();
+                                    mediaPlayer.stop();
                                     showExitPage(root);
                                     return;
                                 }
