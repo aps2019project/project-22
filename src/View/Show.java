@@ -1421,7 +1421,7 @@ public class Show {
                                         popUpWindow("Saved ;)", 280, 120);
                                     }
                                     if (x > 173 && x < 281 && y < 379 && y > 348) {
-                                        graveyadPage(root);
+                                        graveyardPage(root);
                                         return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
@@ -1434,7 +1434,7 @@ public class Show {
         });
     }
 
-    private static void graveyadPage(Group root) {
+    private static void graveyardPage(Group root) {
         Image image = new Image("File:photos/bg5.jpg");
         ImageView board = new ImageView();
         board.setImage(image);
@@ -1451,7 +1451,7 @@ public class Show {
         Line underline = new Line(5, 38, 150, 38);
         underline.setFill(Color.BLACK);
 
-        Image b = new Image("File:photos/backInBoard.png");
+        Image b = new Image("File:photos/black0.png");
         ImageView back = new ImageView();
         back.setImage(b);
         back.relocate(920, 515);

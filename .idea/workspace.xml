@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="1434" column="5" selection-start-line="1434" selection-start-column="5" selection-end-line="1434" selection-end-column="5" />
+            <state relative-caret-position="189">
+              <caret line="1294" lean-forward="true" selection-start-line="1294" selection-end-line="1294" />
               <folding>
                 <element signature="method#showIcon#0;class#Show#0" />
                 <element signature="method#showCollectionMenu#0;class#Show#0" />
@@ -62,6 +62,15 @@
                 <element signature="e#76277#76278#0" expanded="true" />
                 <element signature="e#76386#76387#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="116" column="81" selection-start-line="116" selection-start-column="81" selection-end-line="116" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -130,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/Model/Player.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeItems.java" />
         <option value="$PROJECT_DIR$/src/Model/MakeHero.java" />
-        <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
         <option value="$PROJECT_DIR$/src/Model/Collection.java" />
         <option value="$PROJECT_DIR$/src/Model/Buff.java" />
         <option value="$PROJECT_DIR$/src/Model/CustomCard.java" />
@@ -145,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
         <option value="$PROJECT_DIR$/src/Model/GraveYard.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
+        <option value="$PROJECT_DIR$/src/Model/MakeMinions.java" />
       </list>
     </option>
   </component>
@@ -195,6 +204,12 @@
               <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+            <path>
+              <item name="project-22" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="phase1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -205,7 +220,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561818154298" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561818448797" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -306,7 +321,7 @@
       <workItem from="1561656823622" duration="7275000" />
       <workItem from="1561733041992" duration="24150000" />
       <workItem from="1561807785281" duration="3140000" />
-      <workItem from="1561812561367" duration="5231000" />
+      <workItem from="1561812561367" duration="5484000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -347,7 +362,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248267000" />
+    <option name="totallyTimeSpent" value="248520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -690,13 +705,6 @@
     <entry file="file://$PROJECT_DIR$/Accounts.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="47" column="28" lean-forward="true" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spellCard.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -746,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="1434" column="5" selection-start-line="1434" selection-start-column="5" selection-end-line="1434" selection-end-column="5" />
+        <state relative-caret-position="189">
+          <caret line="1294" lean-forward="true" selection-start-line="1294" selection-end-line="1294" />
           <folding>
             <element signature="method#showIcon#0;class#Show#0" />
             <element signature="method#showCollectionMenu#0;class#Show#0" />
@@ -780,6 +788,13 @@
             <element signature="e#76277#76278#0" expanded="true" />
             <element signature="e#76386#76387#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MakeMinions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="116" column="81" selection-start-line="116" selection-start-column="81" selection-end-line="116" selection-end-column="81" />
         </state>
       </provider>
     </entry>
