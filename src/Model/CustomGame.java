@@ -6,16 +6,17 @@ public class CustomGame extends Battle {
         mode = number;
     }
 
-    public void setCoustomGame(String string) {
+    public String setCoustomGame(String string) {
         String split[] = string.split(" ");
-        if (player1.getAccount().searchDeckByName(split[2]) == null) {
-            System.out.printf("Invalid Deck name");
+        if (player1.getAccount().searchDeckByName(split[ 0]) == null) {
+            return ("Invalid Deck name");
         } else
-            player1.setMainDeck(player1.getAccount().searchDeckByName(split[2]));
-        mode = Integer.parseInt(split[3]);
+            player1.setMainDeck(player1.getAccount().searchDeckByName(split[0]));
+        mode = Integer.parseInt(split[1]);
         if (mode == 3) {
-            howManyFlags = Integer.parseInt(split[4]);
+            howManyFlags = Integer.parseInt(split[2]);
         }
+        return "Successful.";
     }
 
 

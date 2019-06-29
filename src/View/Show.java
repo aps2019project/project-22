@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 
 public class Show {
 
-    public static void showMainMenuOfAccount( Account account, Group root) {
+    public static void showMainMenuOfAccount(Account account, Group root) {
 
         Image image = new Image("File:menu.jpg");
         ImageView menu = new ImageView();
@@ -161,7 +161,7 @@ public class Show {
                                     if (x < 300 && y > 298 && y < 330) {
                                         SaveAccounts.save();
                                         root.getChildren().clear();
-                                        showMainMenu( root);
+                                        showMainMenu(root);
                                         return;
                                     }
                                     if (x > 169 && x < 289 && y >= 350 && y < 382) {
@@ -171,7 +171,7 @@ public class Show {
                                     }
                                     if (x > 169 && x < 284 && y > 390 && y < 424) {
                                         root.getChildren().clear();
-                                        showMainMenu( root);
+                                        showMainMenu(root);
                                         return;
                                     }
                                 } else if (x > 26 && x < 108 && y > 507 && y < 589) {
@@ -563,7 +563,7 @@ public class Show {
                     }
                 }
                 if (x < 65 && x > 10 && y < 590 && y > 537) {
-                    showMainMenuOfAccount( account, root);
+                    showMainMenuOfAccount(account, root);
                     return;
                 }
             }
@@ -766,7 +766,7 @@ public class Show {
         return string;
     }
 
-    public static void showBattleMenu(Account account, Battle battle,  Group root, String command) {
+    public static void showBattleMenu(Account account, Battle battle, Group root, String command) {
 
         Image image = new Image("File:photos/opponents.jpg");
         ImageView imageView = new ImageView();
@@ -809,7 +809,7 @@ public class Show {
                 Pattern pattern = Pattern.compile("\\d+");
                 Matcher matcher = pattern.matcher(numberTextField.getText());
                 if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
-                    showBattleMenu(account, battle,  root, "Please Enter A Number.");
+                    showBattleMenu(account, battle, root, "Please Enter A Number.");
                     return;
                 }
                 int opponent = Integer.parseInt(numberTextField.getText());
@@ -1004,12 +1004,38 @@ public class Show {
             account.showAllDecks();
             int num = levelOfGame;
             ((CustomGame) battle).setMode(num);
-            System.out.println("there there albalu");
-//            String input = scanner.nextLine(); bayad biad esme deck bede!
-            String input = "deck name player1"; // avaz she!
-            ((CustomGame) battle).setCoustomGame(input);
+            getInputs(root, battle);
             battle.fight(account, root);
         }
+    }
+
+    private static void getInputs(Group root, Battle battle) {
+        TextField input = new TextField();
+        input.setPrefWidth(120);
+        input.setMaxHeight(40);
+        input.relocate(119, 410);
+
+        Label label = new Label();
+        label.relocate(119, 394);
+        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+        label.setTextFill(Color.LIGHTPINK);
+        label.setPrefHeight(60);
+        label.setText("Enter Deck Name | mode | number Of Flags");
+
+        Button button = new Button();
+        button.setText("Start Game");
+        button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+        button.relocate(138, 484);
+
+        root.getChildren().addAll(input, label, button);
+
+
+        button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                popUpWindow(((CustomGame) battle).setCoustomGame(input.getText()), 280, 120);
+            }
+        });
     }
 
     private static void selectGamePage(Group root, Account account, Battle battle, Player
@@ -1229,7 +1255,7 @@ public class Show {
         });
     }
 
-    public static void showMainMenu( Group root) {
+    public static void showMainMenu(Group root) {
 
         Image image = new Image("File:menu.jpg");
         ImageView menu = new ImageView();
@@ -1421,7 +1447,7 @@ public class Show {
                 double x = event.getX(), y = event.getY();
                 if (x > 931 && x < 985 && y > 524 && y < 577) {
                     root.getChildren().clear();
-                    showMainMenu( root);
+                    showMainMenu(root);
                 }
             }
         });
@@ -1508,11 +1534,11 @@ public class Show {
                                     command.setText(cm);
                                     if (cm.contains("welcome")) {
                                         root.getChildren().clear();
-                                        showMainMenu( root);
+                                        showMainMenu(root);
                                     }
                                 }
                                 if (x > 918 && x < 968 && y > 530 && y < 580)
-                                    showMainMenu( root);
+                                    showMainMenu(root);
                             }
                         });
             }
@@ -1596,7 +1622,7 @@ public class Show {
                                             String cm = Account.checking(userTextField.getText(), passwordField.getText());
                                             if (cm.contains("welcome")) {
                                                 root.getChildren().clear();
-                                                showMainMenuOfAccount( Account.getAccountActivated(), root);
+                                                showMainMenuOfAccount(Account.getAccountActivated(), root);
                                                 return;
                                             }
                                         }
@@ -1608,7 +1634,7 @@ public class Show {
                                     }
                                     if (x > 870 && x < 980 && y > 555 && y < 596) {
                                         root.getChildren().clear();
-                                        showMainMenu( root);
+                                        showMainMenu(root);
                                         return;
                                     }
                                 } catch (Exception name) {
