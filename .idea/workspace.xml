@@ -2,7 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6842a0c7-290f-4974-ab34-354498e30008" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Model/CustomGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CustomGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/Model/CustomGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/Model/CustomGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$13$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$20$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$7$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/phase1/View/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/phase1/View/Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Battle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Show.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,11 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/Show.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="1035" column="46" selection-start-line="1035" selection-start-column="46" selection-end-line="1035" selection-end-column="46" />
+            <state relative-caret-position="137">
+              <caret line="1036" column="21" selection-start-line="1036" selection-start-column="21" selection-end-line="1036" selection-end-column="21" />
               <folding>
                 <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
                 <element signature="method#showCollectionMenu#0;class#Show#0" />
@@ -42,8 +66,8 @@
                 <element signature="method#shopMenu#0;class#Show#0" />
                 <element signature="method#showCollection#0;class#Show#0" />
                 <element signature="method#showBattleMenu#0;class#Show#0" />
-                <element signature="e#45852#45853#0" expanded="true" />
-                <element signature="e#45927#45928#0" expanded="true" />
+                <element signature="e#38980#39202#1" />
+                <element signature="e#39568#41285#1" />
                 <element signature="method#selectGamePage#0;class#Show#0" />
                 <element signature="e#47421#47422#0" expanded="true" />
                 <element signature="e#47527#47528#0" expanded="true" />
@@ -67,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/CustomGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="99">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -80,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="137">
-              <caret line="1299" lean-forward="true" selection-start-line="1299" selection-end-line="1299" />
+              <caret line="1299" selection-start-line="1299" selection-end-line="1299" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,9 +243,9 @@
         <option value="$PROJECT_DIR$/src/Model/Deck.java" />
         <option value="$PROJECT_DIR$/src/Model/Account.java" />
         <option value="$PROJECT_DIR$/src/Presenter/Main.java" />
+        <option value="$PROJECT_DIR$/src/Model/CustomGame.java" />
         <option value="$PROJECT_DIR$/src/Model/Battle.java" />
         <option value="$PROJECT_DIR$/src/View/Show.java" />
-        <option value="$PROJECT_DIR$/src/Model/CustomGame.java" />
       </list>
     </option>
   </component>
@@ -282,7 +306,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561808799332" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561810228172" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/game2048ap" />
@@ -382,7 +406,7 @@
       <workItem from="1561638749586" duration="5465000" />
       <workItem from="1561656823622" duration="7275000" />
       <workItem from="1561733041992" duration="24150000" />
-      <workItem from="1561807785281" duration="1494000" />
+      <workItem from="1561807785281" duration="2336000" />
     </task>
     <task id="LOCAL-00001" summary="add Collection and cards and items">
       <created>1555953811796</created>
@@ -423,7 +447,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241390000" />
+    <option name="totallyTimeSpent" value="242232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -439,7 +463,7 @@
       <window_info id="simpleUML" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42833877" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42833877" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -448,7 +472,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.33224756" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" visible="true" weight="0.30130294" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49960095" weight="0.30130294" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50039905" side_tool="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3306189" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -510,13 +534,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/Flag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -821,20 +838,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
-          <caret line="1299" lean-forward="true" selection-start-line="1299" selection-end-line="1299" />
+          <caret line="1299" selection-start-line="1299" selection-end-line="1299" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/CustomGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Show.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="1035" column="46" selection-start-line="1035" selection-start-column="46" selection-end-line="1035" selection-end-column="46" />
+        <state relative-caret-position="137">
+          <caret line="1036" column="21" selection-start-line="1036" selection-start-column="21" selection-end-line="1036" selection-end-column="21" />
           <folding>
             <element signature="method#showMainMenuOfAccount#0;class#Show#0" />
             <element signature="method#showCollectionMenu#0;class#Show#0" />
@@ -844,8 +875,8 @@
             <element signature="method#shopMenu#0;class#Show#0" />
             <element signature="method#showCollection#0;class#Show#0" />
             <element signature="method#showBattleMenu#0;class#Show#0" />
-            <element signature="e#45852#45853#0" expanded="true" />
-            <element signature="e#45927#45928#0" expanded="true" />
+            <element signature="e#38980#39202#1" />
+            <element signature="e#39568#41285#1" />
             <element signature="method#selectGamePage#0;class#Show#0" />
             <element signature="e#47421#47422#0" expanded="true" />
             <element signature="e#47527#47528#0" expanded="true" />
@@ -865,13 +896,6 @@
             <element signature="method#loginPage#0;class#Show#0" />
             <element signature="method#getPassword#0;class#Show#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/CustomGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="26" />
         </state>
       </provider>
     </entry>

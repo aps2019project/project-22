@@ -1013,11 +1013,11 @@ public class Show {
         TextField input = new TextField();
         input.setPrefWidth(120);
         input.setMaxHeight(40);
-        input.relocate(119, 410);
+        input.relocate(5, 410);
 
         Label label = new Label();
-        label.relocate(119, 394);
-        label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+        label.relocate(5, 374);
+        label.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
         label.setTextFill(Color.LIGHTPINK);
         label.setPrefHeight(60);
         label.setText("Enter Deck Name | mode | number Of Flags");
@@ -1025,7 +1025,7 @@ public class Show {
         Button button = new Button();
         button.setText("Start Game");
         button.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
-        button.relocate(138, 484);
+        button.relocate(15, 484);
 
         root.getChildren().addAll(input, label, button);
 
@@ -1034,6 +1034,10 @@ public class Show {
             @Override
             public void handle(MouseEvent event) {
                 popUpWindow(((CustomGame) battle).setCoustomGame(input.getText()), 280, 120);
+                if (!((CustomGame) battle).setCoustomGame(input.getText()).equals("Successful."))
+                    getInputs(root, battle);
+                else
+                    root.getChildren().removeAll(input, label, button);
             }
         });
     }
