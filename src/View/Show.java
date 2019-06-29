@@ -202,7 +202,7 @@ public class Show {
                                     }
                                     if (x < 300 && y > 298 && y < 330) {
                                         SaveAccounts.save();
-                                        popUpWindow("SAVED",280,120);
+                                        popUpWindow("SAVED", 280, 120);
                                         showMainMenuOfAccount(account, root);
                                         return;
                                     }
@@ -863,7 +863,7 @@ public class Show {
                 Pattern pattern = Pattern.compile("\\d+");
                 Matcher matcher = pattern.matcher(numberTextField.getText());
                 if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
-                   mediaPlayer.stop();
+                    mediaPlayer.stop();
                     showBattleMenu(account, battle, root, "Please Enter A Number.");
                     return;
                 }
@@ -1635,32 +1635,35 @@ public class Show {
                     }
                 }
         );
+
         Account.sortAll();
-
-        for (int i = 0; i < Account.getAccounts().size(); i++) {
-            Label username = new Label();
-            username.setText(i + 1 + ".\tUsername: " + Account.getAccounts().get(i).getUserName());
-            username.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-            username.setTextFill(Color.DEEPPINK);
-            username.relocate(250, 150 + 40 * i);
-
-            Label wins = new Label();
-            wins.setText("Wins: " + Account.getAccounts().get(i).getWins());
-            wins.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
-            wins.setTextFill(Color.DEEPPINK);
-            wins.relocate(575, 150 + 40 * i);
-
-            root.getChildren().addAll(username, wins);
-        }
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 double x = event.getX(), y = event.getY();
+
+                for (int i = 0; i < Account.getAccounts().size(); i++) {
+                    Label username = new Label();
+                    username.setText(i + 1 + ".\tUsername: " + Account.getAccounts().get(i).getUserName());
+                    username.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+                    username.setTextFill(Color.DEEPPINK);
+                    username.relocate(250, 150 + 36 * i);
+
+                    Label wins = new Label();
+                    wins.setText("Wins: " + Account.getAccounts().get(i).getWins());
+                    wins.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+                    wins.setTextFill(Color.DEEPPINK);
+                    wins.relocate(575, 150 + 36 * i);
+
+                    root.getChildren().addAll(username, wins);
+                }
+
                 if (x > 931 && x < 985 && y > 524 && y < 577) {
                     root.getChildren().clear();
                     mediaPlayer.stop();
                     showMainMenu(root);
+                    return;
                 }
             }
         });
