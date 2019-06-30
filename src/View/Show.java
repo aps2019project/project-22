@@ -892,7 +892,6 @@ public class Show {
                 }
                 player1.setHero((Hero) Card.searchCardByID(68));
                 player1.addCardsInTheFile(Card.searchCardByID(68));
-                player1.addCardsInTheFile((Hero) Card.searchCardByID(68));
                 Deck deckPlayer2 = new Deck("level1");
                 deckPlayer2.setLevel1(deckPlayer2);
                 player2.setMainDeck(deckPlayer2);
@@ -967,7 +966,7 @@ public class Show {
                     }
                 }
                 player1.setHero((Hero) Card.searchCardByID(68));
-                player1.addCardsInTheFile(Card.searchCardByID(62));
+                player1.addCardsInTheFile(Card.searchCardByID(68));
                 Deck deckPlayer2 = new Deck("level3");
                 deckPlayer2.setLevel3(deckPlayer2);
                 player2.setMainDeck(deckPlayer2);
@@ -2039,7 +2038,8 @@ public class Show {
                             }
                         }
                     });
-                } else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207) { // sell
+                }
+                else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207) { // sell
                     root.getChildren().clear();
                     root.getChildren().addAll(insideShop, back);
 
@@ -2063,7 +2063,7 @@ public class Show {
                         @Override
                         public void run() {
                             root.getChildren().clear();
-                            root.getChildren().addAll(button, label, input, insideShop, back);
+                            root.getChildren().addAll(insideShop,button, label, input, back);
                         }
                     });
 
@@ -2079,12 +2079,18 @@ public class Show {
                             double x = event.getX(), y = event.getY();
                             if (x > 918 && x < 968 && y > 530 && y < 580) { //back
                                 root.getChildren().clear();
+                                Show.shopMenu(account, root);
+                                return;
+                            }
+                            if (x > 918 && x < 968 && y > 530 && y < 580) { //back
+                                root.getChildren().clear();
                                 shopMenu(account, root);
                                 return;
                             }
                         }
                     });
-                } else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409) { //buy
+                }
+                else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409) { //buy
 
                     root.getChildren().clear();
                     root.getChildren().addAll(insideShop, back);
@@ -2195,6 +2201,11 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
+                                        if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
+                                            root.getChildren().clear();
+                                            Show.shopMenu(account, root);
+                                            return;
+                                        }
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 100) / 100;
                                         int num = (yy * 5) + xx;
@@ -2225,7 +2236,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop);
+                                        root.getChildren().addAll(insideShop,back);
                                         root.getChildren().addAll(spells);
                                         root.getChildren().addAll(spellLabels);
                                     }
@@ -2237,6 +2248,11 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
+                                        if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
+                                            root.getChildren().clear();
+                                            Show.shopMenu(account, root);
+                                            return;
+                                        }
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 80) / 100;
                                         int num = (yy * 5) + xx;
@@ -2267,7 +2283,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop);
+                                        root.getChildren().addAll(insideShop,back);
                                         root.getChildren().addAll(hero);
                                         root.getChildren().addAll(heroLabels);
                                     }
@@ -2279,6 +2295,11 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
+                                        if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
+                                            root.getChildren().clear();
+                                            Show.shopMenu(account, root);
+                                            return;
+                                        }
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 200) / 100;
                                         int num = (yy * 5) + xx;
@@ -2309,7 +2330,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop);
+                                        root.getChildren().addAll(insideShop,back);
                                         root.getChildren().addAll(minions);
                                         root.getChildren().addAll(minionLabels);
                                     }
@@ -2319,6 +2340,11 @@ public class Show {
                                     public void handle(MouseEvent event) {
                                         double xminion = event.getSceneX();
                                         double yminion = event.getSceneY();
+                                        if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
+                                            root.getChildren().clear();
+                                            Show.shopMenu(account, root);
+                                            return;
+                                        }
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 50) / 60;
                                         int num = (yy * 5) + xx;
@@ -2329,7 +2355,8 @@ public class Show {
                             }
                         }
                     });
-                } else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406) { // collection menu
+                }
+                else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406) { // collection menu
                     root.getChildren().clear();
                     showCollectionMenu(root, account);
                     return;
