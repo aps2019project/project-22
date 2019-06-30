@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Shop {
     private static int newId = 90;
+    private static ArrayList<CustomCard> customCards = new ArrayList<>();
     private static ArrayList<Hero> heroes = new ArrayList<>();
     private static ArrayList<Spell> spells = new ArrayList<>();
     private static ArrayList<Minion> minions = new ArrayList<>();
@@ -24,13 +25,13 @@ public class Shop {
         MakeItems.make();
     }
 
-    public static void sell(String idS, Account account,Group root) {
+    public static void sell(String idS, Account account, Group root) {
         Label label = new Label("this card/item isn't in your collection.");
         label.setFont(Font.font(23));
         Label sell = new Label("sold");
         sell.setFont(Font.font(23));
-        sell.relocate(419,196);
-        label.relocate(419,196);
+        sell.relocate(419, 196);
+        label.relocate(419, 196);
         try {
             int id = Integer.parseInt(idS);
             if (!account.getCollection().searchById(id)) {
@@ -83,7 +84,7 @@ public class Shop {
                     }
                 });
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -213,7 +214,7 @@ public class Shop {
             return ("Insufficient money");
         }
         if (account.getCollection().getItems().size() >= 3 && searchItem(name) != null) {
-            return("your items is full.");
+            return ("your items is full.");
         }
         if (searchItem(name) != null) {
             Platform.runLater(new Runnable() {
@@ -374,5 +375,13 @@ public class Shop {
                     Shop.getMinions().get(i).getSpecialPower() + " - price: " + Shop.getMinions().get(i).getPrice());
             number++;
         }
+    }
+
+    public static ArrayList<CustomCard> getCustomCards() {
+        return customCards;
+    }
+
+    public static void addCustomCards(CustomCard customCard) {
+        customCards.add(customCard);
     }
 }

@@ -11,6 +11,7 @@ public class CustomCard extends Card {
                       String typeOfAttack, int range, String specialPower, String specialPowerActivated, int price, Spell spell) {
         this.setName(name);
         this.setType(type);
+        this.setId(spell.id);
         this.setTargetPointName(targetPointName);
         this.setBuff(buff);
         this.setAttackPower(ap);

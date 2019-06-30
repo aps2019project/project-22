@@ -190,7 +190,7 @@ public class Show {
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
                                         mediaPlayer.stop();
-                                        shopMenu(account, root);////////////
+                                        shopMenu(account, root);
                                         return;
                                     }
                                     if (x < 300 && y > 262 && y < 294) {
@@ -736,7 +736,7 @@ public class Show {
                                 textFields[3].getText(), buff, Integer.parseInt(textFields[4].getText()), Integer.parseInt(textFields[5].getText()),
                                 textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[9].getText(),
                                 textFields[8].getText(), Integer.parseInt(textFields[1].getText()), spell);
-                        Account.getAccountActivated().getCollection().addCustomCards(customCard);
+                        Shop.addCustomCards(customCard);
                         popUpWindow("Custom Card Is Created. :)", 300, 150);
                     }
                 } catch (Exception n) {
@@ -747,6 +747,7 @@ public class Show {
     }
 
     public static String showCollection(Account account) {
+
         Collection collection = account.getCollection();
         String string = "Heroes :\n";
         int number = 1;
@@ -2039,8 +2040,7 @@ public class Show {
                             }
                         }
                     });
-                }
-                else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207) { // sell
+                } else if (mainX >= 570 && mainX <= 704 && mainY >= 168 && mainY <= 207) { // sell
                     root.getChildren().clear();
                     root.getChildren().addAll(insideShop, back);
 
@@ -2064,7 +2064,7 @@ public class Show {
                         @Override
                         public void run() {
                             root.getChildren().clear();
-                            root.getChildren().addAll(insideShop,button, label, input, back);
+                            root.getChildren().addAll(insideShop, button, label, input, back);
                         }
                     });
 
@@ -2090,11 +2090,22 @@ public class Show {
                             }
                         }
                     });
-                }
-                else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409) { //buy
+                } else if (mainX >= 270 && mainX <= 403 && mainY >= 365 && mainY <= 409) { //buy
 
                     root.getChildren().clear();
-                    root.getChildren().addAll(insideShop, back);
+
+                    ImageView btn = new ImageView();
+                    btn.setImage(new Image("file:custom.png"));
+                    btn.relocate(10, 540);
+                    btn.setFitWidth(170);
+                    btn.setFitHeight(60);
+
+                    Label label = new Label("Buy Custom Card");
+                    label.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+                    label.relocate(25, 560);
+                    label.setTextFill(Color.WHITESMOKE);
+
+                    root.getChildren().addAll(insideShop, back, btn, label);
 
                     Image hero = new Image("file:heroCard.PNG");
                     Image minion = new Image("file:minionCard.PNG");
@@ -2164,6 +2175,12 @@ public class Show {
                                 shopMenu(account, root);
                                 return;
                             }
+
+                            if (x > 27 && x < 164 && y > 548 && y < 591) { // custom card
+                                root.getChildren().clear();
+                                buyCustomCard(root, account, back);
+                                return;
+                            }
                             if (x >= 125 && x <= 275 && y >= 200 && y <= 400) {
 
                                 MakeItems.make();
@@ -2211,7 +2228,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 100) / 100;
                                         int num = (yy * 5) + xx;
-                                        popUpWindow(Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root),280,120);
+                                        popUpWindow(Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root), 280, 120);
                                     }
                                 });
                             } else if (x >= 325 && x <= 475 && y >= 200 && y <= 400) {
@@ -2238,7 +2255,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop,back);
+                                        root.getChildren().addAll(insideShop, back);
                                         root.getChildren().addAll(spells);
                                         root.getChildren().addAll(spellLabels);
                                     }
@@ -2258,12 +2275,11 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 80) / 100;
                                         int num = (yy * 5) + xx;
-                                       popUpWindow( Shop.buy(spellLabels[num].getText(), account, spells,
-                                                spellLabels, num, root),280,120);
+                                        popUpWindow(Shop.buy(spellLabels[num].getText(), account, spells,
+                                                spellLabels, num, root), 280, 120);
                                     }
                                 });
-                            }
-                            else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
+                            } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
                                 MakeHero.make();
                                 ImageView hero[] = new ImageView[10];
                                 Label heroLabels[] = new Label[10];
@@ -2287,7 +2303,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop,back);
+                                        root.getChildren().addAll(insideShop, back);
                                         root.getChildren().addAll(hero);
                                         root.getChildren().addAll(heroLabels);
                                     }
@@ -2307,7 +2323,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 200) / 100;
                                         int num = (yy * 5) + xx;
-                                        popUpWindow(Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root),280,120);
+                                        popUpWindow(Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root), 280, 120);
                                     }
                                 });
                             } else if (x >= 725 && x <= 875 && y >= 200 && y <= 400) {
@@ -2334,7 +2350,7 @@ public class Show {
                                     @Override
                                     public void run() {
                                         root.getChildren().clear();
-                                        root.getChildren().addAll(insideShop,back);
+                                        root.getChildren().addAll(insideShop, back);
                                         root.getChildren().addAll(minions);
                                         root.getChildren().addAll(minionLabels);
                                     }
@@ -2354,20 +2370,93 @@ public class Show {
                                         int num = (yy * 5) + xx;
 
                                         popUpWindow(Shop.buy(minionLabels[num].getText(), account, minions, minionLabels,
-                                                num, root),280,120);
+                                                num, root), 280, 120);
                                     }
                                 });
                             }
                         }
                     });
-                }
-                else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406) { // collection menu
+                } else if (mainX >= 573 && mainX <= 701 && mainY >= 369 && mainY <= 406) { // collection menu
                     root.getChildren().clear();
                     showCollectionMenu(root, account);
                     return;
                 }
             }
         });
+    }
+
+    private static void buyCustomCard(Group root, Account account, ImageView back) {
+
+        Image image = new Image("File:photos/bg2.jpg");
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(1000);
+
+        Label l = new Label("Enter ID");
+        l.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+        l.setTextFill(Color.BLACK);
+        l.relocate(10, 540);
+
+        TextField numberTextField = new TextField();
+        numberTextField.setPrefWidth(50);
+        numberTextField.relocate(10, 560);
+
+        Button btn = new Button("Buy");
+        HBox hbBtn = new HBox(10);
+        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn.getChildren().add(btn);
+        hbBtn.relocate(100, 560);
+
+        root.getChildren().addAll(imageView, l, numberTextField, hbBtn, back);
+
+
+        for (int i = 0; i < Shop.getCustomCards().size(); i++) {
+            Label label = new Label();
+            label.relocate(50, 100 + 30 * i);
+            label.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
+            label.setTextFill(Color.BLANCHEDALMOND);
+            label.setPrefHeight(60);
+            label.setText("Name:\t"+Shop.getCustomCards().get(i).getName() + "\tID=" + Shop.getCustomCards().get(i).getId());
+            root.getChildren().addAll(label);
+        }
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    for (int i = 0; i < Shop.getCustomCards().size(); i++) {
+                        if (Integer.parseInt(numberTextField.getText()) == Shop.getCustomCards().get(i).getId()) {
+                            account.getCollection().addCustomCards(Shop.getCustomCards().get(i));
+                            Shop.getCustomCards().remove(i);
+                            popUpWindow("Successful :)", 280, 120);
+                            shopMenu(account, root);
+                            return;
+                        }
+                    }
+                    popUpWindow("Not Found.", 280, 120);
+                    root.getChildren().clear();
+                    buyCustomCard(root, account, back);
+                    return;
+                } catch (Exception n) {
+                    root.getChildren().clear();
+                    buyCustomCard(root, account, back);
+                    return;
+                }
+            }
+        });
+
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX(), y = event.getY();
+                if (x > 918 && x < 968 && y > 530 && y < 580) { //back
+                    root.getChildren().clear();
+                    shopMenu(account, root);
+                    return;
+                }
+            }
+        });
+
     }
 
 }
