@@ -2262,7 +2262,8 @@ public class Show {
                                                 spellLabels, num, root),280,120);
                                     }
                                 });
-                            } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
+                            }
+                            else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
                                 MakeHero.make();
                                 ImageView hero[] = new ImageView[10];
                                 Label heroLabels[] = new Label[10];
