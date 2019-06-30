@@ -205,18 +205,15 @@ public class Shop {
         return cards;
     }
 
-    public static void buy(String name, Account account, ImageView[] iv, Label[] label, int num, Group root) {
+    public static String buy(String name, Account account, ImageView[] iv, Label[] label, int num, Group root) {
         if (searchByName(name) == -1) {
-            System.out.println("this card/item isn't in shop.");
-            return;
+            return ("this card/item isn't in shop.");
         }
         if (getPriceByName(name) > account.getMoney()) {
-            System.out.println("Insufficient money");
-            return;
+            return ("Insufficient money");
         }
         if (account.getCollection().getItems().size() >= 3 && searchItem(name) != null) {
-            System.out.println("your items is full.");
-            return;
+            return("your items is full.");
         }
         if (searchItem(name) != null) {
             Platform.runLater(new Runnable() {
@@ -269,6 +266,7 @@ public class Shop {
             removeCards(name);
 
         }
+        return "Successful.";
     }
 
     private static void removeCards(String name) {

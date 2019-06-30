@@ -325,6 +325,7 @@ public class Show {
                         label.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
                         label.setTextFill(Color.LIGHTPINK);
                         label.setPrefHeight(60);
+                        System.out.println(showCollection(account));
                         label.setText(showCollection(account));
                         root.getChildren().addAll(label);
                         return;
@@ -2109,6 +2110,7 @@ public class Show {
                     im1.relocate(125, 200);
                     im1.setFitWidth(150);
                     im1.setFitHeight(200);
+
                     itemLabel.relocate(170, 450);
                     itemLabel.setTextFill(Color.YELLOW);
                     itemLabel.setFont(Font.font(25));
@@ -2209,7 +2211,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 100) / 100;
                                         int num = (yy * 5) + xx;
-                                        Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root);
+                                        popUpWindow(Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root),280,120);
                                     }
                                 });
                             } else if (x >= 325 && x <= 475 && y >= 200 && y <= 400) {
@@ -2256,7 +2258,8 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 80) / 100;
                                         int num = (yy * 5) + xx;
-                                        Shop.buy(spellLabels[num].getText(), account, spells, spellLabels, num, root);
+                                       popUpWindow( Shop.buy(spellLabels[num].getText(), account, spells,
+                                                spellLabels, num, root),280,120);
                                     }
                                 });
                             } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
@@ -2303,7 +2306,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 200) / 100;
                                         int num = (yy * 5) + xx;
-                                        Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root);
+                                        popUpWindow(Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root),280,120);
                                     }
                                 });
                             } else if (x >= 725 && x <= 875 && y >= 200 && y <= 400) {
@@ -2349,7 +2352,8 @@ public class Show {
                                         int yy = ((int) yminion - 50) / 60;
                                         int num = (yy * 5) + xx;
 
-                                        Shop.buy(minionLabels[num].getText(), account, minions, minionLabels, num, root);
+                                        popUpWindow(Shop.buy(minionLabels[num].getText(), account, minions, minionLabels,
+                                                num, root),280,120);
                                     }
                                 });
                             }
