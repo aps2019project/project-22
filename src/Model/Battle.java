@@ -447,29 +447,20 @@ public class Battle {
                         });
                     }
                     if (mode == 3){
-                        Label plater1Card[] = new Label[player1.getCardsInTheFiled().size()];
-                        Label player2card[] = new Label[player2.getCardsInTheFiled().size()];
+
                         int y = 10;
                         for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                            if (player1.getCardsInTheFiled().get(i).getFlag()){
-                                plater1Card[i] = new Label("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
-                                plater1Card[i].relocate(10,y);
-                                y+=10;
-                            }
+                            playerInfo.setText("player1 has "+player1.getHowManyFlag()+" flags");
                         }
                         for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                            if (player2.getCardsInTheFiled().get(i).getFlag()){
-                                player2card[i] = new Label("team : computer"+" card : "+player2.getCardsInTheFiled().get(i).getName());
-                                player2card[i].relocate(10,y);
-                                y+=10;
-                            }
+                           playerInfo2.setText("computer has "+player2.getHowManyFlag()+" flags");
 
                         }
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                tempG.getChildren().addAll(plater1Card);
-                                tempG.getChildren().addAll(player2card);
+                                tempG.getChildren().addAll(playerInfo);
+                                tempG.getChildren().addAll(playerInfo2);
                                 s.setScene(tempS);
                                 s.show();
                             }
@@ -489,7 +480,7 @@ public class Battle {
                         break;
                     }
                 }
-                if (inValidCard == 1) {
+                if (inValidCard == 1 && card1ID != -1) {
                     int x = (((int) mainX - 230) / 60) + 1;
                     int y = (((int) mainY - 160) / 60) + 1;
                     inValidCard = 0;
@@ -3003,7 +2994,6 @@ public class Battle {
                             temp2.setFitHeight(70);
                             temp2.relocate(280 + (card1ID * 100), 500);
                             handsEnemy[card1ID] = temp2;
-                            System.out.println("------------------------>" + player.getCards1().size());
                             Platform.runLater(
                                     new Runnable() {
                                         public void run() {
@@ -3079,20 +3069,7 @@ public class Battle {
                     }
                 }
             }
-            Thread sleep = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(500);
-                    } catch (Exception e) {
-                    }
-                }
-            });
-            sleep.start();
-            try {
-                sleep.join();
-            } catch (Exception e) {
-            }
+            
         }
         card1ID = -1;
     }
