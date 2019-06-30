@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Collection {
 
     private String name;
-    private ArrayList<Item> items = new ArrayList<>(3);
-    private ArrayList<Hero> heroes = new ArrayList<>();
-    private ArrayList<Spell> spells = new ArrayList<>();
-    private ArrayList<Minion> minions = new ArrayList<>();
-    private ArrayList<CustomCard> customCards =new ArrayList<>();
+    private static ArrayList<Item> items = new ArrayList<>(3);
+    private static ArrayList<Hero> heroes = new ArrayList<>();
+    private static ArrayList<Spell> spells = new ArrayList<>();
+    private static ArrayList<Minion> minions = new ArrayList<>();
+    private static ArrayList<CustomCard> customCards =new ArrayList<>();
 
     public int search(String name) {
         int number = 0;
@@ -35,6 +35,7 @@ public class Collection {
         }
         return -1;
     }
+
 
     public void addHeroToCollection(Hero hero) {
         heroes.add(hero);
@@ -68,7 +69,7 @@ public class Collection {
             getItems().add(item);
     }
 
-    public ArrayList<Item> getItems() {
+    public static ArrayList<Item> getItems() {
         return items;
     }
 
@@ -130,15 +131,15 @@ public class Collection {
         this.numberOfItems = numberOfItems;
     }
 
-    public ArrayList<Hero> getHeroes() {
+    public static ArrayList<Hero> getHeroes() {
         return heroes;
     }
 
-    public ArrayList<Spell> getSpells() {
+    public static ArrayList<Spell> getSpells() {
         return spells;
     }
 
-    public ArrayList<Minion> getMinions() {
+    public static ArrayList<Minion> getMinions() {
         return minions;
     }
 
