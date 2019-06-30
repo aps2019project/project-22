@@ -110,15 +110,15 @@ public class Player {
     public void setDeck(Deck deck) {
         Random rand = new Random();
         for (int i = 0; i < 13; i++) {
-            int n = rand.nextInt(40);
-            deck.addCardsOfDeck(Minion.getMinions().get(n));
+            int n = rand.nextInt(Collection.getMinions().size());
+            deck.addCardsOfDeck(Collection.getMinions().get(n));
         }
         for (int i = 0; i < 7; i++) {
-            int n = rand.nextInt(20);
-            deck.addCardsOfDeck(Spell.getSpells().get(n));
+            int n = rand.nextInt(Collection.getSpells().size());
+            deck.addCardsOfDeck(Collection.getSpells().get(n));
         }
-        int n = rand.nextInt(20);
-        deck.setItem(Item.getItems().get(n));
+        int n = rand.nextInt(Collection.getItems().size());
+        deck.setItem(Collection.getItems().get(n));
         mainDeck = deck;
         account.setMainDeck(deck);
         account.addDeck(deck);
