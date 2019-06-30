@@ -121,7 +121,7 @@ public class MakeMinions {
         for (int i = 0; i < 40; i++) {
             Minion.addMinion(minions[i]);
             Card.addCard(minions[i]);
-            //  Shop.addMinion(minions[i]);
+              Shop.addMinion(minions[i]);
         }
     }
 }

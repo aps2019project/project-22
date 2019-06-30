@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
+    Image line = new Image("file:lines.PNG");
     ImageView items = new ImageView();
     ImageView handsEnemy[] = new ImageView[5];
     int card1ID = -1;
@@ -223,6 +226,16 @@ public class Battle {
             }
             y10 = y10 + 60;
         }
+        ImageView line1 = new ImageView();
+        line1.setImage(line);
+        line1.relocate(25,105);
+        line1.setFitWidth(50);
+        line1.setFitHeight(50);
+        ImageView line2 = new ImageView();
+        line2.setImage(line);
+        line2.relocate(25,165);
+        line2.setFitWidth(50);
+        line2.setFitHeight(50);
         ImageView hero1Attack = new ImageView();
         hero1Attack.setImage(player1.getHero().getAttack());
         hero1Attack.setFitWidth(55);
@@ -337,7 +350,7 @@ public class Battle {
                         root.getChildren().addAll(flag1);
                         root.getChildren().addAll(flag2);
                         root.getChildren().add(deckItem);
-                        root.getChildren().addAll(ivExit);
+                        root.getChildren().addAll(ivExit,line1,line2);
                     }
                 }
         );
@@ -357,8 +370,115 @@ public class Battle {
 
                 double mainX = event.getSceneX();
                 double mainY = event.getSceneY();
+                Stage s = new Stage();
+                Group tempG = new Group();
+                Scene  tempS = new Scene(tempG,200,200);
+                if (mainX >= 25 && mainX <= 75 && mainY >= 105 && mainY <= 155){
+                    Label playerInfo = new Label("name: "+player1.getAccount().getUserName());
+                    Label playerInfo2 = new Label("heros health point"+player1.getCardsInTheFiled().get(0).getHealthPoint());
+                    if (mode == 2){
+                        playerInfo2.setText("how long the flag has been kept: "+player1.getHowLongFlagsHasBeenKept());
+                    }if (mode == 3){
+                        playerInfo2.setText("how many flahs: "+player1.getHowManyFlag());
+                    }
+                    playerInfo2.relocate(10,150);
+                    playerInfo.relocate(10,50);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            tempG.getChildren().addAll(playerInfo,playerInfo2);
+                            s.setScene(tempS);
+                            s.show();
+                        }
+                    });
+
+                }
+                if (mainX >= 25 && mainX <= 75 && mainY >= 165 && mainY <= 215){
+                    Label playerInfo = new Label("");
+                    Label playerInfo2 = new Label("");
+                    playerInfo.relocate(10,10);
+                    playerInfo2.relocate(10,50);
+                    if (mode == 1) {
+                        playerInfo.setText("computer health point " + player2.getCardsInTheFiled().get(0).getHealthPoint());
+                        playerInfo2.setText("player1 health point " + player1.getCardsInTheFiled().get(0).getHealthPoint());
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                tempG.getChildren().addAll(playerInfo,playerInfo2);
+                                s.setScene(tempS);
+                                s.show();
+                            }
+                        });
+                    }
+                    if (mode == 2){
+                        int exist = 0;
+                        for (int i = 0; i  <Cell.getCells().size(); i++){
+                            if (Cell.getCells().get(i).getFlag()){
+                                exist = 1;
+                                playerInfo.setText("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY()+" on the ground");
+                                break;
+                            }
+                        }
+                        if (exist == 0){
+                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                                if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                    playerInfo.setText("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY()+" with player1");
+                                    exist = 1;
+                                    break;
+                                }
+                            }
+                            if (exist == 0){
+                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                        playerInfo.setText("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY()+" with player2");
+                                        exist = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                tempG.getChildren().addAll(playerInfo);
+                                s.setScene(tempS);
+                                s.show();
+                            }
+                        });
+                    }
+                    if (mode == 3){
+                        Label plater1Card[] = new Label[player1.getCardsInTheFiled().size()];
+                        Label player2card[] = new Label[player2.getCardsInTheFiled().size()];
+                        int y = 10;
+                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                            if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                plater1Card[i] = new Label("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                                plater1Card[i].relocate(10,y);
+                                y+=10;
+                            }
+                        }
+                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                            if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                player2card[i] = new Label("team : computer"+" card : "+player2.getCardsInTheFiled().get(i).getName());
+                                player2card[i].relocate(10,y);
+                                y+=10;
+                            }
+
+                        }
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                tempG.getChildren().addAll(plater1Card);
+                                tempG.getChildren().addAll(player2card);
+                                s.setScene(tempS);
+                                s.show();
+                            }
+                        });
+                    }
+                }
                 if (mainX >= 950 && mainY <= 55) {
-                    Show.showMainMenu(root);
+                    Show.showMainMenuOfAccount(account,root);
+                    return;
                 }
                 for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
 
@@ -517,7 +637,7 @@ public class Battle {
                                 fullOrNull = 1;
                         }
                     }
-                    if (fullOrNull == 0) {
+                    if (fullOrNull == 0 && card1ID != -1) {
                         int valid = 0;
                         int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), targetX, player.getCardsInTheFiled().get(card1ID).getY(), targetY);
                         for (int i = 0; i < Cell.getCells().size(); i++) {

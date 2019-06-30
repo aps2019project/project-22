@@ -42,7 +42,7 @@ public class MakeHero {
         for (int i = 0; i < 10; i++) {
             Hero.addHero(heroes[i]);
             Card.addCard(heroes[i]);
-            //Shop.addHero(heroes[i]);
+            Shop.addHero(heroes[i]);
         }
 
     }
