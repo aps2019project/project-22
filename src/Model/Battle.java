@@ -3,9 +3,9 @@ package Model;
 import View.Show;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,34 +14,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
 public class Battle {
-    Image line = new Image("file:lines.PNG");
-    ImageView items = new ImageView();
-    ImageView handsEnemy[] = new ImageView[5];
     int card1ID = -1;
-    Image itemImage = new Image("file:item.PNG");
-    ImageView flag1 = new ImageView();
     int randomForCommand;
-    int inValidCard = 0;
-    int removeFlag = 0;
     int kInAttack = 0;
     int isValid = 1;
     int card2ID = 0;
     int validID = 0;
     int enemyId = 0;
     int IDNumber1 = 0;
-    Image exit = new Image("file:exit.PNG");
     Label label1 = new Label("End turn");
     Label label2 = new Label("Enemy's turn");
     int itemIDNumber = 0;
     String command = "";
+    Scanner scanner;
     int j;
     ImageView hands1[] = new ImageView[5];
     Rectangle mana1[] = new Rectangle[9];
@@ -63,8 +53,6 @@ public class Battle {
     private boolean turn = false;
     private boolean story = false;
     private int endTurn = 0;
-    ImageView flag2[];
-
     public void setStoryTrue() {
         story = true;
     }
@@ -123,17 +111,21 @@ public class Battle {
 
 
     public void attachBack(Card card1, Card card2) {
-        for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-            if (enemyPlayer.getCardsInTheFiled().get(i) == card2) {
+        for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++){
+            if (enemyPlayer.getCardsInTheFiled().get(i) == card2){
                 kInAttack = i;
                 break;
             }
         }
         Platform.runLater(
-                new Runnable() {
-                    public void run() {
+                new Runnable(){
+                    public void run(){
                         root.getChildren().remove(enemyPlayer.getCards1().get(kInAttack));
                         root.getChildren().addAll(enemyPlayer.getCards2().get(kInAttack));
+
+                        try {
+                            Thread.sleep(4000);
+                        }catch (Exception e){}
                         root.getChildren().remove(enemyPlayer.getCards2().get(kInAttack));
                         root.getChildren().addAll(enemyPlayer.getCards1().get(kInAttack));
 
@@ -173,17 +165,20 @@ public class Battle {
     public int getDistance(int x1, int x2, int y1, int y2) {
         return (Math.abs(x1 - x2) + Math.abs(y1 - y2));
     }
-
-    public void fight(Account account, Group roat) {
+    public void fight(Account account, Scanner scanners, Group roat) {
 
         label1.relocate(850, 525);
-        label2.relocate(830, 525);
+        label2.relocate(830,525);
         label1.setTextFill(Color.WHITE);
         label2.setTextFill(Color.WHITE);
         label2.setFont(Font.font(20));
         label1.setFont(Font.font(20));
         button.setImage(end);
-        button.relocate(800, 510);
+        button.relocate(800,510);
+
+
+
+        scanner = scanners;
         root = roat;
 
 
@@ -191,105 +186,99 @@ public class Battle {
 
         int y11 = 60, x11 = 120;
         int groundNumber = 0;
-        for (int i = 0; i < 9; i++) {
-            mana1[groundNumber] = new Rectangle(20, 20);
-            mana1[groundNumber].relocate(x11, y11);
-            mana1[groundNumber].setFill(Color.rgb(152, 155, 158));
-            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0) {
-                mana1[groundNumber].setFill(Color.rgb(158, 243, 249));
+        for (int i = 0; i < 9; i++){
+            mana1[groundNumber] = new Rectangle(20,20);
+            mana1[groundNumber].relocate(x11,y11);
+            mana1[groundNumber].setFill(Color.rgb(152,155,158));
+            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0){
+                mana1[groundNumber].setFill(Color.rgb(158,243,249));
             }
             groundNumber++;
-            x11 = x11 + 25;
+            x11 = x11+25;
         }
-        int y12 = 60, x12 = 860;
+        int y12 = 60, x12= 860;
         groundNumber = 0;
-        for (int i = 0; i < 9; i++) {
-            mana2[groundNumber] = new Rectangle(20, 20);
-            mana2[groundNumber].relocate(x12, y12);
-            mana2[groundNumber].setFill(Color.rgb(152, 155, 158));
-            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0) {
-                mana2[groundNumber].setFill(Color.rgb(158, 243, 249));
+        for (int i = 0; i < 9; i++){
+            mana2[groundNumber] = new Rectangle(20,20);
+            mana2[groundNumber].relocate(x12,y12);
+            mana2[groundNumber].setFill(Color.rgb(152,155,158));
+            if (groundNumber == 1 || groundNumber == 2 || groundNumber == 0){
+                mana2[groundNumber].setFill(Color.rgb(158,243,249));
             }
             groundNumber++;
-            x12 = x12 - 25;
+            x12 = x12-25;
         }
         groundNumber = 0;
-        int x10 = 195, y10 = 160;
-        for (int i = 0; i < 5; i++) {
+        int x10 = 195 , y10 = 160;
+        for (int i = 0; i < 5; i++){
             x10 = 230;
-            for (int j = 0; j < 9; j++) {
-                ground[groundNumber] = new Rectangle(55, 55);
-                ground[groundNumber].relocate(x10, y10);
-                ground[groundNumber].setFill(Color.rgb(75, 105, 113));
+            for (int j = 0 ; j < 9; j++){
+                ground[groundNumber] = new Rectangle(55,55);
+                ground[groundNumber].relocate(x10,y10);
+                ground[groundNumber].setFill(Color.rgb(75,105,113));
                 groundNumber++;
-                x10 = x10 + 60;
+                x10 = x10+60;
             }
             y10 = y10 + 60;
         }
-        ImageView line1 = new ImageView();
-        line1.setImage(line);
-        line1.relocate(25,105);
-        line1.setFitWidth(50);
-        line1.setFitHeight(50);
-        ImageView line2 = new ImageView();
-        line2.setImage(line);
-        line2.relocate(25,165);
-        line2.setFitWidth(50);
-        line2.setFitHeight(50);
         ImageView hero1Attack = new ImageView();
         hero1Attack.setImage(player1.getHero().getAttack());
         hero1Attack.setFitWidth(55);
         hero1Attack.setFitWidth(55);
-        hero1Attack.relocate(230, 280);
+        hero1Attack.relocate(230,280);
         player1.addCards2(hero1Attack);
 
         ImageView hero2Attack = new ImageView();
         hero2Attack.setImage(player2.getHero().getAttack());
         hero2Attack.setFitWidth(55);
         hero2Attack.setFitWidth(55);
-        hero2Attack.relocate(230, 280);
+        hero2Attack.relocate(230,280);
         player2.addCards2(hero2Attack);
 
         ImageView hero1 = new ImageView();
         hero1.setFitHeight(55);
         hero1.setFitWidth(55);
         hero1.setImage(player1.getHero().getBreath());
-        hero1.relocate(230, 280);
+        hero1.relocate(230,280);
         player1.addCards1(hero1);
         ImageView hero2 = new ImageView(player2.getHero().getBreath());
         hero2.setFitWidth(55);
         hero2.setFitHeight(55);
-        hero2.relocate(710, 280);
+        hero2.relocate(710,280);
         player2.addCards1(hero2);
         Image image1 = new Image("file:Duelyst.PNG");
         ImageView iv = new ImageView();
+
         iv.setFitWidth(1000);
         iv.setFitHeight(600);
         iv.setImage(image1);
         int xHand = 285;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++ ){
             hands1[i] = new ImageView();
             hands1[i].setFitHeight(70);
             hands1[i].setFitWidth(70);
-            hands1[i].relocate(xHand, 500);
+            hands1[i].relocate(xHand,500);
             hands1[i].setImage(player1.getHand().getCardsInThisHand().get(i).getBreath());
-            xHand += 100;
+            xHand+= 100;
         }
-        xHand = 285;
-        for (int i = 0; i < 5; i++) {
-            handsEnemy[i] = new ImageView();
-            handsEnemy[i].setFitWidth(70);
-            handsEnemy[i].setFitHeight(70);
-            handsEnemy[i].relocate(xHand, 500);
-            handsEnemy[i].setImage(player2.getHand().getCardsInThisHand().get(i).getBreath());
-            xHand += 100;
-        }
-        ImageView ivExit = new ImageView();
-        ivExit.setImage(exit);
-        ivExit.setFitWidth(50);
-        ivExit.setFitHeight(50);
-        ivExit.relocate(950, 5);
-        flag2 = new ImageView[howManyFlags];
+
+        Platform.runLater(
+                new Runnable(){
+                    public void run(){
+
+                        root.getChildren().addAll(iv);
+                        root.getChildren().addAll(ground);
+                        root.getChildren().addAll(hero1);
+                        root.getChildren().addAll(hero2);
+                        root.getChildren().addAll(hands1);
+                        root.getChildren().addAll(mana1);
+                        root.getChildren().addAll(mana2);
+                        root.getChildren().addAll(button);
+                        root.getChildren().addAll(label1);
+                    }
+                }
+        );
+
         if (mode == 3) {
             for (int i = 0; i < howManyFlags; i++) {
                 int inVvalid = 0;
@@ -297,18 +286,10 @@ public class Battle {
                 int x = rand.nextInt(9) + 1;
                 int y = rand.nextInt(5) + 1;
                 for (int j = 0; j < Cell.getCells().size(); j++) {
-                    if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false && Cell.getCells().get(j).getInsideCard() == null) {
+                    if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
                         inVvalid = 1;
                         Cell.getCells().get(j).setFlagTrue();
                         System.out.println("flag is in x : " + x + " y : " + y);
-                        Image image = new Image("file:flag.PNG");
-                        flag2[i] = new ImageView();
-                        flag2[i].setImage(image);
-                        flag2[i].relocate(230 + (60 * (x - 1)), 160 + (60 * (y - 1)));
-                        flag2[i].setFitHeight(55);
-                        flag2[i].setFitWidth(55);
-                        flag2[i].setX(x);
-                        flag2[i].setY(y);
                     }
                 }
                 if (inVvalid == 0)
@@ -322,38 +303,10 @@ public class Battle {
                 if (Cell.getCells().get(j).getX() == x && Cell.getCells().get(j).getY() == y && Cell.getCells().get(j).getFlag() == false) {
                     Cell.getCells().get(j).setFlagTrue();
                     System.out.println("flag is in x : " + x + " y : " + y);
-                    Image flag = new Image("file:flag.PNG");
-                    flag1.setImage(flag);
-                    flag1.relocate(230 + (60 * (x - 1)), 160 + (60 * (y - 1)));
-                    flag1.setFitHeight(55);
-                    flag1.setFitWidth(55);
                 }
             }
         }
-        ImageView deckItem = new ImageView();
-        deckItem.setImage(itemImage);
-        deckItem.setFitHeight(70);
-        deckItem.setFitWidth(70);
-        deckItem.relocate(40, 500);
-        Platform.runLater(
-                new Runnable() {
-                    public void run() {
-                        root.getChildren().addAll(iv);
-                        root.getChildren().addAll(ground);
-                        root.getChildren().addAll(hero1);
-                        root.getChildren().addAll(hero2);
-                        root.getChildren().addAll(mana1);
-                        root.getChildren().addAll(mana2);
-                        root.getChildren().addAll(button);
-                        root.getChildren().addAll(label1);
-                        root.getChildren().addAll(hands1);
-                        root.getChildren().addAll(flag1);
-                        root.getChildren().addAll(flag2);
-                        root.getChildren().add(deckItem);
-                        root.getChildren().addAll(ivExit,line1,line2);
-                    }
-                }
-        );
+
         if (!turn) {
             player = player1;
             enemyPlayer = player2;
@@ -363,6 +316,7 @@ public class Battle {
         }
 
 
+
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override
@@ -370,635 +324,7 @@ public class Battle {
 
                 double mainX = event.getSceneX();
                 double mainY = event.getSceneY();
-                Stage s = new Stage();
-                Group tempG = new Group();
-                Scene  tempS = new Scene(tempG,200,200);
-                if (mainX >= 25 && mainX <= 75 && mainY >= 105 && mainY <= 155){
-                    Label playerInfo = new Label("name: "+player1.getAccount().getUserName());
-                    Label playerInfo2 = new Label("heros health point"+player1.getCardsInTheFiled().get(0).getHealthPoint());
-                    if (mode == 2){
-                        playerInfo2.setText("how long the flag has been kept: "+player1.getHowLongFlagsHasBeenKept());
-                    }if (mode == 3){
-                        playerInfo2.setText("how many flahs: "+player1.getHowManyFlag());
-                    }
-                    playerInfo2.relocate(10,150);
-                    playerInfo.relocate(10,50);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            tempG.getChildren().addAll(playerInfo,playerInfo2);
-                            s.setScene(tempS);
-                            s.show();
-                        }
-                    });
-
-                }
-                if (mainX >= 25 && mainX <= 75 && mainY >= 165 && mainY <= 215){
-                    Label playerInfo = new Label("");
-                    Label playerInfo2 = new Label("");
-                    playerInfo.relocate(10,10);
-                    playerInfo2.relocate(10,50);
-                    if (mode == 1) {
-                        playerInfo.setText("computer health point " + player2.getCardsInTheFiled().get(0).getHealthPoint());
-                        playerInfo2.setText("player1 health point " + player1.getCardsInTheFiled().get(0).getHealthPoint());
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                tempG.getChildren().addAll(playerInfo,playerInfo2);
-                                s.setScene(tempS);
-                                s.show();
-                            }
-                        });
-                    }
-                    if (mode == 2){
-                        int exist = 0;
-                        for (int i = 0; i  <Cell.getCells().size(); i++){
-                            if (Cell.getCells().get(i).getFlag()){
-                                exist = 1;
-                                playerInfo.setText("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY()+" on the ground");
-                                break;
-                            }
-                        }
-                        if (exist == 0){
-                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                                if (player1.getCardsInTheFiled().get(i).getFlag()){
-                                    playerInfo.setText("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY()+" with player1");
-                                    exist = 1;
-                                    break;
-                                }
-                            }
-                            if (exist == 0){
-                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
-                                        playerInfo.setText("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY()+" with player2");
-                                        exist = 1;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                tempG.getChildren().addAll(playerInfo);
-                                s.setScene(tempS);
-                                s.show();
-                            }
-                        });
-                    }
-                    if (mode == 3){
-
-                        int y = 10;
-                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                            playerInfo.setText("player1 has "+player1.getHowManyFlag()+" flags");
-                        }
-                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                           playerInfo2.setText("computer has "+player2.getHowManyFlag()+" flags");
-
-                        }
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                tempG.getChildren().addAll(playerInfo);
-                                tempG.getChildren().addAll(playerInfo2);
-                                s.setScene(tempS);
-                                s.show();
-                            }
-                        });
-                    }
-                }
-                if (mainX >= 950 && mainY <= 55) {
-                    Show.showMainMenuOfAccount(account,root);
-                    return;
-                }
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-
-                    if (mainX >= ((player.getCardsInTheFiled().get(i).getX() - 1) * 60 + 230) && mainX <= ((((player.getCardsInTheFiled().get(i).getX() - 1) * 60) + 230) + 55) &&
-                            mainY >= (((player.getCardsInTheFiled().get(i).getY() - 1) * 60) + 160) && mainY <= ((((player.getCardsInTheFiled().get(i).getY() - 1) * 60) + 160) + 55)) {
-                        card1ID = i;
-                        System.out.println("cart has been selected");
-                        break;
-                    }
-                }
-                if (inValidCard == 1 && card1ID != -1) {
-                    int x = (((int) mainX - 230) / 60) + 1;
-                    int y = (((int) mainY - 160) / 60) + 1;
-                    inValidCard = 0;
-                    for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                        int distance = getDistance(player.getCardsInTheFiled().get(i).getX(), x, player.getCardsInTheFiled().get(i).getY(), y);
-                        if (distance == 1 || player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y + 1
-                                || player.getCardsInTheFiled().get(i).getX() == x - 1 && player.getCardsInTheFiled().get(i).getY() == y + 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y + 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y - 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x - 1 && player.getCardsInTheFiled().get(i).getY() == y - 1) {
-                            inValidCard = 1;
-                        }
-                    }
-                    if (inValidCard == 0 && player.getHand().getCardsInThisHand().get(card1ID).getType() != 1) {
-                        System.out.println("Invalid target");
-                    } else {
-                        if (player.getMana() <= player.getHand().getCardsInThisHand().get(card1ID).getManaPoint()) {
-                            System.out.println("You don't have enough mana");
-                        } else {
-                            for (int i = 0; i < Cell.getCells().size(); i++) {
-                                if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
-                                    Cell.getCells().get(i).insertCard(player.getHand().getCardsInThisHand().get(card1ID));
-                                }
-                            }
-                            if (player.getHand().getCardsInThisHand().get(card1ID).getType() != 1) {
-                                player.getHand().getCardsInThisHand().get(card1ID).setY(y);
-                                player.getHand().getCardsInThisHand().get(card1ID).setX(x);
-                                player.addCardsInTheFile(player.getHand().getCardsInThisHand().get(card1ID));
-                                ImageView temp1 = new ImageView();
-                                ImageView temp11 = new ImageView();
-                                temp1.setImage(player.getHand().getCardsInThisHand().get(card1ID).getBreath());
-                                temp11.setImage(player.getHand().getCardsInThisHand().get(card1ID).getAttack());
-                                temp1.setFitHeight(55);
-                                temp1.setFitWidth(55);
-                                temp1.relocate((x - 1) * 60 + 230, (y - 1) * 60 + 160);
-                                temp11.setFitHeight(55);
-                                temp11.setFitWidth(55);
-                                temp11.relocate((x - 1) * 60 + 230, (y - 1) * 60 + 160);
-                                player.getCards2().add(temp11);
-                                player.getCards1().add(temp1);
-                                System.out.println("card is in the field");
-                            }
-                            player.getHand().getCardsInThisHand().remove(player.getHand().getCardsInThisHand().get(card1ID));
-                            Random rand = new Random();
-                            int n = rand.nextInt(20);
-                            player.getHand().addCard(player.getMainDeck().getCardsOfDeck().get(n));
-                            ImageView temp2 = new ImageView();
-                            temp2.setImage(player.getMainDeck().getCardsOfDeck().get(n).getBreath());
-                            temp2.setFitWidth(70);
-                            temp2.setFitHeight(70);
-                            temp2.relocate(280 + (card1ID * 100), 500);
-                            hands1[card1ID] = temp2;
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().removeAll(hands1);
-                                            root.getChildren().addAll(hands1);
-                                            root.getChildren().removeAll(player.getCards1());
-                                            root.getChildren().addAll(player.getCards1());
-                                        }
-                                    }
-                            );
-                            if (player.getMainDeck().getItem().getId() == 84) {
-                                enemyPlayer.getHero().setHealthPoint(enemyPlayer.getHero().getHealthPoint() - 1);
-                            } else if (player.getMainDeck().getItem().getId() == 89) {
-                                if (player.getHand().getCardsInThisHand().get(card1ID).getId() <= 40) {
-                                    player.getHand().getCardsInThisHand().get(card1ID).setHowManyHolyBuff(player.getHand().getCardsInThisHand().get(card1ID).getHowManyHolyBuff() + 1);
-                                }
-                            }
-                            if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 21) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(i);
-                                        temp.minionPower21(temp);
-                                    }
-                                }
-                            } else if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 31) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        enemyPlayer.getCardsInTheFiled().get(i).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(i).getHealthPoint() - 16);
-                                        if (enemyPlayer.getCardsInTheFiled().get(i).getHealthPoint() <= 0) {
-                                            if (enemyPlayer.getCardsInTheFiled().get(i).getId() == 17) {
-                                                Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(i);
-                                                temp.minion17Power();
-                                            } else if (enemyPlayer.getCardsInTheFiled().get(i).getId() == 38) {
-                                                Minion temp = (Minion) player.getCardsInTheFiled().get(i);
-                                                temp.minion38Power(player.getHero());
-                                            }
-                                            enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(i));
-                                        }
-                                    }
-                                }
-                            } else if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 36) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        if (enemyPlayer.getCardsInTheFiled().get(i).getX() >= player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() <= player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getY() >= player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() <= player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1) {
-                                            enemyPlayer.getCardsInTheFiled().get(i).setStunByMinion5True();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                    card1ID = -1;
-                }
-                if (mainY >= 500 && mainY <= 570) {
-                    for (int i = 0; i < 5; i++) {
-                        if (mainX >= 280 + (i * 100) && mainX <= 350 + (i * 100)) {
-                            card1ID = i;
-                            System.out.println("cards has been selected from hand");
-                            inValidCard = 1;
-                            break;
-                        }
-                    }
-                }
-                if (card1ID != -1 && inValidCard != 1) {
-                    int fullOrNull = 0;
-                    int targetX = (((int) mainX - 230) / 60) + 1;
-                    int targetY = (((int) mainY - 160) / 60) + 1;
-                    for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getY() == targetY && Cell.getCells().get(i).getX() == targetX) {
-                            if (Cell.getCells().get(i).getInsideCard() != null)
-                                fullOrNull = 1;
-                        }
-                    }
-                    if (fullOrNull == 0 && card1ID != -1) {
-                        int valid = 0;
-                        int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), targetX, player.getCardsInTheFiled().get(card1ID).getY(), targetY);
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == targetX && Cell.getCells().get(i).getY() == targetY && Cell.getCells().get(i).getInsideCard() == null) {
-                                valid = 1;
-                                if (Cell.getCells().get(i).getFlag()) {
-                                    player.getCardsInTheFiled().get(card1ID).setFlagTrue();
-                                    player.setFlagTrue();
-                                    Cell.getCells().get(i).setFlagFalse();
-
-                                    if (mode == 2) {
-                                        Platform.runLater(
-                                                new Runnable() {
-                                                    public void run() {
-                                                        root.getChildren().remove(flag1);
-                                                    }
-                                                }
-                                        );
-                                        player.setHowLongFlagsHasBeenKept(1);
-                                    } else if (mode == 3) {
-                                        player.setHowManyFlag(player.getHowManyFlag() + 1);
-                                        for (int j = 0; j < howManyFlags; j++) {
-                                            if (flag2[j].getX() == targetX && flag2[j].getY() == targetY) {
-                                                removeFlag = j;
-                                                Platform.runLater(
-                                                        new Runnable() {
-                                                            public void run() {
-                                                                root.getChildren().remove(flag2[removeFlag]);
-                                                            }
-                                                        }
-                                                );
-                                            }
-                                        }
-                                    }
-
-                                }
-                                if (Cell.getCells().get(i).getItem() != null) {
-                                    player1.addCollectableItems(Cell.getCells().get(i).getItem());
-                                    Cell.getCells().get(i).setItem(null);
-                                    Platform.runLater(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            root.getChildren().remove(items);
-                                        }
-                                    });
-                                }
-                            }
-                        }
-
-                        if (distance <= 2 && valid == 1) {
-                            for (int i = 0; i < Cell.getCells().size(); i++) {
-                                if (Cell.getCells().get(i).getY() == player.getCardsInTheFiled().get(card1ID).getY() &&
-                                        Cell.getCells().get(i).getX() == player.getCardsInTheFiled().get(card1ID).getX()) {
-                                    Cell.getCells().get(i).setInsideCard(null);
-                                } else if (Cell.getCells().get(i).getX() == targetX && Cell.getCells().get(i).getY() == targetY) {
-                                    Cell.getCells().get(i).setInsideCard(player.getCardsInTheFiled().get(card1ID));
-                                }
-                            }
-
-                            System.out.println(IDNumber1 + " moved to " + targetX + " " + targetY);
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
-                            System.out.println(card1ID);
-                            TranslateTransition translateTransition = new TranslateTransition();
-                            translateTransition.setDuration(Duration.millis(1000));
-                            translateTransition.setNode(player.getCards1().get(card1ID));
-                            translateTransition.setFromX(player.getCards1().get(card1ID).getX());
-                            translateTransition.setFromY(player.getCards1().get(card1ID).getY());
-                            translateTransition.setToX((60 * (targetX - 1) + 230) - (60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230));
-                            translateTransition.setToY((60 * (targetY - 1) + 160) - (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                            translateTransition.setAutoReverse(false);
-                            player.getCards1().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230), (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                            player.getCards2().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230), (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                            translateTransition.play();
-                            player.getCardsInTheFiled().get(card1ID).setX(targetX);
-                            player.getCardsInTheFiled().get(card1ID).setY(targetY);
-
-                        }
-                        card1ID = -1;
-                    } else {
-
-                        for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                            if (mainX == enemyPlayer.getCardsInTheFiled().get(i).getX() && mainY == enemyPlayer.getCardsInTheFiled().get(i).getX()) {
-                                validID = 1;
-                                card2ID = i;
-                                break;
-                            }
-                        }
-
-                        if (validID == 0) {
-                            System.out.println("Invalid card id");
-                        }
-                        if (player.getMainDeck().getItem().getId() == 73 && player.getCardsInTheFiled().get(card1ID) == player.getHero()
-                                && player.getHero().getTypeOfAttack().matches("ranged") || player.getHero().getTypeOfAttack().matches("hybrid")) {
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                        }
-                        if (player.getMainDeck().getItem().getId() == 82) {
-                            Random rand = new Random();
-                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                            enemyPlayer.getCardsInTheFiled().get(n).setAttackPower(enemyPlayer.getCardsInTheFiled().get(n).getAttackPower() - 2);
-                            enemyPlayer.getCardsInTheFiled().get(n).setItem12True();
-                        } else if (player.getMainDeck().getItem().getId() == 87) {
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                        } else if (player.getMainDeck().getItem().getId() == 86) {
-                            Random rand = new Random();
-                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                            enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() - 1);
-                        }
-
-
-                        int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), enemyPlayer.getCardsInTheFiled().get(card2ID).getX()
-                                , player.getCardsInTheFiled().get(card1ID).getY(), enemyPlayer.getCardsInTheFiled().get(card2ID).getY());
-                        if (player.getCardsInTheFiled().get(card1ID).getStun() || player.getCardsInTheFiled().get(card1ID).getStunByMinion5()
-                                || player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed()) {
-                            System.out.println(player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed());
-                            System.out.println("----------->Card with " + IDNumber1 + " can't attack");
-                        } else if (distance <= player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() || player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() == -1
-                                && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() >= player.getCardsInTheFiled().get(card1ID).getX() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() <= player.getCardsInTheFiled().get(card1ID).getX() + 1 && player.getCardsInTheFiled().get(card1ID).getY() == enemyPlayer.getCardsInTheFiled().get(card2ID).getY() ||
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).getY() >= player.getCardsInTheFiled().get(card1ID).getY() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() <= player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getY() ||
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY()
-                                == player.getCardsInTheFiled().get(card1ID).getY() - 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1 && player.getCardsInTheFiled().get(card1ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1
-                                && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() - 1) {
-
-
-                            if (player.getCardsInTheFiled().get(card1ID).getId() > 0 && player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                                int attackPower = 0;
-                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() > player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
-                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() -
-                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                } else {
-                                    attackPower = player.getCardsInTheFiled().get(card1ID).getAttackPower() - enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff();
-                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(0);
-                                }
-                                if (player.getCardsInTheFiled().get(card1ID).getId() == 1 || player.getCardsInTheFiled().get(card1ID).getId() == 3 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 4 || player.getCardsInTheFiled().get(card1ID).getId() == 7 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 8 || player.getCardsInTheFiled().get(card1ID).getId() == 9 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 6 || player.getCardsInTheFiled().get(card1ID).getId() == 12 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 13 || player.getCardsInTheFiled().get(card1ID).getId() == 14 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 16 || player.getCardsInTheFiled().get(card1ID).getId() == 20 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 33 || player.getCardsInTheFiled().get(card1ID).getId() == 34 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 39 || player.getCardsInTheFiled().get(card1ID).getId() == 40 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 15 || player.getCardsInTheFiled().get(card1ID).getId() == 17 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 21 || player.getCardsInTheFiled().get(card1ID).getId() == 25 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 26 || player.getCardsInTheFiled().get(card1ID).getId() == 27 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 28 || player.getCardsInTheFiled().get(card1ID).getId() == 29 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 30 || player.getCardsInTheFiled().get(card1ID).getId() == 31 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 36 || player.getCardsInTheFiled().get(card1ID).getId() == 37 ||
-                                        player.getCardsInTheFiled().get(card1ID).getId() == 38) {
-                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 2) {
-
-                                    Platform.runLater(
-                                            new Runnable() {
-                                                public void run() {
-                                                    root.getChildren().remove(player.getCards1().get(card1ID));
-                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
-
-                                                }
-                                            }
-                                    );
-
-
-                                }
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                        player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 5) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                                root.getChildren().addAll(player.getCards2().get(card1ID));
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled()
-                                        .get(card2ID).getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower() -
-                                        (5 * enemyPlayer.getCardsInTheFiled().get(card2ID).getMinion5Counter()));
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).addMinion5Counter();
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 10) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                                root.getChildren().addAll(player.getCards2().get(card1ID));
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                                player.getCardsInTheFiled().get(card1ID).setCounterMinion10(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                        player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 18) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                                root.getChildren().addAll(player.getCards2().get(card1ID));
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                                player.getCardsInTheFiled().get(card1ID).setCounterMinion18(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                        player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 32) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                                root.getChildren().addAll(player.getCards2().get(card1ID));
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getAttackPower() < player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
-                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                    attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                                }
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 35) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                                root.getChildren().addAll(player.getCards2().get(card1ID));
-                                                root.getChildren().add(player.getCards1().get(card1ID));
-                                                root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                            }
-                                        }
-                                );
-                                Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
-                                temp.minion35Power(temp);
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                        player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            }
-                            if (player.getCardsInTheFiled().get(card1ID).getHealthPoint() <= 0) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(player.getCards1().get(card1ID));
-                                            }
-                                        }
-                                );
-
-
-                                if (player.getMainDeck().getItem().getId() == 89) {
-                                    for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                                        player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 1);
-                                    }
-                                }
-                                if (player.getCardsInTheFiled().get(card1ID).getFlag()) {
-                                    player.getCardsInTheFiled().get(card1ID).setFlagFalse();
-                                    player.setFlagFalse();
-                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagTrue();
-                                    if (mode == 2) {
-                                        player.setHowLongFlagsHasBeenKept(0);
-                                        enemyPlayer.setHowLongFlagsHasBeenKept(1);
-                                    } else if (mode == 3) {
-                                        player.setHowManyFlag(player.getHowManyFlag() - 1);
-                                        enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() + 1);
-                                    }
-                                }
-                                if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                                    Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                    if (temp.getItem10()) {
-                                        Random rand = new Random();
-                                        int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                                        enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
-                                                player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                    }
-                                }
-                                if (player.getCardsInTheFiled().get(card1ID).getId() == 17) {
-                                    Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                    temp.minion17Power();
-                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 38) {
-                                    Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                    temp.minion38Power(enemyPlayer.getHero());
-                                }
-                                player.getCardsInTheFiled().remove(player.getCardsInTheFiled().get(card1ID));
-                            }
-                            if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() <= 0) {
-                                if (enemyPlayer.getMainDeck().getItem().getId() == 89) {
-                                    for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                        enemyPlayer.getCardsInTheFiled().get(i).setAttackPower(enemyPlayer.getCardsInTheFiled().get(i).getAttackPower() + 1);
-                                    }
-                                }
-                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getFlag()) {
-                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagFalse();
-                                    enemyPlayer.setFlagFalse();
-                                    player.getCardsInTheFiled().get(card1ID).setFlagTrue();
-                                    if (mode == 2) {
-                                        enemyPlayer.setHowLongFlagsHasBeenKept(0);
-                                        player.setHowLongFlagsHasBeenKept(1);
-                                    } else if (mode == 3) {
-                                        enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() - 1);
-                                        player.setHowManyFlag(player.getHowManyFlag() + 1);
-                                    }
-                                }
-                                if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                                    Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                    if (temp.getItem10()) {
-                                        Random rand = new Random();
-                                        int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                                        enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
-                                                player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                    }
-                                }
-                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 17) {
-                                    Minion mnvfdjnvdfvndkfvnjkd = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
-                                    mnvfdjnvdfvndkfvnjkd.minion17Power();
-                                } else if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 38) {
-                                    Minion temp = (Minion) player.getCardsInTheFiled().get(card2ID);
-                                    temp.minion38Power(player.getHero());
-                                }
-                                enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            }
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 65) {
-                            Hero temp = (Hero) player.getCardsInTheFiled().get(card1ID);
-                            if (temp.gethero65Activated()) {
-                                temp.setCounterHero65(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            }
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
-                                    getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        } else {
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
-                                    getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        }
-
-                        player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-
-                    }
-
-
-                }
-
-
-                if (mainX >= 818 && mainX <= 955 && mainY >= 517 && mainY <= 562) {
+                if (mainX >= 818 && mainX <= 955 && mainY >= 517 && mainY <= 562){
                     card1ID = -1;
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                         if (player.getCardsInTheFiled().get(i).getType() == 0) {
@@ -1017,7 +343,7 @@ public class Battle {
                     for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
                         if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                        if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
+                        if (player.getCardsInTheFiled().get(i).getStunByMinion5()){
                             player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
                         }
                     }
@@ -1027,31 +353,19 @@ public class Battle {
                         turn = true;
 
 
+
+
+
                     Random rand78 = new Random();
                     int xCollectable = rand78.nextInt(9) + 1;
                     int yCollectable = rand78.nextInt(5) + 1;
                     int randCollectable = rand78.nextInt(10) + 1;
-                    if (true) {
+                    if (true){
                         Item item = new Item(81, "RandomDamage", -1, "2 power strike for random power");
-                        for (int i = 0; i < Cell.getCells().size(); i++) {
-                            if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable) {
-                                for (int k = 0; k < Cell.getCells().size(); k++) {
-                                    Cell.getCells().get(k).setItem(null);
-                                }
+                        for (int i = 0; i < Cell.getCells().size(); i++){
+                            if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable){
                                 Cell.getCells().get(i).setItem(item);
-                                items.setImage(itemImage);
-                                items.setFitWidth(55);
-                                items.setFitHeight(55);
-                                items.relocate(((xCollectable - 1) * 60 + 230), ((yCollectable - 1) * 60) + 160);
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        root.getChildren().remove(items);
-                                        root.getChildren().add(items);
-                                    }
-                                });
-                                System.out.println("collectable item in x : " + Cell.getCells().get(i).getX() + " y : " + Cell.getCells().get(i).getY());
-                                break;
+                                System.out.println("collectable item in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
                             }
                         }
                     }
@@ -1060,36 +374,28 @@ public class Battle {
 
 
                         Platform.runLater(
-                                new Runnable() {
-                                    public void run() {
-                                        root.getChildren().removeAll(hands1);
-                                        root.getChildren().removeAll(handsEnemy);
+                                new Runnable(){
+                                    public void run(){
                                         root.getChildren().remove(label1);
                                         root.getChildren().remove(label2);
-                                        root.getChildren().addAll(label1);
-                                        root.getChildren().addAll(hands1);
+                                        root.getChildren().add(label1);
 
                                     }
                                 }
                         );
+
 
                         player1Turns++;
                         enemyPlayer = player2;
                     } else {
                         player = player2;
                         Platform.runLater(
-                                new Runnable() {
-                                    public void run() {
-                                        root.getChildren().removeAll(hands1);
-                                        root.getChildren().removeAll(handsEnemy);
+                                new Runnable(){
+                                    public void run(){
                                         root.getChildren().remove(label1);
                                         root.getChildren().remove(label2);
                                         root.getChildren().add(label2);
-                                        root.getChildren().addAll(handsEnemy);
-                                        root.getChildren().removeAll(player1.getCards1());
-                                        root.getChildren().removeAll(player2.getCards1());
-                                        root.getChildren().addAll(player1.getCards1());
-                                        root.getChildren().addAll(player2.getCards1());
+
                                     }
                                 }
                         );
@@ -1099,26 +405,26 @@ public class Battle {
 
                     if (player.getItem8()) {
                         player.setMana(player.getMana() + 3);
-                        if (player == player1) {
-                            for (int i = 0; i < player.getMana(); i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                        if (player == player1){
+                            for (int i = 0; i  < player.getMana(); i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
-                        } else {
-                            for (int i = 0; i < player.getMana(); i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                        }else {
+                            for (int i = 0; i  < player.getMana(); i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                         }
                         player.setItem8False();
                     }
                     if (enemyPlayer.getItem8()) {
                         enemyPlayer.setMana(enemyPlayer.getMana() + 3);
-                        if (player == player1) {
-                            for (int i = 0; i < player.getMana(); i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                        if (player == player1){
+                            for (int i = 0; i  < player.getMana(); i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
-                        } else {
-                            for (int i = 0; i < player.getMana(); i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                        }else {
+                            for (int i = 0; i  < player.getMana(); i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                         }
                         enemyPlayer.setItem8False();
@@ -1349,77 +655,478 @@ public class Battle {
                     j = -1;
                     Random rand100 = new Random();
                     randomForCommand = rand100.nextInt(player2.getCardsInTheFiled().size());
-                    if (player == player1) {
+                    if (player == player1){
                         if (player1Turns == 2) {
-                            for (int i = 0; i < 4; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 4; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(4);
                         } else if (player1Turns == 3) {
-                            for (int i = 0; i < 5; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 5; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(5);
                         } else if (player1Turns == 6) {
-                            for (int i = 0; i < 4; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 4; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(6);
                         } else if (player1Turns == 5) {
-                            for (int i = 0; i < 7; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 7; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(7);
                         } else if (player1Turns == 6) {
-                            for (int i = 0; i < 8; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 8; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(8);
                         } else if (player1Turns >= 7) {
-                            for (int i = 0; i < 9; i++) {
-                                mana1[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 9; i++){
+                                mana1[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(9);
                         }
-                    } else {
+                    }else {
                         if (player2Turn == 2) {
-                            for (int i = 0; i < 4; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 4; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(4);
                         } else if (player2Turn == 3) {
-                            for (int i = 0; i < 5; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 5; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(5);
                         } else if (player2Turn == 6) {
-                            for (int i = 0; i < 4; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 4; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(6);
                         } else if (player2Turn == 5) {
-                            for (int i = 0; i < 7; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 7; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(7);
                         } else if (player2Turn == 6) {
-                            for (int i = 0; i < 8; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 8; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(8);
                         } else if (player2Turn >= 7) {
-                            for (int i = 0; i < 9; i++) {
-                                mana2[i].setFill(Color.rgb(158, 243, 249));
+                            for (int i = 0; i  < 9; i++){
+                                mana2[i].setFill(Color.rgb(158,243,249));
                             }
                             player.setMana(9);
                         }
                     }
-//                    Platform.requestNextPulse();
+
 
                     singlePlayerTurn();
+
+
+
+
+
+
+
+
+
                 }
+                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+
+                    if (mainX >= ((player.getCardsInTheFiled().get(i).getX() - 1) * 60 + 230) && mainX <= ((((player.getCardsInTheFiled().get(i).getX() - 1) * 60) + 230) + 55) &&
+                            mainY >= (((player.getCardsInTheFiled().get(i).getY() - 1) * 60) + 160) && mainY <= ((((player.getCardsInTheFiled().get(i).getY() - 1) * 60) + 160) + 55)) {
+                        card1ID = i;
+                        System.out.println("cart has been selected");
+                        break;
+                    }
+                }
+                if (card1ID != -1) {
+                    int fullOrNull = 0;
+                    int targetX = (((int) mainX - 230) / 60) + 1;
+                    int targetY = (((int) mainY - 160) / 60) + 1;
+                    for (int i = 0; i < Cell.getCells().size();i++) {
+                        if (Cell.getCells().get(i).getY() == targetY && Cell.getCells().get(i).getX() == targetX) {
+                            if (Cell.getCells().get(i).getInsideCard() != null)
+                                fullOrNull = 1;
+                        }
+                    }
+                    if (fullOrNull == 0){
+                    int valid = 0;
+                    int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), targetX, player.getCardsInTheFiled().get(card1ID).getY(), targetY);
+                    for (int i = 0; i < Cell.getCells().size(); i++) {
+                        if (Cell.getCells().get(i).getX() == targetX && Cell.getCells().get(i).getY() == targetY && Cell.getCells().get(i).getInsideCard() == null) {
+                            valid = 1;
+                            if (Cell.getCells().get(i).getFlag()) {
+                                player.getCardsInTheFiled().get(card1ID).setFlagTrue();
+                                player.setFlagTrue();
+                                Cell.getCells().get(i).setFlagFalse();
+
+                                if (mode == 2) {
+                                    player.setHowLongFlagsHasBeenKept(1);
+                                } else if (mode == 3) {
+                                    player.setHowManyFlag(player.getHowManyFlag() + 1);
+                                }
+
+                            }
+                            if (Cell.getCells().get(i).getItem() != null) {
+                                player1.addCollectableItems(Cell.getCells().get(i).getItem());
+                                Cell.getCells().get(i).setItem(null);
+                            }
+                        }
+                    }
+
+                    if (distance <= 2 && valid == 1) {
+                        for (int i = 0; i < Cell.getCells().size(); i++) {
+                            if (Cell.getCells().get(i).getY() == player.getCardsInTheFiled().get(card1ID).getY() &&
+                                    Cell.getCells().get(i).getX() == player.getCardsInTheFiled().get(card1ID).getX()) {
+                                Cell.getCells().get(i).setInsideCard(null);
+                            } else if (Cell.getCells().get(i).getX() == targetX && Cell.getCells().get(i).getY() == targetY) {
+                                Cell.getCells().get(i).setInsideCard(player.getCardsInTheFiled().get(card1ID));
+                            }
+                        }
+
+                        System.out.println(IDNumber1 + " moved to " + targetX + " " + targetY);
+                        player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
+                        System.out.println(card1ID);
+                        TranslateTransition translateTransition = new TranslateTransition();
+                        translateTransition.setDuration(Duration.millis(1000));
+                        translateTransition.setNode(player.getCards1().get(card1ID));
+                        translateTransition.setFromX(player.getCards1().get(card1ID).getX());
+                        translateTransition.setFromY(player.getCards1().get(card1ID).getY());
+                        translateTransition.setToX((60 * (targetX - 1) + 230) - (60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230));
+                        translateTransition.setToY((60 * (targetY - 1) + 160) - (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                        translateTransition.setAutoReverse(false);
+                        player.getCards1().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230),(60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                        player.getCards2().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230),(60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                        translateTransition.play();
+                        player.getCardsInTheFiled().get(card1ID).setX(targetX);
+                        player.getCardsInTheFiled().get(card1ID).setY(targetY);
+
+                    }
+
+                }else {
+
+                        for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
+                            if (mainX == enemyPlayer.getCardsInTheFiled().get(i).getX() && mainY == enemyPlayer.getCardsInTheFiled().get(i).getX()) {
+                                validID = 1;
+                                card2ID = i;
+                                break;
+                            }
+                        }
+
+                        if (validID == 0) {
+                            System.out.println("Invalid card id");
+                        }
+                        if (player.getMainDeck().getItem().getId() == 73 && player.getCardsInTheFiled().get(card1ID) == player.getHero()
+                                && player.getHero().getTypeOfAttack().matches("ranged") || player.getHero().getTypeOfAttack().matches("hybrid")) {
+                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                        }
+                        if (player.getMainDeck().getItem().getId() == 82) {
+                            Random rand = new Random();
+                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                            enemyPlayer.getCardsInTheFiled().get(n).setAttackPower(enemyPlayer.getCardsInTheFiled().get(n).getAttackPower() - 2);
+                            enemyPlayer.getCardsInTheFiled().get(n).setItem12True();
+                        } else if (player.getMainDeck().getItem().getId() == 87) {
+                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                        } else if (player.getMainDeck().getItem().getId() == 86) {
+                            Random rand = new Random();
+                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                            enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() - 1);
+                        }
+
+
+                        int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), enemyPlayer.getCardsInTheFiled().get(card2ID).getX()
+                                , player.getCardsInTheFiled().get(card1ID).getY(), enemyPlayer.getCardsInTheFiled().get(card2ID).getY());
+                        if (player.getCardsInTheFiled().get(card1ID).getStun() || player.getCardsInTheFiled().get(card1ID).getStunByMinion5()
+                                || player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed()) {
+                            System.out.println(player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed());
+                            System.out.println("----------->Card with " + IDNumber1 + " can't attack");
+                        } else if (distance <= player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() || player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() == -1
+                                && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() >= player.getCardsInTheFiled().get(card1ID).getX() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() <= player.getCardsInTheFiled().get(card1ID).getX() + 1 && player.getCardsInTheFiled().get(card1ID).getY() == enemyPlayer.getCardsInTheFiled().get(card2ID).getY() ||
+                                enemyPlayer.getCardsInTheFiled().get(card2ID).getY() >= player.getCardsInTheFiled().get(card1ID).getY() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() <= player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getY() ||
+                                enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY()
+                                == player.getCardsInTheFiled().get(card1ID).getY() - 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1 && player.getCardsInTheFiled().get(card1ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1
+                                && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() - 1) {
+
+
+                            if (player.getCardsInTheFiled().get(card1ID).getId() > 0 && player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                                int attackPower = 0;
+                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() > player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() -
+                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                } else {
+                                    attackPower = player.getCardsInTheFiled().get(card1ID).getAttackPower() - enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff();
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(0);
+                                }
+                                if (player.getCardsInTheFiled().get(card1ID).getId() == 1 || player.getCardsInTheFiled().get(card1ID).getId() == 3 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 4 || player.getCardsInTheFiled().get(card1ID).getId() == 7 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 8 || player.getCardsInTheFiled().get(card1ID).getId() == 9 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 6 || player.getCardsInTheFiled().get(card1ID).getId() == 12 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 13 || player.getCardsInTheFiled().get(card1ID).getId() == 14 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 16 || player.getCardsInTheFiled().get(card1ID).getId() == 20 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 33 || player.getCardsInTheFiled().get(card1ID).getId() == 34 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 39 || player.getCardsInTheFiled().get(card1ID).getId() == 40 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 15 || player.getCardsInTheFiled().get(card1ID).getId() == 17 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 21 || player.getCardsInTheFiled().get(card1ID).getId() == 25 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 26 || player.getCardsInTheFiled().get(card1ID).getId() == 27 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 28 || player.getCardsInTheFiled().get(card1ID).getId() == 29 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 30 || player.getCardsInTheFiled().get(card1ID).getId() == 31 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 36 || player.getCardsInTheFiled().get(card1ID).getId() == 37 ||
+                                        player.getCardsInTheFiled().get(card1ID).getId() == 38) {
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 2) {
+
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+
+                                    try {
+                                        Thread.sleep(4000);
+                                    }catch (Exception e){}
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 5) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    }catch (Exception e){}
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled()
+                                            .get(card2ID).getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower() -
+                                            (5 * enemyPlayer.getCardsInTheFiled().get(card2ID).getMinion5Counter()));
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).addMinion5Counter();
+                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                    attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 10) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    }catch (Exception e){}
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                                    player.getCardsInTheFiled().get(card1ID).setCounterMinion10(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                    attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 18) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    }catch (Exception e){}
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                                    player.getCardsInTheFiled().get(card1ID).setCounterMinion18(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                    attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                    //20 monde
+
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 32) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    }catch (Exception e){}
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    if (enemyPlayer.getCardsInTheFiled().get(card2ID).getAttackPower() < player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
+                                        enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                                player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                        player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                        attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                    }
+                                } else if (player.getCardsInTheFiled().get(card1ID).getId() == 35) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                    root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    }catch (Exception e){}
+                                                    root.getChildren().add(player.getCards1().get(card1ID));
+                                                    root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                                }
+                                            }
+                                    );
+                                    Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
+                                    temp.minion35Power(temp);
+                                    enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                    attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                }
+                                if (player.getCardsInTheFiled().get(card1ID).getHealthPoint() <= 0) {
+                                    Platform.runLater(
+                                            new Runnable(){
+                                                public void run(){
+                                                    root.getChildren().remove(player.getCards1().get(card1ID));
+                                                }
+                                            }
+                                    );
+
+
+                                    if (player.getMainDeck().getItem().getId() == 89) {
+                                        for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                                            player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 1);
+                                        }
+                                    }
+                                    if (player.getCardsInTheFiled().get(card1ID).getFlag()) {
+                                        player.getCardsInTheFiled().get(card1ID).setFlagFalse();
+                                        player.setFlagFalse();
+                                        enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagTrue();
+                                        if (mode == 2) {
+                                            player.setHowLongFlagsHasBeenKept(0);
+                                            enemyPlayer.setHowLongFlagsHasBeenKept(1);
+                                        } else if (mode == 3) {
+                                            player.setHowManyFlag(player.getHowManyFlag() - 1);
+                                            enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() + 1);
+                                        }
+                                    }
+                                    if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                                        Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                        if (temp.getItem10()) {
+                                            Random rand = new Random();
+                                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                                            enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
+                                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                        }
+                                    }
+                                    if (player.getCardsInTheFiled().get(card1ID).getId() == 17) {
+                                        Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                        temp.minion17Power();
+                                    } else if (player.getCardsInTheFiled().get(card1ID).getId() == 38) {
+                                        Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                        temp.minion38Power(enemyPlayer.getHero());
+                                    }
+                                    player.getCardsInTheFiled().remove(player.getCardsInTheFiled().get(card1ID));
+                                }
+                                if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() <= 0) {
+                                    if (enemyPlayer.getMainDeck().getItem().getId() == 89) {
+                                        for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
+                                            enemyPlayer.getCardsInTheFiled().get(i).setAttackPower(enemyPlayer.getCardsInTheFiled().get(i).getAttackPower() + 1);
+                                        }
+                                    }
+                                    if (enemyPlayer.getCardsInTheFiled().get(card2ID).getFlag()) {
+                                        enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagFalse();
+                                        enemyPlayer.setFlagFalse();
+                                        player.getCardsInTheFiled().get(card1ID).setFlagTrue();
+                                        if (mode == 2) {
+                                            enemyPlayer.setHowLongFlagsHasBeenKept(0);
+                                            player.setHowLongFlagsHasBeenKept(1);
+                                        } else if (mode == 3) {
+                                            enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() - 1);
+                                            player.setHowManyFlag(player.getHowManyFlag() + 1);
+                                        }
+                                    }
+                                    if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                                        Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                        if (temp.getItem10()) {
+                                            Random rand = new Random();
+                                            int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                                            enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
+                                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                        }
+                                    }
+                                    if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 17) {
+                                        Minion mnvfdjnvdfvndkfvnjkd = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
+                                        mnvfdjnvdfvndkfvnjkd.minion17Power();
+                                    } else if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 38) {
+                                        Minion temp = (Minion) player.getCardsInTheFiled().get(card2ID);
+                                        temp.minion38Power(player.getHero());
+                                    }
+                                    enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                }
+                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 65) {
+                                Hero temp = (Hero) player.getCardsInTheFiled().get(card1ID);
+                                if (temp.gethero65Activated()) {
+                                    temp.setCounterHero65(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                }
+                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
+                                        getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                            } else {
+                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
+                                        getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                            }
+
+                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    }
             }
 
+            }
         });
 //        while (!endGame) {
 //
@@ -1427,7 +1134,7 @@ public class Battle {
 //            int counter = -1;
 //            while (true) {
 //                if (story) {
-        // checkForWinnerInStory();
+//                    checkForWinnerInStory();
 //                } else
 //                    checkForWinnerInCustomGame();
 //                counter++;
@@ -1826,6 +1533,13 @@ public class Battle {
 //                }else if (command.indexOf("Show opponent minions") != -1){
 //                    showMinions(enemyPlayer);
 //                }else if (command.indexOf("Show card info") != -1){
+
+
+        Label playerInfo = new Label("name: "+player1.getAccount().getUserName());
+        Label playerInfo2 = new Label("win: "+player1.getAccount().getWins());
+        Group
+
+
 //                    String split[] = command.split(" ");
 //                    int cardId = Integer.parseInt(split[3]);
 //                    System.out.println(player.getCardsInTheFiled().get(0).getAttackPower());
@@ -1833,54 +1547,55 @@ public class Battle {
 //                }else if (command.indexOf("Game info") != -1){
 //                    System.out.println(player1.getAccount().getUserName()+" mana point is "+player1.getMana());
 //                    System.out.println(player2.getAccount().getUserName()+" mana point is "+player2.getMana());
-//                    if (mode == 1){
-//                        System.out.println(player1.getAccount().getUserName()+" health point is "+player1.getCardsInTheFiled().get(0).getHealthPoint());
-//                        System.out.println(player2.getAccount().getUserName()+" health point is "+player2.getCardsInTheFiled().get(0).getHealthPoint());
-//                    }else if (mode == 2){
-//                        int exist = 0;
-//                        for (int i = 0; i  <Cell.getCells().size(); i++){
-//                            if (Cell.getCells().get(i).getFlag()){
-//                                exist = 1;
-//                                System.out.println("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
-//                                break;
-//                            }
-//                        }
-//                        if (exist == 0){
-//                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-//                                if (player1.getCardsInTheFiled().get(i).getFlag()){
-//                                    System.out.println("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY());
-//                                    exist = 1;
-//                                    break;
-//                                }
-//                            }
-//                            if (exist == 0){
-//                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-//                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
-//                                        System.out.println("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY());
-//                                        exist = 1;
-//                                        break;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }else if (mode == 3){
-//                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-//                            if (player1.getCardsInTheFiled().get(i).getFlag()){
-//                                System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
-//                            }
-//                        }
-//                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-//                            if (player2.getCardsInTheFiled().get(i).getFlag()){
-//                                System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
-//                            }
-//
-//                        }
-//                    }
+                    if (mode == 1){
+                        System.out.println(player1.getAccount().getUserName()+" health point is "+player1.getCardsInTheFiled().get(0).getHealthPoint());
+                        System.out.println(player2.getAccount().getUserName()+" health point is "+player2.getCardsInTheFiled().get(0).getHealthPoint());
+                    }else if (mode == 2){
+                        int exist = 0;
+                        for (int i = 0; i  <Cell.getCells().size(); i++){
+                            if (Cell.getCells().get(i).getFlag()){
+                                exist = 1;
+                                System.out.println("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                                break;
+                            }
+                        }
+                        if (exist == 0){
+                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                                if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                    System.out.println("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY());
+                                    exist = 1;
+                                    break;
+                                }
+                            }
+                            if (exist == 0){
+                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                        System.out.println("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY());
+                                        exist = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }else if (mode == 3){
+                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
+                            if (player1.getCardsInTheFiled().get(i).getFlag()){
+                                System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                            }
+                        }
+                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
+                            if (player2.getCardsInTheFiled().get(i).getFlag()){
+                                System.out.println("team : "+player1.getAccount().getUserName()+" card : "+player1.getCardsInTheFiled().get(i).getName());
+                            }
+
+                        }
+                    }
 //                }
 //
 //            }
 //        }
     }
+
 
 
     public void checkForWinnerInStory() {
@@ -1889,54 +1604,43 @@ public class Battle {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                System.out.println(player2.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                System.out.println(player2.getAccount().getUserName()+" win");
 
+                endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                System.out.println(player1.getAccount().getUserName()+" win");
+                endGame = true;
             }
         } else if (mode == 2) {
             if (player1.getHowLongFlagsHasBeenKept() == 6) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                System.out.println(player1.getAccount().getUserName()+" win");
+                endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                System.out.println(player2.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                System.out.println(player2.getAccount().getUserName()+" win");
+                endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2 + 1) {
+            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
-            } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
-                System.out.println(player2.getAccount().getUserName() + " win");
+                System.out.println(player1.getAccount().getUserName()+" win");
+                endGame = true;
+            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.println(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             }
         }
     }
@@ -1944,58 +1648,46 @@ public class Battle {
     public void checkForWinnerInCustomGame() {
         if (mode == 1) {
             if (player1.getHero().getHealthPoint() <= 0) {
-                System.out.printf(player2.getAccount().getUserName() + " win");
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
 
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             } else if (player2.getHero().getHealthPoint() <= 0) {
-                System.out.printf(player1.getAccount().getUserName() + " win");
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             }
         } else if (mode == 2) {
             if (player1.getHowLongFlagsHasBeenKept() == 6) {
-                System.out.printf(player1.getAccount().getUserName() + " win");
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
-                System.out.printf(player2.getAccount().getUserName() + " win");
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             }
         } else if (mode == 3) {
-            if (player1.getHowManyFlag() == howManyFlags / 2 + 1) {
-                System.out.printf(player1.getAccount().getUserName() + " win");
+            if (player1.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.printf(player1.getAccount().getUserName()+" win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
-            } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
-                System.out.printf(player2.getAccount().getUserName() + " win");
+                endGame = true;
+            } else if (player2.getHowManyFlag() == howManyFlags / 2+1) {
+                System.out.printf(player2.getAccount().getUserName()+" win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
-
+                endGame = true;
             }
         }
     }
@@ -2074,1005 +1766,851 @@ public class Battle {
             System.out.println("invalid command!");
         }
     }
+    public void singlePlayerTurn(){
+                if (story) {
+                    checkForWinnerInStory();
+                } else
+                    checkForWinnerInCustomGame();
 
-    public void singlePlayerTurn() {
-        if (story) {
-            checkForWinnerInStory();
-        } else
-            checkForWinnerInCustomGame();
-
-        for (int k = 0; k <= 5; k++) {
-            if (k == 0) {
-                command = "Select [" + player2.getCardsInTheFiled().get(randomForCommand).getId() + "]";
-            } else if (k == 1) {
-                Random rand2 = new Random();
-                int x = rand2.nextInt(5) + 1;
-                Random rand3 = new Random();
-                int y = rand3.nextInt(9) + 1;
-                if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
-                } else if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY();
-                } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 2;
-                } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 1;
-                } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 2;
-                } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY();
-                } else {
-                    x = player2.getCardsInTheFiled().get(randomForCommand).getX();
-                    y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
-                }
-                command = "Move to (" + x + "," + y + ")";
-            } else if (k == 2) {
-                Random rand2 = new Random();
-                int enemy = rand2.nextInt(player1.getCardsInTheFiled().size());
-//                if (player2.getCardsInTheFiled().get(randomForCommand).getType() != 0 && player2.getCardsInTheFiled().get(randomForCommand).getActivationTime().matches("combo")) {
-//                    command = "Attack combo " + enemy + " ";
-//                    for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
-//                        if (player2.getCardsInTheFiled().get(i).getActivationTime().matches("combo") &&
-//                                player2.getCardsInTheFiled().get(i).getId() != player2.getCardsInTheFiled().get(randomForCommand).getId()) {
-//                            command = command + player2.getCardsInTheFiled().get(i).getId() + " ";
-//                        }
-//                    }
-//                } else
-                command = "Attack [" + enemy + "]";
-            } else if (k == 3) {
-                Random rand2 = new Random();
-                int x = rand2.nextInt(5) + 1;
-                Random rand3 = new Random();
-                int y = rand3.nextInt(9) + 1;
-                command = "Use special power (" + x + "," + y + ")";
-            } else if (k == 4) {
-                Random rand4 = new Random();
-                int interCard = rand4.nextInt(player2.getHand().getCardsInThisHand().size());
-                Random rand2 = new Random();
-                int x = player2.getCardsInTheFiled().get(0).getX() - 1;
-                Random rand3 = new Random();
-                int y = player2.getCardsInTheFiled().get(0).getY() + 1;
-                command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " in (" + x + "," + y + ")";
-            } else if (k == 5) {
-                command = "End turn";
-            }
-            System.out.println(command);
-
-
-            if (command.indexOf("Select") != -1) {
-                String split[] = command.split("\\[");
-                String split2[] = split[1].split("]");
-                IDNumber1 = Integer.parseInt(split2[0]);
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                    if (IDNumber1 == player.getCardsInTheFiled().get(i).getId() && player.getCardsInTheFiled().get(i).getStunByMinion5() == false) {
-                        validID = 1;
-                        card1ID = i;
-                        break;
-                    }
-                }
-                for (int i = 0; i < player.getCollectibleItems().size(); i++) {
-                    if (player.getCollectibleItems().get(i).getId() == IDNumber1) {
-                        validID = 1;
-                        itemIDNumber = i;
-                    }
-                }
-                if (validID == 0) {
-                    System.out.println("Invalid card id");
-                }
-            } else if (command.indexOf("Move to") != -1) {
-                int x = command.charAt(9) - 48;
-                int y = command.charAt(11) - 48;
-                int valid = 0;
-                int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
-                for (int i = 0; i < Cell.getCells().size(); i++) {
-                    if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
-                        valid = 1;
-                        if (Cell.getCells().get(i).getFlag()) {
-                            player.getCardsInTheFiled().get(card1ID).setFlagTrue();
-                            player.setFlagTrue();
-                            Cell.getCells().get(i).setFlagFalse();
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().removeAll(flag1);
-                                        }
-                                    }
-                            );
-                            if (mode == 2) {
-                                Platform.runLater(
-                                        new Runnable() {
-                                            public void run() {
-                                                root.getChildren().remove(flag1);
-                                            }
-                                        }
-                                );
-                                player.setHowLongFlagsHasBeenKept(1);
-                            } else if (mode == 3) {
-                                player.setHowManyFlag(player.getHowManyFlag() + 1);
-                                for (int j = 0; j < howManyFlags; j++) {
-                                    if (flag2[j].getX() == x && flag2[j].getY() == y) {
-                                        removeFlag = j;
-                                        Platform.runLater(
-                                                new Runnable() {
-                                                    public void run() {
-                                                        root.getChildren().remove(flag2[removeFlag]);
-                                                    }
-                                                }
-                                        );
-                                    }
-                                }
-                            }
-
-                        }
-                        if (Cell.getCells().get(i).getItem() != null) {
-                            player1.addCollectableItems(Cell.getCells().get(i).getItem());
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    root.getChildren().remove(items);
-                                }
-                            });
-                            Cell.getCells().get(i).setItem(null);
-                        }
-                    }
-                }
-
-                if (distance <= 2 && valid == 1) {
-                    for (int i = 0; i < Cell.getCells().size(); i++) {
-                        if (Cell.getCells().get(i).getY() == player.getCardsInTheFiled().get(card1ID).getY() &&
-                                Cell.getCells().get(i).getX() == player.getCardsInTheFiled().get(card1ID).getX()) {
-                            Cell.getCells().get(i).setInsideCard(null);
-                        } else if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y) {
-                            Cell.getCells().get(i).setInsideCard(player.getCardsInTheFiled().get(card1ID));
-                        }
-                    }
-
-                    TranslateTransition translateTransition = new TranslateTransition();
-                    translateTransition.setDuration(Duration.millis(1000));
-                    translateTransition.setNode(player.getCards1().get(card1ID));
-                    translateTransition.setFromX(player.getCards1().get(card1ID).getX());
-                    translateTransition.setFromY(player.getCards1().get(card1ID).getY());
-                    translateTransition.setToX((60 * (x - 1) + 230) - (60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230));
-                    translateTransition.setToY((60 * (y - 1) + 160) - (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                    translateTransition.setAutoReverse(false);
-                    player.getCards1().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230), (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                    player.getCards2().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230), (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
-                    translateTransition.play();
-                    player.getCardsInTheFiled().get(card1ID).setX(x);
-                    player.getCardsInTheFiled().get(card1ID).setY(y);
-
-
-                    System.out.println(IDNumber1 + " moved to " + x + " " + y);
-                    player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
-                }
-            } else if (command.indexOf("Attack") != -1) {
-
-                String split[] = command.split("\\[");
-                String split2[] = split[1].split("]");
-                enemyId = Integer.parseInt(split2[0]);
-                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                    if (IDNumber1 == enemyPlayer.getCardsInTheFiled().get(i).getId()) {
-                        validID = 1;
-                        card2ID = i;
-                        break;
-                    }
-                }
-
-
-                if (validID == 0) {
-                    System.out.println("Invalid card id");
-                }
-                if (player.getMainDeck().getItem().getId() == 73 && player.getCardsInTheFiled().get(card1ID) == player.getHero()
-                        && player.getHero().getTypeOfAttack().matches("ranged") || player.getHero().getTypeOfAttack().matches("hybrid")) {
-                    enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                }
-                if (player.getMainDeck().getItem().getId() == 82) {
-                    Random rand = new Random();
-                    int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                    enemyPlayer.getCardsInTheFiled().get(n).setAttackPower(enemyPlayer.getCardsInTheFiled().get(n).getAttackPower() - 2);
-                    enemyPlayer.getCardsInTheFiled().get(n).setItem12True();
-                } else if (player.getMainDeck().getItem().getId() == 87) {
-                    enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                } else if (player.getMainDeck().getItem().getId() == 86) {
-                    Random rand = new Random();
-                    int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                    enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() - 1);
-                }
-
-
-                int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), enemyPlayer.getCardsInTheFiled().get(card2ID).getX()
-                        , player.getCardsInTheFiled().get(card1ID).getY(), enemyPlayer.getCardsInTheFiled().get(card2ID).getY());
-                if (player.getCardsInTheFiled().get(card1ID).getStun() || player.getCardsInTheFiled().get(card1ID).getStunByMinion5()
-                        || player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed()) {
-                    System.out.println("Card with " + IDNumber1 + " can't attack");
-                } else if (distance <= player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() || player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() == -1
-                        && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() >= player.getCardsInTheFiled().get(card1ID).getX() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() <= player.getCardsInTheFiled().get(card1ID).getX() + 1 && player.getCardsInTheFiled().get(card1ID).getY() == enemyPlayer.getCardsInTheFiled().get(card2ID).getY() ||
-                        enemyPlayer.getCardsInTheFiled().get(card2ID).getY() >= player.getCardsInTheFiled().get(card1ID).getY() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() <= player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getY() ||
-                        enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY()
-                        == player.getCardsInTheFiled().get(card1ID).getY() - 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1 && player.getCardsInTheFiled().get(card1ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1
-                        && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() - 1) {
-
-
-                    if (player.getCardsInTheFiled().get(card1ID).getId() > 0 && player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                        int attackPower = 0;
-                        if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() > player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() -
-                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
+               for (int k = 0; k <= 5; k++){
+                    if (k == 0) {
+                        command = "Select [" + player2.getCardsInTheFiled().get(randomForCommand).getId() + "]";
+                    } else if (k == 1) {
+                        Random rand2 = new Random();
+                        int x = rand2.nextInt(5) + 1;
+                        Random rand3 = new Random();
+                        int y = rand3.nextInt(9) + 1;
+                        if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
+                        } else if (x > player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY();
+                        } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y > player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 2;
+                        } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 1;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 1;
+                        } else if (x == player2.getCardsInTheFiled().get(randomForCommand).getX() && y < player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY() - 2;
+                        } else if (x < player2.getCardsInTheFiled().get(randomForCommand).getX() && y == player2.getCardsInTheFiled().get(randomForCommand).getY()) {
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX() - 2;
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY();
                         } else {
-                            attackPower = player.getCardsInTheFiled().get(card1ID).getAttackPower() - enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff();
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(0);
+                            x = player2.getCardsInTheFiled().get(randomForCommand).getX();
+                            y = player2.getCardsInTheFiled().get(randomForCommand).getY() + 1;
                         }
-                        if (player.getCardsInTheFiled().get(card1ID).getId() == 1 || player.getCardsInTheFiled().get(card1ID).getId() == 3 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 4 || player.getCardsInTheFiled().get(card1ID).getId() == 7 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 8 || player.getCardsInTheFiled().get(card1ID).getId() == 9 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 6 || player.getCardsInTheFiled().get(card1ID).getId() == 12 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 13 || player.getCardsInTheFiled().get(card1ID).getId() == 14 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 16 || player.getCardsInTheFiled().get(card1ID).getId() == 20 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 33 || player.getCardsInTheFiled().get(card1ID).getId() == 34 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 39 || player.getCardsInTheFiled().get(card1ID).getId() == 40 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 15 || player.getCardsInTheFiled().get(card1ID).getId() == 17 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 21 || player.getCardsInTheFiled().get(card1ID).getId() == 25 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 26 || player.getCardsInTheFiled().get(card1ID).getId() == 27 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 28 || player.getCardsInTheFiled().get(card1ID).getId() == 29 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 30 || player.getCardsInTheFiled().get(card1ID).getId() == 31 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 36 || player.getCardsInTheFiled().get(card1ID).getId() == 37 ||
-                                player.getCardsInTheFiled().get(card1ID).getId() == 38) {
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 2) {
-
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 5) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled()
-                                    .get(card2ID).getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower() -
-                                    (5 * enemyPlayer.getCardsInTheFiled().get(card2ID).getMinion5Counter()));
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).addMinion5Counter();
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 10) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                            player.getCardsInTheFiled().get(card1ID).setCounterMinion10(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 18) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
-                            player.getCardsInTheFiled().get(card1ID).setCounterMinion18(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            //20 monde
-
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 32) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            if (enemyPlayer.getCardsInTheFiled().get(card2ID).getAttackPower() < player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                        player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                                attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                            }
-                        } else if (player.getCardsInTheFiled().get(card1ID).getId() == 35) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                            root.getChildren().addAll(player.getCards2().get(card1ID));
-                                            root.getChildren().add(player.getCards1().get(card1ID));
-                                            root.getChildren().remove(player.getCards2().get(card1ID));
-
-                                        }
-                                    }
-                            );
-                            Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
-                            temp.minion35Power(temp);
-                            enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
-                                    player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                            player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
-                            attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        }
-                        if (player.getCardsInTheFiled().get(card1ID).getHealthPoint() <= 0) {
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().remove(player.getCards1().get(card1ID));
-                                        }
-                                    }
-                            );
-
-
-                            if (player.getMainDeck().getItem().getId() == 89) {
-                                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                                    player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 1);
+                        command = "Move to (" + x + "," + y + ")";
+                    } else if (k == 2) {
+                        Random rand2 = new Random();
+                        int enemy = rand2.nextInt(player1.getCardsInTheFiled().size());
+                        if (player2.getCardsInTheFiled().get(randomForCommand).getType() != 0 && player2.getCardsInTheFiled().get(randomForCommand).getActivationTime().matches("combo")) {
+                            command = "Attack combo " + enemy + " ";
+                            for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                                if (player2.getCardsInTheFiled().get(i).getActivationTime().matches("combo") &&
+                                        player2.getCardsInTheFiled().get(i).getId() != player2.getCardsInTheFiled().get(randomForCommand).getId()) {
+                                    command = command + player2.getCardsInTheFiled().get(i).getId() + " ";
                                 }
                             }
-                            if (player.getCardsInTheFiled().get(card1ID).getFlag()) {
-                                player.getCardsInTheFiled().get(card1ID).setFlagFalse();
-                                player.setFlagFalse();
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagTrue();
-                                if (mode == 2) {
-                                    player.setHowLongFlagsHasBeenKept(0);
-                                    enemyPlayer.setHowLongFlagsHasBeenKept(1);
-                                } else if (mode == 3) {
-                                    player.setHowManyFlag(player.getHowManyFlag() - 1);
-                                    enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() + 1);
-                                }
-                            }
-                            if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                                Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                if (temp.getItem10()) {
-                                    Random rand = new Random();
-                                    int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                                    enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
-                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                }
-                            }
-                            if (player.getCardsInTheFiled().get(card1ID).getId() == 17) {
-                                Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                temp.minion17Power();
-                            } else if (player.getCardsInTheFiled().get(card1ID).getId() == 38) {
-                                Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                temp.minion38Power(enemyPlayer.getHero());
-                            }
-                            player.getCardsInTheFiled().remove(player.getCardsInTheFiled().get(card1ID));
-                        }
-                        if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() <= 0) {
-                            if (enemyPlayer.getMainDeck().getItem().getId() == 89) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    enemyPlayer.getCardsInTheFiled().get(i).setAttackPower(enemyPlayer.getCardsInTheFiled().get(i).getAttackPower() + 1);
-                                }
-                            }
-                            if (enemyPlayer.getCardsInTheFiled().get(card2ID).getFlag()) {
-                                enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagFalse();
-                                enemyPlayer.setFlagFalse();
-                                player.getCardsInTheFiled().get(card1ID).setFlagTrue();
-                                if (mode == 2) {
-                                    enemyPlayer.setHowLongFlagsHasBeenKept(0);
-                                    player.setHowLongFlagsHasBeenKept(1);
-                                } else if (mode == 3) {
-                                    enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() - 1);
-                                    player.setHowManyFlag(player.getHowManyFlag() + 1);
-                                }
-                            }
-                            if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
-                                Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
-                                if (temp.getItem10()) {
-                                    Random rand = new Random();
-                                    int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
-                                    enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
-                                            player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                                }
-                            }
-                            if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 17) {
-                                Minion mnvfdjnvdfvndkfvnjkd = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
-                                mnvfdjnvdfvndkfvnjkd.minion17Power();
-                            } else if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 38) {
-                                Minion temp = (Minion) player.getCardsInTheFiled().get(card2ID);
-                                temp.minion38Power(player.getHero());
-                            }
-                            enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        }
-                    } else if (player.getCardsInTheFiled().get(card1ID).getId() == 65) {
-                        Hero temp = (Hero) player.getCardsInTheFiled().get(card1ID);
-                        if (temp.gethero65Activated()) {
-                            temp.setCounterHero65(enemyPlayer.getCardsInTheFiled().get(card2ID));
-                        }
-                        enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
-                                getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                        attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
-                    } else {
-                        enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
-                                getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
-                        attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                        } else
+                            command = "Attack [" + enemy + "]";
+                    } else if (k == 3) {
+                        Random rand2 = new Random();
+                        int x = rand2.nextInt(5) + 1;
+                        Random rand3 = new Random();
+                        int y = rand3.nextInt(9) + 1;
+                        command = "Use special power (" + x + "," + y + ")";
+                    } else if (k == 4) {
+                        Random rand4 = new Random();
+                        int interCard = rand4.nextInt(player2.getHand().getCardsInThisHand().size());
+                        Random rand2 = new Random();
+                        int x = player2.getCardsInTheFiled().get(0).getX() - 1;
+                        Random rand3 = new Random();
+                        int y = player2.getCardsInTheFiled().get(0).getY() + 1;
+                        command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " in (" + x + "," + y + ")";
+                    } else if (k == 5) {
+                        command = "End turn";
                     }
+                    System.out.println(command);
 
-                    player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
 
+
+                   if (command.indexOf("Select") != -1) {
+                       String split[] = command.split("\\[");
+                       String split2[] = split[1].split("]");
+                       IDNumber1 = Integer.parseInt(split2[0]);
+                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                           if (IDNumber1 == player.getCardsInTheFiled().get(i).getId() && player.getCardsInTheFiled().get(i).getStunByMinion5() == false) {
+                               validID = 1;
+                               card1ID = i;
+                               break;
+                           }
+                       }
+                       for (int i = 0; i < player.getCollectibleItems().size(); i++) {
+                           if (player.getCollectibleItems().get(i).getId() == IDNumber1) {
+                               validID = 1;
+                               itemIDNumber = i;
+                           }
+                       }
+                       if (validID == 0) {
+                           System.out.println("Invalid card id");
+                       }
+                   }else if (command.indexOf("Move to") != -1) {
+                       int x = command.charAt(9) - 48;
+                       int y = command.charAt(11) - 48;
+                       int valid = 0;
+                       int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), x, player.getCardsInTheFiled().get(card1ID).getY(), y);
+                       for (int i = 0; i < Cell.getCells().size(); i++) {
+                           if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null ) {
+                               valid = 1;
+                               if (Cell.getCells().get(i).getFlag()) {
+                                   player.getCardsInTheFiled().get(card1ID).setFlagTrue();
+                                   player.setFlagTrue();
+                                   Cell.getCells().get(i).setFlagFalse();
+
+                                   if (mode == 2) {
+                                       player.setHowLongFlagsHasBeenKept(1);
+                                   } else if (mode == 3) {
+                                       player.setHowManyFlag(player.getHowManyFlag() + 1);
+                                   }
+
+                               }
+                               if (Cell.getCells().get(i).getItem() != null){
+                                   player1.addCollectableItems(Cell.getCells().get(i).getItem());
+                                   Cell.getCells().get(i).setItem(null);
+                               }
+                           }
+                       }
+
+                       if (distance <= 2 && valid == 1) {
+                           for (int i = 0; i < Cell.getCells().size(); i++) {
+                               if (Cell.getCells().get(i).getY() == player.getCardsInTheFiled().get(card1ID).getY() &&
+                                       Cell.getCells().get(i).getX() == player.getCardsInTheFiled().get(card1ID).getX()) {
+                                   Cell.getCells().get(i).setInsideCard(null);
+                               } else if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y) {
+                                   Cell.getCells().get(i).setInsideCard(player.getCardsInTheFiled().get(card1ID));
+                               }
+                           }
+                           TranslateTransition translateTransition = new TranslateTransition();
+                           translateTransition.setDuration(Duration.millis(1000));
+                           translateTransition.setNode(player.getCards1().get(card1ID));
+                           translateTransition.setFromX(player.getCards1().get(card1ID).getX());
+                           translateTransition.setFromY(player.getCards1().get(card1ID).getY());
+                           translateTransition.setToX((60 * (x - 1) + 230) - (60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230));
+                           translateTransition.setToY((60 * (y - 1) + 160) - (60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                           translateTransition.setAutoReverse(false);
+                           player.getCards1().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230),(60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                           player.getCards2().get(card1ID).relocate((60 * (player.getCardsInTheFiled().get(card1ID).getX() - 1) + 230),(60 * (player.getCardsInTheFiled().get(card1ID).getY() - 1) + 160));
+                           translateTransition.play();
+                           player.getCardsInTheFiled().get(card1ID).setX(x);
+                           player.getCardsInTheFiled().get(card1ID).setY(y);
+                           System.out.println(IDNumber1 + " moved to " + x + " " + y);
+                           player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
+                       }
+                   }else if (command.indexOf("Attack") != -1) {
+
+                       String split[] = command.split("\\[");
+                       String split2[] = split[1].split("]");
+                       enemyId = Integer.parseInt(split2[0]);
+                       for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
+                           if (IDNumber1 == enemyPlayer.getCardsInTheFiled().get(i).getId()) {
+                               validID = 1;
+                               card2ID = i;
+                               break;
+                           }
+                       }
+
+
+                       if (validID == 0) {
+                           System.out.println("Invalid card id");
+                       }
+                       if (player.getMainDeck().getItem().getId() == 73 && player.getCardsInTheFiled().get(card1ID) == player.getHero()
+                               && player.getHero().getTypeOfAttack().matches("ranged") || player.getHero().getTypeOfAttack().matches("hybrid")) {
+                           enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                       }
+                       if (player.getMainDeck().getItem().getId() == 82) {
+                           Random rand = new Random();
+                           int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                           enemyPlayer.getCardsInTheFiled().get(n).setAttackPower(enemyPlayer.getCardsInTheFiled().get(n).getAttackPower() - 2);
+                           enemyPlayer.getCardsInTheFiled().get(n).setItem12True();
+                       } else if (player.getMainDeck().getItem().getId() == 87) {
+                           enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                       } else if (player.getMainDeck().getItem().getId() == 86) {
+                           Random rand = new Random();
+                           int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                           enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() - 1);
+                       }
+
+
+                       int distance = getDistance(player.getCardsInTheFiled().get(card1ID).getX(), enemyPlayer.getCardsInTheFiled().get(card2ID).getX()
+                               , player.getCardsInTheFiled().get(card1ID).getY(), enemyPlayer.getCardsInTheFiled().get(card2ID).getY());
+                       if (player.getCardsInTheFiled().get(card1ID).getStun() || player.getCardsInTheFiled().get(card1ID).getStunByMinion5()
+                               || player.getCardsInTheFiled().get(card1ID).getHaveBeenUsed()) {
+                           System.out.println("Card with " + IDNumber1 + " can't attack");
+                       } else if (distance <= player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() || player.getCardsInTheFiled().get(card1ID).getRangeOfAttack() == -1
+                               && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() >= player.getCardsInTheFiled().get(card1ID).getX() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() <= player.getCardsInTheFiled().get(card1ID).getX() + 1 && player.getCardsInTheFiled().get(card1ID).getY() == enemyPlayer.getCardsInTheFiled().get(card2ID).getY() ||
+                               enemyPlayer.getCardsInTheFiled().get(card2ID).getY() >= player.getCardsInTheFiled().get(card1ID).getY() - 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() <= player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getY() ||
+                               enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() + 1 && enemyPlayer.getCardsInTheFiled().get(card2ID).getY()
+                               == player.getCardsInTheFiled().get(card1ID).getY() - 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1 && player.getCardsInTheFiled().get(card1ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() + 1 || enemyPlayer.getCardsInTheFiled().get(card2ID).getX() == player.getCardsInTheFiled().get(card1ID).getX() - 1
+                               && enemyPlayer.getCardsInTheFiled().get(card2ID).getY() == player.getCardsInTheFiled().get(card1ID).getY() - 1) {
+
+
+                           if (player.getCardsInTheFiled().get(card1ID).getId() > 0 && player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                               int attackPower = 0;
+                               if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() > player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff() -
+                                           player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                               } else {
+                                   attackPower = player.getCardsInTheFiled().get(card1ID).getAttackPower() - enemyPlayer.getCardsInTheFiled().get(card2ID).getHowManyHolyBuff();
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHowManyHolyBuff(0);
+                               }
+                               if (player.getCardsInTheFiled().get(card1ID).getId() == 1 || player.getCardsInTheFiled().get(card1ID).getId() == 3 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 4 || player.getCardsInTheFiled().get(card1ID).getId() == 7 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 8 || player.getCardsInTheFiled().get(card1ID).getId() == 9 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 6 || player.getCardsInTheFiled().get(card1ID).getId() == 12 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 13 || player.getCardsInTheFiled().get(card1ID).getId() == 14 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 16 || player.getCardsInTheFiled().get(card1ID).getId() == 20 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 33 || player.getCardsInTheFiled().get(card1ID).getId() == 34 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 39 || player.getCardsInTheFiled().get(card1ID).getId() == 40 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 15 || player.getCardsInTheFiled().get(card1ID).getId() == 17 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 21 || player.getCardsInTheFiled().get(card1ID).getId() == 25 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 26 || player.getCardsInTheFiled().get(card1ID).getId() == 27 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 28 || player.getCardsInTheFiled().get(card1ID).getId() == 29 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 30 || player.getCardsInTheFiled().get(card1ID).getId() == 31 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 36 || player.getCardsInTheFiled().get(card1ID).getId() == 37 ||
+                                       player.getCardsInTheFiled().get(card1ID).getId() == 38) {
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 2) {
+
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                           player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                   player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 5) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled()
+                                           .get(card2ID).getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower() -
+                                           (5 * enemyPlayer.getCardsInTheFiled().get(card2ID).getMinion5Counter()));
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).addMinion5Counter();
+                                   player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                   attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 10) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                                   player.getCardsInTheFiled().get(card1ID).setCounterMinion10(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                           player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                   player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                   attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 18) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setDisarmFor1TurnTrue();
+                                   player.getCardsInTheFiled().get(card1ID).setCounterMinion18(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                           player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                   player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                   attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                   //20 monde
+
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 32) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   if (enemyPlayer.getCardsInTheFiled().get(card2ID).getAttackPower() < player.getCardsInTheFiled().get(card1ID).getAttackPower()) {
+                                       enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                               player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                       player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                       attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                                   }
+                               } else if (player.getCardsInTheFiled().get(card1ID).getId() == 35) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                                   root.getChildren().addAll(player.getCards2().get(card1ID));
+                                                   try {
+                                                       Thread.sleep(4000);
+                                                   }catch (Exception e){}
+                                                   root.getChildren().add(player.getCards1().get(card1ID));
+                                                   root.getChildren().remove(player.getCards2().get(card1ID));
+
+                                               }
+                                           }
+                                   );
+                                   Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
+                                   temp.minion35Power(temp);
+                                   enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() -
+                                           player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                   player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+                                   attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                               }
+                               if (player.getCardsInTheFiled().get(card1ID).getHealthPoint() <= 0) {
+                                   Platform.runLater(
+                                           new Runnable(){
+                                               public void run(){
+                                                   root.getChildren().remove(player.getCards1().get(card1ID));
+                                               }
+                                           }
+                                   );
+
+
+                                   if (player.getMainDeck().getItem().getId() == 89) {
+                                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                                           player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 1);
+                                       }
+                                   }
+                                   if (player.getCardsInTheFiled().get(card1ID).getFlag()) {
+                                       player.getCardsInTheFiled().get(card1ID).setFlagFalse();
+                                       player.setFlagFalse();
+                                       enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagTrue();
+                                       if (mode == 2) {
+                                           player.setHowLongFlagsHasBeenKept(0);
+                                           enemyPlayer.setHowLongFlagsHasBeenKept(1);
+                                       } else if (mode == 3) {
+                                           player.setHowManyFlag(player.getHowManyFlag() - 1);
+                                           enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() + 1);
+                                       }
+                                   }
+                                   if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                                       Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                       if (temp.getItem10()) {
+                                           Random rand = new Random();
+                                           int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                                           enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
+                                                   player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                       }
+                                   }
+                                   if (player.getCardsInTheFiled().get(card1ID).getId() == 17) {
+                                       Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                       temp.minion17Power();
+                                   } else if (player.getCardsInTheFiled().get(card1ID).getId() == 38) {
+                                       Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                       temp.minion38Power(enemyPlayer.getHero());
+                                   }
+                                   player.getCardsInTheFiled().remove(player.getCardsInTheFiled().get(card1ID));
+                               }
+                               if (enemyPlayer.getCardsInTheFiled().get(card2ID).getHealthPoint() <= 0) {
+                                   if (enemyPlayer.getMainDeck().getItem().getId() == 89) {
+                                       for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
+                                           enemyPlayer.getCardsInTheFiled().get(i).setAttackPower(enemyPlayer.getCardsInTheFiled().get(i).getAttackPower() + 1);
+                                       }
+                                   }
+                                   if (enemyPlayer.getCardsInTheFiled().get(card2ID).getFlag()) {
+                                       enemyPlayer.getCardsInTheFiled().get(card2ID).setFlagFalse();
+                                       enemyPlayer.setFlagFalse();
+                                       player.getCardsInTheFiled().get(card1ID).setFlagTrue();
+                                       if (mode == 2) {
+                                           enemyPlayer.setHowLongFlagsHasBeenKept(0);
+                                           player.setHowLongFlagsHasBeenKept(1);
+                                       } else if (mode == 3) {
+                                           enemyPlayer.setHowManyFlag(enemyPlayer.getHowManyFlag() - 1);
+                                           player.setHowManyFlag(player.getHowManyFlag() + 1);
+                                       }
+                                   }
+                                   if (player.getCardsInTheFiled().get(card1ID).getId() <= 40) {
+                                       Minion temp = (Minion) player.getCardsInTheFiled().get(card1ID);
+                                       if (temp.getItem10()) {
+                                           Random rand = new Random();
+                                           int n = rand.nextInt(enemyPlayer.getCardsInTheFiled().size());
+                                           enemyPlayer.getCardsInTheFiled().get(n).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(n).getHealthPoint() -
+                                                   player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                                       }
+                                   }
+                                   if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 17) {
+                                       Minion mnvfdjnvdfvndkfvnjkd = (Minion) enemyPlayer.getCardsInTheFiled().get(card2ID);
+                                       mnvfdjnvdfvndkfvnjkd.minion17Power();
+                                   } else if (enemyPlayer.getCardsInTheFiled().get(card2ID).getId() == 38) {
+                                       Minion temp = (Minion) player.getCardsInTheFiled().get(card2ID);
+                                       temp.minion38Power(player.getHero());
+                                   }
+                                   enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                               }
+                           } else if (player.getCardsInTheFiled().get(card1ID).getId() == 65) {
+                               Hero temp = (Hero) player.getCardsInTheFiled().get(card1ID);
+                               if (temp.gethero65Activated()) {
+                                   temp.setCounterHero65(enemyPlayer.getCardsInTheFiled().get(card2ID));
+                               }
+                               enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
+                                       getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                               attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                           } else {
+                               enemyPlayer.getCardsInTheFiled().get(card2ID).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(card2ID).
+                                       getHealthPoint() - player.getCardsInTheFiled().get(card1ID).getAttackPower());
+                               attachBack(player.getCardsInTheFiled().get(card1ID), enemyPlayer.getCardsInTheFiled().get(card2ID));
+                           }
+
+                           player.getCardsInTheFiled().get(card1ID).setHaveBeenUsedTrue();
+
+                       }
+                   }else if (command.matches("End turn")) {
+                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                           if (player.getCardsInTheFiled().get(i).getType() == 0) {
+                               Hero hero = (Hero) player.getCardsInTheFiled().get(i);
+                               hero.timer(hero);
+                           }
+                           player.getCardsInTheFiled().get(i).setHaveBeenMovedFalse();
+                           player.getCardsInTheFiled().get(i).setHaveBeenUsedFalse();
+                           if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
+                               player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
+                           if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
+                               player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
+                           }
+                       }
+                       player = enemyPlayer;
+                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                           if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
+                               player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
+                           if (player.getCardsInTheFiled().get(i).getStunByMinion5()){
+                               player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
+                           }
+                       }
+                       if (turn == true)
+                           turn = false;
+                       else
+                           turn = true;
+
+
+                       Random rand78 = new Random();
+                       int xCollectable = rand78.nextInt(9) + 1;
+                       int yCollectable = rand78.nextInt(5) + 1;
+                       int randCollectable = rand78.nextInt(10) + 1;
+                       if (true){
+                           Item item = new Item(81, "RandomDamage", -1, "2 power strike for random power");
+                           for (int i = 0; i < Cell.getCells().size(); i++){
+                               if (Cell.getCells().get(i).getX() == xCollectable && Cell.getCells().get(i).getY() == yCollectable){
+                                   Cell.getCells().get(i).setItem(item);
+                                   System.out.println("collectable item in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY());
+                               }
+                           }
+                       }
+                       if (!turn) {
+                           player = player1;
+
+
+                           Platform.runLater(
+                                   new Runnable(){
+                                       public void run(){
+                                           root.getChildren().remove(label1);
+                                           root.getChildren().remove(label2);
+                                           root.getChildren().add(label1);
+
+                                       }
+                                   }
+                           );
+
+
+                           player1Turns++;
+                           enemyPlayer = player2;
+                       } else {
+                           player = player2;
+                           Platform.runLater(
+                                   new Runnable(){
+                                       public void run(){
+                                           root.getChildren().remove(label1);
+                                           root.getChildren().remove(label2);
+                                           root.getChildren().add(label2);
+
+                                       }
+                                   }
+                           );
+                           player2Turn++;
+                           enemyPlayer = player1;
+                       }
+
+                       if (player.getItem8()) {
+                           player.setMana(player.getMana() + 3);
+                           if (player == player1){
+                               for (int i = 0; i  < player.getMana(); i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                           }else {
+                               for (int i = 0; i  < player.getMana(); i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                           }
+                           player.setItem8False();
+                       }
+                       if (enemyPlayer.getItem8()) {
+                           enemyPlayer.setMana(enemyPlayer.getMana() + 3);
+                           if (player == player1){
+                               for (int i = 0; i  < player.getMana(); i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                           }else {
+                               for (int i = 0; i  < player.getMana(); i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                           }
+                           enemyPlayer.setItem8False();
+                       }
+                       Item tempItem = new Item(71, "taje danaii", 300, "increase one unit mana in 3 turns ");
+                       for (int i = 0; i < player.getCollectibleItems().size(); i++) {
+                           if (player.getCollectibleItems().get(i).getId() == 74) {
+                               tempItem.item4(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 75) {
+                               tempItem.item5(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 77) {
+                               tempItem.item7(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 78) {
+                               player.setItem8True();
+                           } else if (player.getCollectibleItems().get(i).getId() == 79) {
+                               tempItem.item9(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 80) {
+                               tempItem.item10(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 81) {
+                               tempItem.item11(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 83) {
+                               tempItem.item13(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 90) {
+                               tempItem.item20(player);
+                           }
+                       }
+                       if (player.getMainDeck().getItem().getId() == 71) {
+                           if (player == player1)
+                               tempItem.item1(player1Turns, player1);
+                           else
+                               tempItem.item1(player2Turn, player2);
+                       } else if (player.getMainDeck().getItem().getId() == 72) {
+                           tempItem.item2(player.getHero());
+                       } else if (player.getMainDeck().getItem().getId() == 76) {
+                           tempItem.item6(enemyPlayer.getHero());
+                       } else if (player.getMainDeck().getItem().getId() == 84) {
+                           tempItem.item14(player);
+                       }
+                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                           if (player.getCardsInTheFiled().get(i).getItem12()) {
+                               player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 2);
+                               player.getCardsInTheFiled().get(i).setItem12False();
+                           }
+                           if (player.getCardsInTheFiled().get(i).getCounterMinion10() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterMinion10(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getCounterMinion18() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterMinion18(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getHero65Power() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterHero65(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getId() == 15) {
+                               Minion temp = (Minion) player.getCardsInTheFiled().get(i);
+                               temp.minion15Power();
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 25) {
+                               for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
+                                   if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
+                                       if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
+                                           player.getCardsInTheFiled().get(j).setHealthPoint(player.getCardsInTheFiled().get(j).getHealthPoint() - 1);
+                                           player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
+                                           player.getCardsInTheFiled().get(j).setTempAttackPower(player.getCardsInTheFiled().get(j).getTempAttackPower() + 2);
+                                           player.getCardsInTheFiled().get(j).setTempHealtPoint(player.getCardsInTheFiled().get(j).getTempHealtPoint() - 1);
+                                       }
+
+                                   }
+                               }
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 26) {
+                               for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
+                                   if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
+                                       if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
+                                           player.getCardsInTheFiled().get(j).setHowManyHolyBuff(player.getCardsInTheFiled().get(j).getHowManyHolyBuff() + 1);
+                                           player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
+                                       }
+                                   }
+                               }
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 27) {
+                               for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
+                                   if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
+                                       player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 1);
+                                   }
+                               }
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 37) {
+                               player.getCardsInTheFiled().get(i).setHowManyHolyBuff(player.getCardsInTheFiled().get(i).getHowManyHolyBuff() + 12);
+                           }
+                       }
+                       player = enemyPlayer;
+                       for (int i = 0; i < player.getCollectibleItems().size(); i++) {
+                           if (player.getCollectibleItems().get(i).getId() == 74) {
+                               tempItem.item4(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 75) {
+                               tempItem.item5(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 77) {
+                               tempItem.item7(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 78) {
+                               player.setItem8True();
+                           } else if (player.getCollectibleItems().get(i).getId() == 79) {
+                               tempItem.item9(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 80) {
+                               tempItem.item10(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 81) {
+                               tempItem.item11(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 83) {
+                               tempItem.item13(player);
+                           } else if (player.getCollectibleItems().get(i).getId() == 90) {
+                               tempItem.item20(player);
+                           }
+                       }
+                       if (player.getMainDeck().getItem().getId() == 71) {
+                           if (player == player1)
+                               tempItem.item1(player1Turns, player1);
+                           else
+                               tempItem.item1(player2Turn, player2);
+                       } else if (player.getMainDeck().getItem().getId() == 72) {
+                           tempItem.item2(player.getHero());
+                       } else if (player.getMainDeck().getItem().getId() == 76) {
+                           tempItem.item6(enemyPlayer.getHero());
+                       } else if (player.getMainDeck().getItem().getId() == 84) {
+                           tempItem.item14(player);
+                       }
+                       for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
+                           if (player.getCardsInTheFiled().get(i).getItem12()) {
+                               player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 2);
+                               player.getCardsInTheFiled().get(i).setItem12False();
+                           }
+                           if (player.getCardsInTheFiled().get(i).getCounterMinion10() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterMinion10(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getCounterMinion18() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterMinion18(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getHero65Power() != 0) {
+                               player.getCardsInTheFiled().get(i).setCounterHero65(player.getCardsInTheFiled().get(i));
+                           }
+                           if (player.getCardsInTheFiled().get(i).getId() == 15) {
+                               Minion temp = (Minion) player.getCardsInTheFiled().get(i);
+                               temp.minion15Power();
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 25) {
+                               for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
+                                   if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
+                                       if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
+                                           player.getCardsInTheFiled().get(j).setHealthPoint(player.getCardsInTheFiled().get(j).getHealthPoint() - 1);
+                                           player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
+                                           player.getCardsInTheFiled().get(j).setTempAttackPower(player.getCardsInTheFiled().get(j).getTempAttackPower() + 2);
+                                           player.getCardsInTheFiled().get(j).setTempHealtPoint(player.getCardsInTheFiled().get(j).getTempHealtPoint() - 1);
+                                       }
+
+                                   }
+                               }
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 26) {
+                               for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
+                                   if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
+                                           player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
+                                                   player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
+                                           player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
+                                                   player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
+                                       if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
+                                           player.getCardsInTheFiled().get(j).setHowManyHolyBuff(player.getCardsInTheFiled().get(j).getHowManyHolyBuff() + 1);
+                                           player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
+                                       }
+                                   }
+                               }
+                           } else if (player.getCardsInTheFiled().get(i).getId() == 37) {
+                               player.getCardsInTheFiled().get(i).setHowManyHolyBuff(player.getCardsInTheFiled().get(i).getHowManyHolyBuff() + 12);
+                           }
+                       }
+                       if (!turn) {
+                           player = player1;
+                           enemyPlayer = player2;
+                       } else {
+                           player = player2;
+                           enemyPlayer = player1;
+                       }
+
+                       if (player.getFlag()) {
+                           player.setHowLongFlagsHasBeenKept(player.getHowLongFlagsHasBeenKept() + 1);
+                       } else if (enemyPlayer.getFlag()) {
+                           enemyPlayer.setHowLongFlagsHasBeenKept(enemyPlayer.getHowLongFlagsHasBeenKept() + 1);
+                       }
+                       j = -1;
+                       Random rand100 = new Random();
+                       randomForCommand = rand100.nextInt(player2.getCardsInTheFiled().size());
+                       if (player == player1){
+                           if (player1Turns == 2) {
+                               for (int i = 0; i  < 4; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(4);
+                           } else if (player1Turns == 3) {
+                               for (int i = 0; i  < 5; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(5);
+                           } else if (player1Turns == 6) {
+                               for (int i = 0; i  < 4; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(6);
+                           } else if (player1Turns == 5) {
+                               for (int i = 0; i  < 7; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(7);
+                           } else if (player1Turns == 6) {
+                               for (int i = 0; i  < 8; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(8);
+                           } else if (player1Turns >= 7) {
+                               for (int i = 0; i  < 9; i++){
+                                   mana1[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(9);
+                           }
+                       }else {
+                           if (player2Turn == 2) {
+                               for (int i = 0; i  < 4; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(4);
+                           } else if (player2Turn == 3) {
+                               for (int i = 0; i  < 5; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(5);
+                           } else if (player2Turn == 6) {
+                               for (int i = 0; i  < 4; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(6);
+                           } else if (player2Turn == 5) {
+                               for (int i = 0; i  < 7; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(7);
+                           } else if (player2Turn == 6) {
+                               for (int i = 0; i  < 8; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(8);
+                           } else if (player2Turn >= 7) {
+                               for (int i = 0; i  < 9; i++){
+                                   mana2[i].setFill(Color.rgb(158,243,249));
+                               }
+                               player.setMana(9);
+                           }
+                       }
+
+
+
+
+                    return;
+
+
+                   }
+                   System.out.println("-------------->"+k);
                 }
-            } else if (command.matches("End turn")) {
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                    if (player.getCardsInTheFiled().get(i).getType() == 0) {
-                        Hero hero = (Hero) player.getCardsInTheFiled().get(i);
-                        hero.timer(hero);
-                    }
-                    player.getCardsInTheFiled().get(i).setHaveBeenMovedFalse();
-                    player.getCardsInTheFiled().get(i).setHaveBeenUsedFalse();
-                    if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
-                        player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                    if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
-                        player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
-                    }
-                }
-                player = enemyPlayer;
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                    if (player.getCardsInTheFiled().get(i).getDisarmFor1Turn())
-                        player.getCardsInTheFiled().get(i).setHowLongHaveBeenDisarmed(player.getCardsInTheFiled().get(i).getHowLongHaveBeenDisarmed() + 1);
-                    if (player.getCardsInTheFiled().get(i).getStunByMinion5()) {
-                        player.getCardsInTheFiled().get(i).setHowLongHaveBeenStun(player.getCardsInTheFiled().get(i).getHowLongHaveBeenStun() + 1);
-                    }
-                }
-                if (turn == true)
-                    turn = false;
-                else
-                    turn = true;
-
-
-                if (!turn) {
-                    player = player1;
-
-
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
-                                    root.getChildren().remove(label1);
-                                    root.getChildren().remove(label2);
-                                    root.getChildren().add(label1);
-
-                                }
-                            }
-                    );
-
-
-                    player1Turns++;
-                    enemyPlayer = player2;
-                } else {
-                    player = player2;
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
-                                    root.getChildren().remove(label1);
-                                    root.getChildren().remove(label2);
-                                    root.getChildren().add(label2);
-
-                                }
-                            }
-                    );
-                    player2Turn++;
-                    enemyPlayer = player1;
-                }
-
-                if (player.getItem8()) {
-                    player.setMana(player.getMana() + 3);
-                    if (player == player1) {
-                        for (int i = 0; i < player.getMana(); i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                    } else {
-                        for (int i = 0; i < player.getMana(); i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                    }
-                    player.setItem8False();
-                }
-                if (enemyPlayer.getItem8()) {
-                    enemyPlayer.setMana(enemyPlayer.getMana() + 3);
-                    if (player == player1) {
-                        for (int i = 0; i < player.getMana(); i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                    } else {
-                        for (int i = 0; i < player.getMana(); i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                    }
-                    enemyPlayer.setItem8False();
-                }
-                Item tempItem = new Item(71, "taje danaii", 300, "increase one unit mana in 3 turns ");
-                for (int i = 0; i < player.getCollectibleItems().size(); i++) {
-                    if (player.getCollectibleItems().get(i).getId() == 74) {
-                        tempItem.item4(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 75) {
-                        tempItem.item5(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 77) {
-                        tempItem.item7(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 78) {
-                        player.setItem8True();
-                    } else if (player.getCollectibleItems().get(i).getId() == 79) {
-                        tempItem.item9(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 80) {
-                        tempItem.item10(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 81) {
-                        tempItem.item11(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 83) {
-                        tempItem.item13(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 90) {
-                        tempItem.item20(player);
-                    }
-                }
-                if (player.getMainDeck().getItem().getId() == 71) {
-                    if (player == player1)
-                        tempItem.item1(player1Turns, player1);
-                    else
-                        tempItem.item1(player2Turn, player2);
-                } else if (player.getMainDeck().getItem().getId() == 72) {
-                    tempItem.item2(player.getHero());
-                } else if (player.getMainDeck().getItem().getId() == 76) {
-                    tempItem.item6(enemyPlayer.getHero());
-                } else if (player.getMainDeck().getItem().getId() == 84) {
-                    tempItem.item14(player);
-                }
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                    if (player.getCardsInTheFiled().get(i).getItem12()) {
-                        player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 2);
-                        player.getCardsInTheFiled().get(i).setItem12False();
-                    }
-                    if (player.getCardsInTheFiled().get(i).getCounterMinion10() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterMinion10(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getCounterMinion18() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterMinion18(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getHero65Power() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterHero65(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getId() == 15) {
-                        Minion temp = (Minion) player.getCardsInTheFiled().get(i);
-                        temp.minion15Power();
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 25) {
-                        for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
-                            if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
-                                if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
-                                    player.getCardsInTheFiled().get(j).setHealthPoint(player.getCardsInTheFiled().get(j).getHealthPoint() - 1);
-                                    player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
-                                    player.getCardsInTheFiled().get(j).setTempAttackPower(player.getCardsInTheFiled().get(j).getTempAttackPower() + 2);
-                                    player.getCardsInTheFiled().get(j).setTempHealtPoint(player.getCardsInTheFiled().get(j).getTempHealtPoint() - 1);
-                                }
-
-                            }
-                        }
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 26) {
-                        for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
-                            if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
-                                if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
-                                    player.getCardsInTheFiled().get(j).setHowManyHolyBuff(player.getCardsInTheFiled().get(j).getHowManyHolyBuff() + 1);
-                                    player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
-                                }
-                            }
-                        }
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 27) {
-                        for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
-                            if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
-                                player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 1);
-                            }
-                        }
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 37) {
-                        player.getCardsInTheFiled().get(i).setHowManyHolyBuff(player.getCardsInTheFiled().get(i).getHowManyHolyBuff() + 12);
-                    }
-                }
-                player = enemyPlayer;
-                for (int i = 0; i < player.getCollectibleItems().size(); i++) {
-                    if (player.getCollectibleItems().get(i).getId() == 74) {
-                        tempItem.item4(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 75) {
-                        tempItem.item5(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 77) {
-                        tempItem.item7(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 78) {
-                        player.setItem8True();
-                    } else if (player.getCollectibleItems().get(i).getId() == 79) {
-                        tempItem.item9(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 80) {
-                        tempItem.item10(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 81) {
-                        tempItem.item11(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 83) {
-                        tempItem.item13(player);
-                    } else if (player.getCollectibleItems().get(i).getId() == 90) {
-                        tempItem.item20(player);
-                    }
-                }
-                if (player.getMainDeck().getItem().getId() == 71) {
-                    if (player == player1)
-                        tempItem.item1(player1Turns, player1);
-                    else
-                        tempItem.item1(player2Turn, player2);
-                } else if (player.getMainDeck().getItem().getId() == 72) {
-                    tempItem.item2(player.getHero());
-                } else if (player.getMainDeck().getItem().getId() == 76) {
-                    tempItem.item6(enemyPlayer.getHero());
-                } else if (player.getMainDeck().getItem().getId() == 84) {
-                    tempItem.item14(player);
-                }
-                for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                    if (player.getCardsInTheFiled().get(i).getItem12()) {
-                        player.getCardsInTheFiled().get(i).setAttackPower(player.getCardsInTheFiled().get(i).getAttackPower() + 2);
-                        player.getCardsInTheFiled().get(i).setItem12False();
-                    }
-                    if (player.getCardsInTheFiled().get(i).getCounterMinion10() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterMinion10(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getCounterMinion18() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterMinion18(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getHero65Power() != 0) {
-                        player.getCardsInTheFiled().get(i).setCounterHero65(player.getCardsInTheFiled().get(i));
-                    }
-                    if (player.getCardsInTheFiled().get(i).getId() == 15) {
-                        Minion temp = (Minion) player.getCardsInTheFiled().get(i);
-                        temp.minion15Power();
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 25) {
-                        for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
-                            if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
-                                if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
-                                    player.getCardsInTheFiled().get(j).setHealthPoint(player.getCardsInTheFiled().get(j).getHealthPoint() - 1);
-                                    player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
-                                    player.getCardsInTheFiled().get(j).setTempAttackPower(player.getCardsInTheFiled().get(j).getTempAttackPower() + 2);
-                                    player.getCardsInTheFiled().get(j).setTempHealtPoint(player.getCardsInTheFiled().get(j).getTempHealtPoint() - 1);
-                                }
-
-                            }
-                        }
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 26) {
-                        for (int j = 0; j < player.getCardsInTheFiled().size(); j++) {
-                            if (player.getCardsInTheFiled().get(i).getX() + 1 >= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getX() - 1 <= player.getCardsInTheFiled().get(j).getX() &&
-                                    player.getCardsInTheFiled().get(i).getY() == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getY() + 1 >= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 <= player.getCardsInTheFiled().get(j).getY() &&
-                                            player.getCardsInTheFiled().get(i).getX() == player.getCardsInTheFiled().get(j).getX() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() + 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() + 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY() ||
-                                    player.getCardsInTheFiled().get(i).getX() - 1 == player.getCardsInTheFiled().get(j).getX() &&
-                                            player.getCardsInTheFiled().get(i).getY() - 1 == player.getCardsInTheFiled().get(j).getY()) {
-                                if (player.getCardsInTheFiled().get(j).getId() > 0 && player.getCardsInTheFiled().get(j).getId() <= 40) {
-                                    player.getCardsInTheFiled().get(j).setHowManyHolyBuff(player.getCardsInTheFiled().get(j).getHowManyHolyBuff() + 1);
-                                    player.getCardsInTheFiled().get(j).setAttackPower(player.getCardsInTheFiled().get(j).getAttackPower() + 2);
-                                }
-                            }
-                        }
-                    } else if (player.getCardsInTheFiled().get(i).getId() == 37) {
-                        player.getCardsInTheFiled().get(i).setHowManyHolyBuff(player.getCardsInTheFiled().get(i).getHowManyHolyBuff() + 12);
-                    }
-                }
-                if (!turn) {
-                    player = player1;
-                    enemyPlayer = player2;
-                    Platform.runLater(
-                            new Runnable() {
-                                public void run() {
-                                    root.getChildren().removeAll(hands1);
-                                    root.getChildren().removeAll(handsEnemy);
-                                    root.getChildren().remove(label1);
-                                    root.getChildren().remove(label2);
-                                    root.getChildren().addAll(label1);
-                                    root.getChildren().addAll(hands1);
-
-                                }
-                            }
-                    );
-                } else {
-                    player = player2;
-                    enemyPlayer = player1;
-                }
-
-                if (player.getFlag()) {
-                    player.setHowLongFlagsHasBeenKept(player.getHowLongFlagsHasBeenKept() + 1);
-                } else if (enemyPlayer.getFlag()) {
-                    enemyPlayer.setHowLongFlagsHasBeenKept(enemyPlayer.getHowLongFlagsHasBeenKept() + 1);
-                }
-                j = -1;
-                Random rand100 = new Random();
-                randomForCommand = rand100.nextInt(player2.getCardsInTheFiled().size());
-                if (player == player1) {
-                    if (player1Turns == 2) {
-                        for (int i = 0; i < 4; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(4);
-                    } else if (player1Turns == 3) {
-                        for (int i = 0; i < 5; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(5);
-                    } else if (player1Turns == 6) {
-                        for (int i = 0; i < 4; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(6);
-                    } else if (player1Turns == 5) {
-                        for (int i = 0; i < 7; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(7);
-                    } else if (player1Turns == 6) {
-                        for (int i = 0; i < 8; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(8);
-                    } else if (player1Turns >= 7) {
-                        for (int i = 0; i < 9; i++) {
-                            mana1[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(9);
-                    }
-                } else {
-                    if (player2Turn == 2) {
-                        for (int i = 0; i < 4; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(4);
-                    } else if (player2Turn == 3) {
-                        for (int i = 0; i < 5; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(5);
-                    } else if (player2Turn == 6) {
-                        for (int i = 0; i < 4; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(6);
-                    } else if (player2Turn == 5) {
-                        for (int i = 0; i < 7; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(7);
-                    } else if (player2Turn == 6) {
-                        for (int i = 0; i < 8; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(8);
-                    } else if (player2Turn >= 7) {
-                        for (int i = 0; i < 9; i++) {
-                            mana2[i].setFill(Color.rgb(158, 243, 249));
-                        }
-                        player.setMana(9);
-                    }
-                }
-
-
-                return;
-
-
-            } else if (command.indexOf("Insert") != -1) {
-                int inValidCard = 0;
-                String split[] = command.split("\\s+");
-                int x = split[3].charAt(1) - 48;
-                int y = split[3].charAt(3) - 48;
-                for (int i = 0; i < player.getHand().getCardsInThisHand().size(); i++) {
-                    if (player.getHand().getCardsInThisHand().get(i).getName().matches(split[1])) {
-                        inValidCard = 1;
-                        card1ID = i;
-                    }
-                }
-                if (inValidCard == 0) {
-                    System.out.println("Invalid card name");
-                } else {
-                    inValidCard = 0;
-                    for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
-                        int distance = getDistance(player.getCardsInTheFiled().get(i).getX(), x, player.getCardsInTheFiled().get(i).getY(), y);
-                        if (distance == 1 || player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y + 1
-                                || player.getCardsInTheFiled().get(i).getX() == x - 1 && player.getCardsInTheFiled().get(i).getY() == y + 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y + 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x + 1 && player.getCardsInTheFiled().get(i).getY() == y - 1 ||
-                                player.getCardsInTheFiled().get(i).getX() == x - 1 && player.getCardsInTheFiled().get(i).getY() == y - 1) {
-                            inValidCard = 1;
-                        }
-                    }
-                    if (inValidCard == 0 && player.getHand().getCardsInThisHand().get(card1ID).getType() != 1) {
-                        System.out.println("Invalid target");
-                    } else {
-                        if (player.getMana() <= player.getHand().getCardsInThisHand().get(card1ID).getManaPoint()) {
-                            System.out.println("You don't have enough mana");
-                        } else {
-                            for (int i = 0; i < Cell.getCells().size(); i++) {
-                                if (Cell.getCells().get(i).getX() == x && Cell.getCells().get(i).getY() == y && Cell.getCells().get(i).getInsideCard() == null) {
-                                    Cell.getCells().get(i).insertCard(player.getHand().getCardsInThisHand().get(card1ID));
-                                }
-                            }
-                            System.out.println("=======>" + player.getHand().getCardsInThisHand().get(card1ID).getType()
-                                    + "    =========>" + player.getCardsInTheFiled());
-                            if (player.getHand().getCardsInThisHand().get(card1ID).getType() != 1) {
-                                player.getHand().getCardsInThisHand().get(card1ID).setY(y);
-                                player.getHand().getCardsInThisHand().get(card1ID).setX(x);
-                                player.addCardsInTheFile(player.getHand().getCardsInThisHand().get(card1ID));
-                                ImageView temp1 = new ImageView();
-                                ImageView temp11 = new ImageView();
-                                temp1.setImage(player.getHand().getCardsInThisHand().get(card1ID).getBreath());
-                                temp11.setImage(player.getHand().getCardsInThisHand().get(card1ID).getAttack());
-                                temp1.setFitHeight(55);
-                                temp1.setFitWidth(55);
-                                temp1.relocate((x - 1) * 60 + 230, (y - 1) * 60 + 160);
-                                temp11.setFitHeight(55);
-                                temp11.setFitWidth(55);
-                                temp11.relocate((x - 1) * 60 + 230, (y - 1) * 60 + 160);
-                                player.getCards2().add(temp11);
-                                player.getCards1().add(temp1);
-                                player.getHand().getCardsInThisHand().remove(player.getHand().getCardsInThisHand().get(card1ID));
-                                System.out.println("card is in the field");
-                            }
-                            Random rand = new Random();
-                            int n = rand.nextInt(20);
-                            player.getHand().addCard(player.getMainDeck().getCardsOfDeck().get(n));
-                            ImageView temp2 = new ImageView();
-                            temp2.setImage(player.getMainDeck().getCardsOfDeck().get(n).getBreath());
-                            temp2.setFitWidth(70);
-                            temp2.setFitHeight(70);
-                            temp2.relocate(280 + (card1ID * 100), 500);
-                            handsEnemy[card1ID] = temp2;
-                            Platform.runLater(
-                                    new Runnable() {
-                                        public void run() {
-                                            root.getChildren().removeAll(handsEnemy);
-                                            root.getChildren().addAll(handsEnemy);
-                                            root.getChildren().removeAll(player.getCards1());
-                                            root.getChildren().addAll(player.getCards1());
-                                            System.out.println("im fucking there!!!!!!!!!!!!!!!!!!!!");
-                                        }
-                                    }
-                            );
-                            if (player.getMainDeck().getItem().getId() == 84) {
-                                enemyPlayer.getHero().setHealthPoint(enemyPlayer.getHero().getHealthPoint() - 1);
-                            } else if (player.getMainDeck().getItem().getId() == 89) {
-                                if (player.getHand().getCardsInThisHand().get(card1ID).getId() <= 40) {
-                                    player.getHand().getCardsInThisHand().get(card1ID).setHowManyHolyBuff(player.getHand().getCardsInThisHand().get(card1ID).getHowManyHolyBuff() + 1);
-                                }
-                            }
-                            if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 21) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(i);
-                                        temp.minionPower21(temp);
-                                    }
-                                }
-                            } else if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 31) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        enemyPlayer.getCardsInTheFiled().get(i).setHealthPoint(enemyPlayer.getCardsInTheFiled().get(i).getHealthPoint() - 16);
-                                        if (enemyPlayer.getCardsInTheFiled().get(i).getHealthPoint() <= 0) {
-                                            if (enemyPlayer.getCardsInTheFiled().get(i).getId() == 17) {
-                                                Minion temp = (Minion) enemyPlayer.getCardsInTheFiled().get(i);
-                                                temp.minion17Power();
-                                            } else if (enemyPlayer.getCardsInTheFiled().get(i).getId() == 38) {
-                                                Minion temp = (Minion) player.getCardsInTheFiled().get(i);
-                                                temp.minion38Power(player.getHero());
-                                            }
-                                            enemyPlayer.getCardsInTheFiled().remove(enemyPlayer.getCardsInTheFiled().get(i));
-                                        }
-                                    }
-                                }
-                            } else if (player.getHand().getCardsInThisHand().get(card1ID).getId() == 36) {
-                                for (int i = 0; i < enemyPlayer.getCardsInTheFiled().size(); i++) {
-                                    if (enemyPlayer.getCardsInTheFiled().get(i).getId() <= 40) {
-                                        if (enemyPlayer.getCardsInTheFiled().get(i).getX() >= player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() <= player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getY() >= player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() <= player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() - 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() + 1 &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() - 1 ||
-                                                enemyPlayer.getCardsInTheFiled().get(i).getX() == player.getHand().getCardsInThisHand().get(card1ID).getX() &&
-                                                        enemyPlayer.getCardsInTheFiled().get(i).getY() == player.getHand().getCardsInThisHand().get(card1ID).getY() + 1) {
-                                            enemyPlayer.getCardsInTheFiled().get(i).setStunByMinion5True();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-        }
-        card1ID = -1;
-    }
+               }
 
 
 }
+
