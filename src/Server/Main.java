@@ -90,11 +90,18 @@ public class Main extends Application {
 
     }
     public void shop(){
+        Cards.make();
+        Image b = new Image("file:pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
         root.getChildren().clear();
-        Image insideShop= new Image("file:ser.JPG");
-        ImageView iv = new ImageView(insideShop);
-        iv.setFitHeight(600);
-        iv.setFitWidth(1000);
+        Image insideShop1= new Image("file:ser.JPG");
+        ImageView insideShop = new ImageView(insideShop1);
+        insideShop.setFitHeight(600);
+        insideShop.setFitWidth(1000);
         Image button = new Image("file:button.PNG");
         Image hero = new Image("file:heroCard.PNG");
         Image minion = new Image("file:minionCard.PNG");
@@ -112,7 +119,7 @@ public class Main extends Application {
         im1.setFitHeight(200);
 
         itemLabel.relocate(170, 450);
-        itemLabel.setTextFill(Color.YELLOW);
+        itemLabel.setTextFill(Color.WHITE);
         itemLabel.setFont(Font.font(25));
 
         ImageView im2 = new ImageView();
@@ -123,7 +130,7 @@ public class Main extends Application {
 
         spellLabel.relocate(370, 450);
         spellLabel.setFont(Font.font(25));
-        spellLabel.setTextFill(Color.YELLOW);
+        spellLabel.setTextFill(Color.WHITE);
 
         ImageView im3 = new ImageView();
         im3.setFitWidth(150);
@@ -133,7 +140,7 @@ public class Main extends Application {
 
         heroLabel.setFont(Font.font(25));
         heroLabel.relocate(570, 450);
-        heroLabel.setTextFill(Color.YELLOW);
+        heroLabel.setTextFill(Color.WHITE);
 
         ImageView im4 = new ImageView();
         im4.setImage(minion);
@@ -142,13 +149,13 @@ public class Main extends Application {
         im4.setFitWidth(150);
 
         minionLabel.relocate(763, 450);
-        minionLabel.setTextFill(Color.YELLOW);
+        minionLabel.setTextFill(Color.WHITE);
         minionLabel.setFont(Font.font(25));
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                root.getChildren().addAll(im1, im2, im3, im4, spellLabel, minionLabel, heroLabel, itemLabel);
+                root.getChildren().addAll(insideShop,im1, im2, im3, im4, spellLabel, minionLabel, heroLabel, itemLabel);
             }
         });
 
@@ -167,8 +174,6 @@ public class Main extends Application {
 
 
                 if (x >= 125 && x <= 275 && y >= 200 && y <= 400) {
-
-                    MakeItems.make();
                     ImageView items[] = new ImageView[20];
                     Label itemLabels[] = new Label[20];
 
@@ -177,9 +182,9 @@ public class Main extends Application {
                         for (int i = 0; i < 5; i++) {
                             num = ((j * 5) + i);
                             items[num] = new ImageView();
-                            itemLabels[num] = new Label(Item.getItems().get(num).getName());
+                            itemLabels[num] = new Label(Cards.getItemName()[num]+" "+Cards.getItemNumber()[num]);
                             items[num].setImage(button);
-                            itemLabels[num].setFont(Font.font(20));
+                            itemLabels[num].setFont(Font.font(15));
                             itemLabels[num].setTextFill(Color.WHITE);
                             itemLabels[num].relocate(X + 20, Y + 10);
                             items[num].relocate(X, Y);
@@ -207,6 +212,7 @@ public class Main extends Application {
                             double yminion = event.getSceneY();
                             if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
                                 root.getChildren().clear();
+                                mainMenu();
                                 return;
                             }
                             int xx = ((int) xminion - 50) / 175;
@@ -215,7 +221,6 @@ public class Main extends Application {
                         }
                     });
                 } else if (x >= 325 && x <= 475 && y >= 200 && y <= 400) {
-                    MakeSpell.make();
                     ImageView spells[] = new ImageView[20];
                     Label spellLabels[] = new Label[20];
                     int X = 50, Y = 80, num = 0;
@@ -223,9 +228,9 @@ public class Main extends Application {
                         for (int i = 0; i < 5; i++) {
                             num = ((j * 5) + i);
                             spells[num] = new ImageView();
-                            spellLabels[num] = new Label(Spell.getSpells().get(num).getName());
+                            spellLabels[num] = new Label(Cards.getSpellName()[num]+" "+Cards.getSpellNumber()[num]);
                             spells[num].setImage(button);
-                            spellLabels[num].setFont(Font.font(20));
+                            spellLabels[num].setFont(Font.font(15));
                             spellLabels[num].setTextFill(Color.WHITE);
                             spellLabels[num].relocate(X + 20, Y + 10);
                             spells[num].relocate(X, Y);
@@ -252,18 +257,15 @@ public class Main extends Application {
                             double yminion = event.getSceneY();
                             if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
                                 root.getChildren().clear();
-                                Show.shopMenu(account, root);
+                                mainMenu();
                                 return;
                             }
                             int xx = ((int) xminion - 50) / 175;
                             int yy = ((int) yminion - 80) / 100;
                             int num = (yy * 5) + xx;
-                            popUpWindow(Shop.buy(spellLabels[num].getText(), account, spells,
-                                    spellLabels, num, root), 280, 120);
                         }
                     });
                 } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
-                    MakeHero.make();
                     ImageView hero[] = new ImageView[10];
                     Label heroLabels[] = new Label[10];
                     int X = 50, Y = 200, num = 0;
@@ -271,9 +273,9 @@ public class Main extends Application {
                         for (int i = 0; i < 5; i++) {
                             num = ((j * 5) + i);
                             hero[num] = new ImageView();
-                            heroLabels[num] = new Label(Hero.getHeroes().get(num).getName());
+                            heroLabels[num] = new Label(Cards.getHeroName()[num]+" "+Cards.getHeroNumber()[num]);
                             hero[num].setImage(button);
-                            heroLabels[num].setFont(Font.font(20));
+                            heroLabels[num].setFont(Font.font(15));
                             heroLabels[num].setTextFill(Color.WHITE);
                             heroLabels[num].relocate(X + 20, Y + 10);
                             hero[num].relocate(X, Y);
@@ -300,17 +302,15 @@ public class Main extends Application {
                             double yminion = event.getSceneY();
                             if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
                                 root.getChildren().clear();
-                                Show.shopMenu(account, root);
+                                mainMenu();
                                 return;
                             }
                             int xx = ((int) xminion - 50) / 175;
                             int yy = ((int) yminion - 200) / 100;
                             int num = (yy * 5) + xx;
-                            popUpWindow(Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root), 280, 120);
                         }
                     });
                 } else if (x >= 725 && x <= 875 && y >= 200 && y <= 400) {
-                    MakeMinions.make();
                     ImageView minions[] = new ImageView[40];
                     Label minionLabels[] = new Label[40];
                     int X = 50, Y = 50, num = 0;
@@ -318,9 +318,9 @@ public class Main extends Application {
                         for (int i = 0; i < 5; i++) {
                             num = ((j * 5) + i);
                             minions[num] = new ImageView();
-                            minionLabels[num] = new Label(Minion.getMinions().get(num).getName());
+                            minionLabels[num] = new Label(Cards.getMinionName()[num]+" "+Cards.getMinionNumber()[num]);
                             minions[num].setImage(button);
-                            minionLabels[num].setFont(Font.font(20));
+                            minionLabels[num].setFont(Font.font(15));
                             minionLabels[num].setTextFill(Color.WHITE);
                             minionLabels[num].relocate(X + 20, Y + 10);
                             minions[num].relocate(X, Y);
@@ -345,15 +345,12 @@ public class Main extends Application {
                             double yminion = event.getSceneY();
                             if (xminion > 918 && xminion < 968 && yminion > 530 && yminion < 580) { //back
                                 root.getChildren().clear();
-                                Show.shopMenu(account, root);
+                                mainMenu();
                                 return;
                             }
                             int xx = ((int) xminion - 50) / 175;
                             int yy = ((int) yminion - 50) / 60;
                             int num = (yy * 5) + xx;
-
-                            popUpWindow(Shop.buy(minionLabels[num].getText(), account, minions, minionLabels,
-                                    num, root), 280, 120);
                         }
                     });
                 }
