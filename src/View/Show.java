@@ -1307,6 +1307,7 @@ public class Show {
 
     public static void showMainMenu(Group root) {
 
+
         Image image = new Image("File:photos/menu.jpg");
         ImageView menu = new ImageView();
         menu.setImage(image);
@@ -1400,6 +1401,7 @@ public class Show {
         Platform.runLater(
                 new Runnable() {
                     public void run() {
+                        root.getChildren().clear();
                         root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2, label2,
                                 buttonImage3, label3, buttonImage4, label4, buttonImage5, label5, icon, exitButton);
                     }
