@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Formatter;
 
-public class Client {
+public class Client extends Thread {
 
     private static ArrayList<Client> clients = new ArrayList<>();
     private static DataInputStream input = null;
@@ -64,7 +64,8 @@ public class Client {
         this.clientThread = clientThread;
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         String line = "";
 
         while (!line.equals("End")) {
@@ -84,4 +85,5 @@ public class Client {
             System.out.println(ioe);
         }
     }
+
 }
