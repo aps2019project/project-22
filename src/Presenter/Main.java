@@ -27,14 +27,14 @@ public class Main extends Application {
             public void run() {
                 SaveAccounts.read();
 
-                Account a = new Account("a", "a");
-                Account b = new Account("b", "b");
-                Account.addNewAccount(a);
-                Account.addNewAccount(b);
-                Account.setAccountActivated(a);
-                Show.showMainMenuOfAccount(Account.getAccountActivated(),root);
+//                Account a = new Account("a", "a");
+//                Account b = new Account("b", "b");
+//                Account.addNewAccount(a);
+//                Account.addNewAccount(b);
+//                Account.setAccountActivated(a);
+//                Show.showMainMenuOfAccount(Account.getAccountActivated(),root);
 
-//                Show.showMainMenu( root);
+                Show.showMainMenu( root);
             }
         });
         thread.start();
