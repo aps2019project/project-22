@@ -22,6 +22,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
+    int finish = 0;
     Image line = new Image("file:lines.PNG");
     ImageView items = new ImageView();
     ImageView handsEnemy[] = new ImageView[5];
@@ -55,6 +56,8 @@ public class Battle {
     private int player2Turn = 1;
     protected Player player2;
     protected int howManyFlags = 0;
+    ImageView hero1 = new ImageView();
+    ImageView hero2 = new ImageView();
     protected int mode;
     Image end = new Image("file:button.PNG");
     ImageView button = new ImageView();
@@ -250,13 +253,12 @@ public class Battle {
         hero2Attack.relocate(230, 280);
         player2.addCards2(hero2Attack);
 
-        ImageView hero1 = new ImageView();
         hero1.setFitHeight(55);
         hero1.setFitWidth(55);
         hero1.setImage(player1.getHero().getBreath());
         hero1.relocate(230, 280);
         player1.addCards1(hero1);
-        ImageView hero2 = new ImageView(player2.getHero().getBreath());
+        hero2.setImage(player2.getHero().getBreath());
         hero2.setFitWidth(55);
         hero2.setFitHeight(55);
         hero2.relocate(710, 280);
@@ -367,70 +369,71 @@ public class Battle {
 
             @Override
             public void handle(MouseEvent event) {
-
-                double mainX = event.getSceneX();
+                if (finish == 0){
+                    double mainX = event.getSceneX();
                 double mainY = event.getSceneY();
                 Stage s = new Stage();
                 Group tempG = new Group();
-                Scene  tempS = new Scene(tempG,200,200);
-                if (mainX >= 25 && mainX <= 75 && mainY >= 105 && mainY <= 155){
-                    Label playerInfo = new Label("name: "+player1.getAccount().getUserName());
-                    Label playerInfo2 = new Label("heros health point"+player1.getCardsInTheFiled().get(0).getHealthPoint());
-                    if (mode == 2){
-                        playerInfo2.setText("how long the flag has been kept: "+player1.getHowLongFlagsHasBeenKept());
-                    }if (mode == 3){
-                        playerInfo2.setText("how many flahs: "+player1.getHowManyFlag());
+                Scene tempS = new Scene(tempG, 200, 200);
+                if (mainX >= 25 && mainX <= 75 && mainY >= 105 && mainY <= 155) {
+                    Label playerInfo = new Label("name: " + player1.getAccount().getUserName());
+                    Label playerInfo2 = new Label("heros health point" + player1.getCardsInTheFiled().get(0).getHealthPoint());
+                    if (mode == 2) {
+                        playerInfo2.setText("how long the flag has been kept: " + player1.getHowLongFlagsHasBeenKept());
                     }
-                    playerInfo2.relocate(10,150);
-                    playerInfo.relocate(10,50);
+                    if (mode == 3) {
+                        playerInfo2.setText("how many flahs: " + player1.getHowManyFlag());
+                    }
+                    playerInfo2.relocate(10, 150);
+                    playerInfo.relocate(10, 50);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            tempG.getChildren().addAll(playerInfo,playerInfo2);
+                            tempG.getChildren().addAll(playerInfo, playerInfo2);
                             s.setScene(tempS);
                             s.show();
                         }
                     });
 
                 }
-                if (mainX >= 25 && mainX <= 75 && mainY >= 165 && mainY <= 215){
+                if (mainX >= 25 && mainX <= 75 && mainY >= 165 && mainY <= 215) {
                     Label playerInfo = new Label("");
                     Label playerInfo2 = new Label("");
-                    playerInfo.relocate(10,10);
-                    playerInfo2.relocate(10,50);
+                    playerInfo.relocate(10, 10);
+                    playerInfo2.relocate(10, 50);
                     if (mode == 1) {
                         playerInfo.setText("computer health point " + player2.getCardsInTheFiled().get(0).getHealthPoint());
                         playerInfo2.setText("player1 health point " + player1.getCardsInTheFiled().get(0).getHealthPoint());
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                tempG.getChildren().addAll(playerInfo,playerInfo2);
+                                tempG.getChildren().addAll(playerInfo, playerInfo2);
                                 s.setScene(tempS);
                                 s.show();
                             }
                         });
                     }
-                    if (mode == 2){
+                    if (mode == 2) {
                         int exist = 0;
-                        for (int i = 0; i  <Cell.getCells().size(); i++){
-                            if (Cell.getCells().get(i).getFlag()){
+                        for (int i = 0; i < Cell.getCells().size(); i++) {
+                            if (Cell.getCells().get(i).getFlag()) {
                                 exist = 1;
-                                playerInfo.setText("the flag is in x : "+Cell.getCells().get(i).getX()+" y : "+Cell.getCells().get(i).getY()+" on the ground");
+                                playerInfo.setText("the flag is in x : " + Cell.getCells().get(i).getX() + " y : " + Cell.getCells().get(i).getY() + " on the ground");
                                 break;
                             }
                         }
-                        if (exist == 0){
-                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                                if (player1.getCardsInTheFiled().get(i).getFlag()){
-                                    playerInfo.setText("the flag is in x : "+player1.getCardsInTheFiled().get(i).getX()+" y : "+player1.getCardsInTheFiled().get(i).getY()+" with player1");
+                        if (exist == 0) {
+                            for (int i = 0; i < player1.getCardsInTheFiled().size(); i++) {
+                                if (player1.getCardsInTheFiled().get(i).getFlag()) {
+                                    playerInfo.setText("the flag is in x : " + player1.getCardsInTheFiled().get(i).getX() + " y : " + player1.getCardsInTheFiled().get(i).getY() + " with player1");
                                     exist = 1;
                                     break;
                                 }
                             }
-                            if (exist == 0){
-                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                                    if (player2.getCardsInTheFiled().get(i).getFlag()){
-                                        playerInfo.setText("the flag is in x : "+player2.getCardsInTheFiled().get(i).getX()+" y : "+player2.getCardsInTheFiled().get(i).getY()+" with player2");
+                            if (exist == 0) {
+                                for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                                    if (player2.getCardsInTheFiled().get(i).getFlag()) {
+                                        playerInfo.setText("the flag is in x : " + player2.getCardsInTheFiled().get(i).getX() + " y : " + player2.getCardsInTheFiled().get(i).getY() + " with player2");
                                         exist = 1;
                                         break;
                                     }
@@ -446,14 +449,14 @@ public class Battle {
                             }
                         });
                     }
-                    if (mode == 3){
+                    if (mode == 3) {
 
                         int y = 10;
-                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++){
-                            playerInfo.setText("player1 has "+player1.getHowManyFlag()+" flags");
+                        for (int i = 0; i < player1.getCardsInTheFiled().size(); i++) {
+                            playerInfo.setText("player1 has " + player1.getHowManyFlag() + " flags");
                         }
-                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++){
-                            playerInfo2.setText("computer has "+player2.getHowManyFlag()+" flags");
+                        for (int i = 0; i < player2.getCardsInTheFiled().size(); i++) {
+                            playerInfo2.setText("computer has " + player2.getHowManyFlag() + " flags");
 
                         }
                         Platform.runLater(new Runnable() {
@@ -468,7 +471,7 @@ public class Battle {
                     }
                 }
                 if (mainX >= 950 && mainY <= 55) {
-                    Show.showMainMenuOfAccount(account,root);
+                    Show.showMainMenuOfAccount(account, root);
                     return;
                 }
                 for (int i = 0; i < player.getCardsInTheFiled().size(); i++) {
@@ -1414,10 +1417,24 @@ public class Battle {
                             player.setMana(9);
                         }
                     }
-//                    Platform.requestNextPulse();
 
                     singlePlayerTurn();
                 }
+            }else{
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        root.getChildren().removeAll(hands1);
+                        root.getChildren().removeAll(handsEnemy);
+                        root.getChildren().remove(hero1);
+                        root.getChildren().remove(hero2);
+                        root.getChildren().clear();
+
+                       Show.showMainMenuOfAccount(account,root);
+
+                    }
+                });
+            }
             }
 
         });
@@ -1890,16 +1907,15 @@ public class Battle {
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
                 System.out.println(player2.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
 
             } else if (player2.getHero().getHealthPoint() <= 0) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             }
         } else if (mode == 2) {
@@ -1908,34 +1924,33 @@ public class Battle {
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
                 System.out.println(player2.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             }
         } else if (mode == 3) {
+           // System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhh");
             if (player1.getHowManyFlag() == howManyFlags / 2 + 1) {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1500);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
                 System.out.println(player1.getAccount().getUserName() + " win");
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
 
             } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
                 System.out.println(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1500);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+               finish = 1;
 
             }
         }
@@ -1948,17 +1963,14 @@ public class Battle {
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
 
             } else if (player2.getHero().getHealthPoint() <= 0) {
                 System.out.printf(player1.getAccount().getUserName() + " win");
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
 
             }
         } else if (mode == 2) {
@@ -1967,16 +1979,16 @@ public class Battle {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             } else if (player2.getHowLongFlagsHasBeenKept() == 6) {
                 System.out.printf(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             }
         } else if (mode == 3) {
@@ -1985,16 +1997,15 @@ public class Battle {
                 player1.getAccount().setMoney(player1.getAccount().getMoney() + 1000);
                 player1.getAccount().setWins(player1.getAccount().getWins() + 1);
                 player2.getAccount().setLoses(player2.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
+
 
             } else if (player2.getHowManyFlag() == howManyFlags / 2 + 1) {
                 System.out.printf(player2.getAccount().getUserName() + " win");
                 player2.getAccount().setMoney(player2.getAccount().getMoney() + 1000);
                 player2.getAccount().setWins(player2.getAccount().getWins() + 1);
                 player1.getAccount().setLoses(player1.getAccount().getLoses() + 1);
-                root.getChildren().clear();
-                Show.showMainMenu(root);
+                finish = 1;
 
             }
         }
@@ -2138,6 +2149,8 @@ public class Battle {
                 int x = player2.getCardsInTheFiled().get(0).getX() - 1;
                 Random rand3 = new Random();
                 int y = player2.getCardsInTheFiled().get(0).getY() + 1;
+                if (y >5) y =5;
+                if (x < 1) x = 1;
                 command = "Insert " + player2.getHand().getCardsInThisHand().get(interCard).getName() + " in (" + x + "," + y + ")";
             } else if (k == 5) {
                 command = "End turn";
@@ -2251,7 +2264,7 @@ public class Battle {
                     System.out.println(IDNumber1 + " moved to " + x + " " + y);
                     player.getCardsInTheFiled().get(card1ID).setHaveBeenMovedTrue();
                 }
-            } else if (command.indexOf("Attack") != -1) {
+            } else if (command.indexOf("Attack [") != -1) {
 
                 String split[] = command.split("\\[");
                 String split2[] = split[1].split("]");
@@ -2835,13 +2848,14 @@ public class Battle {
                     Platform.runLater(
                             new Runnable() {
                                 public void run() {
-                                    root.getChildren().removeAll(hands1);
-                                    root.getChildren().removeAll(handsEnemy);
-                                    root.getChildren().remove(label1);
-                                    root.getChildren().remove(label2);
-                                    root.getChildren().addAll(label1);
-                                    root.getChildren().addAll(hands1);
-
+                                    if (finish == 0) {
+                                        root.getChildren().removeAll(hands1);
+                                        root.getChildren().removeAll(handsEnemy);
+                                        root.getChildren().remove(label1);
+                                        root.getChildren().remove(label2);
+                                        root.getChildren().addAll(label1);
+                                        root.getChildren().addAll(hands1);
+                                    }
                                 }
                             }
                     );
@@ -2964,8 +2978,7 @@ public class Battle {
                                     Cell.getCells().get(i).insertCard(player.getHand().getCardsInThisHand().get(card1ID));
                                 }
                             }
-                            System.out.println("=======>" + player.getHand().getCardsInThisHand().get(card1ID).getType()
-                                    + "    =========>" + player.getCardsInTheFiled());
+
                             if (player.getHand().getCardsInThisHand().get(card1ID).getType() != 1) {
                                 player.getHand().getCardsInThisHand().get(card1ID).setY(y);
                                 player.getHand().getCardsInThisHand().get(card1ID).setX(x);
@@ -3073,5 +3086,6 @@ public class Battle {
         }
         card1ID = -1;
     }
+
 
 }
