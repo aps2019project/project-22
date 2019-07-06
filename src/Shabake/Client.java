@@ -1,4 +1,4 @@
-package Client;
+package Shabake;
 
 import Model.*;
 
