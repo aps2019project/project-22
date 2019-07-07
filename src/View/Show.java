@@ -29,13 +29,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Show {
-
+    public static ObjectOutputStream outputStream;
+    public static ObjectInputStream inputStream;
     private static void showIcons(Group root, int x, int y) {
         Circle[] circles = new Circle[3];
         Line[] lines = new Line[3];
@@ -67,8 +72,65 @@ public class Show {
         lines[2].setEndY(circles[0].getCenterY());
 
     }
+    public static void clients(Group root,Account account){
+        Image b = new Image("File:photos/pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
+        Image inside = new Image("file:inside.jpg");
+        ImageView insideShop = new ImageView();
+        insideShop.setFitHeight(600);
+        insideShop.setFitWidth(1000);
+        insideShop.setImage(inside);
+        try {
+            outputStream.writeObject("show all clients");
+            ArrayList<String> s = (ArrayList<String>)inputStream.readObject();
+            Label[] clients = new Label[s.size()];
+            int y = 50;
+            for (int i = 0; i < s.size(); i++){
+                clients[i] = new Label("name : "+s.get(i));
+                clients[i].relocate(50, y);
+                clients[i].setTextFill(Color.WHITE);
+                clients[i].setFont(Font.font(20));
+                y+=50;
+            }
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    root.getChildren().clear();
+                    root.getChildren().addAll(insideShop,back);
+                    root.getChildren().addAll(clients);
+                }
+            });
 
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getSceneX();
+                double y = event.getSceneY();
+
+                if (x > 918 && x < 968 && y > 530 && y < 580) {
+                    root.getChildren().clear();
+                    showMainMenuOfAccount(account, root);
+                    return;
+                }
+            }
+        });
+        }catch (Exception e){}
+
+
+    }
     public static void showMainMenuOfAccount(Account account, Group root) {
+        try {
+            Socket socket = new Socket("localhost", 8000);
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+            outputStream.writeObject(account.getUserName());
+            outputStream.writeObject(account.getWins());
+        }catch (Exception e){}
 
         Image image = new Image("File:photos/menuOfAccount.jpg");
         ImageView menu = new ImageView();
@@ -146,6 +208,22 @@ public class Show {
         buttonImage6.setFitWidth(145);
         buttonImage6.setFitHeight(40);
 
+
+        ImageView buttonImage7 = new ImageView();
+        buttonImage7.setImage(i1);
+        buttonImage7.relocate(155, 437);
+        buttonImage7.setFitWidth(145);
+        buttonImage7.setFitHeight(40);
+
+        Label label7 = new Label("Clients");
+        label7.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+        label7.relocate(193, 445);
+        label7.setTextFill(Color.WHITESMOKE);
+
+
+
+
+
         Label label6 = new Label("Logout");
         label6.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label6.relocate(197, 397);
@@ -166,7 +244,7 @@ public class Show {
                     public void run() {
                         root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2,
                                 label2, buttonImage3, label3, buttonImage4, label4, buttonImage5,
-                                label5, buttonImage6, label6, exitButton);
+                                label5, buttonImage6, label6, exitButton,buttonImage7,label7);
                     }
                 }
         );
@@ -186,6 +264,10 @@ public class Show {
                                         mediaPlayer.stop();
                                         showCollectionMenu(root, account);
                                         return;
+                                    }
+                                    if (x < 300 && y > 437 && y < 477){
+                                        root.getChildren().clear();
+                                        clients(root,account);
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
@@ -1823,6 +1905,7 @@ public class Show {
                                             String cm = Account.checking(userTextField.getText(), passwordField.getText());
                                             command.setText(cm);
                                             if (cm.contains("welcome")) {
+
                                                 root.getChildren().clear();
                                                 mediaPlayer.stop();
                                                 showMainMenuOfAccount(Account.getAccountActivated(), root);
