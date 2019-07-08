@@ -39,9 +39,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Show {
+    public static int first = 0;
     public static ObjectOutputStream outputStream;
     public static ObjectInputStream inputStream;
-
+    public static Socket socket;
     private static void showIcons(Group root, int x, int y) {
         Circle[] circles = new Circle[3];
         Line[] lines = new Line[3];
@@ -73,8 +74,7 @@ public class Show {
         lines[2].setEndY(circles[0].getCenterY());
 
     }
-
-    public static void clients(Group root, Account account) {
+    public static void clients(Group root,Account account){
         Image b = new Image("File:photos/pinkButton.png");
         ImageView back = new ImageView();
         back.setImage(b);
@@ -88,53 +88,55 @@ public class Show {
         insideShop.setImage(inside);
         try {
             outputStream.writeObject("show all clients");
-            ArrayList<String> s = (ArrayList<String>) inputStream.readObject();
+            ArrayList<String> s = new ArrayList<>();
+            s = (ArrayList<String>)inputStream.readObject();
             Label[] clients = new Label[s.size()];
             int y = 50;
-            for (int i = 0; i < s.size(); i++) {
-                clients[i] = new Label("name : " + s.get(i));
+            for (int i = 0; i < s.size(); i++){
+                clients[i] = new Label("name : "+s.get(i));
                 clients[i].relocate(50, y);
                 clients[i].setTextFill(Color.WHITE);
                 clients[i].setFont(Font.font(20));
-                y += 50;
+                y+=50;
             }
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
                     root.getChildren().clear();
-                    root.getChildren().addAll(insideShop, back);
+                    root.getChildren().addAll(insideShop,back);
                     root.getChildren().addAll(clients);
                 }
             });
 
-            root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent event) {
-                    double x = event.getSceneX();
-                    double y = event.getSceneY();
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getSceneX();
+                double y = event.getSceneY();
 
-                    if (x > 918 && x < 968 && y > 530 && y < 580) {
-                        root.getChildren().clear();
-                        showMainMenuOfAccount(account, root);
-                        return;
-                    }
+                if (x > 918 && x < 968 && y > 530 && y < 580) {
+                    root.getChildren().clear();
+                    showMainMenuOfAccount(account, root);
+                    return;
                 }
-            });
-        } catch (Exception e) {
-        }
+            }
+        });
+        }catch (Exception e){}
 
 
     }
-
     public static void showMainMenuOfAccount(Account account, Group root) {
-        try {
-            Socket socket = new Socket("localhost", 8000);
-            outputStream = new ObjectOutputStream(socket.getOutputStream());
-            inputStream = new ObjectInputStream(socket.getInputStream());
-            outputStream.writeObject(account.getUserName());
-            outputStream.writeObject(account.getWins());
-        } catch (Exception e) {
+        if (first == 0) {
+            try {
+                socket = new Socket("localhost", 8000);
+                outputStream = new ObjectOutputStream(socket.getOutputStream());
+                inputStream = new ObjectInputStream(socket.getInputStream());
+                outputStream.writeObject(account.getUserName());
+                outputStream.writeObject(account.getWins());
+                first = 1;
+            } catch (Exception e) {
+            }
         }
 
         Image image = new Image("File:photos/menuOfAccount.jpg");
@@ -226,6 +228,9 @@ public class Show {
         label7.setTextFill(Color.WHITESMOKE);
 
 
+
+
+
         Label label6 = new Label("Logout");
         label6.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
         label6.relocate(197, 397);
@@ -246,7 +251,7 @@ public class Show {
                     public void run() {
                         root.getChildren().addAll(menu, buttonImage, buttonImage1, label1, buttonImage2,
                                 label2, buttonImage3, label3, buttonImage4, label4, buttonImage5,
-                                label5, buttonImage6, label6, exitButton, buttonImage7, label7);
+                                label5, buttonImage6, label6, exitButton,buttonImage7,label7);
                     }
                 }
         );
@@ -267,9 +272,9 @@ public class Show {
                                         showCollectionMenu(root, account);
                                         return;
                                     }
-                                    if (x < 300 && y > 437 && y < 477) {
+                                    if (x < 300 && y > 437 && y < 477){
                                         root.getChildren().clear();
-                                        clients(root, account);
+                                        clients(root,account);
                                     }
                                     if (x < 300 && y > 214 && y < 256) {
                                         root.getChildren().clear();
@@ -299,6 +304,11 @@ public class Show {
                                     if (x > 169 && x < 284 && y > 390 && y < 424) {
                                         root.getChildren().clear();
                                         mediaPlayer.stop();
+                                        first = 0;
+                                        try {
+                                            outputStream.writeObject("logout");
+                                            outputStream.writeObject(account.getUserName());
+                                        }catch (Exception e){}
                                         showMainMenu(root);
                                         return;
                                     }
@@ -790,7 +800,6 @@ public class Show {
         back.relocate(880, 495);
         back.setFitWidth(120);
         back.setFitHeight(120);
-
         ImageView[] imgs = new ImageView[6];
         int width = 75;
         int height = 75;
@@ -991,7 +1000,6 @@ public class Show {
             }
         });
     }
-
     private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle
             , Group root, Player player1, Player player2,
                                  int levelOfGame,int time) {
@@ -2204,7 +2212,7 @@ public class Show {
                     button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            Shop.sell(input.getText(), account, root);
+                            Shop.sell(input.getText(), account, root,inputStream,outputStream);
                         }
                     });
                     root.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -2361,7 +2369,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 100) / 100;
                                         int num = (yy * 5) + xx;
-                                        popUpWindow(Shop.buy(itemLabels[num].getText(), account, items, itemLabels, num, root), 280, 120);
+                                        popUpWindow(Shop.buy(itemLabels[num].getText(),account,inputStream,outputStream), 280, 120);
                                     }
                                 });
                             } else if (x >= 325 && x <= 475 && y >= 200 && y <= 400) {
@@ -2408,8 +2416,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 80) / 100;
                                         int num = (yy * 5) + xx;
-                                        popUpWindow(Shop.buy(spellLabels[num].getText(), account, spells,
-                                                spellLabels, num, root), 280, 120);
+                                        popUpWindow(Shop.buy(spellLabels[num].getText(), account,inputStream,outputStream), 280, 120);
                                     }
                                 });
                             } else if (x >= 525 && x <= 675 && y >= 200 && y <= 400) {
@@ -2456,7 +2463,7 @@ public class Show {
                                         int xx = ((int) xminion - 50) / 175;
                                         int yy = ((int) yminion - 200) / 100;
                                         int num = (yy * 5) + xx;
-                                        popUpWindow(Shop.buy(heroLabels[num].getText(), account, hero, heroLabels, num, root), 280, 120);
+                                        popUpWindow(Shop.buy(heroLabels[num].getText(), account,inputStream,outputStream), 280, 120);
                                     }
                                 });
                             } else if (x >= 725 && x <= 875 && y >= 200 && y <= 400) {
@@ -2502,8 +2509,7 @@ public class Show {
                                         int yy = ((int) yminion - 50) / 60;
                                         int num = (yy * 5) + xx;
 
-                                        popUpWindow(Shop.buy(minionLabels[num].getText(), account, minions, minionLabels,
-                                                num, root), 280, 120);
+                                        popUpWindow(Shop.buy(minionLabels[num].getText(), account,inputStream,outputStream), 280, 120);
                                     }
                                 });
                             }
@@ -2550,7 +2556,7 @@ public class Show {
             label.setFont(Font.font("Verdana", FontWeight.BOLD, 13));
             label.setTextFill(Color.BLANCHEDALMOND);
             label.setPrefHeight(60);
-            label.setText("Name:\t" + Shop.getCustomCards().get(i).getName() + "\tID=" + Shop.getCustomCards().get(i).getId());
+            label.setText("Name:\t"+Shop.getCustomCards().get(i).getName() + "\tID=" + Shop.getCustomCards().get(i).getId());
             root.getChildren().addAll(label);
         }
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
