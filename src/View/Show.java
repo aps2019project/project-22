@@ -1265,12 +1265,46 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
+                                    battle.setBooleanSinglePlayerTrue();
                                     selectMode(root, account, battle, player1, player2, 1,time);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
-                                    root.getChildren().clear();
-                                    mediaPlayer.stop();
-                                    selectMode(root, account, battle, player1, player2, 2,time);
+
+                                    try {
+                                        outputStream.writeObject("multiplayer");
+                                        System.out.println("multi player");
+                                            root.getChildren().clear();
+                                            Image image1 = new Image("file:multi.JPG");
+                                            ImageView multi = new ImageView();
+                                            multi.setImage(image1);
+                                            multi.setFitWidth(1000);
+                                            multi.setFitHeight(600);
+                                            Label label = new Label("waiting for other players to join...");
+                                            label.relocate(250,240);
+                                            label.setFont(Font.font(40));
+                                            label.setTextFill(Color.WHITE);
+                                            Platform.runLater(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    root.getChildren().clear();
+                                                    root.getChildren().addAll(multi,label);
+                                                }
+                                            });
+
+                                        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                            @Override
+                                            public void handle(MouseEvent event) {
+                                                try {
+                                                    String num = (String)inputStream.readObject();
+                                                    mediaPlayer.stop();
+                                                    selectMode(root, account, battle, player1, player2, 2,time);
+                                                }catch (Exception e){}
+                                            }
+                                        });
+                                    }catch (Exception e){
+                                        System.out.println("Exception");
+                                    }
+
                                 }
                             }
                         }
@@ -1281,6 +1315,8 @@ public class Show {
 
     private static void selectMode(Group root, Account account, Battle battle,
                                    Player player1, Player player2, int singleMulti,int time) {
+
+
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
