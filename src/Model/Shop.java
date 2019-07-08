@@ -7,6 +7,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 
 import java.awt.*;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class Shop {
@@ -25,7 +29,7 @@ public class Shop {
         MakeItems.make();
     }
 
-    public static void sell(String idS, Account account, Group root) {
+    public static void sell(String idS, Account account, Group root,ObjectInputStream in, ObjectOutputStream out) {
         Label label = new Label("this card/item isn't in your collection.");
         label.setFont(Font.font(23));
         Label sell = new Label("sold");
@@ -45,7 +49,11 @@ public class Shop {
             }
             account.increaseMoney(account.getCollection().getPriceById(id));
             if (account.getCollection().searchItem(id) != null) {
-                items.add(account.getCollection().searchItem(id));
+                //items.add(account.getCollection().searchItem(id));
+                out.writeObject("shopping");
+                out.writeObject("sell");
+                out.writeObject(account.getCollection().searchItem(id).getName());
+                in.readObject();
                 account.getCollection().removeItem(id);
                 Platform.runLater(new Runnable() {
                     @Override
@@ -54,8 +62,12 @@ public class Shop {
                     }
                 });
             } else if (account.getCollection().searchHero(id) != null) {
-                heroes.add(account.getCollection().searchHero(id));
-                cards.add(account.getCollection().searchHero(id));
+                //heroes.add(account.getCollection().searchHero(id));
+                out.writeObject("shopping");
+                out.writeObject("sell");
+                out.writeObject(account.getCollection().searchHero(id).getName());
+                in.readObject();
+                //cards.add(account.getCollection().searchHero(id));
                 account.getCollection().removeHero(id);
                 Platform.runLater(new Runnable() {
                     @Override
@@ -64,8 +76,13 @@ public class Shop {
                     }
                 });
             } else if (account.getCollection().searchSpell(id) != null) {
-                spells.add(account.getCollection().searchSpell(id));
-                cards.add(account.getCollection().searchSpell(id));
+//                spells.add(account.getCollection().searchSpell(id));
+                out.writeObject("shopping");
+                out.writeObject("sell");
+                out.writeObject(account.getCollection().searchSpell(id).getName());
+                in.readObject();
+
+//                cards.add(account.getCollection().searchSpell(id));
                 account.getCollection().removeSpell(id);
                 Platform.runLater(new Runnable() {
                     @Override
@@ -74,8 +91,13 @@ public class Shop {
                     }
                 });
             } else if (account.getCollection().searchMinion(id) != null) {
-                minions.add(account.getCollection().searchMinion(id));
-                cards.add(account.getCollection().searchMinion(id));
+//                minions.add(account.getCollection().searchMinion(id));
+//                cards.add(account.getCollection().searchMinion(id));
+                out.writeObject("shopping");
+                out.writeObject("sell");
+                out.writeObject(account.getCollection().searchMinion(id).getName());
+                in.readObject();
+
                 account.getCollection().removeMinion(id);
                 Platform.runLater(new Runnable() {
                     @Override
@@ -206,7 +228,7 @@ public class Shop {
         return cards;
     }
 
-    public static String buy(String name, Account account, ImageView[] iv, Label[] label, int num, Group root) {
+    public static String buy(String name, Account account, ObjectInputStream in, ObjectOutputStream out) {
         if (searchByName(name) == -1) {
             return ("this card/item isn't in shop.");
         }
@@ -216,58 +238,48 @@ public class Shop {
         if (account.getCollection().getItems().size() >= 3 && searchItem(name) != null) {
             return ("your items is full.");
         }
-        if (searchItem(name) != null) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    root.getChildren().remove(label[num]);
-                    root.getChildren().remove(iv[num]);
-                }
-            });
-            account.decreaseMoney(searchItem(name).getPrice());
-            account.getCollection().addItem(searchItem(name));
-            removeItem(name);
+        try {
+            out.writeObject("shopping");
+            out.writeObject("buy");
+            out.writeObject(name);
+            out.flush();
+            System.out.println("i send the message");
+            if ((int)in.readObject() == 1){
+                if (searchItem(name) != null) {
 
-        } else if (searchMinion(name) != null) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    root.getChildren().remove(iv[num]);
-                    root.getChildren().remove(label[num]);
-                }
-            });
-            account.decreaseMoney(searchMinion(name).getPrice());
-            account.getCollection().addMinionToCollection(searchMinion(name));
-            removeMinion(name);
-            removeCards(name);
-        } else if (searchSpell(name) != null) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    root.getChildren().remove(iv[num]);
-                    root.getChildren().remove(label[num]);
-                }
-            });
-            account.decreaseMoney(searchSpell(name).getPrice());
-            account.getCollection().addSpellToCollection(searchSpell(name));
-            removeSpell(name);
-            removeCards(name);
+                    account.decreaseMoney(searchItem(name).getPrice());
+                    account.getCollection().addItem(searchItem(name));
+//                    removeItem(name);
 
-        } else if (searchHero(name) != null) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    root.getChildren().remove(iv[num]);
-                    root.getChildren().remove(label[num]);
-                }
-            });
-            account.decreaseMoney(searchHero(name).getPrice());
-            account.getCollection().addHeroToCollection((searchHero(name)));
-            removeHero(name);
-            removeCards(name);
+                } else if (searchMinion(name) != null) {
+                    System.out.println("Im in minion");
+                    account.decreaseMoney(searchMinion(name).getPrice());
+                    account.getCollection().addMinionToCollection(searchMinion(name));
+//                    removeMinion(name);
+//                    removeCards(name);
+                } else if (searchSpell(name) != null) {
 
+                    account.decreaseMoney(searchSpell(name).getPrice());
+                    account.getCollection().addSpellToCollection(searchSpell(name));
+//                    removeSpell(name);
+//                    removeCards(name);
+
+                } else if (searchHero(name) != null) {
+
+                    account.decreaseMoney(searchHero(name).getPrice());
+                    account.getCollection().addHeroToCollection((searchHero(name)));
+//                    removeHero(name);
+//                    removeCards(name);
+
+                }
+                return "Successful.";
+            }else {
+                return "Shop is empty";
+            }
+        }catch (Exception e){
+            return "Shop is empty";
         }
-        return "Successful.";
+
     }
 
     private static void removeCards(String name) {
