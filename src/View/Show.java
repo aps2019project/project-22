@@ -939,6 +939,15 @@ public class Show {
         numberTextField.setPrefWidth(40);
         numberTextField.relocate(10, 260);
 
+        Label label2 = new Label("Time Of Turn(sec)");
+        label2.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
+        label2.setTextFill(Color.BLACK);
+        label2.relocate(200, 240);
+
+        TextField numberTextField2 = new TextField();
+        numberTextField2.setPrefWidth(40);
+        numberTextField2.relocate(200, 260);
+
         Button btn = new Button("PLAY");
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -946,7 +955,7 @@ public class Show {
         hbBtn.setTranslateX(10);
         hbBtn.setTranslateY(290);
 
-        root.getChildren().addAll(label, numberTextField, hbBtn);
+        root.getChildren().addAll(label, numberTextField, label2, numberTextField2, hbBtn);
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -954,7 +963,9 @@ public class Show {
             public void handle(ActionEvent e) {
                 Pattern pattern = Pattern.compile("\\d+");
                 Matcher matcher = pattern.matcher(numberTextField.getText());
-                if (!matcher.find() || Integer.parseInt(numberTextField.getText()) > Account.getAccounts().size()) {
+                Matcher matcher2 = pattern.matcher(numberTextField2.getText());
+                if (!matcher.find() || Integer.parseInt(numberTextField.getText()) >
+                        Account.getAccounts().size() || !matcher2.find()) {
                     mediaPlayer.stop();
                     showBattleMenu(account, battle, root, "Please Enter A Number.");
                     return;
@@ -976,14 +987,14 @@ public class Show {
                 player1.setAccount(account);
                 root.getChildren().clear();
                 mediaPlayer.stop();
-                selectGamePage(root, account, battle, player1, player2);
+                selectGamePage(root, account, battle, player1, player2, Integer.parseInt(numberTextField2.getText()));
             }
         });
     }
 
     private static void playGame(int storyCustom, int singleMulti, Account account, Battle battle
             , Group root, Player player1, Player player2,
-                                 int levelOfGame) {
+                                 int levelOfGame,int time) {
 
         String uriString = new File("musics/battle.mp3").toURI().toString();
         MediaPlayer mediaPlayer = new MediaPlayer(new Media(uriString));
@@ -1033,7 +1044,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, root);
+                battle.fight(account, root,time);
             } else if (level == 2) {
                 ((Story) battle).setLevel(2);
                 Random rand = new Random();
@@ -1071,7 +1082,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, root);
+                battle.fight(account, root,time);
             } else if (level == 3) {
                 ((Story) battle).setLevel(3);
                 battle.setHowManyFlags(7);
@@ -1109,7 +1120,7 @@ public class Show {
                 player1.setHand();
                 battle.setPlayer1(player1);
                 battle.setPlayer2(player2);
-                battle.fight(account, root);
+                battle.fight(account, root,time);
             }
         } else if (storyOrCustom == 2) {
             battle = new CustomGame();
@@ -1155,7 +1166,7 @@ public class Show {
             int num = levelOfGame;
             ((CustomGame) battle).setMode(num);
             getInputs(root, battle);
-            battle.fight(account, root);
+            battle.fight(account, root,time);
         }
     }
 
@@ -1193,7 +1204,7 @@ public class Show {
     }
 
     private static void selectGamePage(Group root, Account account, Battle battle, Player
-            player1, Player player2) {
+            player1, Player player2,int time) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -1246,12 +1257,12 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    selectMode(root, account, battle, player1, player2, 1);
+                                    selectMode(root, account, battle, player1, player2, 1,time);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    selectMode(root, account, battle, player1, player2, 2);
+                                    selectMode(root, account, battle, player1, player2, 2,time);
                                 }
                             }
                         }
@@ -1261,7 +1272,7 @@ public class Show {
     }
 
     private static void selectMode(Group root, Account account, Battle battle,
-                                   Player player1, Player player2, int singleMulti) {
+                                   Player player1, Player player2, int singleMulti,int time) {
         Image image = new Image("File:photos/exit.jpg");
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -1314,12 +1325,12 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    selectLevel(root, account, battle, player1, player2, singleMulti, 1);
+                                    selectLevel(root, account, battle, player1, player2, singleMulti, 1,time);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    selectLevel(root, account, battle, player1, player2, singleMulti, 2);
+                                    selectLevel(root, account, battle, player1, player2, singleMulti, 2,time);
                                 }
                             }
                         }
@@ -1329,7 +1340,7 @@ public class Show {
     }
 
     private static void selectLevel(Group root, Account account, Battle battle,
-                                    Player player1, Player player2, int singleMulti, int storyCustom) {
+                                    Player player1, Player player2, int singleMulti, int storyCustom,int time) {
         String[] texts = new String[3];
         if (storyCustom == 1) {
             texts[0] = "Level 1";
@@ -1405,17 +1416,17 @@ public class Show {
                                 if (x > 256 && x < 374 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 1);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 1,time);
                                 }
                                 if (x > 440 && x < 560 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 2);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 2,time);
                                 }
                                 if (x > 645 && x < 766 && y > 403 && y < 439) {
                                     root.getChildren().clear();
                                     mediaPlayer.stop();
-                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 3);
+                                    playGame(storyCustom, singleMulti, account, battle, root, player1, player2, 3,time);
                                 }
                             }
                         }
