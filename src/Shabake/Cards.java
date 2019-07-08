@@ -1,5 +1,3 @@
-package Shabake;
-
 public class Cards {
     public static String[] spellName = new String[20];
     public static int[] spellNumber = new int[20];

@@ -1,5 +1,3 @@
-package Shabake;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -39,6 +37,13 @@ public class ServerD extends Thread {
                             }else {
                                 outputStream.writeObject(0);
                                 outputStream.flush();
+                            }
+                        }else if (in.matches("logout")){
+                            String name = (String)inputStream.readObject();
+                            for (int i = 0; i < accounts.size(); i++){
+                                if (accounts.get(i).matches(name)){
+                                    online.set(i,"offline");
+                                }
                             }
                         }
                     }catch (Exception e){

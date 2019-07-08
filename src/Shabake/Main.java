@@ -1,5 +1,3 @@
-package Shabake;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -11,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -119,7 +118,7 @@ public class Main extends Application {
             Label[] clients = new Label[ServerD.accounts.size()];
             int y = 50;
             for (int i = 0; i < ServerD.accounts.size(); i++){
-                clients[i] = new Label("name : "+ServerD.accounts.get(i)+" wins : "+ServerD.wins.get(i));
+                clients[i] = new Label("name : "+ServerD.accounts.get(i)+" wins : "+ServerD.wins.get(i)+"        "+ServerD.online.get(i));
                 clients[i].relocate(50, y);
                 clients[i].setTextFill(Color.WHITE);
                 clients[i].setFont(Font.font(20));
