@@ -1,5 +1,3 @@
-package Shabake;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -11,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,12 +19,13 @@ import java.net.Socket;
 public class Main extends Application {
     Group root = new Group();
     public static void main(String[] args) {
+        Cards.make();
         Thread server = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     ServerSocket serverSocket = new ServerSocket(8000);
-                    while (true) { // 2 points
+                    while (true) {
                         Socket socket = serverSocket.accept();
                         new ServerD(socket).start();
                     }
@@ -83,15 +83,77 @@ public class Main extends Application {
                 if (x >= 150 && x <= 304 && y >= 200 && y <= 250){
                     shop();
                 }else if (x >= 150 && x <= 304 && y >= 300 && y <= 350){
-
+                    clients();
                 }
             }
         });
 
 
     }
+    public void clients(){
+        Image b = new Image("file:pinkButton.png");
+        ImageView back = new ImageView();
+        back.setImage(b);
+        back.relocate(880, 495);
+        back.setFitWidth(120);
+        back.setFitHeight(120);
+        root.getChildren().clear();
+        Image insideShop1= new Image("file:s.JPG");
+        ImageView insideShop = new ImageView(insideShop1);
+        insideShop.setFitHeight(600);
+        insideShop.setFitWidth(1000);
+        if (ServerD.accounts.size() == 0){
+            Label label = new Label("waiting for clients to connect...");
+            label.relocate(275,280);
+            label.setFont(Font.font(30));
+            label.setTextFill(Color.WHITE);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    root.getChildren().clear();
+                    root.getChildren().addAll(insideShop, label,back);
+                }
+            });
+        }else {
+            Label[] clients = new Label[ServerD.accounts.size()];
+            int y = 50;
+            for (int i = 0; i < ServerD.accounts.size(); i++){
+                clients[i] = new Label("name : "+ServerD.accounts.get(i)+" wins : "+ServerD.wins.get(i));
+                clients[i].relocate(50, y);
+                clients[i].setTextFill(Color.WHITE);
+                clients[i].setFont(Font.font(20));
+                y+=50;
+            }
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    root.getChildren().clear();
+                    root.getChildren().addAll(insideShop,back);
+                    root.getChildren().addAll(clients);
+                }
+            });
+        }
+        root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getSceneX();
+                double y = event.getSceneY();
+
+                if (x > 918 && x < 968 && y > 530 && y < 580) {
+                    root.getChildren().clear();
+                    mainMenu();
+                    return;
+                }
+            }
+        });
+
+    }
+
+
+
+
     public void shop(){
-        Cards.make();
         Image b = new Image("file:pinkButton.png");
         ImageView back = new ImageView();
         back.setImage(b);

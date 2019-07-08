@@ -1,5 +1,3 @@
-package Shabake;
-
 public class Cards {
     public static String[] spellName = new String[20];
     public static int[] spellNumber = new int[20];
@@ -114,30 +112,53 @@ public class Cards {
             itemNumber[i] = 5;
         }
     }
-    public boolean valid(String name){
+    public static boolean valid(String name,String work){
         for (int i = 0; i < 40; i++){
             if( name.matches(minionName[i])){
-                if (minionNumber[i] > 0)
-                minionNumber[i]--;
-                return true;
+                if (work.matches("buy")) {
+                    if (minionNumber[i] > 0) {
+                        minionNumber[i]--;
+                        return true;
+                    } else return false;
+                }if (work.matches("sell")){
+                        minionNumber[i]++;
+                        return true;
+                }
             }
         }
         for (int i = 0; i < 10; i++){
             if (name.matches(heroName[i])){
-                if (heroNumber[i] > 0)
-                heroNumber[i]--;
-                return true;
+                if (work.matches("buy")){
+                    if (heroNumber[i] > 0) {
+                        heroNumber[i]--;
+                        return true;
+                    }else return false;
+                }if (work.matches("sell")){
+                    heroNumber[i]++;
+                    return true;
+                }
             }
         }
         for (int i = 0; i < 20; i++){
             if (name.matches(itemName[i])){
-                if (itemNumber[i] > 0)
-                itemNumber[i]--;
-                return true;
+                if (work.matches("buy")) {
+                    if (itemNumber[i] > 0) {
+                        itemNumber[i]--;
+                        return true;
+                    } else return false;
+                }else if (work.matches("sell")){
+                    itemNumber[i]++;
+                    return true;
+                }
             }else if (name.matches(spellName[i])){
-                if (spellNumber[i] > 0)
-                spellNumber[i]--;
-                return true;
+                if (work.matches("buy")) {
+                    if (spellNumber[i] > 0) {
+                        spellNumber[i]--;
+                        return true;
+                    } else return false;
+                }else if (work.matches("sell")){
+                    spellNumber[i]++;
+                }
             }
         }
         return false;
